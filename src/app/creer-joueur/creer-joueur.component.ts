@@ -31,23 +31,7 @@ export class CreerJoueurComponent implements OnInit {
 
   ngOnInit(): void {
   }
-/*
-  //WARNING ATTENTION AU NUM DU LOCAL HOST
-  inscription(user: User): Observable<User> {
 
-    this.http.post('http://localhost:8086/joueur/save', user).subscribe({
-      next: (data) => {console.log(data);  },
-      error : (err) => { console.log(err); }
-    
-    });
-  }*/
-/*
-  inscription(user): Observable<any> {
-    const headers = { 'content-type': 'application/json'}  
-    const body=JSON.stringify(user);
-    console.log(body)
-    return this.http.post(this.baseURL , body,{'headers':headers})
-  }*/
 
   inscription(user): any{
 
