@@ -23,7 +23,32 @@
     </a>
 </div>
 
-<div class="content" role="main">
+<div class="content">
+
+  <div>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand">DEV-2-2021</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav nav-fill w-100">
+                  <a class="nav-item nav-link" routerLink='notes' routerLinkActive='active'>All notes</a>
+                  <a class="nav-item nav-link" routerLink='publique'routerLinkActive='active'>Notes publiques</a>
+                  <a class="nav-item nav-link" routerLink='privee'routerLinkActive='active'>Notes privée</a>
+                  <a class="nav-item nav-link" routerLink='club'routerLinkActive='active'>Clubs</a>
+                  <a class="nav-item nav-link" routerLink='personnes' routerLinkActive='active'>All personnes</a>
+                  <a class="nav-item nav-link"><i style = "color:tomato" class="fa fa-lock fa-2x"></i></a>
+                  
+              </div>
+              </div>
+            </nav>
+            <div>
+              
+            </div>
+
+          
+      </div>
 
 
 <router-outlet></router-outlet>
