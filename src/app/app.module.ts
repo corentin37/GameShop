@@ -4,7 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JeuComponent } from './jeu/jeu.component';
+
 import { ConnexionComponent } from './connexion/connexion.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -14,7 +21,9 @@ import { ConnexionComponent } from './connexion/connexion.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
