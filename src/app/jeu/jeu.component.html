@@ -10,19 +10,36 @@
 
                 <div class="col-sm-6">
                 <header class="w3-container w3-blue">
-                <p><i class="fa fa-users" style="color: blueviolet;"></i>  Nb Joueurs :   Age:    Difficulté: </p>
-                <p>Age:</p>
-                <p>Difficulté</p>
+                <p><i class="fa fa-users" style="color: blueviolet;"></i>  Nb Joueurs:   Age:    Difficulté: </p>
                 </header>
         
                 <div class="w3-container">
-                <p>Description du jeu</p><!--{{Description}}-->
-                <br><br><br><br>
-                <p>Fin Description</p>
+                    <!-- Tab links -->
+                    <div class="tab">
+                    <button class="tablinks" onclick="openTab(event, 'Description')">Description</button>
+                    <button class="tablinks" onclick="openTab(event, 'Regles')">Règles</button>
+                    </div>
+
+                    <!-- Tab content -->
+                    <div id="Description" class="tabcontent">
+                        <h3>Description</h3>
+                        <p>Description du jeu</p><!--{{Description}}-->
+                        <br><br><br><br>
+                        <p>Fin Description</p>
+                    </div>
+
+                    <div id="Regles" class="tabcontent">
+                        <h3>Regles</h3>
+                        <p>Règles du jeu</p><!--{{Description}}-->
+                        <br><br><br><br>
+                        <p>Fin Règles</p>
+                    </div>
+
+                
                 </div>
-        
+
             <footer class="w3-container w3-blue">
-            <p>Temps de Jeu :</p> <!--{{x.TempsdeJeu}}-->
+            <p><i>Temps de Jeu :</i> </p> <!--{{x.TempsdeJeu}}-->
             </footer>
         
             </div>
