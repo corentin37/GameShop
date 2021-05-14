@@ -15,7 +15,7 @@ import { catchError } from 'rxjs/operators';
 export class CreerJoueurComponent implements OnInit {
   baseURL = 'http://localhost:8086/joueur/save';
 
-  user;
+
   
   
   constructor(private http: HttpClient) {
@@ -41,13 +41,24 @@ export class CreerJoueurComponent implements OnInit {
     
     });
   }*/
-
+/*
   inscription(user): Observable<any> {
     const headers = { 'content-type': 'application/json'}  
     const body=JSON.stringify(user);
     console.log(body)
     return this.http.post(this.baseURL , body,{'headers':headers})
+  }*/
+
+  inscription(user): any{
+
+        
+    this.http.post('http://localhost:8086/joueur/save', user).subscribe({
+      next: (data) => {console.log(user);  },
+      error : (err) => { console.log(err); }
+
+    });
   }
+
 
 
 }
