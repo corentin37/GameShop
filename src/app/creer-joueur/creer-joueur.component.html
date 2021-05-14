@@ -16,11 +16,29 @@
 
 <div class="container">
 
-    <form #joueur = "ngForm" (ngSubmit) = "inscription(user)" >
+    <!--
+    <form #user = "ngForm" (ngSubmit) = "inscription(user: ngForm)" >
 
         <div class="form-group">
             <label class="text-secondary" for=""> Memo</label>
-            <input type="text" id="login" required class="form-control"  [(ngModel)]="user.login" name="login" >
+            <input name="login"  [(ngModel)]="user.login" required type="text" id="login"  class="form-control"  >
+        </div>
+
+
+        <button type="submit"  class="btn button-primary btn-block">Valider</button>
+
+
+    </form> -->
+
+    <form #user = "ngForm" (ngSubmit) = "inscription(user.value)" >
+
+        <div class="form-group">
+            <label for=""> LE GROS FORMULAIRE D'INSCRIPTION JOUEUR DE SES MORTS</label>
+            <input type="text" placeholder="Donne moi votre p'tit login, mon poulet!" name="login" class="form-control" ngModel  >
+            <input type="password" placeholder="On promet qu'on ne regardera pas votre mot de passe!" name="password" class="form-control" ngModel >
+            <input type="text" placeholder=" Vous etes fort charmant, vous n'auriez pas un 06?" name="tel" class="form-control" ngModel >
+            <input type="text" placeholder="C'est presque fini, un mail ?" name="mail" class="form-control" ngModel >
+            
         </div>
 
 
@@ -28,6 +46,7 @@
 
 
     </form>
+
 
 
 </div>
