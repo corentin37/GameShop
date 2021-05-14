@@ -1,0 +1,33 @@
+<p>Salut énorme BG</p>
+<!--
+<div class="zone-groupe">
+    <input type="text" placeholder="Login" class="zone-saisie" id ="loginClient" required >
+</div>
+<div class="zone-groupe">
+    <input type="text" placeholder="Password" class="zone-saisie" id ="passwordClient" required>
+</div>
+<div class="zone-groupe">
+    <input type="text" placeholder="Mail" class="zone-saisie" id ="mailClient" required >
+</div>
+<div class="zone-groupe">
+    <input type="text" placeholder="Téléphone" class="zone-saisie" id ="telClient" required>
+</div>
+*/-->
+
+<div class="container">
+
+    <form #joueur = "ngForm" (ngSubmit) = "inscription(user)" >
+
+        <div class="form-group">
+            <label class="text-secondary" for=""> Memo</label>
+            <input type="text" id="login" required class="form-control"  [(ngModel)]="user.login" name="login" >
+        </div>
+
+
+        <button type="submit"  class="btn button-primary btn-block">Valider</button>
+
+
+    </form>
+
+
+</div>
