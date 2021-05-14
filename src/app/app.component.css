@@ -62,7 +62,7 @@
     padding: 0 16px;
     max-width: 960px;
     flex-direction: column;
-    align-items: center;
+   
   }
 
   svg.material-icons {
@@ -96,7 +96,6 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
     transition: all 0.2s ease-in-out;
     line-height: 24px;
   }
