@@ -1,27 +1,34 @@
 <head>
-
+    <title>Connexion</title>
 </head>
 <body>
-    <br>
-    <div class="center">
-        <img src="/assets/img/domino.jpg" alt="domino" width="15%">
-    </div>
-    <div class="center titre">
-        <h2>Accès au compte</h2>
-    </div>
-    <div class="center mt-15">
+    <div class="row">
         
-        <div class="zone-groupe">
-            <input type="text" placeholder="login" class="zone-saisie" id="login" required>
-        </div>
-        <div class="zone-groupe">
-            <input type="password" placeholder="password" class="zone-saisie" id="password" required>
-        </div>
-        <br>
-        <button class="bt-perso" onclick="connexion()">valider</button>
-        <p class="text-err" id="msg-err"></p>
-        <br>
-        <a class="btn " routerLink ='creerJoueur'>S'inscrire</a>
-        <p class="text-err" id="msg-err"></p>
+        <div class="container col-sm-4 back-beige mt-50 border-5">
+            <div class="center mt-15">
+                <div class="">
+                    <img src="assets/img/checkmate.jpg" alt="domino" width="35%">
+                </div>
+                
+            </div>
+            
+            <br>
+            <div class="center titre noto">
+                <h2>Accès au compte</h2>
+            </div>
+            <div class="center mt-15">
+                <div class="zone-groupe noto">
+                    <input type="text" placeholder="Identifiant" class="zone-saisie" id="login" required>
+                </div>
+                <div class="zone-groupe mt-2 noto">
+                    <input type="password" placeholder="Mot de passe" class="zone-saisie" id="password" required>
+                </div>
+                <br>
+                <button type="button" class="btn btn-raised noto beige-fonce" onclick="connexion()"><strong>Valider</strong></button>
+                <p class="text-err" id="msg-err"></p>
+            </div>
     </div>
+    
+    </div>
+    
 </body>
