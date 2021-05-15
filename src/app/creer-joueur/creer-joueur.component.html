@@ -1,40 +1,15 @@
 <p>Salut énorme BG</p>
-<!--
-<div class="zone-groupe">
-    <input type="text" placeholder="Login" class="zone-saisie" id ="loginClient" required >
-</div>
-<div class="zone-groupe">
-    <input type="text" placeholder="Password" class="zone-saisie" id ="passwordClient" required>
-</div>
-<div class="zone-groupe">
-    <input type="text" placeholder="Mail" class="zone-saisie" id ="mailClient" required >
-</div>
-<div class="zone-groupe">
-    <input type="text" placeholder="Téléphone" class="zone-saisie" id ="telClient" required>
-</div>
-*/-->
+
 
 <div class="container">
 
-    <!--
-    <form #user = "ngForm" (ngSubmit) = "inscription(user: ngForm)" >
-
-        <div class="form-group">
-            <label class="text-secondary" for=""> Memo</label>
-            <input name="login"  [(ngModel)]="user.login" required type="text" id="login"  class="form-control"  >
-        </div>
-
-
-        <button type="submit"  class="btn button-primary btn-block">Valider</button>
-
-
-    </form> -->
+ 
 
     <form #user = "ngForm" (ngSubmit) = "inscription(user.value)" >
 
         <div class="form-group">
             <label for=""> LE GROS FORMULAIRE D'INSCRIPTION JOUEUR DE SES MORTS</label>
-            <input type="text" placeholder="Donne moi votre p'tit login, mon poulet!" name="login" class="form-control" ngModel  >
+            <input type="text" placeholder="Donnez moi votre p'tit login, mon poulet!" name="login" class="form-control" ngModel  >
             <input type="password" placeholder="On promet qu'on ne regardera pas votre mot de passe!" name="password" class="form-control" ngModel >
             <input type="text" placeholder=" Vous etes fort charmant, vous n'auriez pas un 06?" name="tel" class="form-control" ngModel >
             <input type="text" placeholder="C'est presque fini, un mail ?" name="mail" class="form-control" ngModel >

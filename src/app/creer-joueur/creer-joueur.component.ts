@@ -18,7 +18,7 @@ export class CreerJoueurComponent implements OnInit {
 
   
   
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private route: Router) {
     
   }
 
@@ -37,7 +37,7 @@ export class CreerJoueurComponent implements OnInit {
 
         
     this.http.post('http://localhost:8086/joueur/save', user).subscribe({
-      next: (data) => {console.log(user);  },
+      next: (data) => {this.route.navigateByUrl('');  },
       error : (err) => { console.log(err); }
 
     });
