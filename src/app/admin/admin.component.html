@@ -1,9 +1,24 @@
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+  crossorigin="anonymous"
+></script>
 
 <div class="border">
   <p>admin works!</p>
@@ -17,28 +32,32 @@
           LE GROS FORMULAIRE D'INSCRIPTION Vendeur DE SES MORTS (je fonctionne)
         </label>
         <input
-          type="text" required
+          type="text"
+          required
           placeholder="Donnez moi votre p'tit login, mon poulet!"
           name="login"
           class="form-control"
           ngModel
         />
         <input
-          type="password" required
+          type="password"
+          required
           placeholder="On promet qu'on ne regardera pas votre mot de passe!"
           name="password"
           class="form-control"
           ngModel
         />
         <input
-          type="text" required
+          type="text"
+          required
           placeholder=" Vous etes fort charmant, vous n'auriez pas un 06?"
           name="tel"
           class="form-control"
           ngModel
         />
         <input
-          type="text" required
+          type="text"
+          required
           placeholder="C'est presque fini, un mail ?"
           name="mail"
           class="form-control"
@@ -51,16 +70,17 @@
       </button>
     </form>
   </div>
-<hr><hr>
+  <hr />
+  <hr />
 
-<p> Liste de tous les usersr</p>
+  <p>Liste de tous les usersr</p>
 
-<div class="container border">
-    <div class="trombinoscope"> Liste des users:</div>
+  <div class="container border">
+    <div class="trombinoscope">Liste des users:</div>
     <br />
 
     <div class="row">
-      <div *ngFor="let u of user" class="col-sm-4">
+      <div *ngFor="let u of users" class="col-sm-4">
         <div class="card">
           <!-- 
             <img
@@ -83,30 +103,122 @@
     </div>
   </div>
 
-<div class="container border">
-
+  <div class="container border">
     <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
-          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
-          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
-        </div>
-      </nav>
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">.aa..</div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">.dd..</div>
-        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">.ff..</div>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button
+          class="nav-link active"
+          id="nav-home-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-home"
+          type="button"
+          role="tab"
+          aria-controls="nav-home"
+          aria-selected="true"
+        >
+          Home
+        </button>
+        <button
+          class="nav-link"
+          id="nav-profile-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-profile"
+          type="button"
+          role="tab"
+          aria-controls="nav-profile"
+          aria-selected="false"
+        >
+          Profile
+        </button>
+        <button
+          class="nav-link"
+          id="nav-contact-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-contact"
+          type="button"
+          role="tab"
+          aria-controls="nav-contact"
+          aria-selected="false"
+        >
+          Contact
+        </button>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div
+        class="tab-pane fade show active"
+        id="nav-home"
+        role="tabpanel"
+        aria-labelledby="nav-home-tab"
+      >
+        .aa..
+      </div>
+      <div
+        class="tab-pane fade"
+        id="nav-profile"
+        role="tabpanel"
+        aria-labelledby="nav-profile-tab"
+      >
+        .dd..
+      </div>
+      <div
+        class="tab-pane fade"
+        id="nav-contact"
+        role="tabpanel"
+        aria-labelledby="nav-contact-tab"
+      >
+        .ff..
+      </div>
     </div>
+  </div>
+
+  <div class="container border">
+    <p>Rechercher par id/nom un vendeur</p>
+
+    <form #recherche="ngForm" (ngSubmit)="rechercheVendeur(recherche.value)">
+      <div class="form-group">
+        <label for="">
+          FORMULAIRE DE recherche : {{console("html : " + recherche)}}
+        </label>
+        <input
+          type="text"
+          required
+          placeholder="Donnez moi votre p'tit login, mon poulet!"
+          name="login"
+          class="form-control"
+          ngModel
+        />
+      </div>
+
+      <div class="row">
+        <div class="card-1">
+          je suis une card
+          <div  class="col-sm-12">
+     
+            <div class="card-body-note">
+              <div class="card-header">Header </div>
+
+              <div class="card-text">
+                <p>BODY</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted"> Published : </small>
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+
+      <button type="submit" class="btn button-primary btn-block">
+        Valider
+      </button>
+
       
       
-</div>
-
-
-<p>Rechercher par id/nom un vendeur</p>
-
-
-
-
+      
+    </form>
+  </div>
 
   <p>modifier une cotisation adhérent, c'est pas au venderu plutot ? ?</p>
 
