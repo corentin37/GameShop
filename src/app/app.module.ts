@@ -15,6 +15,7 @@ import { AdminComponent } from './admin/admin.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { AdminComponent } from './admin/admin.component';
     ConnexionComponent,
     CreerJoueurComponent,
     AdminComponent
+    
   ],
   imports: [
     BrowserModule,

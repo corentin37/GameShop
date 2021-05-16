@@ -147,44 +147,47 @@
       </div>
     </div>
   </div>
-<!-- Tentative de recher d'un vendeur par login  -->
+<!-- Tentative de recherche d'un vendeur par login  -->
   <div class="container border">
     <p>Rechercher par id/nom un vendeur</p>
 
     <form #recherche="ngForm" (ngSubmit)="rechercheVendeur(recherche.value)">
       <div class="form-group">
         <label for="">
-          FORMULAIRE DE recherche : {{console("html : " + recherche)}}
+          FORMULAIRE DE recherche : 
         </label>
         <input
-          type="text" required placeholder="Donnez moi votre p'tit login, mon poulet!" name="login"  class="form-control" ngModel/>
+          type="text" required placeholder="Donnez moi votre p'tit login, mon poulet!" id = "login" name="login"  class="form-control" ngModel/>
       </div>
 
+
+    <div *ngFor="let r of rechercheV" class="col-sm-4">
       <div class="row">
-        <div class="card-1">
-          je suis une card
+        <div class="card">
+          
           <div  class="col-sm-12">
      
             <div class="card-body-note">
-              <div class="card-header">Header </div>
+              <div class="card-header">Vendeur recherché : <label for ="login"> {{login}} </label> </div>
 
               <div class="card-text">
-                <p>BODY</p>
+                <p> Id : {{ r.id }}</p>
+                <p> Login : {{r.user.login}}</p>
+                <p> Numéro : {{r.user.tel}}</p>
+                <p> Etat du compte : {{  activitee(r.user.activity)}}</p>
               </div>
             </div>
-            <div class="card-footer">
-              <small class="text-muted"> Published : </small>
-            </div>
+ 
           </div>
           <br />
         </div>
       </div>
-
+    </div>
       <button type="submit" class="btn button-primary btn-block">
         Valider
       </button>
 
-      
+    
       
       
     </form>

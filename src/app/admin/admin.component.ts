@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  users; joueurs; admins; vendeurs; rechercheV ; recherche; entreeConsole;
+  users; joueurs; admins; vendeurs; rechercheV: any ; recherche; entreeConsole;
   constructor(private http: HttpClient, private route: Router) { }
 
   ngOnInit(): void {
@@ -23,9 +23,6 @@ export class AdminComponent implements OnInit {
     */
   }
  
-
-
-
   inscriptionVendeur(vendeurs): any{
     //le formulaire s'appelle user, mais creation de vendeur
         //ATTENTION A L'URL
@@ -70,14 +67,31 @@ export class AdminComponent implements OnInit {
 
     rechercheVendeur(recherche): any{
       
-      this.console(recherche);
       this.http.post('http://localhost:8086/vendeur/recherche', recherche).subscribe({
-        next: (data) => {  this.recherche = data ; console.log(recherche) ; },
+        next: (data) => {  this.rechercheV = data ; console.log(data);  },
         error: (err) => { console.log(err); }
         });
-        this.console("recherche :" + this.recherche);
-        this.console("data :" + this.rechercheV);
+        }
+
+    addVendeur(vendeur): any {
+
+          if (vendeur != null) {
+            return vendeur.id ;
+          } else {
+            return 'Pas de vendeur';
+          }
+      
     }
+
+    activitee(boolean): string {
+
+      if (boolean === false) {
+        return 'Compte bloqué' ;
+      } else {
+        return 'Compte débloqué';
+      }
+  
+}
 
 
     console(entreeConsole): any{
