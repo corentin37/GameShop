@@ -1,52 +1,22 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-<link rel="stylesheet" href=" 	https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
 
 
-<link
-  rel="stylesheet"
-  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-  crossorigin="anonymous"
-/>
-<script
-  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-  crossorigin="anonymous"
-></script>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-  crossorigin="anonymous"
-></script>
-<script
-  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-  crossorigin="anonymous"
-></script>
-
+<!-- Creation vendeur -->
 <div class="border">
- 
-
   <div class="container border">
     <p>Creér un vendeur</p>
 
-    <form #vendeur="ngForm" (ngSubmit)="inscriptionVendeur(vendeur.value)">
+    <form #person="ngForm" (ngSubmit)="inscriptionVendeur(person.value)">
       <div class="form-group">
-        <label for="">
-           FORMULAIRE D'INSCRIPTION Vendeur  (je fonctionne)
-        </label>
+        <label for=""> formulaire de création Vendeur </label>
         <input
-          type="text" required placeholder="Quel est votre p'tit login, mon poulet!" name="login" class="form-control" ngModel />
+          type="text" required placeholder="Entrez le login" name="login" class="form-control" ngModel/>
         <input
-          type="password" required placeholder="On promet qu'on ne regardera pas votre mot de passe!" name="password" class="form-control" ngModel />
+          type="password" required placeholder="Entrez le mot de passe" name="password"class="form-control" ngModel/>
         <input
-          type="text" required placeholder=" Vous etes fort charmant, vous n'auriez pas un 06?" name="tel" class="form-control"ngModel />
+          type="text" required placeholder=" Entrez le numéro de téléphone" name="tel" class="form-control" ngModel
+        />
         <input
-          type="text" required placeholder="C'est presque fini, un mail ?" name="mail" class="form-control" ngModel />
+          type="text" required placeholder="Entrez l'addresse mail" name="mail" class="form-control" ngModel/>
       </div>
 
       <button type="submit" class="btn button-primary btn-block">
@@ -54,12 +24,37 @@
       </button>
     </form>
   </div>
-  <hr />
-  <hr />
 
+<br> <br>
 
-<!-- Recherche de tous les users -->
+  <!-- Creation admin -->
+<div class="border">
   <div class="container border">
+    <p>Creér un Admin</p>
+
+    <form #admin="ngForm" (ngSubmit)="inscriptionAdmin(admin.value)">
+      <div class="form-group">
+        <label for=""> formulaire de création Admin </label>
+        <input
+          type="text" required placeholder="Entrez le login" name="login" class="form-control" ngModel/>
+        <input
+          type="password" required placeholder="Entrez le mot de passe" name="password"class="form-control" ngModel/>
+        <input
+          type="text" required placeholder="Entrez le numéro de téléphone" name="tel" class="form-control" ngModel/>
+        <input
+          type="text" required placeholder="Entrez l'addresse mail" name="mail" class="form-control" ngModel/>
+      </div>
+
+      <button type="submit" class="btn button-primary btn-block">
+        Valider
+      </button>
+    </form>
+  </div>
+</div>  
+
+<br> <br>
+<!-- Recherche Cards de tous les users -->
+<div class="container border">
     <div class="trombinoscope">Liste des users:</div>
     <br />
 
@@ -79,115 +74,178 @@
               <p>Password : {{ u.password }}</p>
               <p>Mail : {{ u.mail }}</p>
               <p>Téléphone : {{ u.tel }}</p>
-              <p> Etat du compte : {{  activitee(u.activity)}}</p>
+              <p>Etat du compte : {{ activitee(u.activity) }}</p>
             </div>
           </div>
         </div>
         <br />
       </div>
     </div>
-  </div>
+</div> 
+ 
+  <!-- Recherche table de tous les users -->
+<div class="container border">
+    <div class="trombinoscope">Liste des users:</div>
+    <br />
 
-<!-- Tentative de navBar tab pour afficher user - admin - joueur - vendeur -->
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">login</th>
+          <th scope="col">password</th>
+          <th scope="col">mail</th>
+          <th scope="col">tel</th>
+          <th scope="col">Etat</th>
+        </tr>
+      </thead>
 
-  <div class="container border">
-    <nav>
-      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button
-          class="nav-link active"
-          id="nav-home-tab"
-          data-bs-toggle="tab"
-          data-bs-target="#nav-home"
-          type="button"
-          role="tab"
-          aria-controls="nav-home"
-          aria-selected="true"
-        >
-          Home
-        </button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" >
-          Profile
-        </button>
-        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
-          Contact
-        </button>
-      </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent">
-      <div
-        class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
-        POURQUOI TU MARCHES PAS
-      </div>
-      <div
-        class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" >
-        montrer listes des admins
-      </div>
-      <div
-        class="tab-pane fade"
-        id="nav-contact"
-        role="tabpanel"
-        aria-labelledby="nav-contact-tab"
-      >
-      montrer listes des vendeurs
-      </div>
-    </div>
-  </div>
-  <br>
-<!-- recherche d'un vendeur par login  -->
-  <div class="container border">
+      <tbody>
+        <tr *ngFor="let u of users">
+          <th scope="row">{{ u.id }}</th>
+          <td>{{ u.login }}</td>
+          <td>{{ u.password }}</td>
+          <td>{{ u.mail }}</td>
+          <td>{{ u.tel }}</td>
+          <td>{{ activitee(u.activity) }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <input
+          type="text" required placeholder=" Zone de recherche en cours" id="login" name="login" class="form-control" ngModel/>
+</div>
+
+  
+
+  <!-- recherche d'un vendeur par login  -->
+<div class="container border">
     <p>Rechercher par id/nom un vendeur</p>
 
     <form #recherche="ngForm" (ngSubmit)="rechercheVendeur(recherche.value)">
       <div class="form-group">
-        <label >
-          FORMULAIRE DE recherche : {{console(recherche.value)}}
-        </label>
+        <label> FORMULAIRE DE recherche : </label>
         <input
-          type="text" required placeholder="Donnez moi votre p'tit login, mon poulet!" id = "login" name="login"  class="form-control" />
+          type="text" required placeholder=" Entre le login du vendeur recherché" id="login" name="login" class="form-control" ngModel/>
       </div>
 
+      <div *ngFor="let r of rechercheV" class="col-sm-4">
+        {{ console("card : " + r) }}
+        <div class="row">
+          <div class="card">
+            <div class="col-sm-12">
+              <div class="card-body-note">
+                <div class="card-header">Vendeur recherché :</div>
 
-    <div *ngFor="let r of rechercheV" class="col-sm-4">
-      <div class="row">
-        <div class="card">
-          
-          <div  class="col-sm-12">
-     
-            <div class="card-body-note">
-              <div class="card-header">Vendeur recherché :  </div>
-
-              <div class="card-text">
-                <p> Id : {{ r.id }}</p>
-                <p> Login : {{r.user.login}}</p>
-                <p> Mail : {{r.user.mail}}</p>
-                <p> Numéro : {{r.user.tel}}</p>
-                <p> Etat du compte : {{  activitee(r.user.activity)}}</p>
+                <div class="card-text">
+                  <p>Id : {{ addVendeur(r.id) }}</p>
+                  <p>Login : {{ r.user.login }}</p>
+                  <p>Mail : {{ r.user.mail }}</p>
+                  <p>Numéro : {{ r.user.tel }}</p>
+                  <p>Etat du compte : {{ activitee(r.user.activity) }}</p>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button
+                  type="button"
+                  class="btn btn-raised noto"
+                  (click)="clickFunction()"
+                >
+                  Modifier
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-raised noto"
+                  (click)="bloquer(r)"
+                >
+                  Bloquer
+                </button>
               </div>
             </div>
-            <div class="card-footer">
-            <button type="button" class="btn btn-raised noto " (click)="clickFunction()">Modifier</button>
-            <button type="button" class="btn btn-raised noto " (click)= "bloquer(r)" >Bloquer </button>
+            <br />
           </div>
-          </div>
-          <br />
         </div>
       </div>
-    </div>
       <button type="submit" class="btn button-primary btn-block">
         Valider
       </button>
-
-    
-      
-      
     </form>
-  </div>
+</div>
 
   <p>modifier une cotisation adhérent, c'est pas au venderu plutot ? ?</p>
 
-  <p>Bloquer un compte</p>
 
-  <p>Afficher la liste des users</p>
 
   <p>Gestion du forum ????? peut etre le faire sur la page forum directement</p>
 </div>
+
+<!-- Tentative de navBar tab pour afficher user - admin - joueur - vendeur -->
+
+<div class="container border">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button
+        class="nav-link active"
+        id="nav-home-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#nav-home"
+        type="button"
+        role="tab"
+        aria-controls="nav-home"
+        aria-selected="true"
+      >
+        Home
+      </button>
+      <button
+        class="nav-link"
+        id="nav-profile-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#nav-profile"
+        type="button"
+        role="tab"
+        aria-controls="nav-profile"
+        aria-selected="false"
+      >
+        Profile
+      </button>
+      <button
+        class="nav-link"
+        id="nav-contact-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#nav-contact"
+        type="button"
+        role="tab"
+        aria-controls="nav-contact"
+        aria-selected="false"
+      >
+        Contact
+      </button>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div
+      class="tab-pane fade show active"
+      id="nav-home"
+      role="tabpanel"
+      aria-labelledby="nav-home-tab"
+    >
+      POURQUOI TU MARCHES PAS
+    </div>
+    <div
+      class="tab-pane fade"
+      id="nav-profile"
+      role="tabpanel"
+      aria-labelledby="nav-profile-tab"
+    >
+      montrer listes des admins
+    </div>
+    <div
+      class="tab-pane fade"
+      id="nav-contact"
+      role="tabpanel"
+      aria-labelledby="nav-contact-tab"
+    >
+      montrer listes des vendeurs
+    </div>
+  </div>
+</div>
+<br />
