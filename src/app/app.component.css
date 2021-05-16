@@ -59,6 +59,13 @@
   .navbar {
     margin-right: 0px;
     margin-left: 0px;
+  }
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    
+    flex-direction: column;
    
   }
 

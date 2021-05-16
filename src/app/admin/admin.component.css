@@ -1,0 +1,32 @@
+/* STYLE PERSONNES */
+
+.trombinoscope{
+
+    margin-top: 3%;
+    text-align: center;
+    font-size: xx-large;
+    background-color: rgb(239, 239, 255);
+    
+}
+
+.card-img-overlay {
+    display: flex;
+    width: 100%;
+    height: auto;
+ }
+	
+  
+  .card-header{
+    color: black;
+    font-size: large;
+    text-align: center;
+  }
+
+  .card-text {
+    color: black;
+    font-size: medium;
+    text-align: justify;
+  }
+  
+
+/*------------------*/
