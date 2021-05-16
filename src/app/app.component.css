@@ -56,6 +56,10 @@
     opacity: 0.8;
   }
 
+  .navbar {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
   .content {
     display: flex;
     margin: 82px auto 32px;
@@ -260,7 +264,12 @@
     z-index: -10;
     width: 1920px;
   }
-
+.fondCard {
+  background-color: rgb(243, 240, 240);
+}
+.fondSite {
+  background-color: rgba(255, 255, 255);
+}
 
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
