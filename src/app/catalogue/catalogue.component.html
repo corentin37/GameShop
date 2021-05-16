@@ -6,9 +6,9 @@
                   Catégorie
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Cartes</a>
-                  <a class="dropdown-item" href="#">Plateau</a>
-                  <a class="dropdown-item" href="#">Culture Générale</a>
+                  <a class="dropdown-item" routerLink=''>Cartes</a>
+                  <a class="dropdown-item" routerLink=''>Plateau</a>
+                  <a class="dropdown-item" routerLink=''>Culture Générale</a>
                 </div>
               </div>
               <div class="dropdown">
@@ -16,11 +16,11 @@
                   Age
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">0-4 ans</a>
-                  <a class="dropdown-item" href="#">5-8 ans</a>
-                  <a class="dropdown-item" href="#">9-12 ans</a>
-                  <a class="dropdown-item" href="#">12-15 ans</a>
-                  <a class="dropdown-item" href="#">16+ ans</a>
+                  <a class="dropdown-item" routerLink=''>0-4 ans</a>
+                  <a class="dropdown-item" routerLink=''>5-8 ans</a>
+                  <a class="dropdown-item" routerLink=''>9-12 ans</a>
+                  <a class="dropdown-item" routerLink=''>12-15 ans</a>
+                  <a class="dropdown-item" routerLink=''>16+ ans</a>
                 </div>
               </div>
               <div class="dropdown">
@@ -28,9 +28,9 @@
                   Marque
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Cartes</a>
-                  <a class="dropdown-item" href="#">Plateau</a>
-                  <a class="dropdown-item" href="#">Culture Générale</a>
+                  <a class="dropdown-item" routerLink=''>Hasbro Gaming</a>
+                  <a class="dropdown-item" routerLink=''>Ravensburger</a>
+                  <a class="dropdown-item" routerLink=''>Goliath</a>
                 </div>
               </div>
               <div class="dropdown">
@@ -38,37 +38,77 @@
                   Prix
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Cartes</a>
-                  <a class="dropdown-item" href="#">Plateau</a>
-                  <a class="dropdown-item" href="#">Culture Générale</a>
+                  <a class="dropdown-item" routerLink=''>0-5 €</a>
+                  <a class="dropdown-item" routerLink=''>6-15 €</a>
+                  <a class="dropdown-item" routerLink=''>16-25 €</a>
+                  <a class="dropdown-item" routerLink=''>26-35 €</a>
+                  <a class="dropdown-item" routerLink=''>36-50 €</a>
+                  <a class="dropdown-item" routerLink=''>50+ €</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Nombre de joueurs
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" routerLink=''>2 joueurs et +</a>
+                  <a class="dropdown-item" routerLink=''>4 joueurs et +</a>
+                  <a class="dropdown-item" routerLink=''>6 joueurs et +</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Temps de jeu
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" routerLink=''>30 min</a>
+                  <a class="dropdown-item" routerLink=''>45min</a>
+                  <a class="dropdown-item" routerLink=''>1h</a>
+                  <a class="dropdown-item" routerLink=''>1h30 min</a>
+                  <a class="dropdown-item" routerLink=''>1h45min</a>
+                  <a class="dropdown-item" routerLink=''>2h+</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Niveau
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" routerLink=''>Facile</a>
+                  <a class="dropdown-item" routerLink=''>Moyen</a>
+                  <a class="dropdown-item" routerLink=''>Difficile</a>
                 </div>
               </div>
         </div>
-        <div class="col-sm-3">
-            <div class="card card-shadow" class="border mt-10" class="fondCard">
-                <div class="card-body">
-                  <img src="assets/img/risk.jpg" alt="" width="100%" class="img">
+          
+              
+                <div *ngFor="let j of jeux" class="col-sm-3">
+                    <br>
+                    <div class="card">
+                        <img src={{j.image}}><br>
+                        <div class="ml-2">
+                            {{ j.note }}/5<br>
+                            {{ j.marque }}<br>
+                            {{ j.nom }}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="ml-2 mt-2">
+                        <form>
+                        <span><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Acheter</a> : {{j.prixAchat}} € | <a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Louer</a> : {{j.prixLocation}} € </span>
+                        </form>
+                        </div>
+                    </div>
+                    <br>
                 </div>
-                  Note : <br>
-                  Hasbro Gaming <br>
-                  Risk <br>
-            </div>
-       </div>
-       <div class="container border">
-        <div class="row">
-            <div *ngFor="let j of jeux" class="col-sm-3">
-                <div class="card">
-                    <img src={{j.image}}><br>
-                    {{ j.note }}/5<br>
-                    {{ j.marque }}<br>
-                    {{ j.nom }} 
-                </div>
-                <br>
-            </div>
-            <br><br>
-       </div>
-       
+                
+              
            
         
         
+        
+    </div>
+   
+
+
     </div>
