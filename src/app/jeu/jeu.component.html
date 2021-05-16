@@ -1,5 +1,5 @@
 <div class="container">
-    <p><b> NOM DU JEU</b></p> <!--{{x.nom}}-->
+    <p><b> NOM DU JEU  : {{jeu.nom}} </b>  </p> <!--{{jeux.nom}}-->
     <div class="w3-card-4">
         <div class="row">
             <div class="col-sm-4">
@@ -10,36 +10,37 @@
 
                 <div class="col-sm-6">
                 <header class="w3-container w3-blue">
-                <p><i class="fa fa-users" style="color: blueviolet;"></i>  Nb Joueurs:   Age:    Difficulté: </p>
+                <p><i class="fa fa-users" style="color: blueviolet;"></i>  Nb Joueurs: {{jeu.nombre_joueurs_min}} - {{jeu.nombre_joueurs_max}}  Age: {{jeu.age_min}}   Difficulté: {{jeu.niveau_difficulte}} </p>
                 </header>
         
-                <div class="w3-container">
-                    <!-- Tab links -->
-                    <div class="tab">
-                    <button class="tablinks" onclick="openTab(event, 'Description')">Description</button>
-                    <button class="tablinks" onclick="openTab(event, 'Regles')">Règles</button>
-                    </div>
+                <div class="container-fluid">
+                    <div class="ods-box" ng-init="tabselector = 'firsttab'">
 
-                    <!-- Tab content -->
-                    <div id="Description" class="tabcontent">
-                        <h3>Description</h3>
-                        <p>Description du jeu</p><!--{{Description}}-->
-                        <br><br><br><br>
-                        <p>Fin Description</p>
-                    </div>
+                        <!-- Tab links -->
+                        <div >
+                            <a class="tab" ng-click="tabselector = 'firsttab'" ng-class="{'activetab' : tabselector == 'firsttab'}">Description</a>
+                            <a class="tab" ng-click="tabselector = 'secondtab'" ng-class="{'activetab' : tabselector == 'secondtab'}">Règles</a>
+                        </div>
 
-                    <div id="Regles" class="tabcontent">
-                        <h3>Regles</h3>
-                        <p>Règles du jeu</p><!--{{Description}}-->
-                        <br><br><br><br>
-                        <p>Fin Règles</p>
-                    </div>
+                        <!-- Tab content -->
+                        <div class="ods-box">
+                            <div ng-if="tabselector == 'firsttab'">
+                            Description <br>
+                            {{jeu.description}}
+                            </div>
+                            <div ng-if="tabselector == 'secondtab'">
+                            Règles <br>
+                            {{jeu.regle_du_jeu}}
+                            </div>
+                        </div>
 
                 
-                </div>
+                    </div>
+                   </div>
+
 
             <footer class="w3-container w3-blue">
-            <p><i>Temps de Jeu :</i> </p> <!--{{x.TempsdeJeu}}-->
+            <p><i>Temps de Jeu : {{jeu.id}} min</i> </p> <!--{{x.TempsdeJeu}}-->
             </footer>
         
             </div>
