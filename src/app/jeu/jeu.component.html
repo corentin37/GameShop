@@ -1,50 +1,61 @@
 <div class="container">
-    <p><b> NOM DU JEU</b></p> <!--{{x.nom}}-->
+    <p><b> NOM DU JEU  : {{jeu.nom}} </b>  </p> <!--{{jeux.nom}}-->
     <div class="w3-card-4">
         <div class="row">
             <div class="col-sm-4">
                 
                 <img src="/assets/img/conceptJeu.jpg" alt="Image Jeu" class="img">
             </div>
-    <div class="col-sm-2"></div>
+    <div class="col-sm-1"></div>
 
-                <div class="col-sm-6">
-                <header class="w3-container w3-blue">
-                <p><i class="fa fa-users" style="color: blueviolet;"></i>  Nb Joueurs:   Age:    Difficulté: </p>
-                </header>
-        
-                <div class="w3-container">
-                    <!-- Tab links -->
-                    <div class="tab">
-                    <button class="tablinks" onclick="openTab(event, 'Description')">Description</button>
-                    <button class="tablinks" onclick="openTab(event, 'Regles')">Règles</button>
-                    </div>
+    <div class="col-sm-7">
+        <header class="w3-container w3-blue">
+        <span><i class="fa fa-users" style="color: teal;"></i>  Nb Joueurs:   XX  -    XX        
+                  <i class="fas fa-birthday-cake" style="color: teal;"></i>  Age: à partir de   XX ans   
+            <i class="fas fa-star" style="color: teal;"></i>  Difficulté:   XXXXX    </span>
+        </header>
+<br>
+        <h6>Description : </h6>
+        <div id="test" class="overflow-auto">  {{jeu.description}}</div>     
 
-                    <!-- Tab content -->
-                    <div id="Description" class="tabcontent">
-                        <h3>Description</h3>
-                        <p>Description du jeu</p><!--{{Description}}-->
-                        <br><br><br><br>
-                        <p>Fin Description</p>
-                    </div>
+        <footer class="w3-container w3-blue">
+            <br>
+            <p><i>Temps de Jeu : {{jeu.id}} min</i> </p> 
+            </footer> 
+<br>
 
-                    <div id="Regles" class="tabcontent">
-                        <h3>Regles</h3>
-                        <p>Règles du jeu</p><!--{{Description}}-->
-                        <br><br><br><br>
-                        <p>Fin Règles</p>
-                    </div>
+        <button data-toggle="collapse" data-target="#demo" class="btn btn-primary ">Règles</button>
+        <div id="demo" class="collapse">
+        Règles du jeu
+        </div>
 
-                
+          
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3" style="text-align: center;">
+            
+                <img src="/assets/img/astrocat.jpg" alt="Avatar" style="width:70%">
+                <div class="container">
+                  <h6><b>User nom</b></h6>
                 </div>
-
-            <footer class="w3-container w3-blue">
-            <p><i>Temps de Jeu :</i> </p> <!--{{x.TempsdeJeu}}-->
-            </footer>
-        
-            </div>
+        </div>
+        <span class="vertical-line"></span>
+        <div class="col-sm-2" style="text-align: center;">
+            <h6> Note : </h6>
+            <br>
+            <h5>XX /</h5> <br>
+            <h4>10</h4>
+            
+        </div>
+        <div class="col-sm-6">
+            <h6>Avis sur le jeu : </h6>
+            <br>
+            <p>  Super jeu pour s'occuper pendant le voyage vers Mars. Même ma souris a kiffé. 10/10 recommande.</p>
         </div>
     </div>
 </div>
+    
+    
 
 
