@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -10,38 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JeuComponent implements OnInit {
 
+  jeux;
   jeu;
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private route: Router) { }
 
   ngOnInit(): void {
-   /* this.http.get('http://localhost:8081/jeux').subscribe({
-      next: (data) => {this.note = data;},
-      error: (err) => {console.log(err);}
-    }); */
-
+   this.getAllJeu();
+  this.getOneJeu();
   }
 
-  openTab(evt, content) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-  
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-  
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-  
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(content).style.display = "block";
-    evt.currentTarget.className += " active";
+
+  getAllJeu(){
+    this.http.get('http://localhost:8086/jeu/list').subscribe({
+      next: (data) => {this.jeux = data;},
+      error: (err) => {console.log(err);}
+    }); 
+  }
+
+  getOneJeu(){
+    this.http.get('http://localhost:8086/jeu/list/12').subscribe({
+      next: (data) => {this.jeu = data;},
+      error: (err) => {console.log(err);}
+    }); 
   }
 
 }
