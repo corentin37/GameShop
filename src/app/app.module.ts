@@ -8,6 +8,10 @@ import { JeuComponent } from './jeu/jeu.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CreerJoueurComponent } from './creer-joueur/creer-joueur.component';
+import { AdminComponent } from './admin/admin.component';
+import { CatalogueComponent } from './catalogue/catalogue.component';
+
 
 
 
@@ -17,7 +21,10 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     JeuComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    CreerJoueurComponent,
+    AdminComponent,
+    CatalogueComponent
   ],
   imports: [
     BrowserModule,

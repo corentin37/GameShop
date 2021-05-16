@@ -1,0 +1,36 @@
+.center{
+    text-align: center;
+}
+
+.img-back{
+    color:black;
+    
+    background-image:url(/assets/img/bois.jpg);
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+}
+
+.back-beige{
+    background-color: beige;
+}
+
+.mt-50{
+    margin-top: 50px;
+}
+
+.mt-15{
+    margin-top: 15px;
+}
+
+.noto{
+    font-family: 'Noto Serif';
+}
+
+.beige-fonce{
+    background-color: wheat;
+}
+
+.border-5{
+    border:5px solid wheat;
+    padding:4px;
+}
