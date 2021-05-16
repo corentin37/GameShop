@@ -1,31 +1,25 @@
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-<link rel="stylesheet" href=" 	https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
-
-
-
-
 <div class="fondSite">
 <div class="container">
-  <br><br>
   <div class="row">
     <div class="col-sm-3">
-      <img src="assets/img/1.jpg" alt="" width="70%" class="img">
+      <img src="assets/img/logo.png" alt="" width="40%" class="img">
     </div>
     <div class="col-sm-6">
       <form>
         <div class="form-group">
-            <input type="text" name="contenue" placeholder ="Rechercher un jeu, une catégorie, une marque, ..." class="form-control" ngModel="">
-            
+        <div class="input-group rounded">
+          <input  class="form-control rounded" placeholder="Trouver votre bonheur ici" aria-label="Search" class="form-control" ngModel=""
+            aria-describedby="search-addon" />
+          <span class="input-group-text border-0" id="search-addon">
+            <button type="submit" class="btn btn-secondary btn-block"><i class="fas fa-search"></i></button> 
+          </span>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">valider</button>
     </form>
     </div>
     <div class="col-sm-3">
+      <a class="nav-item nav-link" routerLink='connexion'><i style = "color: steelblue" class="fa fa-user fa-2x"></i>&nbsp;Mon compte</a>
+      <a class="nav-item nav-link" routerLink='panier'><i style = "color: steelblue" class="fa fa-shopping-cart fa-2x"></i>&nbsp;Mon panier</a>
     </div>
   </div>
   
@@ -37,94 +31,17 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav nav-fill w-100">
-                  <a class="nav-item nav-link" routerLink='jeuAge' routerLinkActive='active'>Jeu par age</a>
-                  <a class="nav-item nav-link" routerLink='jeuCategorie'routerLinkActive='active'>Jeu par categorie</a>
-                  <a class="nav-item nav-link" routerLink='jeuMarque'routerLinkActive='active'>Jeu par marque</a>
-                  <a class="nav-item nav-link" routerLink='connexion'><i style = "color: steelblue" class="fa fa-user fa-2x"></i></a>
+                  <a class="nav-item nav-link" routerLink='catalogue' routerLinkActive='active'>Nos jeux</a>
+                  <a class="nav-item nav-link" routerLink='forum'routerLinkActive='active'>Forum</a>
+                  <a class="nav-item nav-link" routerLink='salle'routerLinkActive='active'>Louer une salle</a>
+                  
                   
               </div>
               </div>
             </nav>
    </div>
          <br><br>
-         <div class="container"> 
-          <div class="row">
-              <div class="col-sm-3">
-                  
-              </div>
-              <div class="col-sm-3">
-                  <div class="card card-shadow" class="border mt-10" class="fondCard">
-                      <div class="card-body">
-                        <img src="assets/img/risk.jpg" alt="" width="100%" class="img">
-                      </div>
-                        Note : <br>
-                        Hasbro Gaming <br>
-                        Risk <br>
-                  </div>
-             </div>
-            <div class="col-sm-3">
-                  <div class="card card-shadow" class="border mt-10" class="fondCard">
-                      <div class="card-body">
-                        <img src="assets/img/trivial.jpg" alt="" width="100%" class="img">
-                      </div>
-                        Note : <br>
-                        Hasbro Gaming <br>
-                        Trivial Pursuit <br>
-                  </div>
-            </div>
-          <div class="col-sm-3">
-            <div class="card card-shadow" class="border mt-10" class="fondCard">
-                <div class="card-body">
-                  <img src="assets/img/puissance.jpg" alt="" width="100%" class="img">
-                </div>
-                  Note : <br>
-                  Hasbro Gaming <br>
-                  Puissance 4 <br>
-           </div>
-         </div>
-          
-          <div class="container"> 
-          <br><br>
-          <div class="row">
-            <div class="col-sm-3">
-                
-             </div>
-            <div class="col-sm-3">
-              <div class="card card-shadow" class="border mt-10" class="fondCard">
-                  <div class="card-body">
-                    <img src="assets/img/elefun.jpg" alt="" width="100%" class="img">
-                  </div>
-                  Note : <br>
-                  Ravensburger <br>
-                  Elefun <br>
-              </div>
-            </div>
-          <div class="col-sm-3">
-            <div class="card card-shadow" class="border mt-10" class="fondCard">
-              <div class="card-body">
-                <img src="assets/img/crocCarotte.jpg" alt="" width="100%" class="img">
-             </div>
-              Note : <br>
-              Ravensburger <br>
-              CroqueCarotte <br>
-              </div>
-          </div>
-        <div class="col-sm-3">
-          <div class="card card-shadow" class="border mt-10" class="fondCard">
-            <div class="card-body">
-              <img src="assets/img/monopoly.jpg" alt="" width="100%" class="img">
-            </div>
-              Note : <br>
-              Hasbro Gaming <br>
-              Monopoly <br>
-        </div>
-        </div>
-    </div> 
-      </div> 
-          </div>
-     
         
-        </div>
       
       
 

@@ -1,0 +1,74 @@
+<div class="container"> 
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Catégorie
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Cartes</a>
+                  <a class="dropdown-item" href="#">Plateau</a>
+                  <a class="dropdown-item" href="#">Culture Générale</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Age
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">0-4 ans</a>
+                  <a class="dropdown-item" href="#">5-8 ans</a>
+                  <a class="dropdown-item" href="#">9-12 ans</a>
+                  <a class="dropdown-item" href="#">12-15 ans</a>
+                  <a class="dropdown-item" href="#">16+ ans</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Marque
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Cartes</a>
+                  <a class="dropdown-item" href="#">Plateau</a>
+                  <a class="dropdown-item" href="#">Culture Générale</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Prix
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Cartes</a>
+                  <a class="dropdown-item" href="#">Plateau</a>
+                  <a class="dropdown-item" href="#">Culture Générale</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card card-shadow" class="border mt-10" class="fondCard">
+                <div class="card-body">
+                  <img src="assets/img/risk.jpg" alt="" width="100%" class="img">
+                </div>
+                  Note : <br>
+                  Hasbro Gaming <br>
+                  Risk <br>
+            </div>
+       </div>
+       <div class="container border">
+        <div class="row">
+            <div *ngFor="let j of jeux" class="col-sm-3">
+                <div class="card">
+                    <img src={{j.image}}><br>
+                    {{ j.note }}/5<br>
+                    {{ j.marque }}<br>
+                    {{ j.nom }} 
+                </div>
+                <br>
+            </div>
+            <br><br>
+       </div>
+       
+           
+        
+        
+    </div>
