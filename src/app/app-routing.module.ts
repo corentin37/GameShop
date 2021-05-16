@@ -4,12 +4,15 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { JeuComponent } from './jeu/jeu.component';
 import { CreerJoueurComponent } from './creer-joueur/creer-joueur.component';
 import { AdminComponent } from './admin/admin.component';
+import { CatalogueComponent } from './catalogue/catalogue.component';
 
 const routes: Routes = [
-  {component: JeuComponent, path: 'jeu'},
-  {component: ConnexionComponent, path: 'connexion'},
-  {component: CreerJoueurComponent, path: 'creerJoueur'},
-  {component: AdminComponent, path: 'admin'}
+  {component: JeuComponent, path:'jeu'},
+  {component: ConnexionComponent, path:'connexion'},
+  {component: CreerJoueurComponent, path:'creerJoueur'},
+  {component: AdminComponent, path:'admin'},
+  {component: CatalogueComponent, path:'catalogue'}
+
 ];
 
 @NgModule({
