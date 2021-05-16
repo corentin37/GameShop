@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  users; joueurs; admins; vendeurs; rechercheV: any ; recherche; entreeConsole;
+  users; joueurs; admins; vendeurs; rechercheV ; recherche; entreeConsole;
   constructor(private http: HttpClient, private route: Router) { }
 
   ngOnInit(): void {
@@ -23,11 +23,21 @@ export class AdminComponent implements OnInit {
     */
   }
  
-  inscriptionVendeur(vendeurs): any{
+  inscriptionVendeur(personCreated): any{
     //le formulaire s'appelle user, mais creation de vendeur
         //ATTENTION A L'URL
-    this.http.post('http://localhost:8086/vendeur/save', vendeurs).subscribe({
-      next: (data) => {this.route.navigateByUrl('admin');  },
+    this.http.post('http://localhost:8086/vendeur/save', personCreated).subscribe({
+      next: (data) => {alert("Création du compte vendeur " );  },
+      error : (err) => { console.log(err); }
+
+    });
+  }
+
+  inscriptionAdmin(personCreated): any{
+    //le formulaire s'appelle user, mais creation de vendeur
+        //ATTENTION A L'URL
+    this.http.post('http://localhost:8086/admin/save', personCreated).subscribe({
+      next: (data) => {alert("Création du compte admin" ); },
       error : (err) => { console.log(err); }
 
     });
@@ -68,21 +78,25 @@ export class AdminComponent implements OnInit {
     rechercheVendeur(recherche): any{
       
       this.http.post('http://localhost:8086/vendeur/recherche', recherche).subscribe({
-        next: (data) => {  this.rechercheV = data ; console.log(data);  },
+        next: (data) => {  this.rechercheV = data ; },
         error: (err) => { console.log(err); }
         });
-        }
+
+    }
 
     addVendeur(vendeur): any {
 
+
           if (vendeur != null) {
-            return vendeur.id ;
+            return vendeur ;
           } else {
             return 'Pas de vendeur';
           }
       
     }
 
+
+    // permet de traduire le boolean d'activité en string
     activitee(boolean): string {
 
       if (boolean === false) {
@@ -92,6 +106,23 @@ export class AdminComponent implements OnInit {
       }
   
 }
+
+    bloquer(vendeur){
+      
+      // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
+      this.http.put('http://localhost:8086/vendeur/bloquer', vendeur).subscribe({
+        next: (data) => {console.log(data);  },
+        error : (err) => { console.log(err); }
+  
+      });
+      
+    }
+
+    clickFunction() {
+
+      alert("clicked me!");
+  
+    }
 
 
     console(entreeConsole): any{
