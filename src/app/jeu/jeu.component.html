@@ -6,46 +6,56 @@
                 
                 <img src="/assets/img/conceptJeu.jpg" alt="Image Jeu" class="img">
             </div>
-    <div class="col-sm-2"></div>
+    <div class="col-sm-1"></div>
 
-                <div class="col-sm-6">
-                <header class="w3-container w3-blue">
-                <p><i class="fa fa-users" style="color: blueviolet;"></i>  Nb Joueurs: {{jeu.nombre_joueurs_min}} - {{jeu.nombre_joueurs_max}}  Age: {{jeu.age_min}}   Difficulté: {{jeu.niveau_difficulte}} </p>
-                </header>
-        
-                <div class="container-fluid">
-                    <div class="ods-box" ng-init="tabselector = 'firsttab'">
+    <div class="col-sm-7">
+        <header class="w3-container w3-blue">
+        <span><i class="fa fa-users" style="color: teal;"></i>  Nb Joueurs:   XX  -    XX        
+                  <i class="fas fa-birthday-cake" style="color: teal;"></i>  Age: à partir de   XX ans   
+            <i class="fas fa-star" style="color: teal;"></i>  Difficulté:   XXXXX    </span>
+        </header>
+<br>
+        <h6>Description : </h6>
+        <div id="test" class="overflow-auto">  {{jeu.description}}</div>     
 
-                        <!-- Tab links -->
-                        <div >
-                            <a class="tab" ng-click="tabselector = 'firsttab'" ng-class="{'activetab' : tabselector == 'firsttab'}">Description</a>
-                            <a class="tab" ng-click="tabselector = 'secondtab'" ng-class="{'activetab' : tabselector == 'secondtab'}">Règles</a>
-                        </div>
+        <footer class="w3-container w3-blue">
+            <br>
+            <p><i>Temps de Jeu : {{jeu.id}} min</i> </p> 
+            </footer> 
+<br>
 
-                        <!-- Tab content -->
-                        <div class="ods-box">
-                            <div ng-if="tabselector == 'firsttab'">
-                            Description <br>
-                            {{jeu.description}}
-                            </div>
-                            <div ng-if="tabselector == 'secondtab'">
-                            Règles <br>
-                            {{jeu.regle_du_jeu}}
-                            </div>
-                        </div>
+        <button data-toggle="collapse" data-target="#demo" class="btn btn-primary ">Règles</button>
+        <div id="demo" class="collapse">
+        Règles du jeu
+        </div>
 
-                
-                    </div>
-                   </div>
+          
+    </div>
 
-
-            <footer class="w3-container w3-blue">
-            <p><i>Temps de Jeu : {{jeu.id}} min</i> </p> <!--{{x.TempsdeJeu}}-->
-            </footer>
-        
-            </div>
+    <div class="row">
+        <div class="col-sm-3" style="text-align: center;">
+            
+                <img src="/assets/img/astrocat.jpg" alt="Avatar" style="width:70%">
+                <div class="container">
+                  <h6><b>User nom</b></h6>
+                </div>
+        </div>
+        <span class="vertical-line"></span>
+        <div class="col-sm-2" style="text-align: center;">
+            <h6> Note : </h6>
+            <br>
+            <h5>XX /</h5> <br>
+            <h4>10</h4>
+            
+        </div>
+        <div class="col-sm-6">
+            <h6>Avis sur le jeu : </h6>
+            <br>
+            <p>  Super jeu pour s'occuper pendant le voyage vers Mars. Même ma souris a kiffé. 10/10 recommande.</p>
         </div>
     </div>
 </div>
+    
+    
 
 

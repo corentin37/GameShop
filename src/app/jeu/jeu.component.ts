@@ -4,10 +4,12 @@ import { Router } from '@angular/router';
 
 
 
+
 @Component({
   selector: 'app-jeu',
   templateUrl: './jeu.component.html',
   styleUrls: ['./jeu.component.css']
+  
 })
 export class JeuComponent implements OnInit {
 
@@ -20,6 +22,9 @@ export class JeuComponent implements OnInit {
   ngOnInit(): void {
    this.getAllJeu();
   this.getOneJeu();
+
+
+
   }
 
 
@@ -31,10 +36,12 @@ export class JeuComponent implements OnInit {
   }
 
   getOneJeu(){
-    this.http.get('http://localhost:8086/jeu/list/12').subscribe({
+    this.http.get('http://localhost:8086/jeu/19').subscribe({
       next: (data) => {this.jeu = data;},
       error: (err) => {console.log(err);}
     }); 
   }
+
+  
 
 }

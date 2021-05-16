@@ -38,3 +38,26 @@
     border: 1px solid #ccc;
     border-top: none;
   }
+
+
+  .tabs {
+    margin: 1em; /* Adds lots of space around the tabs, to avoid the border to fall into the tab content area */
+ }
+ 
+ /* Only visible when the mouse is on a tab title */
+ .tab:hover {
+    color: black; /* Colors the text in black to highlight the possible selection */
+    text-decoration: none; /* Removes the hyperlink underline style */
+ }
+
+ .overflow-auto{
+   height: 300px;
+   overflow: scroll;
+ }
+
+ .vertical-line{
+  display: inline-block;
+  border-left: 1px solid #ccc;
+  margin: 0 10px;
+  height: 150px;
+}
