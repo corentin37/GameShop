@@ -83,6 +83,8 @@ export class AdminComponent implements OnInit {
       
     }
 
+
+    // permet de traduire le boolean d'activité en string
     activitee(boolean): string {
 
       if (boolean === false) {
@@ -92,6 +94,23 @@ export class AdminComponent implements OnInit {
       }
   
 }
+
+    bloquer(vendeur){
+      
+      this.http.put('http://localhost:8086/vendeur/bloquer/'+ vendeur.id, vendeur).subscribe({
+        next: (data) => {console.log(data);  },
+        error : (err) => { console.log(err); }
+  
+      });
+
+
+    }
+
+    clickFunction() {
+
+      alert("clicked me!");
+  
+    }
 
 
     console(entreeConsole): any{

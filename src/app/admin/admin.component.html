@@ -1,3 +1,11 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+<link rel="stylesheet" href=" 	https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
+
+
 <link
   rel="stylesheet"
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -32,37 +40,13 @@
            FORMULAIRE D'INSCRIPTION Vendeur  (je fonctionne)
         </label>
         <input
-          type="text"
-          required
-          placeholder="Donnez moi votre p'tit login, mon poulet!"
-          name="login"
-          class="form-control"
-          ngModel
-        />
+          type="text" required placeholder="Quel est votre p'tit login, mon poulet!" name="login" class="form-control" ngModel />
         <input
-          type="password"
-          required
-          placeholder="On promet qu'on ne regardera pas votre mot de passe!"
-          name="password"
-          class="form-control"
-          ngModel
-        />
+          type="password" required placeholder="On promet qu'on ne regardera pas votre mot de passe!" name="password" class="form-control" ngModel />
         <input
-          type="text"
-          required
-          placeholder=" Vous etes fort charmant, vous n'auriez pas un 06?"
-          name="tel"
-          class="form-control"
-          ngModel
-        />
+          type="text" required placeholder=" Vous etes fort charmant, vous n'auriez pas un 06?" name="tel" class="form-control"ngModel />
         <input
-          type="text"
-          required
-          placeholder="C'est presque fini, un mail ?"
-          name="mail"
-          class="form-control"
-          ngModel
-        />
+          type="text" required placeholder="C'est presque fini, un mail ?" name="mail" class="form-control" ngModel />
       </div>
 
       <button type="submit" class="btn button-primary btn-block">
@@ -95,6 +79,7 @@
               <p>Password : {{ u.password }}</p>
               <p>Mail : {{ u.mail }}</p>
               <p>Téléphone : {{ u.tel }}</p>
+              <p> Etat du compte : {{  activitee(u.activity)}}</p>
             </div>
           </div>
         </div>
@@ -147,17 +132,18 @@
       </div>
     </div>
   </div>
-<!-- Tentative de recherche d'un vendeur par login  -->
+  <br>
+<!-- recherche d'un vendeur par login  -->
   <div class="container border">
     <p>Rechercher par id/nom un vendeur</p>
 
     <form #recherche="ngForm" (ngSubmit)="rechercheVendeur(recherche.value)">
       <div class="form-group">
-        <label for="">
-          FORMULAIRE DE recherche : 
+        <label >
+          FORMULAIRE DE recherche : {{console(recherche.value)}}
         </label>
         <input
-          type="text" required placeholder="Donnez moi votre p'tit login, mon poulet!" id = "login" name="login"  class="form-control" ngModel/>
+          type="text" required placeholder="Donnez moi votre p'tit login, mon poulet!" id = "login" name="login"  class="form-control" />
       </div>
 
 
@@ -168,16 +154,20 @@
           <div  class="col-sm-12">
      
             <div class="card-body-note">
-              <div class="card-header">Vendeur recherché : <label for ="login"> {{login}} </label> </div>
+              <div class="card-header">Vendeur recherché :  </div>
 
               <div class="card-text">
                 <p> Id : {{ r.id }}</p>
                 <p> Login : {{r.user.login}}</p>
+                <p> Mail : {{r.user.mail}}</p>
                 <p> Numéro : {{r.user.tel}}</p>
                 <p> Etat du compte : {{  activitee(r.user.activity)}}</p>
               </div>
             </div>
- 
+            <div class="card-footer">
+            <button type="button" class="btn btn-raised noto " (click)="clickFunction()">Modifier</button>
+            <button type="button" class="btn btn-raised noto " (click)= "bloquer(r)" >Bloquer </button>
+          </div>
           </div>
           <br />
         </div>
