@@ -21,7 +21,7 @@
 ></script>
 
 <div class="border">
-  <p>admin works!</p>
+ 
 
   <div class="container border">
     <p>Creér un vendeur</p>
@@ -29,7 +29,7 @@
     <form #vendeur="ngForm" (ngSubmit)="inscriptionVendeur(vendeur.value)">
       <div class="form-group">
         <label for="">
-          LE GROS FORMULAIRE D'INSCRIPTION Vendeur DE SES MORTS (je fonctionne)
+           FORMULAIRE D'INSCRIPTION Vendeur  (je fonctionne)
         </label>
         <input
           type="text"
@@ -73,8 +73,8 @@
   <hr />
   <hr />
 
-  <p>Liste de tous les usersr</p>
 
+<!-- Recherche de tous les users -->
   <div class="container border">
     <div class="trombinoscope">Liste des users:</div>
     <br />
@@ -103,6 +103,8 @@
     </div>
   </div>
 
+<!-- Tentative de navBar tab pour afficher user - admin - joueur - vendeur -->
+
   <div class="container border">
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -118,48 +120,22 @@
         >
           Home
         </button>
-        <button
-          class="nav-link"
-          id="nav-profile-tab"
-          data-bs-toggle="tab"
-          data-bs-target="#nav-profile"
-          type="button"
-          role="tab"
-          aria-controls="nav-profile"
-          aria-selected="false"
-        >
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" >
           Profile
         </button>
-        <button
-          class="nav-link"
-          id="nav-contact-tab"
-          data-bs-toggle="tab"
-          data-bs-target="#nav-contact"
-          type="button"
-          role="tab"
-          aria-controls="nav-contact"
-          aria-selected="false"
-        >
+        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
           Contact
         </button>
       </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
       <div
-        class="tab-pane fade show active"
-        id="nav-home"
-        role="tabpanel"
-        aria-labelledby="nav-home-tab"
-      >
-        .aa..
+        class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
+        POURQUOI TU MARCHES PAS
       </div>
       <div
-        class="tab-pane fade"
-        id="nav-profile"
-        role="tabpanel"
-        aria-labelledby="nav-profile-tab"
-      >
-        .dd..
+        class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" >
+        montrer listes des admins
       </div>
       <div
         class="tab-pane fade"
@@ -167,11 +143,11 @@
         role="tabpanel"
         aria-labelledby="nav-contact-tab"
       >
-        .ff..
+      montrer listes des vendeurs
       </div>
     </div>
   </div>
-
+<!-- Tentative de recher d'un vendeur par login  -->
   <div class="container border">
     <p>Rechercher par id/nom un vendeur</p>
 
@@ -181,13 +157,7 @@
           FORMULAIRE DE recherche : {{console("html : " + recherche)}}
         </label>
         <input
-          type="text"
-          required
-          placeholder="Donnez moi votre p'tit login, mon poulet!"
-          name="login"
-          class="form-control"
-          ngModel
-        />
+          type="text" required placeholder="Donnez moi votre p'tit login, mon poulet!" name="login"  class="form-control" ngModel/>
       </div>
 
       <div class="row">
