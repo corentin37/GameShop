@@ -28,7 +28,7 @@ export class CatalogueComponent implements OnInit {
       error: (err)=> {console.log(err);}
       });
   
- /* longueurDuNom(nomJeu): String{
+ /*longueurDuNom(nomJeu): String{
         if(nomJeu.length() <= 20){
           return nomJeu.nom + "";
           
