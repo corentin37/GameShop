@@ -17,6 +17,8 @@ import { NewAvisComponent } from './new-avis/new-avis.component';
 import { TacheAdminComponent } from './admin/tache-admin/tache-admin.component';
 import { TacheVendeurComponent } from './admin/tache-vendeur/tache-vendeur.component';
 import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
+import { TacheUserComponent } from './admin/tache-user/tache-user.component';
+import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.component';
 
 
 
@@ -41,7 +43,9 @@ import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
     TacheAdminComponent,
     TacheVendeurComponent,
     TacheSalleComponent,
-    TacheVendeurComponent
+    TacheVendeurComponent,
+    TacheUserComponent,
+    TacheJoueurComponent
 
   ],
   imports: [
