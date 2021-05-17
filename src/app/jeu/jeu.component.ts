@@ -18,6 +18,8 @@ export class JeuComponent implements OnInit {
   avis;
   avisnew;
 
+  idJeu = 19;
+
 
   constructor(private http:HttpClient, private route: Router) { }
 
@@ -44,7 +46,7 @@ export class JeuComponent implements OnInit {
   }
 
   getOneJeu(){
-    this.http.get('http://localhost:8086/jeu/19').subscribe({
+    this.http.get('http://localhost:8086/jeu/20').subscribe({
       next: (data) => {this.jeu = data;},
       error: (err) => {console.log(err);}
     }); 

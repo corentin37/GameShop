@@ -85,10 +85,11 @@
           <div class="row"> 
           <div *ngFor="let j of jeu" class="col-sm-4 ">
                     <br>
-                    <a class="bt-perso" href="jeu" role="button">
+                    <a class="bt-perso" routerLink = "['../jeu/']"   role="button"> <!--"['../jeu/', j.lejeu.id]"-->
                       <div class="card">
                         <img src={{j.lejeu.urlImage}} width="200px"><br>
                         <div class="ml-2">
+                            
                             {{ j.lejeu.note }}/5<br>
                             {{ j.lejeu.marqueDuJeu.libelle}}<br>
                             {{ j.lejeu.nom}}
