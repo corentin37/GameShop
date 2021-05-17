@@ -270,7 +270,18 @@
 .fondSite {
   background-color: rgba(255, 255, 255);
 }
-
+.bt-perso{
+  background-color: slateblue;
+  color: white;
+  font-size: large;
+  border-radius: 5px;
+  border-color: aliceblue;
+  padding: 7px;
+  font-family: 'Noto Serif';
+}
+.bt-perso:hover{ 
+  transform: scale(1.1) !important;
+}
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
 
