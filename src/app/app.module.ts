@@ -11,6 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreerJoueurComponent } from './creer-joueur/creer-joueur.component';
 import { AdminComponent } from './admin/admin.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
+import { TacheAdminComponent } from './admin/tache-admin/tache-admin.component';
+import { TacheVendeurComponent } from './admin/tache-vendeur/tache-vendeur.component';
+import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
+
+
 
 
 
@@ -24,7 +29,12 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
     ConnexionComponent,
     CreerJoueurComponent,
     AdminComponent,
-    CatalogueComponent
+    CatalogueComponent,
+    TacheAdminComponent,
+    TacheVendeurComponent,
+    TacheSalleComponent,
+    TacheVendeurComponent
+
   ],
   imports: [
     BrowserModule,
