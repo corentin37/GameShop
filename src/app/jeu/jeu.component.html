@@ -11,11 +11,10 @@
 
     <div class="col-sm-7">
         <header class="w3-container w3-blue">
-            <h6 style="text-align: right;">Catégorie / Marque</h6>
+            <h6 style="text-align: right;"> Catégorie / Marque   </h6>
             <br>
-        <span><i class="fa fa-users" style="color: teal;"></i>  Nb Joueurs:   XX  -    XX        
-                  <i class="fas fa-birthday-cake" style="color: teal;"></i>  Age: à partir de   XX ans   
-            <i class="fas fa-star" style="color: teal;"></i>  Difficulté:   XXXXX    </span>
+        <span><i class="fa fa-users" style="color: teal; text-align: justify;"></i>  Nombre de joueurs : {{jeu.nombreJoueursMin}} à {{jeu.nombreJoueursMax}} <i class="fas fa-birthday-cake" style="color: teal;"></i>  Age: à partir de {{jeu.nombreJoueursMin}} ans   
+            <i class="fas fa-star" style="color: teal;"></i>  Difficulté: {{jeu.niveauDifficulte}}    </span>
         </header>
 <br>
         <h6>Description : </h6>
@@ -23,12 +22,13 @@
 
         <footer class="w3-container w3-blue">
             <br>
-            <p><i>Temps de Jeu : {{jeu.id}} min</i> </p> 
+            <p><i>Temps de Jeu : {{jeu.tempsDeJeu}} min</i> </p> 
             </footer> 
 
         <button data-toggle="collapse" data-target="#demo" class="btn btn-primary ">Règles</button>
         <div id="demo" class="collapse">
-        Règles du jeu
+        {{jeu.regleDuJeu}}
+
         </div>
  
 <br><br><br>
