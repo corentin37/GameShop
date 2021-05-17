@@ -1,120 +1,127 @@
-<div class="container "> 
-    <div class="row">
-        <div class="col-sm-3 ">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Catégorie
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" routerLink=''>Cartes</a>
-                  <a class="dropdown-item" routerLink=''>Plateau</a>
-                  <a class="dropdown-item" routerLink=''>Culture Générale</a>
-                </div>
-              </div>
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Age
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" routerLink=''>0-4 ans</a>
-                  <a class="dropdown-item" routerLink=''>5-8 ans</a>
-                  <a class="dropdown-item" routerLink=''>9-12 ans</a>
-                  <a class="dropdown-item" routerLink=''>12-15 ans</a>
-                  <a class="dropdown-item" routerLink=''>16+ ans</a>
-                </div>
-              </div>
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Marque
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" routerLink=''>Hasbro Gaming</a>
-                  <a class="dropdown-item" routerLink=''>Ravensburger</a>
-                  <a class="dropdown-item" routerLink=''>Goliath</a>
-                </div>
-              </div>
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Prix
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" routerLink=''>0-5 €</a>
-                  <a class="dropdown-item" routerLink=''>6-15 €</a>
-                  <a class="dropdown-item" routerLink=''>16-25 €</a>
-                  <a class="dropdown-item" routerLink=''>26-35 €</a>
-                  <a class="dropdown-item" routerLink=''>36-50 €</a>
-                  <a class="dropdown-item" routerLink=''>50+ €</a>
-                </div>
-              </div>
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Nombre de joueurs
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" routerLink=''>2 joueurs et +</a>
-                  <a class="dropdown-item" routerLink=''>4 joueurs et +</a>
-                  <a class="dropdown-item" routerLink=''>6 joueurs et +</a>
-                </div>
-              </div>
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Temps de jeu
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" routerLink=''>30 min</a>
-                  <a class="dropdown-item" routerLink=''>45min</a>
-                  <a class="dropdown-item" routerLink=''>1h</a>
-                  <a class="dropdown-item" routerLink=''>1h30 min</a>
-                  <a class="dropdown-item" routerLink=''>1h45min</a>
-                  <a class="dropdown-item" routerLink=''>2h+</a>
-                </div>
-              </div>
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Niveau
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" routerLink=''>Facile</a>
-                  <a class="dropdown-item" routerLink=''>Moyen</a>
-                  <a class="dropdown-item" routerLink=''>Difficile</a>
-                </div>
-              </div>
+<div class="container ">
+  <div class="row">
+    <div class="col-sm-3 ">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Catégorie
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink=''>Cartes</a>
+          <a class="dropdown-item" routerLink=''>Plateau</a>
+          <a class="dropdown-item" routerLink=''>Culture Générale</a>
         </div>
-          
-        <div class="col-sm-9 ">
-          <div class="row"> 
-          <div *ngFor="let j of jeu" class="col-sm-4 ">
-                    <br>
-                    <a class="bt-perso" href="jeu" role="button">
-                      <div class="card">
-                        <img src={{j.lejeu.urlImage}} width="200px"><br>
-                        <div class="ml-2">
-                            {{ j.lejeu.note }}/5<br>
-                            {{ j.lejeu.marqueDuJeu.libelle}}<br>
-                            {{ j.lejeu.nom}}
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                      <div class="ml-2 mt-2">
-                      <form>
-                      <span><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Acheter</a> : {{j.prixAchat}} € | <a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Louer</a> : {{j.lejeu.prixLocation}} € </span>
-                      </form>
-                      </div>
-                  </div>
-                  <br>
-                    </a>
-                    
-                </div>
-              </div>  
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Age
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink=''>0-4 ans</a>
+          <a class="dropdown-item" routerLink=''>5-8 ans</a>
+          <a class="dropdown-item" routerLink=''>9-12 ans</a>
+          <a class="dropdown-item" routerLink=''>12-15 ans</a>
+          <a class="dropdown-item" routerLink=''>16+ ans</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Marque
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink=''>Hasbro Gaming</a>
+          <a class="dropdown-item" routerLink=''>Ravensburger</a>
+          <a class="dropdown-item" routerLink=''>Goliath</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Prix
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink=''>0-5 €</a>
+          <a class="dropdown-item" routerLink=''>6-15 €</a>
+          <a class="dropdown-item" routerLink=''>16-25 €</a>
+          <a class="dropdown-item" routerLink=''>26-35 €</a>
+          <a class="dropdown-item" routerLink=''>36-50 €</a>
+          <a class="dropdown-item" routerLink=''>50+ €</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Nombre de joueurs
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink=''>2 joueurs et +</a>
+          <a class="dropdown-item" routerLink=''>4 joueurs et +</a>
+          <a class="dropdown-item" routerLink=''>6 joueurs et +</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Temps de jeu
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink=''>30 min</a>
+          <a class="dropdown-item" routerLink=''>45min</a>
+          <a class="dropdown-item" routerLink=''>1h</a>
+          <a class="dropdown-item" routerLink=''>1h30 min</a>
+          <a class="dropdown-item" routerLink=''>1h45min</a>
+          <a class="dropdown-item" routerLink=''>2h+</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Niveau
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink=''>Facile</a>
+          <a class="dropdown-item" routerLink=''>Moyen</a>
+          <a class="dropdown-item" routerLink=''>Difficile</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-9 ">
+      <div class="row">
+        <div *ngFor="let j of jeu" class="col-sm-4 ">
+          <br>
+          <a class="bt-perso" href="jeu" role="button">
+            <div class="card">
+              <img src={{j.lejeu.urlImage}} width="200px"><br>
+              <div class="ml-2">
+                {{ j.lejeu.note }}/5<br>
+                {{ j.lejeu.marqueDuJeu.libelle}}<br>
+                {{ j.lejeu.nom}}
+              </div>
             </div>
-              
-           
-        
-        
-        
+
+            <div class="card">
+              <div class="ml-2 mt-2">
+                <span><button (click)="goToConnexion()" class="btn btn-outline-warning btn-sm" routerLink='connexion'
+                    role="button">Acheter</button> : {{j.prixAchat}} € | <button (click)="goToConnexion()"class="btn btn-outline-warning btn-sm"
+                    routerLink="connexion" role="button">Louer</button> : {{j.lejeu.prixLocation}} € </span>
+              </div>
+            </div>
+            <br>
+          </a>
+
+        </div>
+      </div>
     </div>
-   
 
 
-    </div>
+
+
+
+  </div>
+
+
+
+</div>

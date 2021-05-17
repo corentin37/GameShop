@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreerJoueurComponent } from './creer-joueur/creer-joueur.component';
 import { AdminComponent } from './admin/admin.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
+import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.component';
+
 
 
 
@@ -24,13 +26,14 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
     ConnexionComponent,
     CreerJoueurComponent,
     AdminComponent,
-    CatalogueComponent
+    CatalogueComponent,
+    TrierparPlateauComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
