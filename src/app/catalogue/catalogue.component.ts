@@ -17,18 +17,18 @@ export class CatalogueComponent implements OnInit {
 
 
   constructor(private http: HttpClient) { }
-  //jeu;
+  jeu;
   ngOnInit(): void {
-    //this.getCatalogue();
+    this.getCatalogue();
   }
-  //getCatalogue() : any{
-    /*this.http.get('http://localhost:8086/jeu/list').subscribe({
+  getCatalogue() : any{
+    this.http.get('http://localhost:8086/jeu/list').subscribe({
       next: (data)=> {this.jeu = data; },
       error: (err)=> {console.log(err);}
       
       
-      });*/
+      });
   
      
     
-    }
+    }}
