@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreerJoueurComponent } from './creer-joueur/creer-joueur.component';
 import { AdminComponent } from './admin/admin.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
+import { NewAvisComponent } from './new-avis/new-avis.component';
 
 
 
@@ -24,7 +25,8 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
     ConnexionComponent,
     CreerJoueurComponent,
     AdminComponent,
-    CatalogueComponent
+    CatalogueComponent,
+    NewAvisComponent,
   ],
   imports: [
     BrowserModule,

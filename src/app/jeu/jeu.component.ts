@@ -16,6 +16,7 @@ export class JeuComponent implements OnInit {
   jeux;
   jeu;
   avis;
+  avisnew;
 
 
   constructor(private http:HttpClient, private route: Router) { }
@@ -49,6 +50,19 @@ export class JeuComponent implements OnInit {
     }); 
   }
 
+
+  newAvis(avis): any {
+    const idUser = {id: 17};
+    const idJeu = {id: 19}
+    avis.user.id = idUser; // on entre l'expéditeur 1 en dur pour gérer l'envoi du test
+    avis.jeu.id = idJeu;
+    this.http.post('http://localhost:8086/avis', avis).subscribe({
+      next: (data)=> {this.route.navigateByUrl('jeu');},
+      error: (err) => {console.log(err);}
+      
+    })
+
+  }
   
 
 }
