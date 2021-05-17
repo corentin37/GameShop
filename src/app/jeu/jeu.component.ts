@@ -15,13 +15,16 @@ export class JeuComponent implements OnInit {
 
   jeux;
   jeu;
+  //valeur = ;
+  avis;
 
 
   constructor(private http:HttpClient, private route: Router) { }
 
   ngOnInit(): void {
-   this.getAllJeu();
+  this.getAllJeu();
   this.getOneJeu();
+  this.getAllAvis();
 
   }
 
@@ -33,9 +36,15 @@ export class JeuComponent implements OnInit {
     }); 
   }
 
+  getAllAvis(){
+    this.http.get('http://localhost:8086/avis/list/jeu/19').subscribe({
+      next: (data) => {this.avis = data;},
+      error: (err) => {console.log(err);}
+    }); 
+  }
 
   getOneJeu(){
-    this.http.get('http://localhost:8086/jeu/19').subscribe({
+    this.http.get('http://localhost:8086/jeu/19').subscribe({//problème : affiher le bon jeu correspondant du catalogue, pas tjrs le 19
       next: (data) => {this.jeu = data;},
       error: (err) => {console.log(err);}
     }); 

@@ -33,15 +33,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  inscriptionAdmin(personCreated): any{
-    // le formulaire s'appelle user, mais creation de vendeur
-        // ATTENTION A L'URL
-    this.http.post('http://localhost:8086/admin/save', personCreated).subscribe({
-      next: (data) => {alert('Création du compte admin' ); },
-      error : (err) => { console.log(err); }
 
-    });
-  }
 
   getAllUser(): any{
     this.http.get('http://localhost:8086/user').subscribe({
@@ -93,6 +85,17 @@ export class AdminComponent implements OnInit {
 
     }
 
+    bloquer(vendeur): any{
+
+      // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
+      this.http.put('http://localhost:8086/vendeur/bloquer', vendeur).subscribe({
+        next: (data) => {console.log('vendeur blocker ou debl...' , data);  },
+        error : (err) => { console.log(err); }
+
+      });
+
+    }
+
     addVendeur(vendeur): any {
 
 
@@ -138,17 +141,6 @@ export class AdminComponent implements OnInit {
   }
 
 
-
-    bloquer(vendeur): any{
-
-      // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
-      this.http.put('http://localhost:8086/vendeur/bloquer', vendeur).subscribe({
-        next: (data) => {console.log(data);  },
-        error : (err) => { console.log(err); }
-
-      });
-
-    }
 
     clickFunction(): any {
 
