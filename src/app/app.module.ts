@@ -17,7 +17,7 @@ import { NewAvisComponent } from './new-avis/new-avis.component';
 import { TacheAdminComponent } from './admin/tache-admin/tache-admin.component';
 import { TacheVendeurComponent } from './admin/tache-vendeur/tache-vendeur.component';
 import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
-import { PanierComponent } from './panier/panier.component';
+
 
 
 
@@ -40,8 +40,7 @@ import { PanierComponent } from './panier/panier.component';
     TacheAdminComponent,
     TacheVendeurComponent,
     TacheSalleComponent,
-    TacheVendeurComponent,
-    PanierComponent
+    TacheVendeurComponent
 
   ],
   imports: [
