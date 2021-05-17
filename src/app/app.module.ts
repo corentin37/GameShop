@@ -40,7 +40,7 @@ import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

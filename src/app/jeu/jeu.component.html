@@ -13,7 +13,7 @@
         <header class="w3-container w3-blue">
             <h6 style="text-align: right;"> {{jeu.marqueDuJeu.libelle}}  </h6>
             <br>
-        <span><i class="fa fa-users" style="color: teal; text-align: justify;"></i>  Nombre de joueurs : {{jeu.nombreJoueursMin}} à {{jeu.nombreJoueursMax}} <i class="fas fa-birthday-cake" style="color: teal;"></i>  Age: à partir de {{jeu.nombreJoueursMin}} ans   
+        <span><i class="fa fa-users" style="color: teal; text-align: justify;"></i>  Nombre de joueurs : {{jeu.nombreJoueursMin}} à {{jeu.ageMin}} <i class="fas fa-birthday-cake" style="color: teal;"></i>  Age: à partir de {{jeu.ageMin}} ans   
             <i class="fas fa-star" style="color: teal;"></i>  Difficulté: {{jeu.niveauDifficulte}}    </span>
         </header>
 <br>
@@ -37,29 +37,30 @@
 <br><br><br>
     </div>
 
+        <div class="row" *ngFor="let a of avis">
 
-    <div class="row">
-        <div class="col-sm-3" style="text-align: center;">
-            
-                <img src="/assets/img/astrocat.jpg" alt="Avatar" style="width:70%">
-                <div class="container">
-                  <h6><b>User nom</b></h6>
-                </div>
+            <div class="col-sm-3" style="text-align: center;">
+                
+                    <img src="/assets/img/astrocat.jpg" alt="Avatar"  >
+                    <div class="container">
+                    <h6><b>{{a.user.login}}</b></h6>
+                    </div>
+            </div>
+            <span class="vertical-line"></span>
+            <div class="col-sm-2" style="text-align: center;">
+                <h6> Note : </h6>
+                <br>
+                <h5> {{a.note}} </h5> <br>
+                <h4>/ 10</h4>
+                
+            </div>
+            <div class="col-sm-6">
+                <h6>Avis sur le jeu : </h6>
+                <br>
+                <p> {{a.commentaire}} </p>
+            </div>
         </div>
-        <span class="vertical-line"></span>
-        <div class="col-sm-2" style="text-align: center;">
-            <h6> Note : </h6>
-            <br>
-            <h5>XX /</h5> <br>
-            <h4>10</h4>
-            
-        </div>
-        <div class="col-sm-6">
-            <h6>Avis sur le jeu : </h6>
-            <br>
-            <p>  Super jeu pour s'occuper pendant le voyage vers Mars. Même ma souris a kiffé. 10/10 recommande.</p>
-        </div>
-    </div>
+   
 </div>
     
     
