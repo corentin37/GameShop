@@ -29,8 +29,8 @@ export class CatalogueComponent implements OnInit {
       });
   
  /*longueurDuNom(nomJeu): String{
-        if(nomJeu.length() <= 20){
-          return nomJeu.nom + "";
+        if(nomJeu.length() <= 34){
+          return nom.nom + "";
           
         }
         else{

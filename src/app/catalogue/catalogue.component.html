@@ -85,7 +85,8 @@
           <div class="row"> 
           <div *ngFor="let j of jeu" class="col-sm-4 ">
                     <br>
-                    <div class="card">
+                    <a class="btn" href="connexion" role="button">
+                      <div class="card">
                         <img src={{j.lejeu.urlImage}} width="250px"><br>
                         <div class="ml-2">
                             {{ j.lejeu.note }}/5<br>
@@ -93,14 +94,17 @@
                             {{ j.lejeu.nom}}
                         </div>
                     </div>
+                    
                     <div class="card">
-                        <div class="ml-2 mt-2">
-                        <form>
-                        <span><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Acheter</a> : {{j.prixAchat}} € | <a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Louer</a> : {{j.prixLocation}} € </span>
-                        </form>
-                        </div>
-                    </div>
-                    <br>
+                      <div class="ml-2 mt-2">
+                      <form>
+                      <span><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Acheter</a> : {{j.prixAchat}} € | <a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Louer</a> : {{j.prixLocation}} € </span>
+                      </form>
+                      </div>
+                  </div>
+                  <br>
+                    </a>
+                    
                 </div>
               </div>  
             </div>
