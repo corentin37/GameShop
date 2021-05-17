@@ -18,6 +18,7 @@ export class CatalogueComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
   jeu;
+  jeuAchat;
   ngOnInit(): void {
     this.getCatalogue();
   }
@@ -25,8 +26,6 @@ export class CatalogueComponent implements OnInit {
     this.http.get('http://localhost:8086/jeu/list').subscribe({
       next: (data)=> {this.jeu = data; },
       error: (err)=> {console.log(err);}
-      
-      
       });
   
      
