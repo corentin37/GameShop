@@ -11,7 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreerJoueurComponent } from './creer-joueur/creer-joueur.component';
 import { AdminComponent } from './admin/admin.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
+
 import { NewAvisComponent } from './new-avis/new-avis.component';
+
+import { TacheAdminComponent } from './admin/tache-admin/tache-admin.component';
+import { TacheVendeurComponent } from './admin/tache-vendeur/tache-vendeur.component';
+import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
+import { PanierComponent } from './panier/panier.component';
+
+
 
 
 
@@ -26,13 +34,21 @@ import { NewAvisComponent } from './new-avis/new-avis.component';
     CreerJoueurComponent,
     AdminComponent,
     CatalogueComponent,
+
     NewAvisComponent,
+
+    TacheAdminComponent,
+    TacheVendeurComponent,
+    TacheSalleComponent,
+    TacheVendeurComponent,
+    PanierComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

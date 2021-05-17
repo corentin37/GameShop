@@ -22,13 +22,6 @@ export class CreerJoueurComponent implements OnInit {
 
   }
 
-
-
-
-
-
-
-
   ngOnInit(): void {
   }
 
