@@ -5,13 +5,13 @@
         <div class="row">
             <div class="col-sm-4">
                 
-                <img src="/assets/img/conceptJeu.jpg" alt="Image Jeu" class="img">
+                <img src="{{jeu.urlImage}}" alt="Image Jeu" class="img">
             </div>
     <div class="col-sm-1"></div>
 
     <div class="col-sm-7">
         <header class="w3-container w3-blue">
-            <h6 style="text-align: right;"> Catégorie / Marque   </h6>
+            <h6 style="text-align: right;"> {{jeu.marqueDuJeu.libelle}}  </h6>
             <br>
         <span><i class="fa fa-users" style="color: teal; text-align: justify;"></i>  Nombre de joueurs : {{jeu.nombreJoueursMin}} à {{jeu.nombreJoueursMax}} <i class="fas fa-birthday-cake" style="color: teal;"></i>  Age: à partir de {{jeu.nombreJoueursMin}} ans   
             <i class="fas fa-star" style="color: teal;"></i>  Difficulté: {{jeu.niveauDifficulte}}    </span>
@@ -30,6 +30,9 @@
         {{jeu.regleDuJeu}}
 
         </div>
+
+        <br><br>
+        
  
 <br><br><br>
     </div>

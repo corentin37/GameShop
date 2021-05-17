@@ -23,8 +23,6 @@ export class JeuComponent implements OnInit {
    this.getAllJeu();
   this.getOneJeu();
 
-
-
   }
 
 
@@ -34,6 +32,7 @@ export class JeuComponent implements OnInit {
       error: (err) => {console.log(err);}
     }); 
   }
+
 
   getOneJeu(){
     this.http.get('http://localhost:8086/jeu/19').subscribe({
