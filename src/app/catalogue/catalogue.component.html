@@ -85,22 +85,26 @@
           <div class="row"> 
           <div *ngFor="let j of jeu" class="col-sm-4 ">
                     <br>
-                    <div class="card">
-                        <img src={{j.urlImage}} width="250px"><br>
+                    <a class="bt-perso" href="jeu" role="button">
+                      <div class="card">
+                        <img src={{j.lejeu.urlImage}} width="200px"><br>
                         <div class="ml-2">
-                            {{ j.note }}/5<br>
-                            {{ j.marqueDuJeu.libelle}}<br>
-                            {{ j.nom }}
+                            {{ j.lejeu.note }}/5<br>
+                            {{ j.lejeu.marqueDuJeu.libelle}}<br>
+                            {{ j.lejeu.nom}}
                         </div>
                     </div>
+                    
                     <div class="card">
-                        <div class="ml-2 mt-2">
-                        <form>
-                        <span><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Acheter</a> : {{j.prixAchat}} € | <a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Louer</a> : {{j.prixLocation}} € </span>
-                        </form>
-                        </div>
-                    </div>
-                    <br>
+                      <div class="ml-2 mt-2">
+                      <form>
+                      <span><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Acheter</a> : {{j.prixAchat}} € | <a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Louer</a> : {{j.lejeu.prixLocation}} € </span>
+                      </form>
+                      </div>
+                  </div>
+                  <br>
+                    </a>
+                    
                 </div>
               </div>  
             </div>

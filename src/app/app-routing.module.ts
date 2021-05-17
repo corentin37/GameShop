@@ -11,7 +11,8 @@ const routes: Routes = [
   {component: ConnexionComponent, path: 'connexion'},
   {component: CreerJoueurComponent, path: 'creerJoueur'},
   {component: AdminComponent, path: 'admin'},
-  {component: CatalogueComponent, path: 'catalogue'}
+  {component: CatalogueComponent, path: 'catalogue'},
+  {path:'',redirectTo:'catalogue',pathMatch:'full'}//quand il ya pas de chemin ça redirige directement vers le catalogue
 
 ];
 
