@@ -129,7 +129,7 @@
       </div>
 
       <div *ngFor="let r of rechercheV" class="col-sm-4">
-        {{ console("card : " + r) }}
+        {{ console("card V: " + r) }}
         <div class="row">
           <div class="card">
             <div class="col-sm-12">
@@ -151,10 +151,7 @@
                   Modifier
                 </button>
                 <button
-                  type="button"
-                  class="btn btn-raised noto"
-                  (click)="bloquer(r)"
-                >
+                  type="button" class="btn btn-raised noto" (click)="bloquer(r)  + rechercheVendeur(recherche.value)">
                   Bloquer
                 </button>
               </div>
@@ -171,7 +168,55 @@
 
   <p>modifier une cotisation adhérent, c'est pas au venderu plutot ? ?</p>
   
+<!-- recherche d'un joueur par login  -->
+<div class="container border">
+  <p>Rechercher par id/login un joueur</p>
 
+  <form #rechercheJo="ngForm" (ngSubmit)="rechercheJoueur(rechercheJo.value)">
+    <div class="form-group">
+      <label> FORMULAIRE DE recherche : </label>
+      <input type="text" required placeholder=" Entre le login du joueur recherché" id="login" name="login" class="form-control" ngModel/>
+    </div>
+
+    <div *ngFor="let r of rechercheJ" class="col-sm-4">
+      {{ console("card J : " + r) }}
+      <div class="row">
+        <div class="card">
+          <div class="col-sm-12">
+            <div class="card-body-note">
+              <div class="card-header">Joueur recherché :</div>
+
+              <div class="card-text">
+                <p>Id : {{ addVendeur(r.id) }}</p>
+                <p>Login : {{ r.user.login }}</p>
+                <p>Mail : {{ r.user.mail }}</p>
+                <p>Numéro : {{ r.user.tel }}</p>
+                <p>Adhésion : {{ adhesionString(r.cotisation) }}</p>
+                <p>Etat du compte : {{ activitee(r.user.activity) }}</p>
+                
+              </div>
+            </div>
+            <div class="card-footer">
+              <button
+                type="button" class="btn btn-raised noto" (click)="adherer(r) + rechercheJoueur(rechercheJo.value)"
+              >
+                Adhérant
+              </button>
+              <button
+                type="button" class="btn btn-raised noto" (click)="bloquer(r)  + rechercheJoueur(rechercheJo.value)">
+                Bloquer
+              </button>
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn button-primary btn-block">
+      Valider
+    </button>
+  </form>
+</div>
 
   <p>Gestion du forum ????? peut etre le faire sur la page forum directement</p>
 </div>

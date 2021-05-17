@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  users; joueurs; admins; vendeurs; rechercheV ; recherche; entreeConsole;
+  users; joueurs; admins; vendeurs; rechercheV; rechercheJ ; recherche; entreeConsole;
   constructor(private http: HttpClient, private route: Router) { }
 
   ngOnInit(): void {
-    
-    
+
+
     this.getAllUser();
     /*
     this.getAllJoueur();
@@ -22,22 +22,22 @@ export class AdminComponent implements OnInit {
     this.getAllAdmin();
     */
   }
- 
+
   inscriptionVendeur(personCreated): any{
-    //le formulaire s'appelle user, mais creation de vendeur
-        //ATTENTION A L'URL
+    // le formulaire s'appelle user, mais creation de vendeur
+        // ATTENTION A L'URL
     this.http.post('http://localhost:8086/vendeur/save', personCreated).subscribe({
-      next: (data) => {alert("Création du compte vendeur " );  },
+      next: (data) => {alert('Création du compte vendeur ' );  },
       error : (err) => { console.log(err); }
 
     });
   }
 
   inscriptionAdmin(personCreated): any{
-    //le formulaire s'appelle user, mais creation de vendeur
-        //ATTENTION A L'URL
+    // le formulaire s'appelle user, mais creation de vendeur
+        // ATTENTION A L'URL
     this.http.post('http://localhost:8086/admin/save', personCreated).subscribe({
-      next: (data) => {alert("Création du compte admin" ); },
+      next: (data) => {alert('Création du compte admin' ); },
       error : (err) => { console.log(err); }
 
     });
@@ -73,10 +73,19 @@ export class AdminComponent implements OnInit {
         });
     }
 
-  
+
+    rechercheJoueur(recherche): any{
+
+      this.http.post('http://localhost:8086/joueur/recherche', recherche).subscribe({
+        next: (data) => {  this.rechercheJ = data ; },
+        error: (err) => { console.log(err); }
+        });
+
+    }
+
 
     rechercheVendeur(recherche): any{
-      
+
       this.http.post('http://localhost:8086/vendeur/recherche', recherche).subscribe({
         next: (data) => {  this.rechercheV = data ; },
         error: (err) => { console.log(err); }
@@ -92,42 +101,65 @@ export class AdminComponent implements OnInit {
           } else {
             return 'Pas de vendeur';
           }
-      
+
     }
 
 
     // permet de traduire le boolean d'activité en string
-    activitee(boolean): string {
+    activitee(bool): string {
 
-      if (boolean === false) {
+      if (bool === false) {
         return 'Compte bloqué' ;
       } else {
         return 'Compte débloqué';
       }
-  
-}
 
-    bloquer(vendeur){
-      
+    }
+
+    adhesionString(bool): string {
+
+      if (bool === false) {
+        return 'Compte adhérant' ;
+      } else {
+        return 'Compte non adhérant';
+      }
+
+    }
+
+  adherer(joueur): any{
+
+    // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
+    this.http.put('http://localhost:8086/joueur/adherer', joueur).subscribe({
+      next: (data) => {console.log(data);  },
+      error : (err) => { console.log(err); }
+
+    });
+
+  }
+
+
+
+    bloquer(vendeur): any{
+
       // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
       this.http.put('http://localhost:8086/vendeur/bloquer', vendeur).subscribe({
         next: (data) => {console.log(data);  },
         error : (err) => { console.log(err); }
-  
+
       });
-      
+
     }
 
-    clickFunction() {
+    clickFunction(): any {
 
-      alert("clicked me!");
-  
+      alert('clicked me!');
+
     }
 
 
     console(entreeConsole): any{
         console.log(entreeConsole); }
-    
+
 
   }
 
