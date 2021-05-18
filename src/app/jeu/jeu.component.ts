@@ -33,14 +33,6 @@ export class JeuComponent implements OnInit {
 
   }
 
-
-  getAllJeu() {
-    this.http.get('http://localhost:8086/jeu/list').subscribe({
-      next: (data) => { this.jeux = data; },
-      error: (err) => { console.log(err); }
-    });
-  }
-
   getAllAvis() {
     this.http.get('http://localhost:8086/avis/list/jeu/19').subscribe({
       next: (data) => { this.avis = data; },
@@ -48,14 +40,7 @@ export class JeuComponent implements OnInit {
     });
   }
 
-  getOneJeu() {
-    this.http.get('http://localhost:8086/jeu/20').subscribe({
-      next: (data) => { this.jeu = data; },
-      error: (err) => { console.log(err); }
-    });
-  }
-
-
+ 
   newAvis(avis): any {
     //gérer user et jeu avec Service
     console.log("Avis posté! Rafraîchir la page");
