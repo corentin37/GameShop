@@ -1,4 +1,4 @@
-<p>tache-user works!</p>
+
 <!-- Navbar d'admin-->
 
 <app-admin></app-admin>
@@ -39,3 +39,47 @@
         type="text" required placeholder=" Zone de recherche en cours" id="login" name="login" class="form-control" ngModel/>
 </div>
 
+<!-- recherche d'un joueur par login  -->
+<div class="container border">
+  <p>Rechercher par login un user</p>
+
+  <form #recherche="ngForm" (ngSubmit)="rechercheJoueur(recherche.value)">
+    <div class="form-group">
+      <label> FORMULAIRE DE recherche : </label>
+      <input type="text" required placeholder=" Entre le login du vendeur recherché" id="login" name="login" class="form-control" ngModel/>
+    </div>
+
+    <div *ngIf="joueurExist" class="col-sm-4">
+      
+      <div class="row">
+        <div class="card">
+          <div class="col-sm-12">
+            <div class="card-body-note">
+              <div class="card-header">Joueur recherché :</div>
+
+              <div class="card-text">
+                <p>Id : {{ (rechercheJ.id) }}</p>
+                <p>Login : {{ rechercheJ.user.login }}</p>
+                <p>Mail : {{ rechercheJ.user.mail }}</p>
+                <p>Numéro : {{ rechercheJ.user.tel }}</p>
+                
+                <p>Etat du compte : {{ actvitityBoolToStr(rechercheJ.user.activity) }}</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="button" id="bt_bloquer" class="btn btn-raised noto" (click)="adherer(rechercheJ) + rechercheJoueur(recherche.value)">
+                adhérer
+              </button>
+              <button type="button" id="bt_bloquer" class="btn btn-raised noto" (click)="bloquer(rechercheJ) + rechercheJoueur(recherche.value)">
+                Bloquer
+              </button>
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn button-primary btn-block">
+      Valider
+    </button>
+  </form>

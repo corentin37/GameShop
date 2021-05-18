@@ -56,11 +56,9 @@ export class TacheVendeurComponent implements OnInit {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
     this.http.put('http://localhost:8086/vendeur/bloquer', vendeur).subscribe({
       next: (data) => {
-        console.log('le vendeur en param', vendeur);
         this.rechercheV = data;
         this.getAllUser();
         // this.ngOnInit();
-        console.log('vendeur blocker ou debl...', data);
       },
       error: (err) => {
         console.log(err);
