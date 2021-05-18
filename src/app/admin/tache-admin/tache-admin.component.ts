@@ -9,9 +9,13 @@ import { Router } from '@angular/router';
 })
 export class TacheAdminComponent implements OnInit {
 
+admins;
+
   constructor(private http: HttpClient, private route: Router) { }
 
   ngOnInit(): void {
+
+    this.getAllAdmin();
   }
 
 
@@ -25,5 +29,25 @@ inscriptionAdmin(personCreated): any{
 
   });
 }
+
+getAllAdmin(): any {
+  this.http.get('http://localhost:8086/admin/list').subscribe({
+    next: (data) => {
+      this.admins = data;
+    },
+    error: (err) => {
+      console.log(err);
+    },
+  });
+}
+
+actvitityBoolToStr(bool): string {
+  if (bool === false) {
+    return 'Compte bloqué';
+  } else {
+    return 'Compte débloqué';
+  }
+}
+
 
 }
