@@ -54,4 +54,11 @@ export class PanierComponent implements OnInit {
     }
   }
 
+  setQuantiteMoins(id){
+
+  }
+
+  setQuantitePlus(id){
+    
+  }
 }

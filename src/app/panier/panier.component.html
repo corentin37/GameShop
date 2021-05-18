@@ -4,7 +4,6 @@
     <div class="row"> 
     <div *ngFor="let j of panier" class="col-sm-4 ">
               <br>
-              <a class="bt-perso" href="jeu" role="button">
                 <div class="card">
                   <img src={{j.image}} width="200px"><br>
                   <div class="ml-2">
@@ -13,9 +12,16 @@
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">Quantite : {{j.quantite}}<br></div>
                       </div>
-
-                      {{ j.marque}}<br>
-                      {{ j.nom}}
+                      <div class="row">
+                        <div class="col-sm-9">{{ j.marque}}</div>
+                        <div class="col-sm-3"><a class="btn btn-outline-warning btn-sm" type="button" onclick="setQuantiteMoins()">-</a><a class="btn btn-outline-warning btn-sm" type="button" onclick="setQuantitePlus(id)">+</a></div>
+                      <br>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-4">{{ j.nom}}</div>
+                      <div class="col-sm-4"></div>
+                      <div class="col-sm-4"></div>
+                    </div>
                   </div>
               </div>
               
@@ -28,15 +34,15 @@
                 </div>
             </div>
             <br>
-              </a>
               
           </div>
         </div>  
       </div>
 
 <div class="col-sm-3">
-    <p>Prix Total Achat : {{prixTotalAchat}} €</p>
-    <p>Prix Total Location : {{prixTotalLocation}} €</p>
-    <span><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Acheter</a><br>  <a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Louer</a></span>
+    <div class="text-big">Prix Total Achat : {{prixTotalAchat}} €<br>
+    <a class="btn btn-outline-warning btn-sm text-center" href="connexion" role="button">Acheter</a></div>
+    <div class="text-big">Prix Total Location : {{prixTotalLocation}} €</div>
+    <a class="btn btn-outline-warning btn-sm text-center" href="connexion" role="button">Louer</a>
 </div>
 </div>
