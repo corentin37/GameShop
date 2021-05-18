@@ -1,1 +1,74 @@
 <p>tache-joueur works!</p>
+<!-- Navbar d'admin-->
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" routerLink='/' routerLinkActive='active' > Admin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav nav-fill w-100">
+          
+          <a class="nav-item nav-link" href='./tacheAdmin' routerLinkActive='active'>Gérer Admin</a>
+          <a class="nav-item nav-link" href='./tacheVendeur' routerLinkActive='active'>Gérer Vendeur</a>
+          <a class="nav-item nav-link" href='./tacheJoueur' routerLinkActive='active'>Gérer Joueur</a>
+          <a class="nav-item nav-link" href='./tacheUser' routerLinkActive='active'>Gérer User</a>
+          <a class="nav-item nav-link" href='./tacheSalle' routerLinkActive='active'>Gérer Salles</a>
+  
+        </div>
+      </div>
+    </nav>
+    
+</div>
+
+
+
+<!-- recherche d'un joueur par login  -->
+<div class="container border">
+  <p>Rechercher par id/login un joueur</p>
+
+  <form #rechercheJo="ngForm" (ngSubmit)="rechercheJoueur(rechercheJo.value)">
+    <div class="form-group">
+      <label> FORMULAIRE DE recherche : </label>
+      <input type="text" required placeholder=" Entre le login du joueur recherché" id="login" name="login" class="form-control" ngModel/>
+    </div>
+
+    <div *ngFor="let r of rechercheJ" class="col-sm-4">
+      
+      <div class="row">
+        <div class="card">
+          <div class="col-sm-12">
+            <div class="card-body-note">
+              <div class="card-header">Joueur recherché :</div>
+
+              <div class="card-text">
+                <p>Id : {{ addVendeur(r.id) }}</p>
+                <p>Login : {{ r.user.login }}</p>
+                <p>Mail : {{ r.user.mail }}</p>
+                <p>Numéro : {{ r.user.tel }}</p>
+                <p>Adhésion : {{ adhesionString(r.cotisation) }}</p>
+                <p>Etat du compte : {{ activitee(r.user.activity) }}</p>
+                
+              </div>
+            </div>
+            <div class="card-footer">
+              <button
+                type="button" class="btn btn-raised noto" (click)="adherer(r) + rechercheJoueur(rechercheJo.value)"
+              >
+                Adhérant
+              </button>
+              <button
+                type="button" class="btn btn-raised noto" (click)="bloquer(r) + rechercheJoueur(rechercheJo.value)">
+                Bloquer
+              </button>
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn button-primary btn-block">
+      Valider
+    </button>
+  </form>
+</div>

@@ -42,7 +42,6 @@ import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.componen
     TacheAdminComponent,
     TacheVendeurComponent,
     TacheSalleComponent,
-    TacheVendeurComponent,
     TacheUserComponent,
     TacheJoueurComponent
 
