@@ -14,6 +14,7 @@ import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
 import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.component';
 import { PanierComponent } from './panier/panier.component';
 import { HistoriqueSalleComponent } from './historique-salle/historique-salle.component';
+import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.component';
 
 
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   {component: GestionSallesComponent, path: 'salle'},
   {component: ReserverSalleComponent, path: 'reserverSalle'},
   {component: HistoriqueSalleComponent, path: 'historiqueSalle'},
+  {component: TrierparPlateauComponent, path: 'trierParPlateau'},
 
   {component: PanierComponent, path: 'panier'},
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}, // quand il ya pas de chemin ça redirige directement vers le catalogue

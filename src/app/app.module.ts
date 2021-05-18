@@ -20,6 +20,7 @@ import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.componen
 import { ReserverSalleComponent } from './reserver-salle/reserver-salle.component';
 import { HistoriqueSalleComponent } from './historique-salle/historique-salle.component';
 import { PanierComponent } from './panier/panier.component';
+import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.component';
 
 
 
@@ -39,7 +40,8 @@ import { PanierComponent } from './panier/panier.component';
     TacheUserComponent,
     TacheJoueurComponent,
     ReserverSalleComponent,
-    HistoriqueSalleComponent
+    HistoriqueSalleComponent,
+    TrierparPlateauComponent
 
   ],
   imports: [

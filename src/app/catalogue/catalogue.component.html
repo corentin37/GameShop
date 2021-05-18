@@ -7,7 +7,7 @@
           Catégorie
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let c of categorie"  class="dropdown-item"> {{c.libelle}} </a>
+          <a (click)="goToJeuPlateau()" *ngFor="let c of categorie"  class="dropdown-item"> {{c.libelle}} </a>
         </div>
         
       </div>
@@ -37,7 +37,7 @@
           Prix
         </button>
         <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          
+          <a *ngFor="let j of jeu" class="dropdown-item">{{j.prixAchat}}</a>
         </div>
       </div>
       <div class="dropdown">
@@ -46,7 +46,7 @@
           Nombre de joueurs
         </button>
         <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          
+          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.nombreJoueursMin}}/{{j.lejeu.nombreJoueursMax}}</a>
         </div>
       </div>
       <div class="dropdown">
@@ -55,7 +55,7 @@
           Temps de jeu
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          
+          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.tempsDeJeu}}</a>
         </div>
       </div>
       <div class="dropdown">
@@ -64,7 +64,7 @@
           Niveau
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          
+          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.niveauDifficulte}}</a>
         </div>
       </div>
     </div>

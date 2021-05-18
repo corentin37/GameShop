@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { TransformVisitor } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { Router } from '@angular/router';
-import { getEnabledCategories } from 'trace_events';
 import { JeuService } from '../Services/jeu.service';
 
 @Component({
@@ -51,7 +50,7 @@ export class CatalogueComponent implements OnInit {
   console(entreeConsole): any {
     console.log(entreeConsole);
   }
-
+  
   
 
 
@@ -66,7 +65,11 @@ goToPanier(){
    
   
 }
-
+goToJeuPlateau(){
+  this.route.navigateByUrl('trierParJeuPlateau');
+   
+  
+}
     
     
   
