@@ -28,7 +28,7 @@ export class PanierComponent implements OnInit {
   count;
 
 
-  constructor(private http: HttpClient,private route: Router, private JeuService : JeuService) { }
+  constructor(private http: HttpClient,private route: Router, private jeuService : JeuService) { }
 
   ngOnInit(): void {
     this.getOnePanierByUser(this.iduser);
@@ -75,8 +75,8 @@ export class PanierComponent implements OnInit {
   }
 
   goToJeu(game): any{
-    this.JeuService.game=game;
-    console.log('jeu dans le service', this.JeuService.game);
+    this.jeuService.game=game;
+    console.log('jeu dans le service', this.jeuService.game);
     this.route.navigateByUrl('jeu');
 
   }  
