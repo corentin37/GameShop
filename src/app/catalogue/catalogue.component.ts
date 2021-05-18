@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
+import { TransformVisitor } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalogue',
@@ -17,19 +17,24 @@ export class CatalogueComponent implements OnInit {
 ];
 
 
-  constructor(private http: HttpClient, private route : Router) { }
+  constructor(private http: HttpClient) { }
   jeu;
   jeuAchat;
+  id = 19;
   ngOnInit(): void {
-  this.getCatalogue();
+    this.getCatalogue();
+    this.getJeu();
   }
   getCatalogue() : any{
     this.http.get('http://localhost:8086/jeu/listJeuAchat').subscribe({
       next: (data)=> {this.jeu = data; },
       error: (err)=> {console.log(err);}
       });
-    
   
+
+      
+
+
  /*longueurDuNom(nomJeu): String{
         if(nomJeu.length() <= 34){
           return nom.nom + "";
@@ -41,9 +46,16 @@ export class CatalogueComponent implements OnInit {
       }*/
     
     }
-  goToConnexion() :any{
-    this.route.navigateByUrl('connexion');
-  }
   
+    transmit(body): any{
+      this.id = body;
+    }
+  
+    getJeu() : any{
+      this.http.get('http://localhost:8086/jeu/' + this.id).subscribe({
+        next: (data)=> {this.jeu = data; },
+        error: (err)=> {console.log(err);}
+        });
+
+      }
   }
-    

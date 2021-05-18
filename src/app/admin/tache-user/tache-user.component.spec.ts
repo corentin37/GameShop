@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TrierparPlateauComponent } from './trierpar-plateau.component';
+import { TacheUserComponent } from './tache-user.component';
 
-describe('TrierparPlateauComponent', () => {
-  let component: TrierparPlateauComponent;
-  let fixture: ComponentFixture<TrierparPlateauComponent>;
+describe('TacheUserComponent', () => {
+  let component: TacheUserComponent;
+  let fixture: ComponentFixture<TacheUserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TrierparPlateauComponent ]
+      declarations: [ TacheUserComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TrierparPlateauComponent);
+    fixture = TestBed.createComponent(TacheUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

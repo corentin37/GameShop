@@ -1,3 +1,5 @@
+//admin
+
 
 <!-- Navbar d'admin-->
 <div>
@@ -89,7 +91,7 @@
     <br />
 
     <table class="table table-hover">
-      <thead>
+      <thead> 
         <tr>
           <th scope="col">id</th>
           <th scope="col">login</th>
@@ -127,8 +129,8 @@
         <input type="text" required placeholder=" Entre le login du vendeur recherché" id="login" name="login" class="form-control" ngModel/>
       </div>
 
-      <div *ngFor="let r of rechercheV" class="col-sm-4">
-        {{ console("card V: " + r) }}
+      <div *ngIf="vendeurExist" class="col-sm-4">
+        
         <div class="row">
           <div class="card">
             <div class="col-sm-12">
@@ -136,11 +138,11 @@
                 <div class="card-header">Vendeur recherché :</div>
 
                 <div class="card-text">
-                  <p>Id : {{ addVendeur(r.id) }}</p>
-                  <p>Login : {{ r.user.login }}</p>
-                  <p>Mail : {{ r.user.mail }}</p>
-                  <p>Numéro : {{ r.user.tel }}</p>
-                  <p>Etat du compte : {{ activitee(r.user.activity) }}</p>
+                  <p>Id : {{ addVendeur(rechercheV.id) }}</p>
+                  <p>Login : {{ rechercheV.user.login }}</p>
+                  <p>Mail : {{ rechercheV.user.mail }}</p>
+                  <p>Numéro : {{ rechercheV.user.tel }}</p>
+                  <p>Etat du compte : {{ activitee(rechercheV.user.activity) }}</p>
                 </div>
               </div>
               <div class="card-footer">
@@ -149,7 +151,7 @@
                 >
                   Modifier
                 </button>
-                <button type="button" class="btn btn-raised noto" (click)="bloquer(r)  + rechercheVendeur(recherche.value)">
+                <button type="button" id="bt_bloquer" class="btn btn-raised noto" (click)="bloquer(rechercheV) + rechercheVendeur(recherche.value)">
                   Bloquer
                 </button>
               </div>

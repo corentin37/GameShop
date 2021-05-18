@@ -15,8 +15,10 @@ export class JeuComponent implements OnInit {
 
   jeux;
   jeu;
-  //valeur = ;
   avis;
+  avisnew;
+
+  idJeu = 19;
 
 
   constructor(private http:HttpClient, private route: Router) { }
@@ -44,12 +46,25 @@ export class JeuComponent implements OnInit {
   }
 
   getOneJeu(){
-    this.http.get('http://localhost:8086/jeu/19').subscribe({//problème : affiher le bon jeu correspondant du catalogue, pas tjrs le 19
+    this.http.get('http://localhost:8086/jeu/20').subscribe({
       next: (data) => {this.jeu = data;},
       error: (err) => {console.log(err);}
     }); 
   }
 
+
+  newAvis(avis): any {
+    const idUser = {id: 17};
+    const idJeu = {id: 19}
+    avis.user.id = idUser; // on entre l'expéditeur 1 en dur pour gérer l'envoi du test
+    avis.jeu.id = idJeu;
+    this.http.post('http://localhost:8086/avis', avis).subscribe({
+      next: (data)=> {this.route.navigateByUrl('jeu');},
+      error: (err) => {console.log(err);}
+      
+    })
+
+  }
   
 
 }
