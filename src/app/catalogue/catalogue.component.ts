@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { TransformVisitor } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalogue',
@@ -17,7 +18,7 @@ export class CatalogueComponent implements OnInit {
 ];
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route : Router) { }
   jeu;
   jeuAchat;
   id = 19;
@@ -30,6 +31,7 @@ export class CatalogueComponent implements OnInit {
       next: (data)=> {this.jeu = data; },
       error: (err)=> {console.log(err);}
       });
+    
   
 
       
@@ -58,4 +60,8 @@ export class CatalogueComponent implements OnInit {
         });
 
       }
+<<<<<<< HEAD
   }
+=======
+  }
+>>>>>>> febfcb1003a059e379950873ae488b91db7685e1
