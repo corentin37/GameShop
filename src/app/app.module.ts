@@ -21,6 +21,7 @@ import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
 import { TacheUserComponent } from './admin/tache-user/tache-user.component';
 import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.component';
 import { ReserverSalleComponent } from './reserver-salle/reserver-salle.component';
+import { PanierComponent } from './panier/panier.component';
 
 
 
@@ -33,7 +34,7 @@ import { ReserverSalleComponent } from './reserver-salle/reserver-salle.componen
     AdminComponent,
     CatalogueComponent,
     GestionSallesComponent,
-
+    PanierComponent,
     NewAvisComponent,
 
   
