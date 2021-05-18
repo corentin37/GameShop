@@ -40,7 +40,7 @@
         <div class="form-head col-sm-2">
           <button
           type = "button"  
-          (click)="fenetreCreer()"
+          (click)="fenetreActivation(1)"
             class="btn button-primary btn-block"
           >
             Créer :
@@ -58,7 +58,7 @@
           />
         </div>
         <div class="form-head col-sm-2">
-          <button type="submit" class="btn button-primary btn-block">
+          <button (click) = "fenetreActivation(2)" type="submit" class="btn button-primary btn-block">
             Rechercher
           </button>
         </div>
@@ -91,7 +91,7 @@
                     <button
                       type="button"
                       class="btn btn-raised noto"
-                      (click)="clickFunction()"
+                      (click)="fenetreActivation(3)"
                     >
                       Modifier
                     </button>
@@ -111,8 +111,8 @@
               </div>
             </div>
           </div>
-
-          <div *ngIf="fenetrePersonExistError" class="col-sm">
+<!-- Card Pas de Résultat -->
+          <div *ngIf="fenetreSansResultat" class="col-sm">
             <div class="row">
               <div class="card">
                 <div class="col-sm-12">
@@ -135,7 +135,7 @@
     <!-- Card inscription -->
 
     <div class="card inscription">
-      <div *ngIf="fenetreCreerActivation" class="contenuCard">
+      <div *ngIf="fenetreInscription;" class="contenuCard">
         <form #admin="ngForm" (ngSubmit)="inscriptionAdmin(admin.value)">
           <div class="form-group">
             <label style="align-content: center" for=""> Créer un Admin </label>
@@ -144,8 +144,66 @@
               required
               placeholder="Login"
               name="login"
+              id="login"
+              class="form-control" [value] = "tg"
+              ngModel
+            />
+
+            <input
+              type="password"
+              required
+              placeholder="Mot de passe"
+              name="password"
               class="form-control"
               ngModel
+            />
+            <input
+              type="text"
+              required
+              placeholder="Numéro de téléphone"
+              name="tel"
+              class="form-control"
+              ngModel
+            />
+            <input
+              type="text"
+              required
+              placeholder="Adresse email"
+              name="mail"
+              class="form-control"
+              ngModel
+            />
+          </div>
+  
+          <button type="submit" class="btn button-primary btn-block">
+            Valider
+          </button>
+        </form>
+      </div>
+    </div>
+
+        <!-- Card modification -->
+
+    <div class="card modification">
+      <div *ngIf="fenetreModification" class="contenuCard">
+        <form #admin="ngForm" (ngSubmit)="modificationAdmin(admin.value)">
+          <div class="form-group">
+            <label style="align-content: center" for=""> Modification </label>
+            
+                        <!--
+            <p>Id : {{ person.id }}</p>
+            <p>Login : {{ person.user.login }}</p>
+            <p>Mail : {{ person.user.mail }}</p>
+            <p>Numéro : {{ person.user.tel }}</p>-->
+            Id : {{ person.id }}
+            <input
+              type="text"
+              required
+              placeholder="Login"
+              name="login"
+              value = "${person.login}"
+              class="form-control"
+              [(ngModel)]= person.login
             />
             <input
               type="password"
