@@ -1,32 +1,13 @@
 <p>tache-vendeur works!</p>
 
-
+<app-admin></app-admin>
 
     <!-- Navbar d'admin-->
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" routerLink='/' routerLinkActive='active' > Admin</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav nav-fill w-100">
-              
-              <a class="nav-item nav-link" routerLink='tacheAdmin' routerLinkActive='active'>Gérer Admin</a>
-              <a class="nav-item nav-link" routerLink='tacheVendeur' routerLinkActive='active'>Gérer Vendeur</a>
-              <a class="nav-item nav-link" routerLink='admin/tacheJoueur' routerLinkActive='active'>Gérer Joueur</a>
-              <a class="nav-item nav-link" routerLink='admin/tacheUser' routerLinkActive='active'>Gérer User</a>
-              <a class="nav-item nav-link" routerLink='admin/tacheSalles' routerLinkActive='active'>Gérer Salles</a>
-      
-            </div>
-          </div>
-        </nav>
-        
-    </div>
+    
     
         <!-- Creation vendeur -->
-     <div class="container border">
-        <div class="container border">
+     <div class="container col-sm-4 border">
+        <div class="container   border">
           <p>Creér un Vendeur</p>
       
           <form #vendeur="ngForm" (ngSubmit)="inscriptionVendeur(vendeur.value)">
@@ -45,12 +26,55 @@
         </div>
       </div> 
     
-    
+     <!-- recherche d'un vendeur par login  -->
+<div class="container border">
+  <p>Rechercher par id/nom un vendeur</p>
+
+  <form #recherche="ngForm" (ngSubmit)="rechercheVendeur(recherche.value)">
+    <div class="form-group">
+      <label> FORMULAIRE DE recherche : </label>
+      <input type="text" required placeholder=" Entre le login du vendeur recherché" id="login" name="login" class="form-control" ngModel/>
+    </div>
+
+    <div *ngIf="vendeurExist" class="col-sm-4">
+      
+      <div class="row">
+        <div class="card">
+          <div class="col-sm-12">
+            <div class="card-body-note">
+              <div class="card-header">Vendeur recherché :</div>
+
+              <div class="card-text">
+                <p>Id : {{ addVendeur(rechercheV.id) }}</p>
+                <p>Login : {{ rechercheV.user.login }}</p>
+                <p>Mail : {{ rechercheV.user.mail }}</p>
+                <p>Numéro : {{ rechercheV.user.tel }}</p>
+                <p>Etat du compte : {{ actvitityBoolToStr(rechercheV.user.activity) }}</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button
+                type="button" class="btn btn-raised noto" (click)="clickFunction()"
+              >
+                Modifier
+              </button>
+              <button type="button" id="bt_bloquer" class="btn btn-raised noto" (click)="bloquer(rechercheV) + rechercheVendeur(recherche.value)">
+                Bloquer
+              </button>
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn button-primary btn-block">
+      Valider
+    </button>
+  </form>
+</div>
+
+<p>modifier une cotisation adhérent, c'est pas au venderu plutot ? ?</p>
     
       
     
-<<<<<<< HEAD
     
-=======
-    
->>>>>>> febfcb1003a059e379950873ae488b91db7685e1

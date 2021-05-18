@@ -12,18 +12,13 @@ import { CreerJoueurComponent } from './creer-joueur/creer-joueur.component';
 import { AdminComponent } from './admin/admin.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { GestionSallesComponent } from './gestion-salles/gestion-salles.component';
-
 import { TacheAdminComponent } from './admin/tache-admin/tache-admin.component';
 import { TacheVendeurComponent } from './admin/tache-vendeur/tache-vendeur.component';
 import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
 import { TacheUserComponent } from './admin/tache-user/tache-user.component';
 import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.component';
-
-
-
-
-
-
+import { ReserverSalleComponent } from './reserver-salle/reserver-salle.component';
+import { PanierComponent } from './panier/panier.component';
 
 
 
@@ -36,12 +31,13 @@ import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.componen
     AdminComponent,
     CatalogueComponent,
     GestionSallesComponent,
+    PanierComponent,
     TacheAdminComponent,
     TacheVendeurComponent,
     TacheSalleComponent,
-    TacheVendeurComponent,
     TacheUserComponent,
-    TacheJoueurComponent
+    TacheJoueurComponent,
+    ReserverSalleComponent
 
   ],
   imports: [

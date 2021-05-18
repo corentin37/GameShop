@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JeuService } from '../Services/jeu.service';
 
 
 
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
   selector: 'app-jeu',
   templateUrl: './jeu.component.html',
   styleUrls: ['./jeu.component.css']
-  
+
 })
 export class JeuComponent implements OnInit {
 
@@ -22,26 +23,36 @@ export class JeuComponent implements OnInit {
   idJeu = 19;
 
 
-  constructor(private http:HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private jeuService: JeuService) { }
 
   ngOnInit(): void {
-  this.getOneJeu();
-  this.getAllAvis();
+    // this.getAllJeu();
+    this.getAllAvis();
+    this.jeu = this.jeuService.game;
+    console.log('contenu de jeu venu du service', this.jeu);
 
   }
 
-  getAllAvis(){
-    this.http.get('http://localhost:8086/avis').subscribe({
-      next: (data) => {this.avis = data;},
-      error: (err) => {console.log(err);}
-    }); 
+
+  getAllJeu() {
+    this.http.get('http://localhost:8086/jeu/list').subscribe({
+      next: (data) => { this.jeux = data; },
+      error: (err) => { console.log(err); }
+    });
   }
-//gérer les avis spécifiques au jeu
-  getOneJeu(){
-    this.http.get('http://localhost:8086/jeu/19').subscribe({
-      next: (data) => {this.jeu = data;},
-      error: (err) => {console.log(err);}
-    }); 
+
+  getAllAvis() {
+    this.http.get('http://localhost:8086/avis/list/jeu/19').subscribe({
+      next: (data) => { this.avis = data; },
+      error: (err) => { console.log(err); }
+    });
+  }
+
+  getOneJeu() {
+    this.http.get('http://localhost:8086/jeu/20').subscribe({
+      next: (data) => { this.jeu = data; },
+      error: (err) => { console.log(err); }
+    });
   }
 
 
@@ -56,6 +67,6 @@ export class JeuComponent implements OnInit {
     });
 
   }
-  
+
 
 }

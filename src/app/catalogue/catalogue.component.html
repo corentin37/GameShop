@@ -92,54 +92,29 @@
       <div class="row">
         <div *ngFor="let j of jeu" class="col-sm-4 ">
           <br>
-          <a class="bt-perso" href="jeu" role="button">
-            <div class="card">
-              <img src={{j.lejeu.urlImage}} width="200px"><br>
-              <div class="ml-2">
-                {{ j.lejeu.note }}/5<br>
-                {{ j.lejeu.marqueDuJeu.libelle}}<br>
-                {{ j.lejeu.nom}}
+            <div type="button" (click)="goToJeu(j)" class="card">
+              <img src={{j.lejeu.urlImage}} width="200px" alt="logo jeu"><br>
+              <div class="card-body ml-2">
+                <p class="card-text">{{ j.lejeu.note }}/5</p>
+                <p class="card-text">{{ j.lejeu.marqueDuJeu.libelle}}</p>
+                <p class="card-text">{{ j.lejeu.nom}}</p>
+                <p class="card-text">Achat : {{j.prixAchat}} € | Location : {{j.lejeu.prixLocation}} €</p>
               </div>
             </div>
-
+         
             <div class="card">
-              <div class="ml-2 mt-2">
-                <span><button (click)="goToConnexion()" class="btn btn-outline-warning btn-sm" routerLink='connexion'
-                    role="button">Acheter</button> : {{j.prixAchat}} € | <button (click)="goToConnexion()"class="btn btn-outline-warning btn-sm"
-                    routerLink="connexion" role="button">Louer</button> : {{j.lejeu.prixLocation}} € </span>
+              <div class="ml-1 mt-2">
+              <button (click)="goToPanier()" class="btn btn-secondary">AJOUTER AU PANIER</button>
               </div>
         </div>
-          
-        <div class="col-sm-9 ">
-          <div class="row"> 
-          <div *ngFor="let j of jeu" class="col-sm-4 ">
-                    <br>
-                    <a class="bt-perso" routerLink = "['../jeu/']"   role="button"> <!--"['../jeu/', j.lejeu.id]"-->
-                      <div class="card">
-                        <img src={{j.lejeu.urlImage}} width="200px"><br>
-                        <div class="ml-2">
-                            
-                            {{ j.lejeu.note }}/5<br>
-                            {{ j.lejeu.marqueDuJeu.libelle}}<br>
-                            {{ j.lejeu.nom}}
-                        </div>
-                    </div>
+       
+        
                     
-                    <div class="card">
-                      <div class="ml-2 mt-2">
-                      <form>
-                      <span><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Acheter</a> : {{j.prixAchat}} € | <a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Louer</a> : {{j.lejeu.prixLocation}} € </span>
-                      </form>
-                      </div>
-                  </div>
-                  <br>
-                    </a>
-                    
-                </div>
-              </div>  
-            </div>
+                
+              
+            
             <br>
-          </a>
+          
 
         </div>
       </div>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { TransformVisitor } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { Router } from '@angular/router';
+import { JeuService } from '../Services/jeu.service';
 
 @Component({
   selector: 'app-catalogue',
@@ -18,7 +19,7 @@ export class CatalogueComponent implements OnInit {
 ];
 
 
-  constructor(private http: HttpClient, private route : Router) { }
+  constructor(private http: HttpClient, private route : Router, private jeuService : JeuService) { }
   jeu;
   jeuAchat;
   id = 19;
@@ -34,20 +35,24 @@ export class CatalogueComponent implements OnInit {
     
   
 
-      
+
+  }
 
 
- /*longueurDuNom(nomJeu): String{
-        if(nomJeu.length() <= 34){
-          return nom.nom + "";
-          
-        }
-        else{
-          return nomJeu.nom;
-        }
-      }*/
+  goToJeu(game): any{
+    this.jeuService.game=game;
+    console.log('jeu dan sle service', this.jeuService.game);
+    this.route.navigateByUrl('jeu');
+
+  }  
+goToPanier(){
+  this.route.navigateByUrl('panier');
+   
+  
+}
+
     
-    }
+    
   
     transmit(body): any{
       this.id = body;
@@ -60,8 +65,5 @@ export class CatalogueComponent implements OnInit {
         });
 
       }
-<<<<<<< HEAD
   }
-=======
-  }
->>>>>>> febfcb1003a059e379950873ae488b91db7685e1
+  

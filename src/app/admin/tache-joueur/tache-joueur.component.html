@@ -1,1 +1,84 @@
-<p>tache-joueur works!</p>
+
+<!-- Navbar d'admin-->
+
+
+<!-- Recherche table de tous les users -->
+<div class="container border">
+  <div class="trombinoscope">Liste des Joueur:</div>
+  <br />
+
+  <table class="table table-hover">
+    <thead> 
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">login</th>
+        <th scope="col">password</th>
+        <th scope="col">mail</th>
+        <th scope="col">tel</th>
+        <th scope="col">Cotisation</th>
+        <th scope="col">Etat</th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let a of joueurs">
+        <th scope="row">{{ a.id }}</th>
+        <td>{{ a.user.login }}</td>
+        <td>{{ a.user.password }}</td>
+        <td>{{ a.user.mail }}</td>
+        <td>{{ a.user.tel }}</td>
+        <td>{{ cotisationBoolToStr(a.cotisation) }}</td>
+        <td>{{ actvitityBoolToStr(a.user.activity) }}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+
+<!-- recherche d'un joueur par login  -->
+<div class="container border">
+  <p>Rechercher par id/login un joueur</p>
+
+  <form #recherche="ngForm" (ngSubmit)="rechercheJoueur(recherche.value)">
+    <div class="form-group">
+      <label> FORMULAIRE DE recherche : </label>
+      <input type="text" required placeholder=" Entre le login du joueur recherché" id="login" name="login" class="form-control" ngModel/>
+    </div>
+
+    <div *ngIf="joueurExist" class="col-sm-4">
+      
+      <div class="row">
+        <div class="card">
+          <div class="col-sm-12">
+            <div class="card-body-note">
+              <div class="card-header">Joueur recherché :</div>
+
+              <div class="card-text">
+                <p>Id : {{ (rechercheJ.id) }}</p>
+                <p>Login : {{ rechercheJ.user.login }}</p>
+                <p>Mail : {{ rechercheJ.user.mail }}</p>
+                <p>Numéro : {{ rechercheJ.user.tel }}</p>
+                
+                <p>Etat du compte : {{ actvitityBoolToStr(rechercheJ.user.activity) }}</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="button" id="bt_bloquer" class="btn btn-raised noto" (click)="adherer(rechercheJ) + rechercheJoueur(recherche.value)">
+                adhérer
+              </button>
+              <button type="button" id="bt_bloquer" class="btn btn-raised noto" (click)="bloquer(rechercheJ) + rechercheJoueur(recherche.value)">
+                Bloquer
+              </button>
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn button-primary btn-block">
+      Valider
+    </button>
+  </form>
+
+  
+</div>
