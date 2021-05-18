@@ -21,6 +21,7 @@ import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
 import { TacheUserComponent } from './admin/tache-user/tache-user.component';
 import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.component';
 import { ReserverSalleComponent } from './reserver-salle/reserver-salle.component';
+import { HistoriqueSalleComponent } from './historique-salle/historique-salle.component';
 
 
 
@@ -42,7 +43,8 @@ import { ReserverSalleComponent } from './reserver-salle/reserver-salle.componen
     TacheSalleComponent,
     TacheUserComponent,
     TacheJoueurComponent,
-    ReserverSalleComponent
+    ReserverSalleComponent,
+    HistoriqueSalleComponent
 
   ],
   imports: [

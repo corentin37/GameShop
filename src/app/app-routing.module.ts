@@ -15,6 +15,7 @@ import { ReserverSalleComponent } from './reserver-salle/reserver-salle.componen
 import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
 import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.component';
 import { PanierComponent } from './panier/panier.component';
+import { HistoriqueSalleComponent } from './historique-salle/historique-salle.component';
 
 
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   {component: CatalogueComponent, path: 'catalogue'},
   {component: GestionSallesComponent, path: 'salle'},
   {component: ReserverSalleComponent, path: 'reserverSalle'},
+  {component: HistoriqueSalleComponent, path: 'historiqueSalle'},
 
   {component: PanierComponent, path: 'panier'},
   {component: NewAvisComponent, path: 'avis'},
