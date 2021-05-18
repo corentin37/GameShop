@@ -6,49 +6,38 @@
           aria-haspopup="true" aria-expanded="false">
           Catégorie
         </button>
-        <div *ngFor="let c of categorie" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item">{{ c.libelle}}</a>
-          <!--<a class="dropdown-item" routerLink=''>Cartes</a>-->
-          <!--<a class="dropdown-item" routerLink=''>Plateau</a>-->
-          <!--a class="dropdown-item" routerLink=''>Culture Générale</a>-->
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Age
-        </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" routerLink=''>0-4 ans</a>
-          <a class="dropdown-item" routerLink=''>5-8 ans</a>
-          <a class="dropdown-item" routerLink=''>9-12 ans</a>
-          <a class="dropdown-item" routerLink=''>12-15 ans</a>
-          <a class="dropdown-item" routerLink=''>16+ ans</a>
+          <a *ngFor="let c of categorie"  class="dropdown-item"> {{c.libelle}} </a>
         </div>
+        
       </div>
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Marque
         </button>
-        <div *ngFor="let m of marque" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item">{{ m.libelle}}</a>
-          <!--<a class="dropdown-item" routerLink=''>Ravensburger</a>-->
-          <!-- <a class="dropdown-item" routerLink=''>Goliath</a>-->
-          <!-- <a class="dropdown-item" routerLink=''>Heye</a>-->
-           <!--<a class="dropdown-item" routerLink=''>Londji</a>-->
-           <!--<a class="dropdown-item" routerLink=''>Repos Production</a>-->
-          <!-- <a class="dropdown-item" routerLink=''>Ducale</a>-->
-          <!-- <a class="dropdown-item" routerLink=''>Devil Pig Games</a>-->
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
         </div>
       </div>
+      
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Age
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.ageMin}}</a>
+        </div>
+      </div>
+    
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Prix
         </button>
-        <div *ngFor="let j of jeu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-         
+        <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          
         </div>
       </div>
       <div class="dropdown">
@@ -56,8 +45,8 @@
           aria-haspopup="true" aria-expanded="false">
           Nombre de joueurs
         </button>
-        <div *ngFor="let j of jeu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item">{{ j.lejeu.nombreJoueursMin}}/{{ j.lejeu.nombreJoueursMax}}</a>
+        <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          
         </div>
       </div>
       <div class="dropdown">
@@ -65,8 +54,8 @@
           aria-haspopup="true" aria-expanded="false">
           Temps de jeu
         </button>
-        <div *ngFor="let j of jeu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item">{{ j.lejeu.tempsDeJeu}}</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          
         </div>
       </div>
       <div class="dropdown">
@@ -74,30 +63,31 @@
           aria-haspopup="true" aria-expanded="false">
           Niveau
         </button>
-        <div *ngFor="let j of jeu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item">{{ j.lejeu.niveauDifficulte}}</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          
         </div>
       </div>
     </div>
 
     <div class="col-sm-9 ">
       <div class="row">
-        <div *ngFor="let j of jeu" class="col-sm-4 ">
           <br>
-            <div type="button" (click)="goToJeu(j)" class="card">
-              <img src={{j.lejeu.urlImage}} class="img" alt="logo jeu"><br>
-              <div class="card-body ml-2">
-                <p class="card-text">{{ j.lejeu.note }}/5</p>
-                <p class="card-text">{{ j.lejeu.marqueDuJeu.libelle}}</p>
-                <p class="card-text">{{ j.lejeu.nom}}</p>
-                <p class="card-text">Achat : {{j.prixAchat}} € | Location : {{j.lejeu.prixLocation}} €</p>
-                <button (click)="goToPanier()" class="btn btn-secondary btn-center">AJOUTER AU PANIER</button>
-              </div>
-            </div>
-   
+          <div *ngFor="let j of jeu" class="col-sm-4 ">
             <br>
-   
-        </div>
+              <div type="button" (click)="goToJeu(j)" class="card">
+                <img src={{j.lejeu.urlImage}} class="img" alt="logo jeu"><br>
+                <div class="card-body ml-2">
+                  <p class="card-text">{{ j.lejeu.note }}/5</p>
+                  <p class="card-text">{{ j.lejeu.marqueDuJeu.libelle}}</p>
+                  <p class="card-text">{{ j.lejeu.nom}}</p>
+                  <p class="card-text">Achat : {{j.prixAchat}} € | Location : {{j.lejeu.prixLocation}} €</p>
+                  <button (click)="goToPanier()" class="btn btn-secondary btn-center">AJOUTER AU PANIER</button>
+                </div>
+              </div>
+     
+              <br>
+     
+          </div>
       </div>
     </div>
 
