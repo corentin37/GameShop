@@ -29,12 +29,12 @@ export class PanierComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOnePanierByUser(this.iduser);
-    this.getPrixTotaux();
+    //this.getPrixTotaux();
   }
   
   getOnePanierByUser(iduser){
     this.http.get('http://localhost:8086/panier/user/'+iduser).subscribe({
-      next: (data) => {this.panier = data;},
+      next: (data) => {this.panier = data;console.log("panier : ",this.panier);this.getPrixTotaux(this.panier);this.definePanierAchatAndPanierLocation()},
       error: (err) => {console.log(err);}
     });
   }
@@ -48,21 +48,26 @@ export class PanierComponent implements OnInit {
   
   definePanierAchatAndPanierLocation():any{
     for(let j of this.panier){
-      if(j.isAchat){
+      if(j.achat){
         this.panierAchat.push(j);
       }
       else{
-        this.panierLocation+=j;
+        this.panierLocation.push(j);
       }
     }
   }
   
-  getPrixTotaux():any{
+  getPrixTotaux(panier):any{
     this.prixTotalAchat=0;
     this.prixTotalLocation=0;
-    for (let j of this.panier) {
-      this.prixTotalAchat+=j.jeuAchat.prixAchat*j.quantite;
-      this.prixTotalLocation+=j.jeuAchat.lejeu.prixLocation*j.quantite;
+    for (let j of panier) {
+      if(j.achat){
+        this.prixTotalAchat+=j.jeuAchat.prixAchat*j.quantite;
+      }
+      else{
+        this.prixTotalLocation+=j.jeuAchat.lejeu.prixLocation*j.quantite;
+      }
+      
     }
   }
 

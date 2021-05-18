@@ -2,7 +2,7 @@
 <div class="row">
 <div class="col-sm-9 ">
     <div class="row"> 
-    <div *ngFor="let j of panier" class="col-sm-4 ">
+    <div *ngFor="let j of panierAchat" class="col-sm-4 ">
               <br>
               <a class="bt-perso" href="jeu" role="button">
                 <div class="card">
@@ -39,8 +39,8 @@
       </div>
 
 <div class="col-sm-3">
-    <p>Prix Total Achat : {{prixTotalAchat}} €<br><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Acheter</a></p>
-    <p>Prix Total Location : {{prixTotalLocation}} €<br><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Louer</a></p>
+    <p>Prix Total Achat : {{prixTotalAchat}} €<br></p>
+    <p>Prix Total Location : {{prixTotalLocation}} €<br><br><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Confirmer l'achat et la location</a></p>
 </div>
 </div>
 
