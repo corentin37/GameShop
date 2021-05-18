@@ -45,7 +45,12 @@ export class CatalogueComponent implements OnInit {
     this.route.navigateByUrl('jeu');
 
   }  
-
+goToConnexion(){
+  this.http.get('http://localhost:8086/connexion').subscribe({
+    next: (data)=>{console.log(data);this.route.navigateByUrl('connexion');},
+    error: (err) =>{console.log(err);},
+  })
+}
 
     
     
