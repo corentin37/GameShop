@@ -93,7 +93,7 @@
         <div *ngFor="let j of jeu" class="col-sm-4 ">
           <br>
             <div type="button" (click)="goToJeu(j)" class="card">
-              <img src={{j.lejeu.urlImage}} width="240px" alt="logo jeu"><br>
+              <img src={{j.lejeu.urlImage}} class="img" alt="logo jeu"><br>
               <div class="card-body ml-2">
                 <p class="card-text">{{ j.lejeu.note }}/5</p>
                 <p class="card-text">{{ j.lejeu.marqueDuJeu.libelle}}</p>
