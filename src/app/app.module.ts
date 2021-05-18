@@ -20,6 +20,7 @@ import { TacheVendeurComponent } from './admin/tache-vendeur/tache-vendeur.compo
 import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
 import { TacheUserComponent } from './admin/tache-user/tache-user.component';
 import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.component';
+import { PanierComponent } from './panier/panier.component';
 
 
 
@@ -38,7 +39,7 @@ import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.componen
     AdminComponent,
     CatalogueComponent,
     GestionSallesComponent,
-
+    PanierComponent,
     NewAvisComponent,
 
   

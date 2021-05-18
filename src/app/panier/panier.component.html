@@ -13,10 +13,14 @@
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">Quantite : {{j.quantite}}<br></div>
                       </div>
-
-                      {{ j.marque}}<br>
+                      <div class="row">
+                        <div class="col-sm-8">{{ j.marque}}<br></div>
+                        <div class="col-sm-1"><a class="btn btn-outline-warning btn-sm" type="button">-</a></div>
+                        <div class="col-sm-1"><a class="btn btn-outline-warning btn-sm" type="button">+</a></div>
+                      </div>
+                      
                       {{ j.nom}}
-                  </div>
+                  </div> 
               </div>
               
               <div class="card">

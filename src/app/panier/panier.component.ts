@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class PanierComponent implements OnInit {
   jeu;
   jeux;
-  idjeu;
   prixTotalAchat=0;
   prixTotalLocation=0;
   panier=[{image:"assets/img/monopoly.jpg", note: 4.5, marque: 'Hasbro Gaming', nom : 'Monopoly', prixAchat : 42.99, prixLocation : 15,quantite:2}, 
@@ -21,7 +20,7 @@ export class PanierComponent implements OnInit {
   {image:"assets/img/risk.jpg", note:4.6, marque: 'Hasbro Gaming', nom : 'Risk', prixAchat : 38.99, prixLocation : 15,quantite:1},
   {image:"assets/img/elefun.jpg", note:3.8, marque: 'Hasbro Gaming', nom : 'Elefun', prixAchat : 27.99, prixLocation : 8,quantite:1}
   ];
-
+  panier2; 
   alljeux: Object;
 
   constructor(private http: HttpClient,private route: Router) { }
@@ -32,15 +31,15 @@ export class PanierComponent implements OnInit {
   }
   
   getOneJeu(idjeu){
-    this.http.get('http://localhost:8086/jeu/'+idjeu).subscribe({
+    this.http.get('http://localhost:8086/jeu/4').subscribe({
       next: (data) => {this.jeu = data;},
       error: (err) => {console.log(err);}
     });
   }
 
   getCatalogue() : any{
-    this.http.get('http://localhost:8086/jeu/listJeuAchat').subscribe({
-      next: (data)=> {this.alljeux = data; },
+    this.http.get('http://localhost:8086/paniers').subscribe({
+      next: (data)=> {this.panier2 = data; },
       error: (err)=> {console.log(err);}
       });
     }
