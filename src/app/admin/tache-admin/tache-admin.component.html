@@ -1,3 +1,50 @@
+<script >
+var theToggle = document.getElementById('toggle');
+
+// based on Todd Motto functions
+// https://toddmotto.com/labs/reusable-js/
+
+// hasClass
+function hasClass(elem, className) {
+	return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+}
+// addClass
+function addClass(elem, className) {
+    if (!hasClass(elem, className)) {
+    	elem.className += ' ' + className;
+    }
+}
+// removeClass
+function removeClass(elem, className) {
+	var newClass = ' ' + elem.className.replace( /[\t\r\n]/g, ' ') + ' ';
+	if (hasClass(elem, className)) {
+        while (newClass.indexOf(' ' + className + ' ') >= 0 ) {
+            newClass = newClass.replace(' ' + className + ' ', ' ');
+        }
+        elem.className = newClass.replace(/^\s+|\s+$/g, '');
+    }
+}
+// toggleClass
+function toggleClass(elem, className) {
+	var newClass = ' ' + elem.className.replace( /[\t\r\n]/g, " " ) + ' ';
+    if (hasClass(elem, className)) {
+        while (newClass.indexOf(" " + className + " ") >= 0 ) {
+            newClass = newClass.replace( " " + className + " " , " " );
+        }
+        elem.className = newClass.replace(/^\s+|\s+$/g, '');
+    } else {
+        elem.className += ' ' + className;
+    }
+}
+
+theToggle.onclick = function() {
+   toggleClass(this, 'on');
+   return false;
+}
+
+
+</script>
+
 <!-- Navbar d'admin-->
 <app-admin></app-admin>
 
@@ -41,7 +88,7 @@
           <button
             type="button"
             (click)="fenetreActivation(1)"
-            class="btn button-primary btn-block"
+            class="btn btn-sm button-primary btn-block"
           >
             Créer :
           </button>
@@ -61,7 +108,7 @@
           <button
             (click)="fenetreActivation(2)"
             type="submit"
-            class="btn button-primary btn-block"
+            class="btn btn-sm button-primary btn-block"
           >
             Rechercher
           </button>
@@ -92,34 +139,31 @@
                     </div>
                   </div>
                   <div class="card-footer">
-                    <button
-                      type="button"
-                      class="btn btn-raised noto"
-                      (click)="fenetreActivation(3)"
-                    >
-                      Modifier
-                    </button>
-                    <button
-                      type="button"
-                      id="bt_bloquer"
-                      class="btn btn-raised noto"
-                      (click)="
-                        bloquer(person) 
-                      "
-                    >
-                      Bloquer
-                    </button>
-                    <button
-                      type="button"
-                      id="bt_bloquer"
-                      class="btn btn-raised noto"
-                      (click)="
-                        supprimer(recherche)
-                      "
-                    >
-                    Supprimer
-                    </button>
- 
+                    
+                    
+                    <div>
+
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Actions
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a (click)="fenetreActivation(3)" class="dropdown-item" >Modifier</a>
+                          <a (click)="
+                          bloquer(person) 
+                        "  class="dropdown-item" >Bloquer</a>
+                          <a (click)="supprimer(recherche)"  class="dropdown-item" >Supprimer</a>
+                        </div>
+                      </div>
+                      
+
+                    </div>
+                    
+                    <div>
+
+                      
+                    </div>
+
                   </div>
                 </div>
                 <br />
@@ -157,12 +201,11 @@
                   </label>
                   <input
                     type="text"
-                    required
                     placeholder="Login"
                     name="login"
                     id="login"
                     class="form-control"
-                    [value]="tg"
+                    required
                     ngModel
                   />
 
@@ -192,7 +235,7 @@
                   />
                 </div>
 
-                <button type="submit" class="btn button-primary btn-block">
+                <button type="submit" class="btn button-primary btn-sm-block">
                   Valider
                 </button>
               </form>
@@ -203,26 +246,20 @@
 
           <div class="card modification">
             <div *ngIf="fenetreModification" class="contenuCard">
-              <form #admin="ngForm" (ngSubmit)="modificationAdmin(admin.value)">
+              <form #modif="ngForm" (ngSubmit)="modificationAdmin(modif)">
                 <div class="form-group">
                   <label style="align-content: center" for="">
                     Modification
                   </label>
 
-                  <!--
-            <p>Id : {{ person.id }}</p>
-            <p>Login : {{ person.user.login }}</p>
-            <p>Mail : {{ person.user.mail }}</p>
-            <p>Numéro : {{ person.user.tel }}</p>-->
-                  Id : {{ person.id }}
+
                   <input
                     type="text"
                     required
                     placeholder="Login"
                     name="login"
-                    value="${person.login}"
                     class="form-control"
-                    [(ngModel)]="person.login"
+                    ngModel
                   />
                   <input
                     type="password"
@@ -250,8 +287,12 @@
                   />
                 </div>
 
-                <button type="submit" class="btn button-primary btn-block">
+                <button  type="submit" class="btn btn-sm button-primary btn-block">
                   Valider
+                </button>
+                
+                <button  (click) = "fenetreActivation(0)" type="submit" class="btn btn-sm button-primary btn-block">
+                  Annuler
                 </button>
               </form>
             </div>

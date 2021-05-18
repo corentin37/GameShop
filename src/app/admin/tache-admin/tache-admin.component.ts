@@ -33,8 +33,14 @@ export class TacheAdminComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.person = data;
-          this.isPersonExist();
-          console.log(this.isPersonExist);
+          if (this.person != null) {
+            this.fenetreResultat = true;
+            this.fenetreSansResultat = false;
+          } else {
+            this.fenetreSansResultat = true;
+            this.fenetreResultat = false;
+          }
+          console.log('C RP' + this.isPersonExist);
         },
         error: (err) => {
           console.log(err);
@@ -42,16 +48,18 @@ export class TacheAdminComponent implements OnInit {
       });
   }
 
-  supprimer(person): any{
-
-    this.http.delete('http://localhost:8086/admin/supprimer', person).subscribe({
-      next: (data) => {console.log(data); this.fenetreResultat = false;},
-      error: (err) => {
-        console.log(err);
-      },
-    });
-
-
+  supprimer(person): any {
+    this.http
+      .delete('http://localhost:8086/admin/supprimer', person)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.fenetreResultat = false;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
 
   fenetreActivation(chiffre): any {
@@ -59,35 +67,28 @@ export class TacheAdminComponent implements OnInit {
     this.fenetreResultat = false;
     this.fenetreModification = false;
     this.fenetreSansResultat = false;
+    console.log('FA' + this.personExist);
     switch (chiffre) {
       case 0: {
+        // rien
         break;
       }
 
-      case 1: { // creation person
+      case 1: {
+        // creation person
         this.fenetreInscription = true;
         this.personExist = false;
         this.fenetreModification = false;
 
         break;
       }
-      case 2: { // Card recherche
-
-        if (this.personExist != null) {
-          this.personExist = true;
-          this.fenetreResultat = true;
-          this.fenetreSansResultat = false;
-    
-        } else {
-          this.personExist = false;
-          this.fenetreSansResultat = true;
-          this.fenetreResultat = false;
-    
-        }
+      case 2: {
+        // Card recherche
 
         break;
       }
-      case 3: { // modification du profil
+      case 3: {
+        // modification du profil
         this.fenetreInscription = false;
         this.fenetreModification = true;
         this.personExist = false;
@@ -99,18 +100,7 @@ export class TacheAdminComponent implements OnInit {
     }
   }
 
-  isPersonExist(): any {
-    if (this.person != null) {
-      this.personExist = true;
-
-
-    } else {
-      this.personExist = false;
-
-    }
-
-    console.log(this.personExist);
-  }
+  isPersonExist(): any {}
 
   refreshAdmins(): any {
     if (this.person == null) {
@@ -121,7 +111,7 @@ export class TacheAdminComponent implements OnInit {
 
   bloquer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
-    console.log("bloqué")
+    console.log('bloqué');
     this.http.put('http://localhost:8086/admin/bloquer', person).subscribe({
       next: (data) => {
         this.person = data;
@@ -155,17 +145,21 @@ export class TacheAdminComponent implements OnInit {
   modificationAdmin(personCreated): any {
     // le formulaire s'appelle user, mais creation de vendeur
     // ATTENTION A L'URL
-    console.log("modif" +personCreated)
+    console.log('modif' + personCreated);
+    console.log('modif va ' + personCreated.value);
     this.http
       .put('http://localhost:8086/admin/modifier', personCreated)
       .subscribe({
         next: (data) => {
+          
           alert('Modification du compte admin');
+          this.getAllAdmin();
         },
         error: (err) => {
           console.log(err);
         },
       });
+    
   }
 
   getAllAdmin(): any {
