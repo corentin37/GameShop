@@ -6,6 +6,7 @@ import { JeuComponent } from './jeu/jeu.component';
 import { CreerJoueurComponent } from './creer-joueur/creer-joueur.component';
 import { AdminComponent } from './admin/admin.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
+import { GestionSallesComponent } from './gestion-salles/gestion-salles.component';
 
 import { NewAvisComponent } from './new-avis/new-avis.component';
 import { TacheAdminComponent } from './admin/tache-admin/tache-admin.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   {component: CreerJoueurComponent, path: 'creerJoueur'},
   {component: AdminComponent, path: 'admin'},
   {component: CatalogueComponent, path: 'catalogue'},
+  {component: GestionSallesComponent, path: 'salle'},
 
   {component: NewAvisComponent, path: 'avis'},
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}, // quand il ya pas de chemin ça redirige directement vers le catalogue

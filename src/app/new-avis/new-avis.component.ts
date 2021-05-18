@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 
 export class NewAvisComponent implements OnInit {
 avis;
+
   constructor(private http:HttpClient, private route: Router) { }
 
   ngOnInit(): void {
@@ -22,8 +23,8 @@ avis;
     const jeu = {id: 19}
     avis.user = user; // on entre l'expéditeur 1 en dur pour gérer l'envoi du test
     avis.jeu = jeu;
-    this.http.post('http://localhost:8086/avis', avis).subscribe({
-      next: (data)=> {this.route.navigateByUrl('avis');},
+    this.http.post('http://localhost:8086/avis/post', avis).subscribe({
+      next: (data)=> {this.route.navigateByUrl('jeu');},
       error: (err) => {console.log(err);}
       
     })

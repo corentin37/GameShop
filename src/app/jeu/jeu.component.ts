@@ -15,6 +15,7 @@ export class JeuComponent implements OnInit {
 
   jeux;
   jeu;
+  //valeur = ;
   avis;
   avisnew;
 
