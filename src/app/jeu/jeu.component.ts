@@ -27,18 +27,10 @@ export class JeuComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getAllJeu();
-    // this.getAllAvis();
+    this.getAllAvis();
     this.jeu = this.jeuService.game;
     console.log('contenu de jeu venu du service', this.jeu);
 
-  }
-
-
-  getAllJeu() {
-    this.http.get('http://localhost:8086/jeu/list').subscribe({
-      next: (data) => { this.jeux = data; },
-      error: (err) => { console.log(err); }
-    });
   }
 
   getAllAvis() {
@@ -48,24 +40,16 @@ export class JeuComponent implements OnInit {
     });
   }
 
-  getOneJeu() {
-    this.http.get('http://localhost:8086/jeu/20').subscribe({
-      next: (data) => { this.jeu = data; },
-      error: (err) => { console.log(err); }
-    });
-  }
-
-
+ 
   newAvis(avis): any {
-    const idUser = { id: 17 };
-    const idJeu = { id: 19 }
-    avis.user.id = idUser; // on entre l'expéditeur 1 en dur pour gérer l'envoi du test
-    avis.jeu.id = idJeu;
+    //gérer user et jeu avec Service
+    console.log("Avis posté! Rafraîchir la page");
+    const user ={id : 1};
+    avis.user=user;
     this.http.post('http://localhost:8086/avis', avis).subscribe({
-      next: (data) => { this.route.navigateByUrl('jeu'); },
-      error: (err) => { console.log(err); }
-
-    })
+      next: (data)=> {console.log(data); this.route.navigateByUrl('jeu');},
+      error: (err) => {console.log(err);}
+    });
 
   }
 
