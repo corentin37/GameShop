@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { HistoriqueSalleService } from '../Services/historique-salle.service';
 
 @Component({
   selector: 'app-historique-salle',
@@ -9,11 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoriqueSalleComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private historiqueService: HistoriqueSalleService) { }
   historique;
 
   ngOnInit(): void {
     this.getAllHistorique();
+    this.historique=this.historiqueService.history;
   }
 
   getAllHistorique(){
@@ -33,4 +35,14 @@ export class HistoriqueSalleComponent implements OnInit {
       return "Non";
     }
   }
+
+  validerReservation(h){
+    this.http.put('http://localhost:8086/salle/historique/id', h).subscribe({
+      next: (data) => {console.log(data);
+        this.historique=h; },
+      error: (err) => {console.log(err);  }
+    });
+  }
+
+  
 }

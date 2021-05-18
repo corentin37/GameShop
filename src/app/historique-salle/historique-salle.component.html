@@ -15,8 +15,10 @@
                     <p class="card-text">Accès public :  {{convertBoolean(h.salle.publique)}}</p>
                     <p class="card-text">Prix : {{h.salle.prix}} €</p>
                     <p class="card-text"><strong>Joueur : {{h.joueur.user.login}}</strong></p>
+                    <p class="card-text"><strong>Validation : {{convertBoolean(h.locationValidee)}}</strong></p>
+                    
                     <div class="center">
-                        <a type="button" class="btn btn-primary">Valider</a>
+                        <a type="button" (click)="validerReservation(h)" class="btn btn-primary">Valider</a>
                     </div>
                      
                 </div>
