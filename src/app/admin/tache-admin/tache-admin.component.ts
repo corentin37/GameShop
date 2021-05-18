@@ -12,7 +12,11 @@ export class TacheAdminComponent implements OnInit {
 admins;
 person; // personne recherchée par requet recherche
 personExist; adminsExist;
- personExistError;
+
+
+ // creation fenetre
+ fenetreCreerActivation; fenetrePersonExistError;
+
   constructor(private http: HttpClient, private route: Router) { }
 
   ngOnInit(): void {
@@ -21,7 +25,7 @@ personExist; adminsExist;
   }
 
   recherchePerson(recherche): any {
-
+    this.fenetreCreerActivation = false;
     this.http
       .post('http://localhost:8086/admin/recherche', recherche)
       .subscribe({
@@ -44,15 +48,19 @@ personExist; adminsExist;
       
   }
 
-  
+  fenetreCreer(): any {
+    this.fenetreCreerActivation = true;
+    this.fenetrePersonExistError = false;
+
+  }
 
   isPersonExist(): any {
     if (this.person != null) {
       this.personExist = true;
-      this.personExistError = false;
+      this.fenetrePersonExistError = false;
     } else {
       this.personExist = false;
-      this.personExistError = true;
+      this.fenetrePersonExistError = true;
     }
 
     console.log(this.personExist);
