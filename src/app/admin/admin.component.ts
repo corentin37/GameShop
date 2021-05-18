@@ -129,4 +129,6 @@ export class AdminComponent implements OnInit {
   console(entreeConsole): any {
     console.log(entreeConsole);
   }
+
+  
 }
