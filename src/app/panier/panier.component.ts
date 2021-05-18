@@ -3,6 +3,7 @@ import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { timeStamp } from 'console';
+import { JeuService } from '../Services/jeu.service';
 
 @Component({
   selector: 'app-panier',
@@ -25,7 +26,7 @@ export class PanierComponent implements OnInit {
   alljeux: Object;
   iduser=5;
 
-  constructor(private http: HttpClient,private route: Router) { }
+  constructor(private http: HttpClient,private route: Router, private JeuService : JeuService) { }
 
   ngOnInit(): void {
     this.getOnePanierByUser(this.iduser);
@@ -71,4 +72,35 @@ export class PanierComponent implements OnInit {
     }
   }
 
+  goToJeu(game): any{
+    this.JeuService.game=game;
+    console.log('jeu dans le service', this.JeuService.game);
+    this.route.navigateByUrl('jeu');
+
+  }  
+
+
+  quantiteMoins(jeu){
+    jeu.quantite-=1;
+    this.http.put('http://localhost:8086/panier', jeu).subscribe({
+      next: (data) => {console.log(data); 
+        this.route.navigateByUrl('panier');
+        this.JeuService.game=jeu;
+        this.getPrixTotaux(this.panier);
+      },
+      error: (err) => {console.log(err); }
+    });
+  }
+
+  quantitePlus(jeu){
+    jeu.quantite+=1;
+    this.http.put('http://localhost:8086/panier', jeu).subscribe({
+      next: (data) => {console.log(data); 
+        this.route.navigateByUrl('panier');
+        this.JeuService.game=jeu;
+        this.getPrixTotaux(this.panier);
+      },
+      error: (err) => {console.log(err); }
+    });
+  }
 }
