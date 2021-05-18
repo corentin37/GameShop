@@ -16,27 +16,20 @@ export class CreerJoueurComponent implements OnInit {
   baseURL = 'http://localhost:8086/joueur/save';
 
 
-  
-  
+
+
   constructor(private http: HttpClient, private route: Router) {
-    
+
   }
-
-
-
-
-
-
-
 
   ngOnInit(): void {
   }
 
 
   inscription(user): any{
-        //le formulaire s'appelle user, mais creation de joueur
-        //ATTENTION A L'URL
-        
+        // le formulaire s'appelle user, mais creation de joueur
+        // ATTENTION A L'URL
+
     this.http.post('http://localhost:8086/joueur/save', user).subscribe({
       next: (data) => {this.route.navigateByUrl('');  },
       error : (err) => { console.log(err); }

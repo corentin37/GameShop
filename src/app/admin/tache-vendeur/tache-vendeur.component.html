@@ -1,0 +1,52 @@
+<p>tache-vendeur works!</p>
+
+
+
+    <!-- Navbar d'admin-->
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" routerLink='/' routerLinkActive='active' > Admin</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav nav-fill w-100">
+              
+              <a class="nav-item nav-link" routerLink='tacheAdmin' routerLinkActive='active'>Gérer Admin</a>
+              <a class="nav-item nav-link" routerLink='tacheVendeur' routerLinkActive='active'>Gérer Vendeur</a>
+              <a class="nav-item nav-link" routerLink='admin/tacheJoueur' routerLinkActive='active'>Gérer Joueur</a>
+              <a class="nav-item nav-link" routerLink='admin/tacheUser' routerLinkActive='active'>Gérer User</a>
+              <a class="nav-item nav-link" routerLink='admin/tacheSalles' routerLinkActive='active'>Gérer Salles</a>
+      
+            </div>
+          </div>
+        </nav>
+        
+    </div>
+    
+        <!-- Creation vendeur -->
+     <div class="container border">
+        <div class="container border">
+          <p>Creér un Vendeur</p>
+      
+          <form #vendeur="ngForm" (ngSubmit)="inscriptionVendeur(vendeur.value)">
+            <div class="form-group">
+              <label for=""> formulaire de création Vendeur </label>
+              <input type="text" required placeholder="Entrez le login" name="login" class="form-control" ngModel/>
+              <input type="password" required placeholder="Entrez le mot de passe" name="password"class="form-control" ngModel/>
+              <input type="text" required placeholder="Entrez le numéro de téléphone" name="tel" class="form-control" ngModel/>
+              <input type="text" required placeholder="Entrez l'addresse mail" name="mail" class="form-control" ngModel/>
+            </div>
+      
+            <button type="submit" class="btn button-primary btn-block">
+              Valider
+            </button>
+          </form>
+        </div>
+      </div> 
+    
+    
+    
+      
+    
+    

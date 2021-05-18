@@ -1,59 +1,80 @@
 <div class="container">
-    <p><b> NOM DU JEU  : {{jeu.nom}} </b>  </p> <!--{{jeux.nom}}-->
+    <h5> <b>{{jeu.nom}} </b> </h5>  <!--{{jeux.nom}}-->
+    <br>
     <div class="w3-card-4">
         <div class="row">
             <div class="col-sm-4">
                 
-                <img src="/assets/img/conceptJeu.jpg" alt="Image Jeu" class="img">
+                <img src="{{jeu.urlImage}}" alt="Image Jeu" class="img">
             </div>
-    <div class="col-sm-1"></div>
+            <div class="col-sm-1"></div>
 
-    <div class="col-sm-7">
-        <header class="w3-container w3-blue">
-        <span><i class="fa fa-users" style="color: teal;"></i>  Nb Joueurs:   XX  -    XX        
-                  <i class="fas fa-birthday-cake" style="color: teal;"></i>  Age: à partir de   XX ans   
-            <i class="fas fa-star" style="color: teal;"></i>  Difficulté:   XXXXX    </span>
-        </header>
-<br>
-        <h6>Description : </h6>
-        <div id="test" class="overflow-auto">  {{jeu.description}}</div>     
+            <div class="col-sm-7">
+                <header class="w3-container w3-blue">
+                    <h6 style="text-align: right;"> {{jeu.marqueDuJeu.libelle}}  </h6>
+                    <br>
+                <span><i class="fa fa-users" style="color: teal; text-align: justify;"></i>  Nombre de joueurs : {{jeu.nombreJoueursMin}} à {{jeu.ageMin}} <i class="fas fa-birthday-cake" style="color: teal;"></i>  Age: à partir de {{jeu.ageMin}} ans   
+                    <i class="fas fa-star" style="color: teal;"></i>  Difficulté: {{jeu.niveauDifficulte}}    </span>
+                </header>
+                <br>
+                <h6>Description : </h6>
+                <div id="test" class="overflow-auto">  {{jeu.description}}</div>     
 
-        <footer class="w3-container w3-blue">
-            <br>
-            <p><i>Temps de Jeu : {{jeu.id}} min</i> </p> 
-            </footer> 
-<br>
+                <footer class="w3-container w3-blue">
+                    <br>
+                    <p><i>Temps de Jeu : {{jeu.tempsDeJeu}} min</i> </p> 
+                    </footer> 
 
-        <button data-toggle="collapse" data-target="#demo" class="btn btn-primary ">Règles</button>
-        <div id="demo" class="collapse">
-        Règles du jeu
+                <button data-toggle="collapse" data-target="#demo" class="btn btn-primary ">Règles</button>
+                <div id="demo" class="collapse">
+                {{jeu.regleDuJeu}}
+            </div>
         </div>
-
-          
+        <br><br>
+        
+    </div>
+<br><br><br>
+    
+    <div *ngFor="let a of avis">
+        <div class="row" >
+            <div class="col-sm-3" style="text-align: center;">
+                
+                    <img src="/assets/img/astrocat.jpg" alt="Avatar"  >
+                    <div class="container">
+                    <h6><b>{{a.user.login}}</b></h6>
+                    </div>
+            </div>
+            <span class="vertical-line"></span>
+            <div class="col-sm-2" style="text-align: center;">
+                <h6> Note : </h6>
+                <br>
+                <h4> {{a.note}} </h4> <br>
+                <h5> / 10</h5>
+                
+            </div>
+            <div class="col-sm-6">
+                <h6>Avis sur le jeu : </h6>
+                <br>
+                <p> {{a.commentaire}} </p>
+            </div>
+           
+        </div>
+        <br> <br>
+    </div>
+      
+    <div class="container">
+        <h5>Poster un avis</h5>
+        <form #avisnew='ngForm' (ngSubmit)='newAvis(avisnew.value)'>
+            <div class="form-group">
+                <label class = "text-secondary" for="">Donner votre avis : </label>
+                <input type="text" name="commentaire" placeholder="" class="form-control" ngModel>
+                <label class = "text-secondary" for="">Attribuer une note : </label>
+                <input type="text" name="note" placeholder="" class="form-control" ngModel>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Valider</button>
+        </form>
     </div>
 
-    <div class="row">
-        <div class="col-sm-3" style="text-align: center;">
-            
-                <img src="/assets/img/astrocat.jpg" alt="Avatar" style="width:70%">
-                <div class="container">
-                  <h6><b>User nom</b></h6>
-                </div>
-        </div>
-        <span class="vertical-line"></span>
-        <div class="col-sm-2" style="text-align: center;">
-            <h6> Note : </h6>
-            <br>
-            <h5>XX /</h5> <br>
-            <h4>10</h4>
-            
-        </div>
-        <div class="col-sm-6">
-            <h6>Avis sur le jeu : </h6>
-            <br>
-            <p>  Super jeu pour s'occuper pendant le voyage vers Mars. Même ma souris a kiffé. 10/10 recommande.</p>
-        </div>
-    </div>
 </div>
     
     
