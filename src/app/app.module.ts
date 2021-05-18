@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreerJoueurComponent } from './creer-joueur/creer-joueur.component';
 import { AdminComponent } from './admin/admin.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
+import { GestionSallesComponent } from './gestion-salles/gestion-salles.component';
 
 import { NewAvisComponent } from './new-avis/new-avis.component';
 
@@ -36,6 +37,7 @@ import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.componen
     CreerJoueurComponent,
     AdminComponent,
     CatalogueComponent,
+    GestionSallesComponent,
 
     NewAvisComponent,
 

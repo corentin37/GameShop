@@ -60,4 +60,8 @@ export class CatalogueComponent implements OnInit {
         });
 
       }
+<<<<<<< HEAD
   }
+=======
+  }
+>>>>>>> febfcb1003a059e379950873ae488b91db7685e1
