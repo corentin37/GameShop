@@ -4,34 +4,33 @@
 <body>
     <div class="row">
         
-        <div class="container col-sm-4 back-beige mt-25 border-5">
-            <div class="center mt-15">
-                <div class="">
-                    <img src="assets/img/checkmate.jpg" alt="Jeu d'échecs" width="35%">
-                </div>
-                
-            </div>
-            
-            <br>
-            <div class="center titre noto">
+        <div class="container col-sm-4">
+            <div class="center titre">
+                <br>
                 <h2>Accès au compte</h2>
+                <br>
             </div>
-            <div class="center mt-15">
+            <div class="mt-15">
 
                 <form #user = "ngForm" (ngSubmit) = "connexion(user.value)">
                     <div class="form-group">
-                        <div class="zone-groupe noto">
-                            <input type="text" placeholder="Identifiant" class="form-control" ngModel name="login" id="login" required>
+                        <div class="zone-groupe">
+                            <p>Identifiant</p>
+                            <input type="text" class="form-control" ngModel name="login" id="login" required>
                         </div>
-                        <div class="zone-groupe mt-2 noto">
-                            <input type="password" placeholder="Mot de passe" class="form-control" ngModel name="password" id="password" required>
+                        <div class="zone-groupe mt-2">
+                            <br>
+                            <p>Mot de passe</p>
+                            <input type="password" class="form-control" ngModel name="password" id="password" required>
                         </div>
                     </div>
                     <br>
-                    
-                    <button type="submit" class="btn btn-raised noto beige-fonce"><strong>Valider</strong></button>
-                    <p>{{connectMessage}}</p>
-                    <p class="text-err" id="msg-err"></p>
+                    <div class="center">
+                        <button type="submit" class="btn btn-raised"><strong>Valider</strong></button>
+                        <p>{{connectMessage}}</p>
+                        <p class="text-err" id="msg-err"></p>
+                    </div>
+                   
                 </form>
                 
             </div>

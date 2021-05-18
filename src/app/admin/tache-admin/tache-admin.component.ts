@@ -12,6 +12,11 @@ export class TacheAdminComponent implements OnInit {
 admins;
 person; // personne recherchée par requet recherche
 personExist; adminsExist;
+
+
+ // creation fenetre
+ fenetreCreerActivation; fenetrePersonExistError;
+
   constructor(private http: HttpClient, private route: Router) { }
 
   ngOnInit(): void {
@@ -20,7 +25,7 @@ personExist; adminsExist;
   }
 
   recherchePerson(recherche): any {
-
+    this.fenetreCreerActivation = false;
     this.http
       .post('http://localhost:8086/admin/recherche', recherche)
       .subscribe({
@@ -28,6 +33,7 @@ personExist; adminsExist;
           
           this.person = data;
           this.isPersonExist();
+          
           console.log('admin/ in : ' + this.admins);
           console.log('Person / in ' + this.person);
           
@@ -38,24 +44,35 @@ personExist; adminsExist;
           console.log(err);
         },
       });
-      console.log('person: ' + this.person)
-      console.log('admins a: ' + this.admins)
+
       
   }
 
-  
+  fenetreCreer(): any {
+    this.fenetreCreerActivation = true;
+    this.fenetrePersonExistError = false;
+
+  }
 
   isPersonExist(): any {
     if (this.person != null) {
       this.personExist = true;
+      this.fenetrePersonExistError = false;
     } else {
       this.personExist = false;
+      this.fenetrePersonExistError = true;
     }
 
     console.log(this.personExist);
   }
 
-  
+  refreshAdmins(): any{
+    if(this.person == null)
+    {
+      this.getAllAdmin;
+    } else {
+    }
+  }
 
   bloquer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
@@ -97,9 +114,9 @@ getAllAdmin(): any {
 
 actvitityBoolToStr(bool): string {
   if (bool === false) {
-    return 'Compte bloqué';
+    return 'Bloqué';
   } else {
-    return 'Compte débloqué';
+    return 'Débloqué';
   }
 }
 
