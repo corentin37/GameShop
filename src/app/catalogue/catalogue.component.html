@@ -92,31 +92,19 @@
       <div class="row">
         <div *ngFor="let j of jeu" class="col-sm-4 ">
           <br>
-            <div (click)="goToJeu(j)" class="card">
-              <img src={{j.lejeu.urlImage}} width="200px"><br>
-              <div class="ml-2">
-                {{ j.lejeu.note }}/5<br>
-                {{ j.lejeu.marqueDuJeu.libelle}}<br>
-                {{ j.lejeu.nom}}
+            <div type="button" (click)="goToJeu(j)" class="card">
+              <img src={{j.lejeu.urlImage}} class="img" alt="logo jeu"><br>
+              <div class="card-body ml-2">
+                <p class="card-text">{{ j.lejeu.note }}/5</p>
+                <p class="card-text">{{ j.lejeu.marqueDuJeu.libelle}}</p>
+                <p class="card-text">{{ j.lejeu.nom}}</p>
+                <p class="card-text">Achat : {{j.prixAchat}} € | Location : {{j.lejeu.prixLocation}} €</p>
+                <button (click)="goToPanier()" class="btn btn-secondary btn-center">AJOUTER AU PANIER</button>
               </div>
             </div>
-
-            <div class="card">
-              <div class="ml-2 mt-2">
-                <span><button (click)="goToConnexion()" class="btn btn-outline-warning btn-sm" 
-                    role="button">Acheter</button> : {{j.prixAchat}} € | <button (click)="goToConnexion()"class="btn btn-outline-warning btn-sm"
-                     role="button">Louer</button> : {{j.lejeu.prixLocation}} € </span>
-              </div>
-        </div>
-      
-        
-                    
-                
-              
-            
+   
             <br>
-          
-
+   
         </div>
       </div>
     </div>

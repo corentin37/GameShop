@@ -27,14 +27,12 @@ export class TacheVendeurComponent implements OnInit {
   }
 
   rechercheVendeur(recherche): any {
-    console.log('je suis dans la recherche du vendeur');
+    
     this.http
       .post('http://localhost:8086/vendeur/recherche', recherche)
       .subscribe({
         next: (data) => {
-          console.log('le vendeur', data);
           this.rechercheV = data;
-          console.log('recherV', this.rechercheV);
           this.isVendeurExist();
         },
         error: (err) => {
