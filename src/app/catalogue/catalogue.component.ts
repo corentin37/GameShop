@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalogue',
@@ -16,17 +17,18 @@ export class CatalogueComponent implements OnInit {
 ];
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route : Router) { }
   jeu;
   jeuAchat;
   ngOnInit(): void {
-    this.getCatalogue();
+  this.getCatalogue();
   }
   getCatalogue() : any{
     this.http.get('http://localhost:8086/jeu/listJeuAchat').subscribe({
       next: (data)=> {this.jeu = data; },
       error: (err)=> {console.log(err);}
       });
+    
   
  /*longueurDuNom(nomJeu): String{
         if(nomJeu.length() <= 34){
@@ -38,4 +40,10 @@ export class CatalogueComponent implements OnInit {
         }
       }*/
     
-    }}
+    }
+  goToConnexion() :any{
+    this.route.navigateByUrl('connexion');
+  }
+  
+  }
+    
