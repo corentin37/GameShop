@@ -1,4 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -18,13 +19,13 @@ export class GestionSallesComponent implements OnInit {
   salle;
   place;
   reserver(s){
-    alert("Votre demande de réservation est en cours. Elle sera validée par un responsable dans les prochains jours.");
     this.placeReservee(s);
+    this.salleComplete(s);
   }
 
   placeReservee(salleModifiee){
     this.http.put('http://localhost:8086/salle', salleModifiee).subscribe({
-      next: (data) => {console.log(data); this.route.navigateByUrl('salle');},
+      next: (data) => {console.log(data); this.route.navigateByUrl('reserverSalle');},
       error: (err) => {console.log(err); }
     });
   }
@@ -35,5 +36,17 @@ export class GestionSallesComponent implements OnInit {
       error: (err) => {console.log(err); }
     });
   }
+
+  salleComplete(s){
+    if(s.nombreDePlace==0){
+      s.publique=false; //la salle devient privée quand elle est complète
+      this.http.put('http://localhost:8086/salle', s).subscribe({
+        next: (data) => {console.log(data); },
+        error: (err) => {console.log(err); }
+      });
+    }
+  }
+
+  
 
 }
