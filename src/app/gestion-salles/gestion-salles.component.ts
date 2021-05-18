@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SalleService } from '../Services/salle.service';
 
 @Component({
   selector: 'app-gestion-salles',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class GestionSallesComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private salleService: SalleService) { }
 
   ngOnInit(): void {
     this.getAllSalles();
@@ -18,6 +19,7 @@ export class GestionSallesComponent implements OnInit {
 
   salle;
   place;
+  rep;
   reserver(s){
     this.placeReservee(s);
     this.salleComplete(s);
@@ -25,7 +27,10 @@ export class GestionSallesComponent implements OnInit {
 
   placeReservee(salleModifiee){
     this.http.put('http://localhost:8086/salle', salleModifiee).subscribe({
-      next: (data) => {console.log(data); this.route.navigateByUrl('reserverSalle');},
+      next: (data) => {console.log(data); 
+        this.route.navigateByUrl('reserverSalle');
+        this.salleService.room=salleModifiee;
+      },
       error: (err) => {console.log(err); }
     });
   }
@@ -47,6 +52,14 @@ export class GestionSallesComponent implements OnInit {
     }
   }
 
+  convertBoolean(b){
+    if(b==true){
+      return "Oui";
+    }
+    else{
+      return "Non";
+    }
+  }
   
 
 }
