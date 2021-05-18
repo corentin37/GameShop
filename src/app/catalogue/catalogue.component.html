@@ -93,29 +93,18 @@
         <div *ngFor="let j of jeu" class="col-sm-4 ">
           <br>
             <div type="button" (click)="goToJeu(j)" class="card">
-              <img src={{j.lejeu.urlImage}} width="200px" alt="logo jeu"><br>
+              <img src={{j.lejeu.urlImage}} width="240px" alt="logo jeu"><br>
               <div class="card-body ml-2">
                 <p class="card-text">{{ j.lejeu.note }}/5</p>
                 <p class="card-text">{{ j.lejeu.marqueDuJeu.libelle}}</p>
                 <p class="card-text">{{ j.lejeu.nom}}</p>
                 <p class="card-text">Achat : {{j.prixAchat}} € | Location : {{j.lejeu.prixLocation}} €</p>
+                <button (click)="goToPanier()" class="btn btn-secondary btn-center">AJOUTER AU PANIER</button>
               </div>
             </div>
-         
-            <div class="card">
-              <div class="ml-1 mt-2">
-              <button (click)="goToPanier()" class="btn btn-secondary">AJOUTER AU PANIER</button>
-              </div>
-        </div>
-       
-        
-                    
-                
-              
-            
+   
             <br>
-          
-
+   
         </div>
       </div>
     </div>
