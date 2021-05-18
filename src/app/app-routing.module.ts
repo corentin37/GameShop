@@ -7,7 +7,6 @@ import { AdminComponent } from './admin/admin.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { GestionSallesComponent } from './gestion-salles/gestion-salles.component';
 
-import { NewAvisComponent } from './new-avis/new-avis.component';
 import { TacheAdminComponent } from './admin/tache-admin/tache-admin.component';
 import { TacheVendeurComponent } from './admin/tache-vendeur/tache-vendeur.component';
 
@@ -20,8 +19,6 @@ const routes: Routes = [
   {component: AdminComponent, path: 'admin'},
   {component: CatalogueComponent, path: 'catalogue'},
   {component: GestionSallesComponent, path: 'salle'},
-
-  {component: NewAvisComponent, path: 'avis'},
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}, // quand il ya pas de chemin ça redirige directement vers le catalogue
 
   {component: TacheAdminComponent, path: 'admin/tacheAdmin'},
