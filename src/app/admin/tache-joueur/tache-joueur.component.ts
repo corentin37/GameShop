@@ -84,9 +84,9 @@ export class TacheJoueurComponent implements OnInit {
     this.http.put('http://localhost:8086/joueur/bloquer', joueur).subscribe({
       next: (data) => {
                 this.rechercheJ = data;
-        this.getAllJoueur();
-        // this.ngOnInit();
-        console.log('vendeur blocker ou debl...', data);
+                this.getAllJoueur();
+                // this.ngOnInit();
+        
       },
       error: (err) => {
         console.log(err);
@@ -98,7 +98,9 @@ export class TacheJoueurComponent implements OnInit {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
     this.http.put('http://localhost:8086/joueur/adherer', joueur).subscribe({
       next: (data) => {
-        console.log(data);
+        this.rechercheJ = data;
+        this.getAllJoueur();
+        
       },
       error: (err) => {
         console.log(err);

@@ -45,7 +45,11 @@ export class CatalogueComponent implements OnInit {
     this.route.navigateByUrl('jeu');
 
   }  
-
+goToConnexion(){
+  this.route.navigateByUrl('connexion');
+   
+  
+}
 
     
     
