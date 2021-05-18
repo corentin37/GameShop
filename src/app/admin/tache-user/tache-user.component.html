@@ -17,6 +17,7 @@
         <th scope="col">mail</th>
         <th scope="col">tel</th>
         <th scope="col">Etat</th>
+        <th scope="col">Type</th>
       </tr>
     </thead>
 
@@ -27,7 +28,7 @@
         <td>{{ u.password }}</td>
         <td>{{ u.mail }}</td>
         <td>{{ u.tel }}</td>
-        <td>{{ activitee(u.activity) }}</td>
+        <td>{{ actvitityBoolToStr(u.activity) }}</td>
       </tr>
     </tbody>
   </table>
