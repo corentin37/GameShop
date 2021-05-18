@@ -47,7 +47,7 @@ export class JeuComponent implements OnInit {
   }
 
   getOneJeu(){
-    this.http.get('http://localhost:8086/jeu/20').subscribe({
+    this.http.get('http://localhost:8086/jeu/19').subscribe({
       next: (data) => {this.jeu = data;},
       error: (err) => {console.log(err);}
     }); 
