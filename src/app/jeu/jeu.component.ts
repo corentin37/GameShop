@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JeuService } from '../Services/jeu.service';
 
 
 
@@ -9,62 +10,64 @@ import { Router } from '@angular/router';
   selector: 'app-jeu',
   templateUrl: './jeu.component.html',
   styleUrls: ['./jeu.component.css']
-  
+
 })
 export class JeuComponent implements OnInit {
 
   jeux;
   jeu;
+  //valeur = ;
   avis;
   avisnew;
 
   idJeu = 19;
 
 
-  constructor(private http:HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private jeuService: JeuService) { }
 
   ngOnInit(): void {
-  this.getAllJeu();
-  this.getOneJeu();
-  this.getAllAvis();
+    // this.getAllJeu();
+    // this.getAllAvis();
+    this.jeu = this.jeuService.game;
+    console.log('contenu de jeu venu du service', this.jeu);
 
   }
 
 
-  getAllJeu(){
+  getAllJeu() {
     this.http.get('http://localhost:8086/jeu/list').subscribe({
-      next: (data) => {this.jeux = data;},
-      error: (err) => {console.log(err);}
-    }); 
+      next: (data) => { this.jeux = data; },
+      error: (err) => { console.log(err); }
+    });
   }
 
-  getAllAvis(){
+  getAllAvis() {
     this.http.get('http://localhost:8086/avis/list/jeu/19').subscribe({
-      next: (data) => {this.avis = data;},
-      error: (err) => {console.log(err);}
-    }); 
+      next: (data) => { this.avis = data; },
+      error: (err) => { console.log(err); }
+    });
   }
 
-  getOneJeu(){
+  getOneJeu() {
     this.http.get('http://localhost:8086/jeu/20').subscribe({
-      next: (data) => {this.jeu = data;},
-      error: (err) => {console.log(err);}
-    }); 
+      next: (data) => { this.jeu = data; },
+      error: (err) => { console.log(err); }
+    });
   }
 
 
   newAvis(avis): any {
-    const idUser = {id: 17};
-    const idJeu = {id: 19}
+    const idUser = { id: 17 };
+    const idJeu = { id: 19 }
     avis.user.id = idUser; // on entre l'expéditeur 1 en dur pour gérer l'envoi du test
     avis.jeu.id = idJeu;
     this.http.post('http://localhost:8086/avis', avis).subscribe({
-      next: (data)=> {this.route.navigateByUrl('jeu');},
-      error: (err) => {console.log(err);}
-      
+      next: (data) => { this.route.navigateByUrl('jeu'); },
+      error: (err) => { console.log(err); }
+
     })
 
   }
-  
+
 
 }

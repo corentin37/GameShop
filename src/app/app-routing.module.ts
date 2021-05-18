@@ -1,3 +1,4 @@
+import { TacheUserComponent } from './admin/tache-user/tache-user.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ConnexionComponent } from './connexion/connexion.component';
@@ -11,6 +12,9 @@ import { NewAvisComponent } from './new-avis/new-avis.component';
 import { TacheAdminComponent } from './admin/tache-admin/tache-admin.component';
 import { TacheVendeurComponent } from './admin/tache-vendeur/tache-vendeur.component';
 import { ReserverSalleComponent } from './reserver-salle/reserver-salle.component';
+import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
+import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.component';
+import { PanierComponent } from './panier/panier.component';
 
 
 
@@ -23,11 +27,16 @@ const routes: Routes = [
   {component: GestionSallesComponent, path: 'salle'},
   {component: ReserverSalleComponent, path: 'reserverSalle'},
 
+  {component: PanierComponent, path: 'panier'},
   {component: NewAvisComponent, path: 'avis'},
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}, // quand il ya pas de chemin ça redirige directement vers le catalogue
 
-  {component: TacheAdminComponent, path: 'admin/tacheAdmin'},
-  {component: TacheVendeurComponent, path: 'admin/tachevendeur' },
+  {component: TacheAdminComponent, path: 'admin-tacheAdmin'},
+  {component: TacheVendeurComponent, path: 'admin-tacheVendeur' },
+  {component: TacheSalleComponent, path: 'admin-tacheSalle'},
+  {component: TacheJoueurComponent, path: 'admin-tacheJoueur' },
+  {component: TacheUserComponent, path: 'admin-tacheUser'},
+
 
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}// quand il ya pas de chemin ça redirige directement vers le catalogue
 ];

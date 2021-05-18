@@ -7,15 +7,11 @@
             <label class = "text-secondary" for="">Attribuer une note : </label>
             <input type="text" name="note" placeholder="" class="form-control" ngModel=''>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Valider</button>
+        <button class="btn btn-primary btn-block">Valider</button>
     </form>
 </div>
 
-<div *ngFor="let a of avis">
-    {{a.user.login}}
-    {{a.note}}
-    {{a.commentaire}}
-</div>
+
 
 
 

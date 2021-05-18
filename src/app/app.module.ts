@@ -36,10 +36,10 @@ import { ReserverSalleComponent } from './reserver-salle/reserver-salle.componen
 
     NewAvisComponent,
 
+  
     TacheAdminComponent,
     TacheVendeurComponent,
     TacheSalleComponent,
-    TacheVendeurComponent,
     TacheUserComponent,
     TacheJoueurComponent,
     ReserverSalleComponent

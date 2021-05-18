@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./tache-vendeur.component.css']
 })
 export class TacheVendeurComponent implements OnInit {
-
+  rechercheV; vendeurExist; users;
   constructor(private http: HttpClient, private route: Router) { }
 
   ngOnInit(): void {
+    this.isVendeurExist();
   }
 
 
@@ -25,4 +26,72 @@ export class TacheVendeurComponent implements OnInit {
     });
   }
 
+  rechercheVendeur(recherche): any {
+    console.log('je suis dans la recherche du vendeur');
+    this.http
+      .post('http://localhost:8086/vendeur/recherche', recherche)
+      .subscribe({
+        next: (data) => {
+          console.log('le vendeur', data);
+          this.rechercheV = data;
+          console.log('recherV', this.rechercheV);
+          this.isVendeurExist();
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
+
+  isVendeurExist(): any {
+    if (this.rechercheV != null) {
+      this.vendeurExist = true;
+    } else {
+      this.vendeurExist = false;
+    }
+
+    console.log(this.vendeurExist);
+  }
+  bloquer(vendeur): any {
+    // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
+    this.http.put('http://localhost:8086/vendeur/bloquer', vendeur).subscribe({
+      next: (data) => {
+        console.log('le vendeur en param', vendeur);
+        this.rechercheV = data;
+        this.getAllUser();
+        // this.ngOnInit();
+        console.log('vendeur blocker ou debl...', data);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  addVendeur(vendeur): any {
+    if (vendeur != null) {
+      return vendeur;
+    } else {
+      return 'Pas de vendeur';
+    }
+  }
+
+  getAllUser(): any {
+    this.http.get('http://localhost:8086/user').subscribe({
+      next: (data) => {
+        this.users = data;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  actvitityBoolToStr(bool): string {
+    if (bool === false) {
+      return 'Compte bloqué';
+    } else {
+      return 'Compte débloqué';
+    }
+  }
 }
