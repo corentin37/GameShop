@@ -25,6 +25,8 @@ export class PanierComponent implements OnInit {
   panierLocation=[];
   alljeux: Object;
   iduser=5;
+  count;
+
 
   constructor(private http: HttpClient,private route: Router, private JeuService : JeuService) { }
 
@@ -81,15 +83,17 @@ export class PanierComponent implements OnInit {
 
 
   quantiteMoins(jeu){
-    jeu.quantite-=1;
-    this.http.put('http://localhost:8086/panier', jeu).subscribe({
-      next: (data) => {console.log(data); 
-        this.route.navigateByUrl('panier');
-        this.JeuService.game=jeu;
-        this.getPrixTotaux(this.panier);
-      },
-      error: (err) => {console.log(err); }
-    });
+    if(jeu.quantite>0){
+      jeu.quantite-=1;
+      this.http.put('http://localhost:8086/panier', jeu).subscribe({
+        next: (data) => {console.log(data); 
+          this.route.navigateByUrl('panier');
+          this.getPrixTotaux(this.panier);
+        },
+        error: (err) => {console.log(err); }
+      });
+    }
+    
   }
 
   quantitePlus(jeu){
@@ -97,7 +101,25 @@ export class PanierComponent implements OnInit {
     this.http.put('http://localhost:8086/panier', jeu).subscribe({
       next: (data) => {console.log(data); 
         this.route.navigateByUrl('panier');
-        this.JeuService.game=jeu;
+        this.getPrixTotaux(this.panier);
+      },
+      error: (err) => {console.log(err); }
+    });
+  }
+
+
+  supprimerJeu(jeu){
+    console.log(jeu.id);
+    this.http.delete('http://localhost:8086/panier/'+jeu.id).subscribe({
+      next: (data) => {console.log(data); 
+        this.route.navigateByUrl('panier');
+        this.count = 0;
+          for (let k of this.panier){
+            if(jeu.id = k.id){
+              this.panier.splice(this.count,1);
+            }
+            this.count+=1;
+        }
         this.getPrixTotaux(this.panier);
       },
       error: (err) => {console.log(err); }

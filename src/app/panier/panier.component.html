@@ -14,10 +14,15 @@
                       </div>
                       <div class="row">
                         <div class="col-sm-8" style="font-size: large !important;" type="button" (click)="goToJeu(j)" >{{ j.jeuAchat.lejeu.nom}}<br></div>
-                        <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="quantiteMoins(j)">-</a></div>
+                        <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="quantiteMoins(j)">-</a></div>
                         <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="quantitePlus(j)">+</a></div>
                       </div>
-                      {{ j.jeuAchat.lejeu.marque}}
+                      <div class="row">
+                        <div class="col-sm-4">{{ j.jeuAchat.lejeu.marqueDuJeu.libelle}}</div>
+                        <div class="col-sm-4"></div>
+                        <div classe="col-sm-4"><a class="btn btn-outline-danger btn-sm" type="button" (click)="supprimerJeu(j)">Supprimer</a></div>
+                      </div>
+                      
                       
                   </div> 
               </div>
@@ -63,8 +68,9 @@
                         <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="quantitePlus(j)">+</a></div>
                       </div>
                       <div class="row">
-                        <div classe="col-sm-8">{{ j.jeuAchat.lejeu.marque}}</div>
-                       
+                        <div class="col-sm-4">{{ j.jeuAchat.lejeu.marqueDuJeu.libelle}}</div>
+                        <div class="col-sm-4"></div>
+                        <div classe="col-sm-4"><a class="btn btn-outline-danger btn-sm" type="button" (click)="supprimerJeu(j)">Supprimer</a></div>
                       </div>
                       
                       
