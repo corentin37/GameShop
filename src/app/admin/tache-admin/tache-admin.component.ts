@@ -33,12 +33,7 @@ personExist; adminsExist;
           
           this.person = data;
           this.isPersonExist();
-          
-          console.log('admin/ in : ' + this.admins);
-          console.log('Person / in ' + this.person);
-          
-         
-          
+        
         },
         error: (err) => {
           console.log(err);
@@ -69,7 +64,7 @@ personExist; adminsExist;
   refreshAdmins(): any{
     if(this.person == null)
     {
-      this.getAllAdmin;
+      this.getAllAdmin();
     } else {
     }
   }
