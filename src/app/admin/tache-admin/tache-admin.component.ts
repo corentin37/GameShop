@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class TacheAdminComponent implements OnInit {
   admins;
-  person; // personne recherchée par requet recherche
-  personExist;
+  person = null; // personne recherchée par requet recherche
+  personExist = false;
   adminsExist;
 
   // creation fenetre
@@ -34,7 +34,7 @@ export class TacheAdminComponent implements OnInit {
         next: (data) => {
           this.person = data;
           this.isPersonExist();
-          console.log(this.isPersonExist)
+          console.log(this.isPersonExist);
         },
         error: (err) => {
           console.log(err);
@@ -42,11 +42,23 @@ export class TacheAdminComponent implements OnInit {
       });
   }
 
+  supprimer(person): any{
+
+    this.http.delete('http://localhost:8086/admin/supprimer', person).subscribe({
+      next: (data) => {console.log(data); this.fenetreResultat = false;},
+      error: (err) => {
+        console.log(err);
+      },
+    });
+
+
+  }
+
   fenetreActivation(chiffre): any {
     this.fenetreInscription = false;
     this.fenetreResultat = false;
     this.fenetreModification = false;
-    this.fenetreSansResultat = false
+    this.fenetreSansResultat = false;
     switch (chiffre) {
       case 0: {
         break;
@@ -61,7 +73,17 @@ export class TacheAdminComponent implements OnInit {
       }
       case 2: { // Card recherche
 
-
+        if (this.personExist != null) {
+          this.personExist = true;
+          this.fenetreResultat = true;
+          this.fenetreSansResultat = false;
+    
+        } else {
+          this.personExist = false;
+          this.fenetreSansResultat = true;
+          this.fenetreResultat = false;
+    
+        }
 
         break;
       }
@@ -80,13 +102,10 @@ export class TacheAdminComponent implements OnInit {
   isPersonExist(): any {
     if (this.person != null) {
       this.personExist = true;
-      this.fenetreResultat = true;
-      this.fenetreSansResultat = false;
+
 
     } else {
       this.personExist = false;
-      this.fenetreSansResultat = true;
-      this.fenetreResultat = false;
 
     }
 
@@ -102,10 +121,11 @@ export class TacheAdminComponent implements OnInit {
 
   bloquer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
+    console.log("bloqué")
     this.http.put('http://localhost:8086/admin/bloquer', person).subscribe({
       next: (data) => {
         this.person = data;
-        this.getAllAdmin();
+        //this.getAllAdmin();
         // this.ngOnInit();
       },
       error: (err) => {
@@ -129,14 +149,15 @@ export class TacheAdminComponent implements OnInit {
         },
       });
 
-      this.fenetreInscription = false;
+    this.fenetreInscription = false;
   }
 
   modificationAdmin(personCreated): any {
     // le formulaire s'appelle user, mais creation de vendeur
     // ATTENTION A L'URL
+    console.log("modif" +personCreated)
     this.http
-      .put('http://localhost:8086/admin/modify', personCreated)
+      .put('http://localhost:8086/admin/modifier', personCreated)
       .subscribe({
         next: (data) => {
           alert('Modification du compte admin');

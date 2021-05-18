@@ -39,8 +39,8 @@
         </div>
         <div class="form-head col-sm-2">
           <button
-          type = "button"  
-          (click)="fenetreActivation(1)"
+            type="button"
+            (click)="fenetreActivation(1)"
             class="btn button-primary btn-block"
           >
             Créer :
@@ -58,7 +58,11 @@
           />
         </div>
         <div class="form-head col-sm-2">
-          <button (click) = "fenetreActivation(2)" type="submit" class="btn button-primary btn-block">
+          <button
+            (click)="fenetreActivation(2)"
+            type="submit"
+            class="btn button-primary btn-block"
+          >
             Rechercher
           </button>
         </div>
@@ -68,10 +72,10 @@
     <div class="container border col-sm-3">
       <div class="container">
         <br />
-        <form >
+        <form>
           <div class="form-group"></div>
 
-          <div *ngIf="personExist" class="col-sm">
+          <div *ngIf="fenetreResultat" class="col-sm">
             <div class="row">
               <div class="card">
                 <div class="col-sm-12">
@@ -100,18 +104,29 @@
                       id="bt_bloquer"
                       class="btn btn-raised noto"
                       (click)="
-                        bloquer(recherche) + recherchePerson(recherche.value)
+                        bloquer(person) 
                       "
                     >
                       Bloquer
                     </button>
+                    <button
+                      type="button"
+                      id="bt_bloquer"
+                      class="btn btn-raised noto"
+                      (click)="
+                        supprimer(recherche)
+                      "
+                    >
+                    Supprimer
+                    </button>
+ 
                   </div>
                 </div>
                 <br />
               </div>
             </div>
           </div>
-<!-- Card Pas de Résultat -->
+          <!-- Card Pas de Résultat -->
           <div *ngIf="fenetreSansResultat" class="col-sm">
             <div class="row">
               <div class="card">
@@ -130,121 +145,123 @@
               </div>
             </div>
           </div>
-        
 
-    <!-- Card inscription -->
+          <!-- Card inscription -->
 
-    <div class="card inscription">
-      <div *ngIf="fenetreInscription;" class="contenuCard">
-        <form #admin="ngForm" (ngSubmit)="inscriptionAdmin(admin.value)">
-          <div class="form-group">
-            <label style="align-content: center" for=""> Créer un Admin </label>
-            <input
-              type="text"
-              required
-              placeholder="Login"
-              name="login"
-              id="login"
-              class="form-control" [value] = "tg"
-              ngModel
-            />
+          <div class="card inscription">
+            <div *ngIf="fenetreInscription" class="contenuCard">
+              <form #admin="ngForm" (ngSubmit)="inscriptionAdmin(admin.value)">
+                <div class="form-group">
+                  <label style="align-content: center" for="">
+                    Créer un Admin
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Login"
+                    name="login"
+                    id="login"
+                    class="form-control"
+                    [value]="tg"
+                    ngModel
+                  />
 
-            <input
-              type="password"
-              required
-              placeholder="Mot de passe"
-              name="password"
-              class="form-control"
-              ngModel
-            />
-            <input
-              type="text"
-              required
-              placeholder="Numéro de téléphone"
-              name="tel"
-              class="form-control"
-              ngModel
-            />
-            <input
-              type="text"
-              required
-              placeholder="Adresse email"
-              name="mail"
-              class="form-control"
-              ngModel
-            />
+                  <input
+                    type="password"
+                    required
+                    placeholder="Mot de passe"
+                    name="password"
+                    class="form-control"
+                    ngModel
+                  />
+                  <input
+                    type="text"
+                    required
+                    placeholder="Numéro de téléphone"
+                    name="tel"
+                    class="form-control"
+                    ngModel
+                  />
+                  <input
+                    type="text"
+                    required
+                    placeholder="Adresse email"
+                    name="mail"
+                    class="form-control"
+                    ngModel
+                  />
+                </div>
+
+                <button type="submit" class="btn button-primary btn-block">
+                  Valider
+                </button>
+              </form>
+            </div>
           </div>
-  
-          <button type="submit" class="btn button-primary btn-block">
-            Valider
-          </button>
-        </form>
-      </div>
-    </div>
 
-        <!-- Card modification -->
+          <!-- Card modification -->
 
-    <div class="card modification">
-      <div *ngIf="fenetreModification" class="contenuCard">
-        <form #admin="ngForm" (ngSubmit)="modificationAdmin(admin.value)">
-          <div class="form-group">
-            <label style="align-content: center" for=""> Modification </label>
-            
-                        <!--
+          <div class="card modification">
+            <div *ngIf="fenetreModification" class="contenuCard">
+              <form #admin="ngForm" (ngSubmit)="modificationAdmin(admin.value)">
+                <div class="form-group">
+                  <label style="align-content: center" for="">
+                    Modification
+                  </label>
+
+                  <!--
             <p>Id : {{ person.id }}</p>
             <p>Login : {{ person.user.login }}</p>
             <p>Mail : {{ person.user.mail }}</p>
             <p>Numéro : {{ person.user.tel }}</p>-->
-            Id : {{ person.id }}
-            <input
-              type="text"
-              required
-              placeholder="Login"
-              name="login"
-              value = "${person.login}"
-              class="form-control"
-              [(ngModel)]= person.login
-            />
-            <input
-              type="password"
-              required
-              placeholder="Mot de passe"
-              name="password"
-              class="form-control"
-              ngModel
-            />
-            <input
-              type="text"
-              required
-              placeholder="Numéro de téléphone"
-              name="tel"
-              class="form-control"
-              ngModel
-            />
-            <input
-              type="text"
-              required
-              placeholder="Adresse email"
-              name="mail"
-              class="form-control"
-              ngModel
-            />
+                  Id : {{ person.id }}
+                  <input
+                    type="text"
+                    required
+                    placeholder="Login"
+                    name="login"
+                    value="${person.login}"
+                    class="form-control"
+                    [(ngModel)]="person.login"
+                  />
+                  <input
+                    type="password"
+                    required
+                    placeholder="Mot de passe"
+                    name="password"
+                    class="form-control"
+                    ngModel
+                  />
+                  <input
+                    type="text"
+                    required
+                    placeholder="Numéro de téléphone"
+                    name="tel"
+                    class="form-control"
+                    ngModel
+                  />
+                  <input
+                    type="text"
+                    required
+                    placeholder="Adresse email"
+                    name="mail"
+                    class="form-control"
+                    ngModel
+                  />
+                </div>
+
+                <button type="submit" class="btn button-primary btn-block">
+                  Valider
+                </button>
+              </form>
+            </div>
           </div>
-  
-          <button type="submit" class="btn button-primary btn-block">
-            Valider
-          </button>
         </form>
       </div>
     </div>
-
-  </form>
-</div>
-</div>
   </div>
 </div>
 
 <div>
   <br />
-  
 </div>
