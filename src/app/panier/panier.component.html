@@ -1,4 +1,4 @@
-<p>Mon panier</p>
+<h1>Mon panier Achat</h1>
 <div class="row">
 <div class="col-sm-9 ">
     <div class="row"> 
@@ -6,24 +6,28 @@
               <br>
               <a class="bt-perso" href="jeu" role="button">
                 <div class="card">
-                  <img src={{j.image}} width="200px"><br>
+                  <img src={{j.jeuAchat.lejeu.urlImage}} width="200px"><br>
                   <div class="ml-2">
                       <div class="row">
                         <div class="col-sm-4">{{j.note}}/5</div>
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">Quantite : {{j.quantite}}<br></div>
                       </div>
-
-                      {{ j.marque}}<br>
-                      {{ j.nom}}
-                  </div>
+                      <div class="row">
+                        <div class="col-sm-8" style="font-size: large !important;">{{ j.jeuAchat.lejeu.nom}}<br></div>
+                        <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button">-</a></div>
+                        <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button">+</a></div>
+                      </div>
+                      {{ j.jeuAchat.lejeu.marque}}
+                      
+                  </div> 
               </div>
               
               <div class="card">
                 <div class="ml-2 mt-2">
                     <div class="row">
-                        <div class="col-sm-6">Achat : {{j.prixAchat}} €/unité</div>
-                        <div class="col-sm-6">Location : {{j.prixLocation}} €/unité<br></div>
+                        <div class="col-sm-6">Achat : {{j.jeuAchat.prixAchat}} €/unité</div>
+                        <div class="col-sm-6">Location : {{j.jeuAchat.lejeu.prixLocation}} €/unité<br></div>
                     </div>
                 </div>
             </div>
@@ -35,8 +39,7 @@
       </div>
 
 <div class="col-sm-3">
-    <p>Prix Total Achat : {{prixTotalAchat}} €</p>
-    <p>Prix Total Location : {{prixTotalLocation}} €</p>
-    <span><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Acheter</a><br>  <a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Louer</a></span>
+    <p>Prix Total Achat : {{prixTotalAchat}} €<br><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Acheter</a></p>
+    <p>Prix Total Location : {{prixTotalLocation}} €<br><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Louer</a></p>
 </div>
 </div>
