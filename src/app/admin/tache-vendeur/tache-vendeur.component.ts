@@ -86,4 +86,12 @@ export class TacheVendeurComponent implements OnInit {
       },
     });
   }
+
+  actvitityBoolToStr(bool): string {
+    if (bool === false) {
+      return 'Compte bloqué';
+    } else {
+      return 'Compte débloqué';
+    }
+  }
 }

@@ -37,6 +37,15 @@ export class TacheUserComponent implements OnInit {
 
     });
   }
+
+  actvitityBoolToStr(bool): string {
+    if (bool === false) {
+      return 'Compte bloqué';
+    } else {
+      return 'Compte débloqué';
+    }
+  }
+
   /*
   rechercheUser(recherche): any {
     console.log('je suis dans la recherche du vendeur');

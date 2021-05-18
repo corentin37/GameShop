@@ -7,7 +7,7 @@
     
         <!-- Creation vendeur -->
      <div class="container col-sm-4 border">
-        <div class="container  col-sm-4 border">
+        <div class="container   border">
           <p>Creér un Vendeur</p>
       
           <form #vendeur="ngForm" (ngSubmit)="inscriptionVendeur(vendeur.value)">
@@ -49,7 +49,7 @@
                 <p>Login : {{ rechercheV.user.login }}</p>
                 <p>Mail : {{ rechercheV.user.mail }}</p>
                 <p>Numéro : {{ rechercheV.user.tel }}</p>
-                <p>Etat du compte : {{ activitee(rechercheV.user.activity) }}</p>
+                <p>Etat du compte : {{ actvitityBoolToStr(rechercheV.user.activity) }}</p>
               </div>
             </div>
             <div class="card-footer">
@@ -77,8 +77,4 @@
     
       
     
-<<<<<<< HEAD
     
-=======
-    
->>>>>>> febfcb1003a059e379950873ae488b91db7685e1
