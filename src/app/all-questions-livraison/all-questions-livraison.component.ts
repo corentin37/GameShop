@@ -11,10 +11,12 @@ export class AllQuestionsLivraisonComponent implements OnInit {
 
   constructor(private http: HttpClient, private route: Router) { }
 message;
+
   ngOnInit(): void {
     this.getAllMessage();
+    
   }
-
+  
 
   newMessage(msg):any{//note ici est la valeur du formulaire
     const expediteur = {id: 1}; //en dur, en temps normal récupérer id de l'user qui s'est connecté
@@ -25,8 +27,10 @@ message;
     });
   }
 
+
+  
   getAllMessage(): any{
-  this.http.get('http://localhost:8086/sujet/messages').subscribe({
+  this.http.get('http://localhost:8086/messages').subscribe({
   next: (data)=> {this.message = data; },
   error: (err)=> {console.log(err);}
 
