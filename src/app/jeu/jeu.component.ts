@@ -16,6 +16,7 @@ import { JeuService } from '../Services/jeu.service';
 export class JeuComponent implements OnInit {
   moyenne;
   jeu;
+  login;
   //valeur = ;
   avis;
   avisnew;
@@ -31,7 +32,7 @@ export class JeuComponent implements OnInit {
     this.jeu = this.jeuService.game;
     console.log('contenu de jeu venu du service', this.jeu);
     this.getMoyenne();
-
+    this.login=localStorage.getItem("id");
   }
 
   getAllAvis() {
@@ -51,15 +52,18 @@ getMoyenne(){
   newAvis(avis): any {
     //gérer user et jeu avec Service
     console.log("Avis posté! Rafraîchir la page");
-    const user ={id : 1};
+    const user ={id :localStorage.getItem("id")};
     avis.user=user;
     avis.jeu=this.jeu.lejeu;
-    if (avis.note) {
+    if(!this.login){
+      return confirm('Veuillez vous connecter');
+    }
+    if ((avis.note)&&(this.login)) {
+      
       this.http.post('http://localhost:8086/avis', avis).subscribe({
         next: (data)=> {console.log(data); window.scrollTo(0,0); this.ngOnInit(); return confirm('Avis posté !'); },
         error: (err) => {console.log(err);}
       });
-      
     }
     else {
       return confirm('Veuillez entrer une note');
