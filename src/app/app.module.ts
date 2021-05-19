@@ -22,6 +22,7 @@ import { HistoriqueSalleComponent } from './historique-salle/historique-salle.co
 import { PanierComponent } from './panier/panier.component';
 import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.component';
 import { DeconnexionComponent } from './deconnexion/deconnexion.component';
+import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
 
 
 
@@ -43,7 +44,8 @@ import { DeconnexionComponent } from './deconnexion/deconnexion.component';
     ReserverSalleComponent,
     HistoriqueSalleComponent,
     TrierparPlateauComponent,
-    DeconnexionComponent
+    DeconnexionComponent,
+    AjouterSalleComponent
 
   ],
   imports: [
