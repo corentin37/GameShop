@@ -118,7 +118,7 @@ export class PanierComponent implements OnInit {
       next: (data) => {console.log(data);
         this.panierAchat=[];
         this.panierLocation=[];
-        this.ngOnInit();
+        this.getOnePanierByUser(this.iduser);
       },
       error: (err) => {console.log(err); }
     });
