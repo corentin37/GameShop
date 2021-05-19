@@ -40,7 +40,7 @@ export class TacheAdminComponent implements OnInit {
             this.fenetreSansResultat = true;
             this.fenetreResultat = false;
           }
-          console.log('C RP' + this.isPersonExist);
+          
         },
         error: (err) => {
           console.log(err);
@@ -100,7 +100,7 @@ export class TacheAdminComponent implements OnInit {
     }
   }
 
-  isPersonExist(): any {}
+  
 
   refreshAdmins(): any {
     if (this.person == null) {
@@ -124,11 +124,11 @@ export class TacheAdminComponent implements OnInit {
     });
   }
 
-  inscriptionAdmin(personCreated): any {
+  inscription(person): any {
     // le formulaire s'appelle user, mais creation de vendeur
     // ATTENTION A L'URL
     this.http
-      .post('http://localhost:8086/admin/save', personCreated)
+      .post('http://localhost:8086/admin/save', person)
       .subscribe({
         next: (data) => {
           alert('Création du compte admin');
@@ -142,7 +142,7 @@ export class TacheAdminComponent implements OnInit {
     this.fenetreInscription = false;
   }
 
-  modificationAdmin(personCreated): any {
+  modification(personCreated): any {
     // le formulaire s'appelle user, mais creation de vendeur
     // ATTENTION A L'URL
     console.log('modif' + personCreated);
