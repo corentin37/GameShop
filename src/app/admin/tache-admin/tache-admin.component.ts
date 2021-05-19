@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class TacheAdminComponent implements OnInit {
   admins;
-  person; // personne recherchée par requet recherche
-  personExist;
+  person = null; // personne recherchée par requet recherche
+  personExist = false;
   adminsExist;
 
   // creation fenetre
@@ -33,8 +33,28 @@ export class TacheAdminComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.person = data;
-          this.isPersonExist();
-          console.log(this.isPersonExist)
+          if (this.person != null) {
+            this.fenetreResultat = true;
+            this.fenetreSansResultat = false;
+          } else {
+            this.fenetreSansResultat = true;
+            this.fenetreResultat = false;
+          }
+          
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
+
+  supprimer(person): any {
+    this.http
+      .delete('http://localhost:8086/admin/supprimer', person)
+      .subscribe({
+        next: (data) => {
+          
+          this.fenetreResultat = false;
         },
         error: (err) => {
           console.log(err);
@@ -46,26 +66,29 @@ export class TacheAdminComponent implements OnInit {
     this.fenetreInscription = false;
     this.fenetreResultat = false;
     this.fenetreModification = false;
-    this.fenetreSansResultat = false
+    this.fenetreSansResultat = false;
+    
     switch (chiffre) {
       case 0: {
+        // rien
         break;
       }
 
-      case 1: { // creation person
+      case 1: {
+        // creation person
         this.fenetreInscription = true;
         this.personExist = false;
         this.fenetreModification = false;
 
         break;
       }
-      case 2: { // Card recherche
-
-
+      case 2: {
+        // Card recherche
 
         break;
       }
-      case 3: { // modification du profil
+      case 3: {
+        // modification du profil
         this.fenetreInscription = false;
         this.fenetreModification = true;
         this.personExist = false;
@@ -77,21 +100,7 @@ export class TacheAdminComponent implements OnInit {
     }
   }
 
-  isPersonExist(): any {
-    if (this.person != null) {
-      this.personExist = true;
-      this.fenetreResultat = true;
-      this.fenetreSansResultat = false;
-
-    } else {
-      this.personExist = false;
-      this.fenetreSansResultat = true;
-      this.fenetreResultat = false;
-
-    }
-
-    console.log(this.personExist);
-  }
+  
 
   refreshAdmins(): any {
     if (this.person == null) {
@@ -102,10 +111,11 @@ export class TacheAdminComponent implements OnInit {
 
   bloquer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
+    
     this.http.put('http://localhost:8086/admin/bloquer', person).subscribe({
       next: (data) => {
         this.person = data;
-        this.getAllAdmin();
+        //this.getAllAdmin();
         // this.ngOnInit();
       },
       error: (err) => {
@@ -114,11 +124,11 @@ export class TacheAdminComponent implements OnInit {
     });
   }
 
-  inscriptionAdmin(personCreated): any {
+  inscription(person): any {
     // le formulaire s'appelle user, mais creation de vendeur
     // ATTENTION A L'URL
     this.http
-      .post('http://localhost:8086/admin/save', personCreated)
+      .post('http://localhost:8086/admin/save', person)
       .subscribe({
         next: (data) => {
           alert('Création du compte admin');
@@ -129,22 +139,34 @@ export class TacheAdminComponent implements OnInit {
         },
       });
 
-      this.fenetreInscription = false;
+    this.fenetreInscription = false;
   }
 
-  modificationAdmin(personCreated): any {
+  modification(personCreated): any {
+    
+    
     // le formulaire s'appelle user, mais creation de vendeur
     // ATTENTION A L'URL
+    console.log('modif' + personCreated);
+    console.log('modif value ' + personCreated.value);
     this.http
-      .put('http://localhost:8086/admin/modify', personCreated)
+      .put('http://localhost:8086/admin/modifier', personCreated)
       .subscribe({
         next: (data) => {
+          
           alert('Modification du compte admin');
+          this.getAllAdmin();
         },
         error: (err) => {
           console.log(err);
         },
       });
+    
+  }
+
+  entreeConsole;
+  console(entreeConsole): any {
+    console.log(entreeConsole);
   }
 
   getAllAdmin(): any {

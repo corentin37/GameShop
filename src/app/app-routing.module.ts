@@ -18,12 +18,14 @@ import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.co
 import { ForumComponent } from './forum/forum.component';
 import { AllQuestionsLivraisonComponent } from './all-questions-livraison/all-questions-livraison.component';
 
+import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 
 
 
 const routes: Routes = [
   {component: JeuComponent, path: 'jeu'},
   {component: ConnexionComponent, path: 'connexion'},
+  {component: DeconnexionComponent, path: 'deconnexion'},
   {component: CreerJoueurComponent, path: 'creerJoueur'},
   {component: AdminComponent, path: 'admin'},
   {component: CatalogueComponent, path: 'catalogue'},

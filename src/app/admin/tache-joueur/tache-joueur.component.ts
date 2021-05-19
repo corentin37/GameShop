@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
 export class TacheJoueurComponent implements OnInit {
   rechercheJ;
   joueurs;
-  joueurExist;
+  personExist;
+  fenetreModification;
+
+  fenetreInscription;fenetreResultat;  fenetreSansResultat; person; isPersonExist;
   constructor(private http: HttpClient, private route: Router) { }
 
   ngOnInit(): void {
@@ -19,6 +22,21 @@ export class TacheJoueurComponent implements OnInit {
   }
 
   
+
+  supprimer(person): any {
+    this.http
+      .delete('http://localhost:8086/joueur/supprimer', person)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.fenetreResultat = false;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
+
   getAllJoueur(): any {
     this.http.get('http://localhost:8086/joueur/list').subscribe({
       next: (data) => {
@@ -40,12 +58,137 @@ export class TacheJoueurComponent implements OnInit {
 
 
 
-  rechercheJoueur(recherche): any {
-    this.http.post('http://localhost:8086/joueur/recherche', recherche)
+  inscription(person): any {
+    // le formulaire s'appelle user, mais creation de vendeur
+    // ATTENTION A L'URL
+    this.http
+      .post('http://localhost:8086/joueur/save', person)
       .subscribe({
         next: (data) => {
-          this.rechercheJ = data;
-          this.isJoueurExist();
+          alert('Création du compte Joueur');
+          this.getAllJoueur();
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+
+    this.fenetreInscription = false;
+  }
+
+
+  fenetreActivation(chiffre): any {
+    this.fenetreInscription = false;
+    this.fenetreResultat = false;
+    this.fenetreModification = false;
+    this.fenetreSansResultat = false;
+    console.log('FA' + this.personExist);
+    switch (chiffre) {
+      case 0: {
+        // rien
+        break;
+      }
+
+      case 1: {
+        // creation person
+        this.fenetreInscription = true;
+        this.personExist = false;
+        this.fenetreModification = false;
+
+        break;
+      }
+      case 2: {
+        // Card recherche
+
+        break;
+      }
+      case 3: {
+        // modification du profil
+        this.fenetreInscription = false;
+        this.fenetreModification = true;
+        this.personExist = false;
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+  }
+
+ 
+
+
+  actvitityBoolToStr(bool): string {
+    if (bool === false) {
+      return 'Bloqué';
+    } else {
+      return 'Débloqué';
+    }
+  }
+
+  cotisationBoolToStr(bool): string {
+    if (bool === false) {
+      return 'Adhérant';
+    } else {
+      return 'Non adhérant';
+    }
+  }
+
+  bloquer(person): any {
+    // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
+    console.log('bloqué');
+    this.http.put('http://localhost:8086/joueur/bloquer', person).subscribe({
+      next: (data) => {
+        this.person = data;
+        //this.getAllJoueur();
+        // this.ngOnInit();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  
+  adherer(person): any {
+    // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
+    console.log('bloqué');
+    this.http.put('http://localhost:8086/joueur/adherer', person).subscribe({
+      next: (data) => {
+        this.person = data;
+        //this.getAllJoueur();
+        // this.ngOnInit();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  
+
+  
+
+  console(entreeConsole): any {
+    console.log(entreeConsole);
+  }
+
+
+  recherchePerson(recherche): any {
+    this.fenetreInscription = false;
+    this.http
+      .post('http://localhost:8086/joueur/recherche', recherche)
+      .subscribe({
+        next: (data) => {
+          this.person = data;
+          if (this.person != null) {
+            this.fenetreResultat = true;
+            this.fenetreSansResultat = false;
+          } else {
+            this.fenetreSansResultat = true;
+            this.fenetreResultat = false;
+          }
+          
         },
         error: (err) => {
           console.log(err);
@@ -53,63 +196,24 @@ export class TacheJoueurComponent implements OnInit {
       });
   }
 
-  isJoueurExist(): any {
-    if (this.rechercheJ != null) {
-      this.joueurExist = true;
-    } else {
-      this.joueurExist = false;
-    }
-
-    console.log(this.joueurExist);
-  }
-
-  actvitityBoolToStr(bool): string {
-    if (bool === false) {
-      return 'Compte bloqué';
-    } else {
-      return 'Compte débloqué';
-    }
-  }
-
-  cotisationBoolToStr(bool): string {
-    if (bool === false) {
-      return 'Compte adhérant';
-    } else {
-      return 'Compte non adhérant';
-    }
-  }
-
-  bloquer(joueur): any {
-    // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
-    this.http.put('http://localhost:8086/joueur/bloquer', joueur).subscribe({
-      next: (data) => {
-                this.rechercheJ = data;
-                this.getAllJoueur();
-                // this.ngOnInit();
-        
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-
-  adherer(joueur): any {
-    // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
-    this.http.put('http://localhost:8086/joueur/adherer', joueur).subscribe({
-      next: (data) => {
-        this.rechercheJ = data;
-        this.getAllJoueur();
-        
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-
-  console(entreeConsole): any {
-    console.log(entreeConsole);
+  modification(personCreated): any {
+    // le formulaire s'appelle user, mais creation de vendeur
+    // ATTENTION A L'URL
+    console.log('modif' + personCreated);
+    console.log('modif va ' + personCreated.value);
+    this.http
+      .put('http://localhost:8086/joueur/modifier', personCreated)
+      .subscribe({
+        next: (data) => {
+          
+          alert('Modification du compte joueur');
+          this.getAllJoueur();
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    
   }
 
 }

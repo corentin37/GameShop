@@ -23,6 +23,7 @@ import { PanierComponent } from './panier/panier.component';
 import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.component';
 import { ForumComponent } from './forum/forum.component';
 import { AllQuestionsLivraisonComponent } from './all-questions-livraison/all-questions-livraison.component';
+import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 
 
 
@@ -47,6 +48,7 @@ import { AllQuestionsLivraisonComponent } from './all-questions-livraison/all-qu
     ForumComponent,
     AllQuestionsLivraisonComponent,
     
+    DeconnexionComponent
 
   ],
   imports: [
