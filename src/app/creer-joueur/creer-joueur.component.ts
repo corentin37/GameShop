@@ -29,7 +29,7 @@ export class CreerJoueurComponent implements OnInit {
   inscription(user): any{
         // le formulaire s'appelle user, mais creation de joueur
         // ATTENTION A L'URL
-
+    console.log(user)
     this.http.post('http://localhost:8086/joueur/save', user).subscribe({
       next: (data) => {this.route.navigateByUrl('');  },
       error : (err) => { console.log(err); }

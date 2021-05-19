@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { logging } from 'protractor';
 
 @Component({
   selector: 'app-tache-admin',
@@ -27,6 +28,7 @@ export class TacheAdminComponent implements OnInit {
   }
 
   recherchePerson(recherche): any {
+    this.getAllAdmin()
     this.fenetreInscription = false;
     this.http
       .post('http://localhost:8086/admin/recherche', recherche)
@@ -40,7 +42,7 @@ export class TacheAdminComponent implements OnInit {
             this.fenetreSansResultat = true;
             this.fenetreResultat = false;
           }
-          
+
         },
         error: (err) => {
           console.log(err);
@@ -53,7 +55,7 @@ export class TacheAdminComponent implements OnInit {
       .delete('http://localhost:8086/admin/supprimer', person)
       .subscribe({
         next: (data) => {
-          
+
           this.fenetreResultat = false;
         },
         error: (err) => {
@@ -62,12 +64,14 @@ export class TacheAdminComponent implements OnInit {
       });
   }
 
+
+
   fenetreActivation(chiffre): any {
     this.fenetreInscription = false;
     this.fenetreResultat = false;
     this.fenetreModification = false;
     this.fenetreSansResultat = false;
-    
+
     switch (chiffre) {
       case 0: {
         // rien
@@ -100,7 +104,7 @@ export class TacheAdminComponent implements OnInit {
     }
   }
 
-  
+
 
   refreshAdmins(): any {
     if (this.person == null) {
@@ -111,7 +115,7 @@ export class TacheAdminComponent implements OnInit {
 
   bloquer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
-    
+
     this.http.put('http://localhost:8086/admin/bloquer', person).subscribe({
       next: (data) => {
         this.person = data;
@@ -142,26 +146,51 @@ export class TacheAdminComponent implements OnInit {
     this.fenetreInscription = false;
   }
 
-  modification(personCreated): any {
+  effacer(person): any { // effacer le user mais
+
     
+    person.id;
+    person.login =  person.id;
+    person.password = null;
+    person.mail = null;
+    person.tel= null;
+    person.activity= false;
     
-    // le formulaire s'appelle user, mais creation de vendeur
-    // ATTENTION A L'URL
-    console.log('modif' + personCreated);
-    console.log('modif value ' + personCreated.value);
+
     this.http
-      .put('http://localhost:8086/admin/modifier', personCreated)
+      .put('http://localhost:8086/admin/modifier', person)
       .subscribe({
         next: (data) => {
+          this.fenetreModification = false;
           
-          alert('Modification du compte admin');
           this.getAllAdmin();
         },
         error: (err) => {
           console.log(err);
         },
       });
-    
+  }
+
+
+  modification(personCreated): any {
+
+    // le formulaire s'appelle user, mais creation de vendeur
+    // ATTENTION A L'URL
+
+    console.log("console modif")
+    this.http
+      .put('http://localhost:8086/admin/modifier', personCreated)
+      .subscribe({
+        next: (data) => {
+          this.getAllAdmin();
+          this.fenetreModification = false;
+          this.fenetreResultat = true;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+
   }
 
   entreeConsole;

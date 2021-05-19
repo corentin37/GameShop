@@ -15,6 +15,9 @@ import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.componen
 import { PanierComponent } from './panier/panier.component';
 import { HistoriqueSalleComponent } from './historique-salle/historique-salle.component';
 import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.component';
+import { ForumComponent } from './forum/forum.component';
+import { AllQuestionsLivraisonComponent } from './all-questions-livraison/all-questions-livraison.component';
+
 import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
 
@@ -41,6 +44,9 @@ const routes: Routes = [
   {component: TacheSalleComponent, path: 'admin-tacheSalle'},
   {component: TacheJoueurComponent, path: 'admin-tacheJoueur' },
   {component: TacheUserComponent, path: 'admin-tacheUser'},
+  {component: ForumComponent, path: 'forum'},
+  {component: AllQuestionsLivraisonComponent, path: 'questionLivraison'},
+  
 
 
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}// quand il ya pas de chemin ça redirige directement vers le catalogue

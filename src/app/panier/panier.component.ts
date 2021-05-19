@@ -26,7 +26,7 @@ export class PanierComponent implements OnInit {
   alljeux: Object;
   iduser=localStorage.getItem("id");
   count;
-
+  idCard;
 
   constructor(private http: HttpClient,private route: Router, private jeuService : JeuService) { }
 
@@ -38,7 +38,7 @@ export class PanierComponent implements OnInit {
   
   getOnePanierByUser(iduser){
     this.http.get('http://localhost:8086/panier/user/'+iduser).subscribe({
-      next: (data) => {this.panier = data;console.log("panier : ",this.panier);this.getPrixTotaux(this.panier);this.definePanierAchatAndPanierLocation()},
+      next: (data) => {this.panier = data;console.log("panier : ",this.panier);this.getPrixTotaux(this.panier);this.definePanierAchatAndPanierLocation();},
       error: (err) => {console.log(err);}
     });
   }
@@ -88,8 +88,9 @@ export class PanierComponent implements OnInit {
       jeu.quantite-=1;
       this.http.put('http://localhost:8086/panier', jeu).subscribe({
         next: (data) => {console.log(data); 
-          this.route.navigateByUrl('panier');
+          
           this.getPrixTotaux(this.panier);
+          this.route.navigateByUrl('panier');
         },
         error: (err) => {console.log(err); }
       });
@@ -113,6 +114,7 @@ export class PanierComponent implements OnInit {
     console.log(jeu.id);
     this.http.delete('http://localhost:8086/panier/'+jeu.id).subscribe({
       next: (data) => {console.log(data); 
+        window.location.reload();
         this.route.navigateByUrl('panier');
         this.count = 0;
           for (let k of this.panier){
@@ -121,7 +123,7 @@ export class PanierComponent implements OnInit {
             }
             this.count+=1;
         }
-        this.getPrixTotaux(this.panier);
+        this.getOnePanierByUser(this.iduser);
       },
       error: (err) => {console.log(err); }
     });
