@@ -1,17 +1,28 @@
 <h1>Sujets :</h1>
 <div class="container">
-<div type="button" (click)="goToQuestions()" class="row">
-    <br>
-    <div *ngFor="let s of sujets" class="col-sm-12 ">
-      <br>
-        <div type="button" class="card">
-          <div class="card-body ml-2">
-            <p class="card-text">{{ s.sujet}}</p>
-          </div>
-        </div>
 
+    
+
+      <div class="row">
         <br>
+        <div *ngFor="let s of sujets" class="col-sm-12 ">
+          <br>
+            <div type="button" (click)="goToQuestions()" class="card">
+              <div class="card-body ml-2">
+                <p class="card-text">{{ s.sujet}}</p>
+              </div>
+            </div>
+   
+            <br>
+   
+        </div>
+    </div>
+
+
 
     </div>
-</div>
-</div>
+        
+
+    
+
+

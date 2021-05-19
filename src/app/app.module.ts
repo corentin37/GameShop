@@ -24,6 +24,7 @@ import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.co
 import { ForumComponent } from './forum/forum.component';
 import { AllQuestionsLivraisonComponent } from './all-questions-livraison/all-questions-livraison.component';
 import { DeconnexionComponent } from './deconnexion/deconnexion.component';
+import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
 
 
 
@@ -45,10 +46,10 @@ import { DeconnexionComponent } from './deconnexion/deconnexion.component';
     ReserverSalleComponent,
     HistoriqueSalleComponent,
     TrierparPlateauComponent,
+    DeconnexionComponent,
+    AjouterSalleComponent,
     ForumComponent,
-    AllQuestionsLivraisonComponent,
-    
-    DeconnexionComponent
+    AllQuestionsLivraisonComponent
 
   ],
   imports: [
