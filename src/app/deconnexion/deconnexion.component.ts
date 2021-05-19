@@ -22,7 +22,7 @@ export class DeconnexionComponent implements OnInit {
   }
 
   goToHome(){
-    this.route.navigateByUrl('catalogue');
+    this.route.navigateByUrl('');
   }
 
   messageDeconnexion(){
