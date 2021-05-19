@@ -53,7 +53,7 @@ export class TacheAdminComponent implements OnInit {
       .delete('http://localhost:8086/admin/supprimer', person)
       .subscribe({
         next: (data) => {
-          console.log(data);
+          
           this.fenetreResultat = false;
         },
         error: (err) => {
@@ -67,7 +67,7 @@ export class TacheAdminComponent implements OnInit {
     this.fenetreResultat = false;
     this.fenetreModification = false;
     this.fenetreSansResultat = false;
-    console.log('FA' + this.personExist);
+    
     switch (chiffre) {
       case 0: {
         // rien
@@ -111,7 +111,7 @@ export class TacheAdminComponent implements OnInit {
 
   bloquer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
-    console.log('bloqué');
+    
     this.http.put('http://localhost:8086/admin/bloquer', person).subscribe({
       next: (data) => {
         this.person = data;
@@ -143,10 +143,12 @@ export class TacheAdminComponent implements OnInit {
   }
 
   modification(personCreated): any {
+    
+    
     // le formulaire s'appelle user, mais creation de vendeur
     // ATTENTION A L'URL
     console.log('modif' + personCreated);
-    console.log('modif va ' + personCreated.value);
+    console.log('modif value ' + personCreated.value);
     this.http
       .put('http://localhost:8086/admin/modifier', personCreated)
       .subscribe({
@@ -160,6 +162,11 @@ export class TacheAdminComponent implements OnInit {
         },
       });
     
+  }
+
+  entreeConsole;
+  console(entreeConsole): any {
+    console.log(entreeConsole);
   }
 
   getAllAdmin(): any {
