@@ -15,12 +15,14 @@ import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.componen
 import { PanierComponent } from './panier/panier.component';
 import { HistoriqueSalleComponent } from './historique-salle/historique-salle.component';
 import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.component';
+import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 
 
 
 const routes: Routes = [
   {component: JeuComponent, path: 'jeu'},
   {component: ConnexionComponent, path: 'connexion'},
+  {component: DeconnexionComponent, path: 'deconnexion'},
   {component: CreerJoueurComponent, path: 'creerJoueur'},
   {component: AdminComponent, path: 'admin'},
   {component: CatalogueComponent, path: 'catalogue'},

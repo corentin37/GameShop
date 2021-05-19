@@ -21,6 +21,7 @@ import { ReserverSalleComponent } from './reserver-salle/reserver-salle.componen
 import { HistoriqueSalleComponent } from './historique-salle/historique-salle.component';
 import { PanierComponent } from './panier/panier.component';
 import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.component';
+import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 
 
 
@@ -41,7 +42,8 @@ import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.co
     TacheJoueurComponent,
     ReserverSalleComponent,
     HistoriqueSalleComponent,
-    TrierparPlateauComponent
+    TrierparPlateauComponent,
+    DeconnexionComponent
 
   ],
   imports: [
