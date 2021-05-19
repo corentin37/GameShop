@@ -6,6 +6,8 @@
             <div class="col-sm-4">
                 
                 <img src="{{jeu.lejeu.urlImage}}" alt="Image Jeu" class="img">
+                <br><br>
+                <h6>Moyenne : {{moyenne}} / 10 </h6>
             </div>
             <div class="col-sm-1"></div>
 
@@ -31,7 +33,7 @@
                 </div>
                 
                     <form>
-                    <span><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Acheter</a> : {{jeu.prixAchat}} € | <a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Louer</a> : {{jeu.lejeu.prixLocation}} € </span>
+                    <span><a class="btn btn-outline-warning btn-sm" href="panier" role="button">Acheter</a> : {{jeu.prixAchat}} € | <a class="btn btn-outline-warning btn-sm" href="panier" role="button">Louer</a> : {{jeu.lejeu.prixLocation}} € </span>
                    
                 </form>
                    

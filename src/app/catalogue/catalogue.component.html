@@ -7,7 +7,7 @@
           Catégorie
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a (click)="getCatalogue()" *ngFor="let c of categorie"  class="dropdown-item"> {{c.libelle}} </a>
+          <a (click)="goToCategorie(c)" *ngFor="let c of categorie"  class="dropdown-item"> {{c.libelle}} </a>
         </div>
         
       </div>
@@ -17,7 +17,7 @@
           Marque
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
+          <a (click)="goToMarque(m)" *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
         </div>
       </div>
       

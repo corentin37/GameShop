@@ -18,7 +18,7 @@ export class DeconnexionComponent implements OnInit {
     //vider le localStorage
     localStorage.clear();
     console.log("deconnexion réussie");
-    
+    this.ngOnInit();
   }
 
   goToHome(){

@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JeuService } from '../Services/jeu.service';
@@ -18,27 +19,34 @@ export class JeuComponent implements OnInit {
   //valeur = ;
   avis;
   avisnew;
-
-  idJeu = 19;
+  jeuId = this.jeuService.game.lejeu.id;
 
 
   constructor(private http: HttpClient, private route: Router, private jeuService: JeuService) { }
 
   ngOnInit(): void {
     // this.getAllJeu();
+    console.log(this.jeuId);
     this.getAllAvis();
     this.jeu = this.jeuService.game;
     console.log('contenu de jeu venu du service', this.jeu);
+    this.getMoyenne();
 
   }
 
   getAllAvis() {
-    this.http.get('http://localhost:8086/avis').subscribe({
+    this.http.get('http://localhost:8086/avis/jeu/'+ this.jeuId).subscribe({
       next: (data) => { this.avis = data; },
       error: (err) => { console.log(err); }
     });
   }
 
+getMoyenne(){
+  this.http.get('http://localhost:8086/avis/moyenne/'+this.jeuId).subscribe({
+    next: (data) => {console.log(data); this.moyenne =data; },
+    error: (err) => { console.log(err); }
+  });
+}
  
   newAvis(avis): any {
     //gérer user et jeu avec Service
@@ -57,6 +65,16 @@ export class JeuComponent implements OnInit {
       return confirm('Veuillez entrer une note');
    }
 
+  }
+
+  deleteAvis(avis){
+    this.http.delete('http://localhost::8086/avis/delete',avis).subscribe({
+      next: (data) => { return confirm('Avis effacé');
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
   
