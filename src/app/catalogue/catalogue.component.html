@@ -7,23 +7,9 @@
           Catégorie
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" routerLink=''>Cartes</a>
-          <a class="dropdown-item" routerLink=''>Plateau</a>
-          <a class="dropdown-item" routerLink=''>Culture Générale</a>
+          <a (click)="getCatalogue()" *ngFor="let c of categorie"  class="dropdown-item"> {{c.libelle}} </a>
         </div>
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Age
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" routerLink=''>0-4 ans</a>
-          <a class="dropdown-item" routerLink=''>5-8 ans</a>
-          <a class="dropdown-item" routerLink=''>9-12 ans</a>
-          <a class="dropdown-item" routerLink=''>12-15 ans</a>
-          <a class="dropdown-item" routerLink=''>16+ ans</a>
-        </div>
+        
       </div>
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -31,23 +17,27 @@
           Marque
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" routerLink=''>Hasbro Gaming</a>
-          <a class="dropdown-item" routerLink=''>Ravensburger</a>
-          <a class="dropdown-item" routerLink=''>Goliath</a>
+          <a *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
         </div>
       </div>
+      
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Age
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.ageMin}}</a>
+        </div>
+      </div>
+    
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Prix
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" routerLink=''>0-5 €</a>
-          <a class="dropdown-item" routerLink=''>6-15 €</a>
-          <a class="dropdown-item" routerLink=''>16-25 €</a>
-          <a class="dropdown-item" routerLink=''>26-35 €</a>
-          <a class="dropdown-item" routerLink=''>36-50 €</a>
-          <a class="dropdown-item" routerLink=''>50+ €</a>
+        <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a *ngFor="let j of jeu" class="dropdown-item">{{j.prixAchat}}</a>
         </div>
       </div>
       <div class="dropdown">
@@ -55,10 +45,8 @@
           aria-haspopup="true" aria-expanded="false">
           Nombre de joueurs
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" routerLink=''>2 joueurs et +</a>
-          <a class="dropdown-item" routerLink=''>4 joueurs et +</a>
-          <a class="dropdown-item" routerLink=''>6 joueurs et +</a>
+        <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.nombreJoueursMin}}/{{j.lejeu.nombreJoueursMax}}</a>
         </div>
       </div>
       <div class="dropdown">
@@ -67,12 +55,7 @@
           Temps de jeu
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" routerLink=''>30 min</a>
-          <a class="dropdown-item" routerLink=''>45min</a>
-          <a class="dropdown-item" routerLink=''>1h</a>
-          <a class="dropdown-item" routerLink=''>1h30 min</a>
-          <a class="dropdown-item" routerLink=''>1h45min</a>
-          <a class="dropdown-item" routerLink=''>2h+</a>
+          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.tempsDeJeu}}</a>
         </div>
       </div>
       <div class="dropdown">
@@ -81,42 +64,30 @@
           Niveau
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" routerLink=''>Facile</a>
-          <a class="dropdown-item" routerLink=''>Moyen</a>
-          <a class="dropdown-item" routerLink=''>Difficile</a>
+          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.niveauDifficulte}}</a>
         </div>
       </div>
     </div>
 
     <div class="col-sm-9 ">
       <div class="row">
-        <div *ngFor="let j of jeu" class="col-sm-4 ">
           <br>
-            <div type="button" (click)="goToJeu(j)" class="card">
-              <img src={{j.lejeu.urlImage}} width="200px" alt="logo jeu"><br>
-              <div class="card-body ml-2">
-                <p class="card-text">{{ j.lejeu.note }}/5</p>
-                <p class="card-text">{{ j.lejeu.marqueDuJeu.libelle}}</p>
-                <p class="card-text">{{ j.lejeu.nom}}</p>
-                <p class="card-text">Achat : {{j.prixAchat}} € | Location : {{j.lejeu.prixLocation}} €</p>
-              </div>
-            </div>
-         
-            <div class="card">
-              <div class="ml-1 mt-2">
-              <button (click)="goToPanier()" class="btn btn-secondary">AJOUTER AU PANIER</button>
-              </div>
-        </div>
-       
-        
-                    
-                
-              
-            
+          <div *ngFor="let j of jeu" class="col-sm-4 ">
             <br>
-          
-
-        </div>
+              <div type="button" (click)="goToJeu(j)" class="card">
+                <img src={{j.lejeu.urlImage}} class="img" alt="logo jeu"><br>
+                <div class="card-body ml-2">
+                  <p class="card-text">{{ j.lejeu.note }}/5</p>
+                  <p class="card-text">{{ j.lejeu.marqueDuJeu.libelle}}</p>
+                  <p class="card-text">{{ j.lejeu.nom}}</p>
+                  <p class="card-text">Achat : {{j.prixAchat}} € | Location : {{j.lejeu.prixLocation}} €</p>
+                  <button (click)="goToPanier()" class="btn btn-secondary btn-center">AJOUTER AU PANIER</button>
+                </div>
+              </div>
+     
+              <br>
+     
+          </div>
       </div>
     </div>
 

@@ -18,7 +18,12 @@ import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
 import { TacheUserComponent } from './admin/tache-user/tache-user.component';
 import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.component';
 import { ReserverSalleComponent } from './reserver-salle/reserver-salle.component';
+import { HistoriqueSalleComponent } from './historique-salle/historique-salle.component';
 import { PanierComponent } from './panier/panier.component';
+import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.component';
+import { ForumComponent } from './forum/forum.component';
+import { AllQuestionsLivraisonComponent } from './all-questions-livraison/all-questions-livraison.component';
+import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 
 
 
@@ -37,7 +42,13 @@ import { PanierComponent } from './panier/panier.component';
     TacheSalleComponent,
     TacheUserComponent,
     TacheJoueurComponent,
-    ReserverSalleComponent
+    ReserverSalleComponent,
+    HistoriqueSalleComponent,
+    TrierparPlateauComponent,
+    ForumComponent,
+    AllQuestionsLivraisonComponent,
+    
+    DeconnexionComponent
 
   ],
   imports: [

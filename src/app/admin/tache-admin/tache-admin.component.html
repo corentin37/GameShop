@@ -1,10 +1,16 @@
+
+
 <!-- Navbar d'admin-->
 <app-admin></app-admin>
 
 <!-- Recherche table de tous les users -->
 <div class="container">
   <div class="row">
-    <form  class="container trombinoscope col-sm-9">
+    <form
+      #recherche="ngForm"
+      (ngSubmit)="recherchePerson(recherche.value)"
+      class="container border trombinoscope col-sm-9"
+    >
       Liste des admins:
       <br />
       <div class="row">
@@ -34,7 +40,13 @@
           </table>
         </div>
         <div class="form-head col-sm-2">
-          <div class="btn button-primary btn-block">Recherche :</div>
+          <button
+            type="button"
+            (click)="fenetreActivation(1)"
+            class="btn btn-sm button-primary btn-block"
+          >
+            Créer :
+          </button>
         </div>
         <div class="col-sm-8">
           <input
@@ -48,67 +60,213 @@
           />
         </div>
         <div class="form-head col-sm-2">
-          <button type="submit" class="btn button-primary btn-block">
+          <button
+            (click)="fenetreActivation(2)"
+            type="submit"
+            class="btn btn-sm button-primary btn-block"
+          >
             Rechercher
           </button>
         </div>
       </div>
     </form>
-    <!-- Creation admin -->
+    <!-- Recherche card -->
     <div class="container border col-sm-3">
       <div class="container">
         <br />
+        <form>
+          <div class="form-group"></div>
 
-        <div class="card">
-          <div class="contenuCard">
-            <form #admin="ngForm" (ngSubmit)="inscriptionAdmin(admin.value)">
-              <div class="form-group">
-                <label style="align-content: center" for="">
-                  Créer un Admin
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Login"
-                  name="login"
-                  class="form-control"
-                  ngModel
-                />
-                <input
-                  type="password"
-                  required
-                  placeholder="Mot de passe"
-                  name="password"
-                  class="form-control"
-                  ngModel
-                />
-                <input
-                  type="text"
-                  required
-                  placeholder="Numéro de téléphone"
-                  name="tel"
-                  class="form-control"
-                  ngModel
-                />
-                <input
-                  type="text"
-                  required
-                  placeholder="Adresse email"
-                  name="mail"
-                  class="form-control"
-                  ngModel
-                />
+          <div *ngIf="fenetreResultat" class="col-sm">
+            <div class="row">
+              <div class="card">
+                <div class="col-sm-12">
+                  <div class="card-body-note">
+                    <div class="card-text">
+                      <p>Id : {{ person.id }}</p>
+                      <p>Login : {{ person.user.login }}</p>
+                      <p>Mail : {{ person.user.mail }}</p>
+                      <p>Numéro : {{ person.user.tel }}</p>
+                      <p>
+                        Etat du compte :
+                        {{ actvitityBoolToStr(person.user.activity) }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    
+                    
+                    <div>
+
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Actions
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a (click)="fenetreActivation(3)" class="dropdown-item" >Modifier</a>
+                          <a (click)="
+                          bloquer(person) 
+                        "  class="dropdown-item" >Bloquer</a>
+                          <a (click)="supprimer(recherche)"  class="dropdown-item" >Supprimer</a>
+                        </div>
+                      </div>
+                      
+
+                    </div>
+                    
+                    <div>
+
+                      
+                    </div>
+
+                  </div>
+                </div>
+                <br />
               </div>
-
-              <button type="submit" class="btn button-primary btn-block">
-                Valider
-              </button>
-            </form>
+            </div>
           </div>
-        </div>
+          <!-- Card Pas de Résultat -->
+          <div *ngIf="fenetreSansResultat" class="col-sm">
+            <div class="row">
+              <div class="card">
+                <div class="col-sm-12">
+                  <div class="card-body-note">
+                    <div class="card-text">
+                      <p>Pas de résultats</p>
+                      <p><br /></p>
+                      <p><br /></p>
+                      <p><br /></p>
+                      <p><br /></p>
+                    </div>
+                  </div>
+                </div>
+                <br />
+              </div>
+            </div>
+          </div>
+
+          <!-- Card inscription -->
+
+          <div class="card inscription">
+            <div *ngIf="fenetreInscription" class="contenuCard">
+              <form #f="ngForm" (ngSubmit)="inscription(f.value)">
+                <div class="form-group">
+                  <label style="align-content: center" for="">
+                    Créer un Admin
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Login"
+                    name="login"
+                    id="login"
+                    class="form-control"
+                    required
+                    ngModel
+                  />
+
+                  <input
+                    type="password"
+                    required
+                    placeholder="Mot de passe"
+                    name="password"
+                    class="form-control"
+                    ngModel
+                  />
+                  <input
+                    type="text"
+                    required
+                    placeholder="Numéro de téléphone"
+                    name="tel"
+                    class="form-control"
+                    ngModel
+                  />
+                  <input
+                    type="text"
+                    required
+                    placeholder="Adresse email"
+                    name="mail"
+                    class="form-control"
+                    ngModel
+                  />
+                </div>
+
+                <button type="submit" [disabled]="f.invalid" class="btn button-primary btn-sm-block">
+                  Valider
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Card modification -->
+
+          <div class="card modification">
+            <div *ngIf="fenetreModification" class="contenuCard">
+              <form #f="ngForm" (ngSubmit)="modification(f.value)">
+                <div class="form-group">
+                  <label style="align-content: center" for="">
+                    Modification {{person.id}}
+                  </label>
+                  <input
+                  type="text"
+                  required
+                  [locked]
+                  placeholder="{{person.id}}"
+                  name="id"
+                  class="form-control"
+                  ngModel="{{person.id}}"
+                />
+
+
+                  <input
+                    type="text"
+                    required
+                    placeholder="Login"
+                    name="user.login"
+                    class="form-control"
+                    ngModel="{{person.user.login}}"
+                  />
+                  <input
+                    type="password"
+                    required
+                    placeholder="Mot de passe"
+                    name="user.password"
+                    class="form-control"
+                    ngModel="{{person.user.password}}"
+                  />
+                  <input
+                    type="text"
+                    required
+                    placeholder="Numéro de téléphone"
+                    name="user.tel"
+                    class="form-control"
+                    ngModel="{{person.user.tel}}"
+                  />
+                  <input
+                    type="text"
+                    required
+                    placeholder="Adresse email"
+                    name="user.mail"
+                    class="form-control"
+                    ngModel="{{person.user.mail}}"
+                  />
+                </div>
+
+                <button [disabled]="f.invalid" (click) ="console('modif butt' + f.value)"  type="submit" class="btn btn-sm button-primary btn-block">
+                  Valider
+                </button>
+                
+                <button  (click) = "fenetreActivation(0) "type="submit" class="btn btn-sm button-primary btn-block">
+                  Annuler
+                </button>
+              </form>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
 
-<br />
+<div>
+  <br />
+</div>

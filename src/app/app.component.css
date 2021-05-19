@@ -303,6 +303,10 @@
       right: 120px;
       transform: rotate(-5deg);
     }
+    .img{
+      width: 250px;
+      height: 250px;
+    }
   }
 
   @media screen and (max-width: 575px) {
@@ -311,3 +315,23 @@
       visibility: hidden;
     }
   }
+
+  .capitalize{
+    text-transform: capitalize;
+  }
+
+  .ta-left{
+    text-align: left;
+  }
+
+  .center{
+    text-align: center;
+  }
+
+.visible{
+  visibility: visible;
+}
+
+.hidden{
+  visibility: hidden;
+}

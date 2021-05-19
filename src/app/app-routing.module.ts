@@ -13,17 +13,26 @@ import { ReserverSalleComponent } from './reserver-salle/reserver-salle.componen
 import { TacheSalleComponent } from './admin/tache-salle/tache-salle.component';
 import { TacheJoueurComponent } from './admin/tache-joueur/tache-joueur.component';
 import { PanierComponent } from './panier/panier.component';
+import { HistoriqueSalleComponent } from './historique-salle/historique-salle.component';
+import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.component';
+import { ForumComponent } from './forum/forum.component';
+import { AllQuestionsLivraisonComponent } from './all-questions-livraison/all-questions-livraison.component';
+
+import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 
 
 
 const routes: Routes = [
   {component: JeuComponent, path: 'jeu'},
   {component: ConnexionComponent, path: 'connexion'},
+  {component: DeconnexionComponent, path: 'deconnexion'},
   {component: CreerJoueurComponent, path: 'creerJoueur'},
   {component: AdminComponent, path: 'admin'},
   {component: CatalogueComponent, path: 'catalogue'},
   {component: GestionSallesComponent, path: 'salle'},
   {component: ReserverSalleComponent, path: 'reserverSalle'},
+  {component: HistoriqueSalleComponent, path: 'historiqueSalle'},
+  {component: TrierparPlateauComponent, path: 'trierParPlateau'},
 
   {component: PanierComponent, path: 'panier'},
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}, // quand il ya pas de chemin ça redirige directement vers le catalogue
@@ -33,6 +42,9 @@ const routes: Routes = [
   {component: TacheSalleComponent, path: 'admin-tacheSalle'},
   {component: TacheJoueurComponent, path: 'admin-tacheJoueur' },
   {component: TacheUserComponent, path: 'admin-tacheUser'},
+  {component: ForumComponent, path: 'forum'},
+  {component: AllQuestionsLivraisonComponent, path: 'questionLivraison'},
+  
 
 
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}// quand il ya pas de chemin ça redirige directement vers le catalogue
