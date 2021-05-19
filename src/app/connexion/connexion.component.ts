@@ -12,6 +12,7 @@ export class ConnexionComponent implements OnInit {
   constructor(private http: HttpClient, private route: Router) { }
   utilisateur;
   connectMessage;
+  login;
 
   ngOnInit(): void {
   }
@@ -23,6 +24,15 @@ export class ConnexionComponent implements OnInit {
         console.log("u: "+this.utilisateur);
         if(this.utilisateur!=null){
           this.connectMessage="Connecté";
+
+          localStorage.setItem("login", this.utilisateur.login);
+          localStorage.setItem("id", this.utilisateur.id);
+          localStorage.setItem("mail", this.utilisateur.mail);
+          localStorage.setItem("telephone", this.utilisateur.tel);
+          localStorage.setItem("telephone", this.utilisateur.activity);
+          this.login=localStorage.getItem("login");
+          console.log("name:"+this.login);
+          console.log("enregistrement réussi");         
           this.route.navigateByUrl('catalogue');
         }else{
           this.connectMessage= "Identifiant ou mot de passe incorrect.";
@@ -39,3 +49,5 @@ export class ConnexionComponent implements OnInit {
 
   
 }
+
+

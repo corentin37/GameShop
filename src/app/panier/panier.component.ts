@@ -24,7 +24,7 @@ export class PanierComponent implements OnInit {
   panierAchat=[];
   panierLocation=[];
   alljeux: Object;
-  iduser=5;
+  iduser=localStorage.getItem("id");
   count;
 
 
