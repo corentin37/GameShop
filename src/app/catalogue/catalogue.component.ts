@@ -25,6 +25,7 @@ export class CatalogueComponent implements OnInit {
     this.getCatalogue();
     this.getCategorie();
     this.getMarque();
+    this.closeAllTabs();
 
   }
   getCatalogue() : any{
@@ -83,27 +84,72 @@ addToPanier(game){
   else{
     this.route.navigateByUrl('connexion');
   }
-   
-  
 }
-goToCategorie(c){
+
+
+filterByCategorie(c){
   console.log(c.libelle);
   this.route.navigateByUrl('catalogue');
   
 }
 
-goToMarque(m){
+filterByMarque(m){
   console.log(m.libelle);
   this.route.navigateByUrl('catalogue');
-  
 }
     
     
   
-    transmit(body): any{
-      this.id = body;
-    }
-  
-    
+  transmit(body): any{
+    this.id = body;
   }
+  
+    openPanier(PanierName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(PanierName).style.display = "block";
+      
+    }
+
+    openCloseTab(TabName) {
+      var i, tabcontent, tablinks,memo;
+      memo = document.getElementById(TabName).style.display;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      if(memo == "block"){
+        document.getElementById(TabName).style.display = "none";
+      }
+      else{
+        document.getElementById(TabName).style.display = "block";
+      }
+      
+    }
+
+    closeAllTabs(){
+      var i,tabcontent;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+    }
+
+
+
+
+  }
+  
+
   
