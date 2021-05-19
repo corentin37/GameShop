@@ -37,4 +37,7 @@ message;
 
   });
 }
+goToForum() :any{
+  this.route.navigateByUrl('forum');
+}
 }

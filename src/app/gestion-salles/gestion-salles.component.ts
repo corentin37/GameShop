@@ -61,5 +61,18 @@ export class GestionSallesComponent implements OnInit {
     }
   }
   
+  //test : aide pour Corentin
+  takeElementOfList(liste): any{
+    liste.forEach(element => {
+      console.log(element);
+      
+    });
+  }
 
+  getMessageByIdForum(idforum): any{
+    this.http.get('http://localhost:8086/forum/messages', idforum).subscribe({
+      next: (data) => {console.log(data); },
+      error: (err) => {console.log(err); }
+    });
+  }
 }
