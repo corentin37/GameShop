@@ -21,6 +21,8 @@ import { ReserverSalleComponent } from './reserver-salle/reserver-salle.componen
 import { HistoriqueSalleComponent } from './historique-salle/historique-salle.component';
 import { PanierComponent } from './panier/panier.component';
 import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.component';
+import { ForumComponent } from './forum/forum.component';
+import { AllQuestionsLivraisonComponent } from './all-questions-livraison/all-questions-livraison.component';
 
 
 
@@ -41,7 +43,10 @@ import { TrierparPlateauComponent } from './trierpar-plateau/trierpar-plateau.co
     TacheJoueurComponent,
     ReserverSalleComponent,
     HistoriqueSalleComponent,
-    TrierparPlateauComponent
+    TrierparPlateauComponent,
+    ForumComponent,
+    AllQuestionsLivraisonComponent,
+    
 
   ],
   imports: [
