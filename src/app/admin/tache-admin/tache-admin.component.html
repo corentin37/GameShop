@@ -149,7 +149,7 @@
 
           <div class="card inscription">
             <div *ngIf="fenetreInscription" class="contenuCard">
-              <form #admin="ngForm" (ngSubmit)="inscription(admin.value)">
+              <form #f="ngForm" (ngSubmit)="inscription(f.value)">
                 <div class="form-group">
                   <label style="align-content: center" for="">
                     Créer un Admin
@@ -190,7 +190,7 @@
                   />
                 </div>
 
-                <button type="submit" class="btn button-primary btn-sm-block">
+                <button type="submit" [disabled]="f.invalid" class="btn button-primary btn-sm-block">
                   Valider
                 </button>
               </form>
@@ -201,52 +201,61 @@
 
           <div class="card modification">
             <div *ngIf="fenetreModification" class="contenuCard">
-              <form #modif="ngForm" (ngSubmit)="modification(modif)">
+              <form #f="ngForm" (ngSubmit)="modification(f.value)">
                 <div class="form-group">
                   <label style="align-content: center" for="">
-                    Modification
+                    Modification {{person.id}}
                   </label>
+                  <input
+                  type="text"
+                  required
+                  [locked]
+                  placeholder="{{person.id}}"
+                  name="id"
+                  class="form-control"
+                  ngModel="{{person.id}}"
+                />
 
 
                   <input
                     type="text"
                     required
                     placeholder="Login"
-                    name="login"
+                    name="user.login"
                     class="form-control"
-                    ngModel
+                    ngModel="{{person.user.login}}"
                   />
                   <input
                     type="password"
                     required
                     placeholder="Mot de passe"
-                    name="password"
+                    name="user.password"
                     class="form-control"
-                    ngModel
+                    ngModel="{{person.user.password}}"
                   />
                   <input
                     type="text"
                     required
                     placeholder="Numéro de téléphone"
-                    name="tel"
+                    name="user.tel"
                     class="form-control"
-                    ngModel
+                    ngModel="{{person.user.tel}}"
                   />
                   <input
                     type="text"
                     required
                     placeholder="Adresse email"
-                    name="mail"
+                    name="user.mail"
                     class="form-control"
-                    ngModel
+                    ngModel="{{person.user.mail}}"
                   />
                 </div>
 
-                <button  type="submit" class="btn btn-sm button-primary btn-block">
+                <button [disabled]="f.invalid" (click) ="console('modif butt' + f.value)"  type="submit" class="btn btn-sm button-primary btn-block">
                   Valider
                 </button>
                 
-                <button  (click) = "fenetreActivation(0)" type="submit" class="btn btn-sm button-primary btn-block">
+                <button  (click) = "fenetreActivation(0) "type="submit" class="btn btn-sm button-primary btn-block">
                   Annuler
                 </button>
               </form>
