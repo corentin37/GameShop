@@ -28,24 +28,29 @@ const routes: Routes = [
   {component: ConnexionComponent, path: 'connexion'},
   {component: DeconnexionComponent, path: 'deconnexion'},
   {component: CreerJoueurComponent, path: 'creerJoueur'},
-  {component: AdminComponent, path: 'admin'},
+  {component: AdminComponent, path: 'admin', children: [
+    
+    {component: TacheVendeurComponent, path: 'tacheVendeur' },
+    {component: TacheAdminComponent, path: 'tacheAdmin'},
+    {component: TacheSalleComponent, path: 'tacheSalle'},
+    {component: TacheJoueurComponent, path: 'tacheJoueur' },
+    {component: TacheUserComponent, path: 'tacheUser'},
+]    },
   {component: CatalogueComponent, path: 'catalogue'},
   {component: GestionSallesComponent, path: 'salle'},
   {component: ReserverSalleComponent, path: 'reserverSalle'},
   {component: HistoriqueSalleComponent, path: 'historiqueSalle'},
   {component: AjouterSalleComponent, path:'ajouterSalle'},
   {component: TrierparPlateauComponent, path: 'trierParPlateau'},
-
+  {component: ForumComponent, path: 'forum'},
+  {component: AllQuestionsLivraisonComponent, path: 'questionLivraison'},
   {component: PanierComponent, path: 'panier'},
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}, // quand il ya pas de chemin ça redirige directement vers le catalogue
 
-  {component: TacheAdminComponent, path: 'admin-tacheAdmin'},
-  {component: TacheVendeurComponent, path: 'admin-tacheVendeur' },
-  {component: TacheSalleComponent, path: 'admin-tacheSalle'},
-  {component: TacheJoueurComponent, path: 'admin-tacheJoueur' },
-  {component: TacheUserComponent, path: 'admin-tacheUser'},
-  {component: ForumComponent, path: 'forum'},
-  {component: AllQuestionsLivraisonComponent, path: 'questionLivraison'},
+  
+  
+
+
   
 
 
