@@ -32,7 +32,8 @@
                 
                     <form>
                     <span><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Acheter</a> : {{jeu.prixAchat}} € | <a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Louer</a> : {{jeu.lejeu.prixLocation}} € </span>
-                    </form>
+                   
+                </form>
                    
                 
             </div>
@@ -41,6 +42,24 @@
         
     </div>
 <br><br><br>
+
+<div class="container">
+    <h5>Poster un avis</h5>
+    <form #newavis='ngForm' (ngSubmit)='newAvis(newavis.value)'>
+        <div class="form-group">
+            <label class = "text-secondary" for="">Donner votre avis : </label>
+            <input type="text" name="commentaire" id="commentaire" placeholder="" class="form-control" ngModel=''>
+            <label class = "text-secondary" for="note">Attribuer une note : </label>
+            <input type="text" name="note" id="note" placeholder="" class="form-control" ngModel='' required />
+        </div>
+        <button type="submit"  class="btn btn-primary ">Valider</button>
+
+        
+    </form>
+</div>
+
+<br><br>
+
     
     <div *ngFor="let a of avis">
         <div class="row" >
@@ -70,19 +89,7 @@
     </div>
       
     
-<div class="container">
-    <h5>Poster un avis</h5>
-    <form #newavis='ngForm' (ngSubmit)='newAvis(newavis.value)'>
-        <div class="form-group">
-            <label class = "text-secondary" for="">Donner votre avis : </label>
-            <input type="text" name="commentaire" id="commentaire" placeholder="" class="form-control" ngModel=''>
-            <label class = "text-secondary" for="note">Attribuer une note : </label>
-            <input type="text" name="note" id="note" placeholder="" class="form-control" ngModel='' required>
 
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Valider</button>
-    </form>
-</div>
 
 </div>
     

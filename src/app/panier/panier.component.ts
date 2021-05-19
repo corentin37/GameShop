@@ -26,18 +26,19 @@ export class PanierComponent implements OnInit {
   alljeux: Object;
   iduser=localStorage.getItem("id");
   count;
-
+  idCard;
 
   constructor(private http: HttpClient,private route: Router, private jeuService : JeuService) { }
 
   ngOnInit(): void {
     this.getOnePanierByUser(this.iduser);
+    this.openPanier("Panier Achat");
     //this.getPrixTotaux();
   }
   
   getOnePanierByUser(iduser){
     this.http.get('http://localhost:8086/panier/user/'+iduser).subscribe({
-      next: (data) => {this.panier = data;console.log("panier : ",this.panier);this.getPrixTotaux(this.panier);this.definePanierAchatAndPanierLocation()},
+      next: (data) => {this.panier = data;console.log("panier : ",this.panier);this.getPrixTotaux(this.panier);this.definePanierAchatAndPanierLocation();},
       error: (err) => {console.log(err);}
     });
   }
@@ -87,8 +88,9 @@ export class PanierComponent implements OnInit {
       jeu.quantite-=1;
       this.http.put('http://localhost:8086/panier', jeu).subscribe({
         next: (data) => {console.log(data); 
-          this.route.navigateByUrl('panier');
+          
           this.getPrixTotaux(this.panier);
+          this.route.navigateByUrl('panier');
         },
         error: (err) => {console.log(err); }
       });
@@ -112,6 +114,7 @@ export class PanierComponent implements OnInit {
     console.log(jeu.id);
     this.http.delete('http://localhost:8086/panier/'+jeu.id).subscribe({
       next: (data) => {console.log(data); 
+        window.location.reload();
         this.route.navigateByUrl('panier');
         this.count = 0;
           for (let k of this.panier){
@@ -120,9 +123,24 @@ export class PanierComponent implements OnInit {
             }
             this.count+=1;
         }
-        this.getPrixTotaux(this.panier);
+        this.getOnePanierByUser(this.iduser);
       },
       error: (err) => {console.log(err); }
     });
   }
+
+  openPanier(PanierName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(PanierName).style.display = "block";
+    
+  }
+
 }

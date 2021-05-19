@@ -20,6 +20,7 @@ export class CatalogueComponent implements OnInit {
   marque;
   jeuAchat;
   id = 19;
+
   ngOnInit(): void {
     this.getCatalogue();
     this.getCategorie();
@@ -60,8 +61,28 @@ export class CatalogueComponent implements OnInit {
     this.route.navigateByUrl('jeu');
 
   }  
-goToPanier(){
-  this.route.navigateByUrl('panier');
+
+user;
+bodySave;
+addToPanier(game){
+  console.log("begin adding game to basket ...");
+  if(localStorage.getItem("id")!=null){
+    console.log("user detected : "+localStorage.getItem("id")+"\n Connecting ...");
+    this.http.get("http://localhost:8086/user/id/"+localStorage.getItem("id")).subscribe({
+      next: (data)=>{this.user=data;
+            this.bodySave={"user":this.user,"jeuAchat":game,"quantite" : 1,"achat":true};
+            console.log("bodysave : "+this.bodySave);console.log("user : "+this.user.id);console.log("jeuAchat : "+game.id);
+            this.http.post('http://localhost:8086/panier',this.bodySave).subscribe({
+              error: (err) => {console.log(err);}
+            });
+      },
+      error: (err) => {console.log(err);}
+    });
+    
+  }
+  else{
+    this.route.navigateByUrl('connexion');
+  }
    
   
 }

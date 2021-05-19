@@ -13,8 +13,7 @@ import { JeuService } from '../Services/jeu.service';
 
 })
 export class JeuComponent implements OnInit {
-
-  jeux;
+  moyenne;
   jeu;
   //valeur = ;
   avis;
@@ -34,7 +33,7 @@ export class JeuComponent implements OnInit {
   }
 
   getAllAvis() {
-    this.http.get('http://localhost:8086/avis/list/jeu/19').subscribe({
+    this.http.get('http://localhost:8086/avis').subscribe({
       next: (data) => { this.avis = data; },
       error: (err) => { console.log(err); }
     });
@@ -46,12 +45,21 @@ export class JeuComponent implements OnInit {
     console.log("Avis posté! Rafraîchir la page");
     const user ={id : 1};
     avis.user=user;
-    this.http.post('http://localhost:8086/avis', avis).subscribe({
-      next: (data)=> {console.log(data); this.route.navigateByUrl('jeu');},
-      error: (err) => {console.log(err);}
-    });
+    avis.jeu=this.jeu.lejeu;
+    if (avis.note) {
+      this.http.post('http://localhost:8086/avis', avis).subscribe({
+        next: (data)=> {console.log(data); window.scrollTo(0,0); this.ngOnInit(); return confirm('Avis posté !'); },
+        error: (err) => {console.log(err);}
+      });
+      
+    }
+    else {
+      return confirm('Veuillez entrer une note');
+   }
 
   }
+
+  
 
 
 }

@@ -25,11 +25,11 @@ export class ConnexionComponent implements OnInit {
         if(this.utilisateur!=null){
           this.connectMessage="Connecté";
 
-          localStorage.setItem("login", this.utilisateur.login);
           localStorage.setItem("id", this.utilisateur.id);
+          localStorage.setItem("login", this.utilisateur.login);
           localStorage.setItem("mail", this.utilisateur.mail);
-          localStorage.setItem("telephone", this.utilisateur.tel);
-          localStorage.setItem("telephone", this.utilisateur.activity);
+          localStorage.setItem("tel", this.utilisateur.tel);
+          localStorage.setItem("activity", this.utilisateur.activity);
           this.login=localStorage.getItem("login");
           console.log("name:"+this.login);
           console.log("enregistrement réussi");         
@@ -40,13 +40,11 @@ export class ConnexionComponent implements OnInit {
       },
       error : (err) => { console.log(err); }
     }); 
-
-    
   }
 
   console(entreeConsole): any{
-    console.log("retour:"+entreeConsole); }
-
+    console.log("retour:"+entreeConsole); 
+  }
   
 }
 

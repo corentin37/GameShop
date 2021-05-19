@@ -1,8 +1,16 @@
 <div class="fondSite">
 <div class="container">
   <div class="row">
-    <div class="col-sm-3">
-      <img src="assets/img/logo.png" alt="" width="40%" class="img">
+    <div class="col-sm-1 mt-2">
+      <img src="assets/img/logo.png" alt="" width="160%" class="img">
+    </div>
+    <div class="col-sm-2 capitalize center">
+      <div style="color: steelblue">
+        <br><br>
+        <h6><strong>{{cacherLogin(true)}}</strong></h6>
+        
+      </div>
+      
     </div>
     <div class="col-sm-6">
       <form>
@@ -17,14 +25,18 @@
         </div>
     </form>
     </div>
-    <div class="col-sm-3">
-      <div style="color: steelblue">
-        <h5><strong>Bonjour {{login}}</strong></h5>
+   
+      
+     
+      <div class="col-sm-3">
+        <a class="nav-item nav-link" routerLink='connexion'><i style = "color: steelblue" class="fa fa-user fa-2x"></i>&nbsp;Mon compte</a>
+        <a class="nav-item nav-link" routerLink='panier'><i style = "color: steelblue" class="fa fa-shopping-cart fa-2x"></i>&nbsp;Mon panier</a>
+        <a class="nav-item nav-link" routerLink='deconnexion'><i style = "color: steelblue" class="fa fa-power-off fa-2x"></i>&nbsp;Déconnexion</a>
       </div>
-      <a class="nav-item nav-link" routerLink='connexion'><i style = "color: steelblue" class="fa fa-user fa-2x"></i>&nbsp;Mon compte</a>
-      <a class="nav-item nav-link" routerLink='panier'><i style = "color: steelblue" class="fa fa-shopping-cart fa-2x"></i>&nbsp;Mon panier</a>
-    </div>
+    
+    
   </div>
+  
   
   <div>
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
