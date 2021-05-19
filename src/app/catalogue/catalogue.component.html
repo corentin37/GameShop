@@ -1,72 +1,60 @@
+
+
 <div class="container ">
   <div class="row">
     <div class="col-sm-3 ">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Catégorie
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a (click)="goToCategorie(c)" *ngFor="let c of categorie"  class="dropdown-item"> {{c.libelle}} </a>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Categorie')">Categorie</button><div id="Categorie" class="tabcontent">
+            <a (click)="goToCategorie(c)" *ngFor="let c of categorie"  class="dropdown-item"> {{c.libelle}} </a>
+          </div>
         </div>
-        
       </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Marque
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a (click)="goToMarque(m)" *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Marque')">Marque</button><div id="Marque" class="tabcontent">
+            <a (click)="goToMarque(m)" *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Age')">Age</button><div id="Age" class="tabcontent">
+            <a (click)="goToMarque(m)" *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Prix')">Prix</button><div id="Prix" class="tabcontent">
+            <a (click)="goToMarque(m)" *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Nombre de joueurs')">Nombre de joueurs</button><div id="Nombre de joueurs" class="tabcontent">
+            <a (click)="goToMarque(m)" *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Temps de jeu')">Temps de jeu</button><div id="Temps de jeu" class="tabcontent">
+            <a (click)="goToMarque(m)" *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Niveau de difficulte')">Niveau de difficulte</button><div id="Niveau de difficulte" class="tabcontent">
+            <a (click)="goToMarque(m)" *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
+          </div>
         </div>
       </div>
       
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Age
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.ageMin}}</a>
-        </div>
-      </div>
-    
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Prix
-        </button>
-        <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let j of jeu" class="dropdown-item">{{j.prixAchat}}</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Nombre de joueurs
-        </button>
-        <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.nombreJoueursMin}}/{{j.lejeu.nombreJoueursMax}}</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Temps de jeu
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.tempsDeJeu}}</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Niveau
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.niveauDifficulte}}</a>
-        </div>
-      </div>
+      
+      
     </div>
 
     <div class="col-sm-9 ">
