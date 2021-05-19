@@ -7,7 +7,7 @@
         <br>
         <div *ngFor="let s of sujets" class="col-sm-12 ">
           <br>
-            <div type="button" (click)="goToQuestions()" class="card">
+            <div type="button" (click)="goToMessage(s)" class="card">
               <div class="card-body ml-2">
                 <p class="card-text">{{ s.sujet}}</p>
               </div>
