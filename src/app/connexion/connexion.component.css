@@ -22,6 +22,10 @@
     margin-top: 15px;
 }
 
+.mt-500{
+    margin-top: 100px;
+}
+
 .noto{
     font-family: 'Noto Serif';
 }
