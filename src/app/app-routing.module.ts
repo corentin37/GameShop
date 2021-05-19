@@ -19,6 +19,7 @@ import { ForumComponent } from './forum/forum.component';
 import { AllQuestionsLivraisonComponent } from './all-questions-livraison/all-questions-livraison.component';
 
 import { DeconnexionComponent } from './deconnexion/deconnexion.component';
+import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
 
 
 
@@ -32,6 +33,7 @@ const routes: Routes = [
   {component: GestionSallesComponent, path: 'salle'},
   {component: ReserverSalleComponent, path: 'reserverSalle'},
   {component: HistoriqueSalleComponent, path: 'historiqueSalle'},
+  {component: AjouterSalleComponent, path:'ajouterSalle'},
   {component: TrierparPlateauComponent, path: 'trierParPlateau'},
 
   {component: PanierComponent, path: 'panier'},

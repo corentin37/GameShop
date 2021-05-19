@@ -1,0 +1,27 @@
+<div class="center">
+    <h2>Ajouter une salle</h2>
+</div>
+<form #salle = "ngForm" (ngSubmit) = "ajouterSalle(salle.value)">
+<div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6">
+        <p>Nom de la salle</p>
+        <input type="text" class="form-control" name="nomSalle" ngModel>
+        <p>Prix</p>
+        <input type="text" class="form-control" name="prixSalle" ngModel>
+        <p>Nombre de places</p>
+        <input type="text" class="form-control" name="nombreDePlace" ngModel>
+        <p>Publique (true/false)</p>
+        <input type="text" class="form-control" name="publique" ngModel>
+        <p>URL de l'image</p>
+        <input type="text" class="form-control" name="urlImage" ngModel>
+        <br><br>
+        <div class="center">
+            <button type="submit" class="btn">Valider</button>
+        </div>
+    </div>
+    <div class="col-sm-3">
+    </div>
+</div>
+</form>

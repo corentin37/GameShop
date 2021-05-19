@@ -86,9 +86,15 @@ addToPanier(game){
    
   
 }
-goToJeuPlateau(){
-  this.route.navigateByUrl('trierParJeuPlateau');
-   
+goToCategorie(c){
+  console.log(c.libelle);
+  this.route.navigateByUrl('catalogue');
+  
+}
+
+goToMarque(m){
+  console.log(m.libelle);
+  this.route.navigateByUrl('catalogue');
   
 }
     
