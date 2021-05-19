@@ -2,11 +2,11 @@
     <title>Connexion</title>
 </head>
 <body>
-    <div class="row">
+    <div *ngIf="fenetreConnexion" class="row">
         <div class="container col-sm-4">
             <div class="center titre">
                 <br>
-                <h2>Accès au compte</h2>
+                <h2> Accès au compte </h2>
                 <br>
             </div>
             <div class="mt-15">
@@ -24,15 +24,107 @@
                         </div>
                     </div>
                     <br>
-                    <div class="center">
-                        <button type="submit" class="btn btn-raised"><strong>Valider</strong></button>
-                        <p>{{connectMessage}}</p>
-                        <p class="text-err" id="msg-err"></p>
-                    </div> 
-                    
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+
+                        <div class="col-sm-5">
+                            <button type="submit" class="btn btn-raised btn-size " [disabled]="user.invalid"><strong>Valider</strong></button>
+                            <p>{{connectMessage}}</p>
+                            <p class="text-err" id="msg-err"></p>
+                        </div> 
+                        
+                        <div class="col-sm-5">
+                            <button (click) = fenetreActivation(1) class="btn btn-raised btn-size  "><strong>S'inscrire</strong></button>
+                        </div> 
+
+                        <div class="col-sm-1"></div>
+
+                    </div>
                 </form>
                 
             </div> 
         </div>
+    </div>
+
+    
+  <!-- Import -->              
+  <div *ngIf="fenetreInscription" class="row">
+    <div class="container col-sm-4">
+        <div class="center titre">
+            <br>
+            <h2>Créer un compte</h2>
+            <br>
+        </div>
+        <div class="mt-15">
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <div class="form-row">
+                            
+                            <div class="form-group col-6">
+                                <label>Identifiant</label>
+                                <input type="text" formControlName="login" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.login.errors }" />
+                                <div *ngIf="submitted && f.login.errors" class="invalid-feedback">
+                                    <div *ngIf="f.login.errors.required">Identifiant</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label>Numéro de Téléphone</label>
+                                <input type="text" formControlName="tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" />
+                                <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                                    <div *ngIf="f.tel.errors.required">Numéro requis</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" formControlName="mail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Email requis</div>
+                                <div *ngIf="f.email.errors.email">Email doit être une addresse valide </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label>Password</label>
+                                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">Password requis</div>
+                                    <div *ngIf="f.password.errors.minlength">Password doit faire au moins 6 characters</div>
+                                </div>
+                            </div>
+                            <div class="form-group col">
+                                <label>Confirm Password</label>
+                                <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                                <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                                    <div *ngIf="f.confirmPassword.errors.required">Password de confirmation requis</div>
+                                    <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords doivent correspondre</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input " [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                            <a (click)="goToLink(urlCGV)" for="acceptTerms" class="form-check-label typo">Accepter les Termes & Conditions</a>
+                            <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accepter les Ts & Cs </div>
+                        </div>
+
+                        <div class="row">
+                                <div class="col-sm-1"></div>
+
+                            
+                                <div class="col-sm-5">
+                                    <button  class="btn btn-raised btn-size " >Valider</button>
+                                </div>
+                                
+                                <div class="col-sm-5">
+                                    <button  class="btn btn-raised btn-size "  type="reset" (click)="onReset() + fenetreActivation(0)">Annuler</button>
+                                </div>
+                                <div class="col-sm-1"></div>
+                        </div>
+                    </form>
+                </div> 
+            </div>
+        </div>
+
+    <div *ngIf=fenetreMonProfil class="div">
+        <p>Afficher Mes infos de profil</p>
     </div>
 </body>
