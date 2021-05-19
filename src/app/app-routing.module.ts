@@ -20,6 +20,7 @@ import { AllQuestionsLivraisonComponent } from './all-questions-livraison/all-qu
 
 import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
+import { ProfilJoueurComponent } from './profil-joueur/profil-joueur.component';
 
 
 
@@ -42,16 +43,16 @@ const routes: Routes = [
   {component: HistoriqueSalleComponent, path: 'historiqueSalle'},
   {component: AjouterSalleComponent, path:'ajouterSalle'},
   {component: TrierparPlateauComponent, path: 'trierParPlateau'},
-  {component: ForumComponent, path: 'forum'},
-  {component: AllQuestionsLivraisonComponent, path: 'questionLivraison'},
   {component: PanierComponent, path: 'panier'},
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}, // quand il ya pas de chemin ça redirige directement vers le catalogue
-
-  
-  
-
-
-  
+  {component: TacheAdminComponent, path: 'admin-tacheAdmin'},
+  {component: TacheVendeurComponent, path: 'admin-tacheVendeur' },
+  {component: TacheSalleComponent, path: 'admin-tacheSalle'},
+  {component: TacheJoueurComponent, path: 'admin-tacheJoueur' },
+  {component: TacheUserComponent, path: 'admin-tacheUser'},
+  {component: ForumComponent, path: 'forum'},
+  {component: AllQuestionsLivraisonComponent, path: 'questionLivraison'},
+  {component: ProfilJoueurComponent, path:'profil'},
 
 
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}// quand il ya pas de chemin ça redirige directement vers le catalogue

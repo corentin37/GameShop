@@ -42,6 +42,8 @@ export class ConnexionComponent implements OnInit {
     }); 
   }
 
+  
+
   console(entreeConsole): any{
     console.log("retour:"+entreeConsole); 
   }

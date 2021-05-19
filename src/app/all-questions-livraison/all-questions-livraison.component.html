@@ -4,13 +4,13 @@
             <label class="text-secondary" for="">Posez votre question ici</label><!--label évite d'utiliser le placeholder-->
             <input type="text" name="contenu" class="form-control" ngModel=""><!--contenue est le nom utilisé dans le format json donc la bd-->
         </div>
-        <button type="submit" class="btn btn-primary btn-block">valider</button><!--, rajouter form module x2 dans modulestype submit pour envoyer les données-->
+        <button type="submit" class="btn btn-raised btn-block">valider</button><!--, rajouter form module x2 dans modulestype submit pour envoyer les données-->
         <button (click)="goToForum()" type="submit" class="btn btn-primary btn-block">retour</button>
     </form>
 </div>
 <div class="container"> 
     <div class="row">
-        <div *ngFor="let m of message" class="col-sm-12">
+        <div *ngFor="let m of info" class="col-sm-12">
             <div class="card card-shadow">
                 <div class="p-3" class="card-body">     
                 <p>{{m.expediteur.login}}<i class="text-secondary">{{m.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
@@ -21,3 +21,5 @@
         </div>
     </div>
 </div>
+
+

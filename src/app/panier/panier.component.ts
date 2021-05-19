@@ -67,12 +67,14 @@ export class PanierComponent implements OnInit {
     for (let j of panier) {
       if(j.achat){
         this.prixTotalAchat+=j.jeuAchat.prixAchat*j.quantite;
+        
       }
       else{
         this.prixTotalLocation+=j.jeuAchat.lejeu.prixLocation*j.quantite;
       }
-      
     }
+    this.prixTotalAchat=this.prixTotalAchat.toFixed(2);
+    this.prixTotalLocation=this.prixTotalLocation.toFixed(2);
   }
 
   goToJeu(game): any{
@@ -113,16 +115,9 @@ export class PanierComponent implements OnInit {
   supprimerJeu(jeu){
     console.log(jeu.id);
     this.http.delete('http://localhost:8086/panier/'+jeu.id).subscribe({
-      next: (data) => {console.log(data); 
-        window.location.reload();
-        this.route.navigateByUrl('panier');
-        this.count = 0;
-          for (let k of this.panier){
-            if(jeu.id = k.id){
-              this.panier.splice(this.count,1);
-            }
-            this.count+=1;
-        }
+      next: (data) => {console.log(data);
+        this.panierAchat=[];
+        this.panierLocation=[];
         this.getOnePanierByUser(this.iduser);
       },
       error: (err) => {console.log(err); }
