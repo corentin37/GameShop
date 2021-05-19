@@ -1,5 +1,3 @@
-
-
 <!-- Navbar d'admin-->
 <app-admin></app-admin>
 
@@ -28,7 +26,7 @@
             </thead>
 
             <tbody>
-              <tr *ngFor="let a of admins">
+              <tr *ngFor="let a of admins" (click)="recherchePerson(a.user)">
                 <th scope="row">{{ a.id }}</th>
                 <td>{{ a.user.login }}</td>
                 <td>{{ a.user.password }}</td>
@@ -53,7 +51,7 @@
             type="text"
             required
             placeholder=" Zone de recherche en cours"
-            id="login"
+            id="loginZone"
             name="login"
             class="form-control"
             ngModel
@@ -83,7 +81,7 @@
                 <div class="col-sm-12">
                   <div class="card-body-note">
                     <div class="card-text">
-                      <p>Id : {{ person.id }}</p>
+                      <p>Admin Id : {{ person.id }}</p>
                       <p>Login : {{ person.user.login }}</p>
                       <p>Mail : {{ person.user.mail }}</p>
                       <p>Numéro : {{ person.user.tel }}</p>
@@ -94,31 +92,38 @@
                     </div>
                   </div>
                   <div class="card-footer">
-                    
-                    
                     <div>
-
                       <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button
+                          class="btn btn-secondary dropdown-toggle"
+                          type="button"
+                          id="dropdownMenuButton"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
                           Actions
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a (click)="fenetreActivation(3)" class="dropdown-item" >Modifier</a>
-                          <a (click)="
-                          bloquer(person) 
-                        "  class="dropdown-item" >Bloquer</a>
-                          <a (click)="supprimer(recherche)"  class="dropdown-item" >Supprimer</a>
+                        <div
+                          class="dropdown-menu"
+                          aria-labelledby="dropdownMenuButton"
+                        >
+                          <a
+                            (click)="fenetreActivation(3)"
+                            class="dropdown-item"
+                            >Modifier</a
+                          >
+                          <a (click)="bloquer(person)" class="dropdown-item"
+                            >Bloquer </a
+                          >
+                          <a (click)="effacer(person.user)" class="dropdown-item"
+                            >Supprimer (MARCHE PAS)</a
+                          >
                         </div>
                       </div>
-                      
-
-                    </div>
-                    
-                    <div>
-
-                      
                     </div>
 
+                    <div></div>
                   </div>
                 </div>
                 <br />
@@ -161,7 +166,7 @@
                     id="login"
                     class="form-control"
                     required
-                    ngModel
+                    ngModel = ' (getElementById(loginZone)) '
                   />
 
                   <input
@@ -190,7 +195,11 @@
                   />
                 </div>
 
-                <button type="submit" [disabled]="f.invalid" class="btn button-primary btn-sm-block">
+                <button
+                  type="submit"
+                  [disabled]="f.invalid"
+                  class="btn button-primary btn-sm-block"
+                >
                   Valider
                 </button>
               </form>
@@ -201,64 +210,83 @@
 
           <div class="card modification">
             <div *ngIf="fenetreModification" class="contenuCard">
-              <form #f="ngForm" (ngSubmit)="modification(f.value)">
+              <form
+                #user="ngForm"
+                (ngSubmit)="
+                  modification(user.value) +
+                    console('value submit' + user.value)
+                "
+              >
+
+
                 <div class="form-group">
                   <label style="align-content: center" for="">
-                    Modification {{person.id}}
+                    Modification
                   </label>
-                  <input
-                  type="text"
-                  required
-                  [locked]
-                  placeholder="{{person.id}}"
-                  name="id"
-                  class="form-control"
-                  ngModel="{{person.id}}"
-                />
-
 
                   <input
                     type="text"
                     required
-                    placeholder="Login"
-                    name="user.login"
+                    placeholder="id"
                     class="form-control"
-                    ngModel="{{person.user.login}}"
+                    name="id"
+                    ngModel="{{ person.user.id }}"
+                    hidden
+                  />
+                  <input
+                    type="text"
+                    required
+                    placeholder="{{ person.user.login }}"
+                    class="form-control"
+                    name="login"
+                    ngModel="{{ person.user.login }}"
                   />
                   <input
                     type="password"
                     required
-                    placeholder="Mot de passe"
-                    name="user.password"
+                    placeholder="{{ person.user.password }}"
                     class="form-control"
-                    ngModel="{{person.user.password}}"
+                    name="password"
+                    ngModel="{{ person.user.password }}"
                   />
                   <input
                     type="text"
                     required
-                    placeholder="Numéro de téléphone"
-                    name="user.tel"
+                    placeholder="{{ person.user.tel }}"
                     class="form-control"
-                    ngModel="{{person.user.tel}}"
+                    name="tel"
+                    ngModel="{{ person.user.password }}"
                   />
                   <input
                     type="text"
                     required
-                    placeholder="Adresse email"
-                    name="user.mail"
+                    placeholder="{{ person.user.mail }}"
                     class="form-control"
-                    ngModel="{{person.user.mail}}"
+                    name="mail"
+                    ngModel="{{ person.user.mail }}"
                   />
+
                 </div>
 
-                <button [disabled]="f.invalid" (click) ="console('modif butt' + f.value)"  type="submit" class="btn btn-sm button-primary btn-block">
-                  Valider
-                </button>
+                  <button
+                    [disabled]="user.invalid"
+                    
+                    type="submit"
+                    class="btn btn-sm button-primary btn-block"
+                  >
+                    Valider
+                  </button>
+                  <button
+                    (click)="fenetreActivation(0)"
+                    type="submit"
+                    class="btn btn-sm button-primary btn-block"
+                  >
+                    Annuler
+                  </button>
                 
-                <button  (click) = "fenetreActivation(0) "type="submit" class="btn btn-sm button-primary btn-block">
-                  Annuler
-                </button>
+
               </form>
+
             </div>
           </div>
         </form>
