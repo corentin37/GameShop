@@ -15,7 +15,7 @@ import { JeuService } from '../Services/jeu.service';
 export class JeuComponent implements OnInit {
   moyenne;
   jeu;
-  //valeur = ;
+  // valeur = ;
   avis;
   avisnew;
 
@@ -39,19 +39,19 @@ export class JeuComponent implements OnInit {
     });
   }
 
- 
+
   newAvis(avis): any {
-    //gérer user et jeu avec Service
-    console.log("Avis posté! Rafraîchir la page");
-    const user ={id : 1};
-    avis.user=user;
-    avis.jeu=this.jeu.lejeu;
+    // gérer user et jeu avec Service
+    console.log('Avis posté! Rafraîchir la page');
+    const user = {id : 1};
+    avis.user = user;
+    avis.jeu = this.jeu.lejeu;
     if (avis.note) {
       this.http.post('http://localhost:8086/avis', avis).subscribe({
-        next: (data)=> {console.log(data); window.scrollTo(0,0); this.ngOnInit(); return confirm('Avis posté !'); },
-        error: (err) => {console.log(err);}
+        next: (data) => {console.log(data); window.scrollTo(0, 0); this.ngOnInit(); return confirm('Avis posté !'); },
+        error: (err) => {console.log(err); }
       });
-      
+
     }
     else {
       return confirm('Veuillez entrer une note');
@@ -59,7 +59,7 @@ export class JeuComponent implements OnInit {
 
   }
 
-  
+
 
 
 }
