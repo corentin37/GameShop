@@ -42,3 +42,38 @@
 .fs-90{
     font-size: 90%;
 }
+
+.btn-size{
+    width:  110px;
+    text-align: center !important; 
+
+}
+
+.a{
+
+}
+
+ /* unvisited link */
+ .typo:link {
+    color: red !important;
+  }
+  
+  /* visited link */
+  .typo:visited {
+    color: green !important;
+  }
+  
+  /* mouse over link */
+  .typo:hover {
+    color: slateblue !important;
+  }
+  
+  /* selected link */
+  .typo:active {
+    color: steelblue !important;
+  } 
+
+
+  .typo{
+    color: blue !important ;
+}

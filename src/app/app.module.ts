@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import { ForumComponent } from './forum/forum.component';
 import { AllQuestionsLivraisonComponent } from './all-questions-livraison/all-questions-livraison.component';
 import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
+import { ProfilJoueurComponent } from './profil-joueur/profil-joueur.component';
 
 
 
@@ -49,7 +51,8 @@ import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
     DeconnexionComponent,
     AjouterSalleComponent,
     ForumComponent,
-    AllQuestionsLivraisonComponent
+    AllQuestionsLivraisonComponent,
+    ProfilJoueurComponent
 
   ],
   imports: [
@@ -57,6 +60,7 @@ import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

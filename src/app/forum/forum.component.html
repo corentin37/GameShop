@@ -1,15 +1,18 @@
-<h1>Sujets :</h1>
+
 <div class="container">
 
-    
-
+    <div class="center">
+      <h2>Trouvez le sujet correspondant à votre question</h2>
+    </div>
+<br><br>
       <div class="row">
         <br>
-        <div *ngFor="let s of sujets" class="col-sm-12 ">
+        <div *ngFor="let s of sujets" class="col-sm-3 ">
           <br>
             <div type="button" (click)="goToMessage(s)" class="card">
               <div class="card-body ml-2">
-                <p class="card-text">{{ s.sujet}}</p>
+                <i style ="color : steelblue" class="{{s.logo}}"></i>
+                <p style ="font-family: 'Noto Serif'; font-size: large; font-weight: bold" class="card-text text-center">{{s.sujet}}</p>
               </div>
             </div>
    

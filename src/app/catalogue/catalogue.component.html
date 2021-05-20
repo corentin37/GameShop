@@ -1,71 +1,137 @@
+
+
 <div class="container ">
   <div class="row">
     <div class="col-sm-3 ">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Catégorie
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a (click)="goToCategorie(c)" *ngFor="let c of categorie"  class="dropdown-item"> {{c.libelle}} </a>
-        </div>
-        
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Marque
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a (click)="goToMarque(m)" *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Categorie')">Categorie</button><div id="Categorie" class="tabcontent">
+            <a (click)="filterByCategorie(c)" *ngFor="let c of categorie"  class="dropdown-item"> {{c.libelle}} </a>
+          </div>
         </div>
       </div>
-      
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Age
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.ageMin}}</a>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Marque')">Marque</button><div id="Marque" class="tabcontent">
+            <a (click)="filterByMarque(m)" *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
+          </div>
         </div>
       </div>
-    
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Prix
-        </button>
-        <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let j of jeu" class="dropdown-item">{{j.prixAchat}}</a>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Age')">Age</button><div id="Age" class="tabcontent">
+            <div class="row">
+              <div class="col-sm-12">Age Minimum :</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="ageMinMoins()">-</a></div>
+              <div class="col-sm-6"><span>{{ageMin}} ans</span></div>
+              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="ageMinPlus()">+</a></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-1">
+                <a class="btn btn-outline-success btn-sm" type="button" (click)="filterByAge()">Valider</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Nombre de joueurs
-        </button>
-        <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.nombreJoueursMin}}/{{j.lejeu.nombreJoueursMax}}</a>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Prix')">Prix</button><div id="Prix" class="tabcontent">
+            <div class="row">
+              <div class="col-sm-12">Prix Minimum :</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="prixMinMoins()">-</a></div>
+              <div class="col-sm-4"><span>{{prixMin}}€</span></div>
+              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="prixMinPlus()">+</a></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">Prix Maximum :</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="prixMaxMoins()">-</a></div>
+              <div class="col-sm-4"><span>{{prixMax}}€</span></div>
+              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="prixMaxPlus()">+</a></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-1">
+                <a class="btn btn-outline-success btn-sm" type="button" (click)="filterByPrix()">Valider</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Temps de jeu
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.tempsDeJeu}}</a>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Nombre de joueurs')">Nombre de joueurs</button><div id="Nombre de joueurs" class="tabcontent">
+            <div class="row">
+              <div class="col-sm-12">Nombre de joueurs Minimum :</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="nombreJoueursMinMoins()">-</a></div>
+              <div class="col-sm-4"><span>{{nombreJoueursMin}}€</span></div>
+              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="nombreJoueursMinPlus()">+</a></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">Nombre de joueurs Maximum :</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="nombreJoueursMaxMoins()">-</a></div>
+              <div class="col-sm-4"><span>{{nombreJoueursMax}}€</span></div>
+              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="nombreJoueursMaxPlus()">+</a></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-1">
+                <a class="btn btn-outline-success btn-sm" type="button" (click)="filterByNombreJoueurs()">Valider</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Niveau
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let j of jeu" class="dropdown-item">{{j.lejeu.niveauDifficulte}}</a>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Temps de jeu')">Temps de jeu</button><div id="Temps de jeu" class="tabcontent">
+            <div class="row">
+              <div class="col-sm-12">Temps de jeu Minimum :</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="tempsJeuMinMoins()">-</a></div>
+              <div class="col-sm-4"><span>{{tempsJeuMin}}€</span></div>
+              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="tempsJeuMinPlus()">+</a></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">Temps de jeu Maximum :</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="tempsJeuMaxMoins()">-</a></div>
+              <div class="col-sm-4"><span>{{tempsJeuMax}}€</span></div>
+              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="tempsJeuMaxPlus()">+</a></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-1">
+                <a class="btn btn-outline-success btn-sm" type="button" (click)="filterByTempsJeu()">Valider</a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Niveau de difficulte')">Niveau de difficulte</button><div id="Niveau de difficulte" class="tabcontent">
+            <a (click)="filterByNiveauDifficulte(nd)" *ngFor="let nd of niveauxDifficulte" class="dropdown-item">{{nd}}</a>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <p>Filtres actuels :</p>
+        <div class="row" *ngFor="let property of filterProperties">test</div>
       </div>
     </div>
 
@@ -84,19 +150,9 @@
                 </div>
                 <button (click)="addToPanier(j)" class="btn btn-secondary btn-center">AJOUTER AU PANIER</button>
               </div>
-     
               <br>
-     
           </div>
       </div>
     </div>
-
-
-
-
-
   </div>
-
-
-
 </div>

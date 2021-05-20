@@ -10,6 +10,12 @@ export class AppComponent {
   login = localStorage.getItem("login");
   helloMessage;
 
+
+  ngOnInit(): void {
+
+  }
+
+
   deconnexion(){
     //vider le localStorage
     localStorage.removeItem("id");
@@ -33,5 +39,9 @@ export class AppComponent {
     }
     return this.helloMessage;
     
+  }
+
+  reset(){
+    this.ngOnInit;
   }
 }
