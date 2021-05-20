@@ -58,8 +58,24 @@ export class CatalogueComponent implements OnInit {
   getProperties(){
     this.filterProperties=this.catalogueService;
   }
+
   initVariables(){
-    
+    this.ageMin=this.jeu[0].lejeu.ageMin;
+    this.prixMin=this.jeu[0].prixAchat;
+    this.prixMax=this.jeu[0].prixAchat;
+    this.prixLocationMin=this.jeu[0].lejeu.prixLocation;
+    this.prixLocationMax=this.jeu[0].lejeu.prixLocation;
+    this.tempsJeuMin=this.jeu[0].lejeu.tempsDeJeu;
+    this.tempsJeuMax=this.jeu[0].lejeu.tempsDeJeu;
+    for(let j of this.jeu){
+      this.ageMin=Math.min(j.lejeu.ageMin,this.ageMin);
+      this.prixMin=Math.min(j.prixAchat,this.prixMin);
+      this.prixMax=Math.max(j.prixAchat,this.prixMax);
+      this.prixLocationMin=Math.min(j.lejeu.prixLocation,this.prixLocationMin);
+      this.prixLocationMax=Math.max(j.lejeu.prixLocation,this.prixLocationMax);
+      this.tempsJeuMin=Math.min(j.lejeu.tempsDeJeu,this.tempsJeuMin);
+      this.tempsJeuMax=Math.max(j.lejeu.tempsDeJeu,this.tempsJeuMax);
+    }
   }
   
   console(entreeConsole): any {
