@@ -1,8 +1,70 @@
+<<<<<<< HEAD
 <div class="container">
   <div class="tab">
     <button id ="tablinkPanier Achat" class="tablinks" (click)="openPanier( 'Panier Achat')">Panier Achat</button>
     <button id ="tablinkPanier Location" class="tablinks" (click)="openPanier( 'Panier Location')">Panier Location</button>
     <button id ="tablinkPanier Salles" class="tablinks" (click)="openPanier( 'Panier Salles')">Réservation de salles</button>
+=======
+<div class="tab">
+  <button id ="tablinkPanier Achat" class="tablinks tableft" (click)="openPanier( 'Panier Achat')">Panier Achat</button>
+  <button id ="tablinkPanier Location" class="tablinks tableft" (click)="openPanier( 'Panier Location')">Panier Location</button>
+  <button id ="tablinkPanier Salles" class="tablinks tableft" (click)="openPanier( 'Panier Salles')">Réservation de salles</button>
+  <button id ="tablinkPanier Historique" class="tablinks tabright" (click)="openPanier( 'Panier Historique')">Historique</button>
+</div>
+
+<div id="Panier Achat" class="tabcontent">
+  <h1>Mon panier Achat</h1>
+  <div class="row">
+  <div class="col-sm-9 ">
+      <div class="row"> 
+      <div *ngFor="let j of panierAchat" class="col-sm-5 ">
+                <br>
+                  <div class="card">
+                    <div class="row">
+                      <div class="col-sm-2"></div>
+                      <div class="col-sm-2">
+                        <img type="button" (click)="goToJeu(j.jeuAchat)" src={{j.jeuAchat.lejeu.urlImage}} width="200px"><br>
+                      </div>
+                    </div>
+                   
+                    
+                    <div class="ml-2">
+                        <div class="row">
+                          <div class="col-sm-7"></div>
+                          <div class="col-sm-4 right">Quantite : {{j.quantite}}<br></div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-8" style="font-size: large !important;" type="button" (click)="goToJeu(j.jeuAchat)" >{{ j.jeuAchat.lejeu.nom}}<br></div>
+                          <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="quantiteMoins(j)">-</a></div>
+                          <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="quantitePlus(j)">+</a></div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-4">{{ j.jeuAchat.lejeu.marqueDuJeu.libelle}}</div>
+                          <div class="col-sm-4"><a id="btnAcheterJeu{{j.id}}" class="btn btn-outline-primary btn-sm" type="button" (click)="changeAchatLocation(j)">Louer</a></div>
+                          <div classe="col-sm-4"><a class="btn btn-outline-danger btn-sm" type="button" (click)="supprimerJeu(j)">Supprimer</a></div>
+                        </div>                        
+                    </div> 
+                </div>
+                
+                <div class="card">
+                  <div class="ml-2 mt-2">
+                      <div class="row">
+                          <div class="col-sm-6">Achat : {{j.jeuAchat.prixAchat}} €/unité</div>
+                          <div class="col-sm-6">Location : {{j.jeuAchat.lejeu.prixLocation}} €/unité<br></div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+                
+            </div>
+          </div>  
+        </div>
+
+  <div class="col-sm-3">
+      <p style="font-size: larger;">Prix Total Achat : {{prixTotalAchat}} €<br></p>
+      <p style="font-size: larger;">Prix Total Location : {{prixTotalLocation}} €<br><br><a class="btn btn-outline-warning btn-sm" routerLink="connexion" role="button">Confirmer l'achat et la location</a></p>
+  </div>
+>>>>>>> 5be7ee33f37532aa8216a5e626856f71ea78ac60
   </div>
   
   <div id="Panier Achat" class="tabcontent">
@@ -144,3 +206,22 @@
     </div>
   </div>
 </div>
+<<<<<<< HEAD
+=======
+
+<div id="Panier Historique" class="tabcontent">
+  <h1>Mon panier de réservation de salles</h1>
+  <div class="row">
+    <div class="col-sm-9 ">
+      <div class="row">
+
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <a class="btn btn-primary" routerLink="connexion" role="button">Achats</a>
+      <a class="btn btn-primary" routerLink="connexion" role="button">Locations</a>
+      <a class="btn btn-primary" routerLink="connexion" role="button">Tout afficher</a>
+    </div>
+  </div>
+</div>
+>>>>>>> 5be7ee33f37532aa8216a5e626856f71ea78ac60
