@@ -171,13 +171,12 @@
           <br>
           <div *ngFor="let j of jeuAffiche" class="col-sm-3 ">
             <br>
-              <div class="card border border-secondary">
+              <div class="card ">
                 <img type="button" (click)="goToJeu(j)" src={{j.lejeu.urlImage}} class="img" alt="logo jeu" width=175px height=175px><br>
                 <div type="button" (click)="goToJeu(j)" class="card-body ml-2">
-                  <p class="card-text">/10</p>
-                  <p class="card-text"><strong>{{ j.lejeu.nom}}</strong></p>
-                  <p class="card-text">{{ j.lejeu.marqueDuJeu.libelle}}</p>
-                  <p class="card-text">Achat : {{j.prixAchat}} € Location : {{j.lejeu.prixLocation}} €</p>
+                  <p class="card-text" style="font-size: 14px;"><strong>{{ j.lejeu.nom}}</strong></p>
+                  <p class="card-text" style="font-size: 13px;">{{ j.lejeu.marqueDuJeu.libelle}}</p>
+                  <p class="card-text">Achat : {{j.prixAchat}} €&nbsp; Location : {{j.lejeu.prixLocation}} €</p>
                 </div>
                 <button (click)="addToPanier(j)" class="btn btn-secondary btn-center">AJOUTER AU PANIER</button>
               </div>
