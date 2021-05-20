@@ -313,8 +313,21 @@ refreshFilters(){
     }
     this.jeuAffiche=this.jeuAfficheTemp;
 }
+}
 
-
+reinitialisationFiltrage(){
+  this.catalogueService.categorie=null;
+  this.catalogueService.marque=null;
+  this.catalogueService.ageMin=null;
+  this.catalogueService.prixMin=null;
+  this.catalogueService.prixMax=null;
+  this.catalogueService.prixLocationMin=null;
+  this.catalogueService.prixLocationMax=null;
+  this.catalogueService.nombreJoueurs=null;
+  this.catalogueService.tempsJeuMin=null;
+  this.catalogueService.tempsJeuMax=null;
+  this.catalogueService.niveauDifficulte=null;
+  this.refreshFilters();
 }
 
 
