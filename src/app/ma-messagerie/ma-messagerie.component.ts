@@ -21,9 +21,11 @@ message = null; // personne recherchée par requet recherche
 messageExist = false;
 messagesExist;
 
+destinataire;
 destinataireExist;
 
 userId =  localStorage.getItem('id')
+userLogin =  localStorage.getItem('login')
 
 
 
@@ -32,32 +34,47 @@ userId =  localStorage.getItem('id')
   ngOnInit(): void {
     
     console.log(this.userId);
+    
     this.getAllMesMessages();
+    this.fenetreActivation(1);
   }
 
-  rechercheMesMessages(recherche): any {
+  getAllMesMessages(): any {
+    this.http.get('http://localhost:8086/messagerie/' + this.userId).subscribe({
+      next: (data) => {
+        this.messages = data;
+        
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+
+  rechercheMesMessages(){}
+
+  afficherMesMessagesParExpediteur(login): any {
     // recherche: id
     this.fenetreEcrire = false;
+    
+    var id2 = 4;
+    console.log("recher par 14");
+    console.log('http://localhost:8086/messages/recherche/'+ this.userId + '/' + id2)
     this.http
-      .get('messages/recherche/id' + recherche)
+      .get('http://localhost:8086/messages/recherche/'+ this.userId + '/' + id2)
       .subscribe({
         next: (data) => {
-          this.message = data;
-          if (this.message != null) {
-            this.fenetreResultat = true;
-            this.fenetreSansResultat = false;
-          } else {
-            this.fenetreSansResultat = true;
-            this.fenetreResultat = false;
-          }
-
+          console.log(data);
+          this.messages = data;
+          
         },
         error: (err) => {
           console.log(err);
         },
       });
   }
-  
+  /*
   rechercheMesMessagesId(recherche): any {
     // recherche: id
     this.fenetreEcrire = false;
@@ -80,7 +97,7 @@ userId =  localStorage.getItem('id')
           console.log(err);
         },
       });
-  }
+  }*/
 
   supprimer(message): any {
     this.http
@@ -98,6 +115,102 @@ userId =  localStorage.getItem('id')
 
 
 
+  
+
+
+
+
+  
+  /*
+  conversionLoginId(login):any {
+    this.http
+    .get('http://localhost:8086/user/login/' + login).subscribe({
+    next: (data) => { return data.id ; console.log("trouver" + data)
+    },
+    error: (err) => {
+      console.log(err);4
+    },
+  });
+
+  }*/
+
+  
+
+  trouverDestinataire(login): any {
+
+    this.http
+    .get('http://localhost:8086/user/login/' + login).subscribe({
+    next: (data) => { this.destinataire = data; this.destinataireExist = data; console.log("trouver l138" + data)
+    },
+    error: (err) => {
+      console.log(err);
+    },
+  });
+  }
+
+  ecrire(message): any {
+    /*
+ {
+    "id": 47,
+    "dateCreation": "2021-05-20T12:51:43.803+00:00",
+    PRESENT "contenu": "Quels sont les délais de livraison ?",
+    "expediteur": {
+      "id": 1, PRESENT
+      "login": "asterix",
+      "password": "azerty",
+      "mail": "asterix.legaulois@gmail.com",
+      "tel": "06.65.83.92.01",
+      "activity": true
+    },
+    "destinataire": null, PRESENT (LOGIN)
+    "forum": {
+      "id": 41,
+      "sujet": "Détails sur la livraison",
+      "logo": "fa fa-truck fa-2x"
+    },
+    "privee": false
+  }
+    */
+    // ATTENTION A L'URL
+    console.log("ecrire msg :" + message.login);
+    console.log("ecrire msg" + this.userId);
+    message.expediteur = this.userId;
+    console.log('http://localhost:8086/message', message);
+
+    this.http
+      .post('http://localhost:8086/message', message)
+      .subscribe({
+        next: (data) => {
+          alert('Message envoyé');
+          this.getAllMesMessages();
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+
+    this.fenetreEcrire = false;
+  }
+
+
+
+
+
+  entreeConsole;
+  console(entreeConsole): any {
+    console.log(entreeConsole);
+  }
+
+  
+
+  actvitityBoolToStr(bool): string {
+    if (bool === false) {
+      return 'Bloqué';
+    } else {
+      return 'Débloqué';
+    }
+  }
+  
   fenetreActivation(chiffre): any {
     this.fenetreEcrire = false;
     this.fenetreResultat = false;
@@ -111,7 +224,7 @@ userId =  localStorage.getItem('id')
       }
 
       case 1: {
-        // creation person
+        // Ecrire
         this.fenetreEcrire = true;
         this.messageExist = false;
         this.fenetreModification = false;
@@ -135,133 +248,5 @@ userId =  localStorage.getItem('id')
       }
     }
   }
-
-
-
-
-  /*
-  bloquer(person): any {
-    // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
-
-    this.http.put('http://localhost:8086/admin/bloquer', person).subscribe({
-      next: (data) => {
-        this.person = data;
-        //this.getAllAdmin();
-        // this.ngOnInit();
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }*/
-
-  trouverDestinataire(login): any {
-
-    this.http
-    .get('http://localhost:8086/user/login/' + login).subscribe({
-    next: (data) => { this.destinataireExist = data; console.log("trouver" + data)
-    },
-    error: (err) => {
-      console.log(err);
-    },
-  });
-  }
-
-  ecrire(message): any {
-    // le formulaire s'appelle user, mais creation de vendeur
-    // ATTENTION A L'URL
-    console.log("ecrire msg" + message.value);
-    console.log("ecrire msg" + this.userId);
-    message.expediteur = this.userId;
-    console.log("ecrire msg" + message.value);
-
-    this.http
-      .post('http://localhost:8086/messages/save', message)
-      .subscribe({
-        next: (data) => {
-          alert('Message envoyé');
-          this.getAllMesMessages();
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
-
-    this.fenetreEcrire = false;
-  }
-
-/*
-  effacer(person): any { // effacer le user mais
-
-    
-    person.id;
-    person.login =  person.id;
-    person.password = null;
-    person.mail = null;
-    person.tel= null;
-    person.activity= false;
-    
-
-    this.http
-      .put('http://localhost:8086/admin/modifier', person)
-      .subscribe({
-        next: (data) => {
-          this.fenetreModification = false;
-          
-          this.getAllAdmin();
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
-  }*/
-
-/*
-  modification(personCreated): any {
-
-    // le formulaire s'appelle user, mais creation de vendeur
-    // ATTENTION A L'URL
-
-    console.log("console modif")
-    this.http
-      .put('http://localhost:8086/admin/modifier', personCreated)
-      .subscribe({
-        next: (data) => {
-          this.getAllAdmin();
-          this.fenetreModification = false;
-          this.fenetreResultat = true;
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
-
-  }*/
-
-  entreeConsole;
-  console(entreeConsole): any {
-    console.log(entreeConsole);
-  }
-
-  getAllMesMessages(): any {
-    this.http.get('http://localhost:8086/messagerie/' + this.userId).subscribe({
-      next: (data) => {
-        this.messages = data;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-
-  actvitityBoolToStr(bool): string {
-    if (bool === false) {
-      return 'Bloqué';
-    } else {
-      return 'Débloqué';
-    }
-  }
-  
-
 
 }
