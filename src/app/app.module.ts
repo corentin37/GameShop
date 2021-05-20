@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JeuComponent } from './jeu/jeu.component';
-
 import { ConnexionComponent } from './connexion/connexion.component';
+
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreerJoueurComponent } from './creer-joueur/creer-joueur.component';
@@ -29,6 +28,7 @@ import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
 import { ProfilJoueurComponent } from './profil-joueur/profil-joueur.component';
 import { ModifierCotisationComponent } from './modifier-cotisation/modifier-cotisation.component';
 import { SupprimerSalleComponent } from './supprimer-salle/supprimer-salle.component';
+import { MaMessagerieComponent } from './ma-messagerie/ma-messagerie.component';
 
 
 
@@ -55,8 +55,8 @@ import { SupprimerSalleComponent } from './supprimer-salle/supprimer-salle.compo
     ForumComponent,
     AllQuestionsLivraisonComponent,
     ProfilJoueurComponent,
-    ModifierCotisationComponent,
-    SupprimerSalleComponent
+    MaMessagerieComponent,
+    ModifierCotisationComponent
 
   ],
   imports: [
@@ -70,3 +70,4 @@ import { SupprimerSalleComponent } from './supprimer-salle/supprimer-salle.compo
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+//commit
