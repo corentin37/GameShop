@@ -29,6 +29,9 @@ export class PanierComponent implements OnInit {
   count;
   idCard;
   historique;
+  historiqueAchat;
+  historiqueLocation;
+  historiquejeu;
   
   constructor(private http: HttpClient,private route: Router, private jeuService : JeuService, private historiqueService : HistoriqueSalleService) { }
 
@@ -87,18 +90,24 @@ export class PanierComponent implements OnInit {
   }  
 
   getHistoriqueUser(){
-    this.http.get('http://localhost:8086/salle/historiqueUser/'+localStorage.getItem("id")).subscribe({
+    this.http.get('http://localhost:8086/histoLoc/user/'+localStorage.getItem("id")).subscribe({
       next: (data) => {console.log(data); 
-      this.historique=data; },
+      this.historiqueLocation=data; 
+      this.http.get('http://localhost:8086/histoAchat/user/'+localStorage.getItem("id")).subscribe({
+        next: (data) => {console.log(data); 
+        this.historiqueAchat=data; this.historiquejeu=this.historiqueAchat.concat(this.historiqueLocation) },
+        error: (err) => {console.log(err); }
+      });},
       error: (err) => {console.log(err); }
     });
+    
   }
   convertBoolean(b){
     if(b==true){
       return "Oui";
     }
     else{
-      return "En attente ...";
+      return "En attente";
     }
   }
   quantiteMoins(jeu){
@@ -153,6 +162,15 @@ export class PanierComponent implements OnInit {
 
   }
 
+  histoAchats(){
+    this.historiquejeu=this.historiqueAchat;
+  }
+  histoLocations(){
+    this.historiquejeu=this.historiqueLocation;
+  }
+  histoAll(){
+    this.historiquejeu=this.historiqueAchat.concat(this.historiqueLocation);
+  }
 
   openPanier(PanierName) {
     var i, tabcontent, tablinks;

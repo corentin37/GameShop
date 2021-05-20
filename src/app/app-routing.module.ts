@@ -26,6 +26,7 @@ import { ModifierCotisationComponent } from './modifier-cotisation/modifier-coti
 import { SupprimerSalleComponent } from './supprimer-salle/supprimer-salle.component';
 import { VendeurComponent } from './vendeur/vendeur.component';
 import { GestionAdminComponent } from './gestion-admin/gestion-admin.component';
+import { AjouterJeuComponent } from './ajouter-jeu/ajouter-jeu.component';
 
 
 
@@ -49,6 +50,7 @@ const routes: Routes = [
   {component: ModifierCotisationComponent, path:'modifierCotisation'},
   {component: SupprimerSalleComponent, path: 'supprimerSalle'},
   {component: VendeurComponent, path: 'vendeur'},
+  {component: AjouterJeuComponent, path: 'ajouterJeu'},
   {component: TrierparPlateauComponent, path: 'trierParPlateau'},
   {component: PanierComponent, path: 'panier'},
   {component: MaMessagerieComponent, path: 'messagerie'},
