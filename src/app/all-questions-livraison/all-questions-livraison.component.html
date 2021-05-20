@@ -29,7 +29,7 @@
                     <div *ngFor="let r of info">
                         <div *ngIf="r.message!=null">
                             <div *ngIf="r.message.id==m.id">
-                                <p><b>{{r.expediteur.login}}</b>&nbsp;&nbsp;<i class="text-secondary">{{r.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
+                                <p class="para-perso"><b>{{r.expediteur.login}}</b>&nbsp;&nbsp;<i class="text-secondary">{{r.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
                                 <p>{{r.contenu}}</p>
                             </div>
                         </div>
