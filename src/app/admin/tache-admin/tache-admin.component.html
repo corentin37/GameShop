@@ -1,5 +1,5 @@
+<div *ngIf="userConnected" >
 <!-- Navbar d'admin-->
-
 
 <!-- Recherche table de tous les users -->
 <div class="container">
@@ -9,9 +9,10 @@
       (ngSubmit)="recherchePerson(recherche.value)"
       class="container border trombinoscope col-sm-9"
     >
-      Liste des admins:
+      
       <br />
       <div class="row">
+        <div class="btnColor1 center w-100">Liste des admins: </div>
         <div class="col-sm-12">
           <table class="table table-hover">
             <thead>
@@ -38,11 +39,7 @@
           </table>
         </div>
         <div class="form-head col-sm-2">
-          <button
-            type="button"
-            
-            class="btn btn-sm button-primary btn-block"
-          >
+          <button type="button" class="btn btn-sm button-primary btn-block">
             Recherche :
           </button>
         </div>
@@ -61,23 +58,21 @@
           <button
             (click)="fenetreActivation(2)"
             type="submit"
-            class="btn btn-sm button-primary btn-block"
+            class="btn btnColor btn-sm button-primary btn-block"
           >
             Rechercher
           </button>
-          
         </div>
         <div class="form-head col-sm-10"></div>
         <div class="form-head col-sm-2">
-        <button
-            type="button" 
+          <button
+            type="button"
             (click)="fenetreActivation(1)"
-            class="btn btn-sm button-primary btn-block"
+            class="btn btnColor btn-sm button-primary btn-block"
           >
             Créer Admin
           </button>
         </div>
-
       </div>
     </form>
     <!-- Recherche card -->
@@ -89,11 +84,13 @@
 
           <div *ngIf="fenetreResultat" class="col-sm">
             <div class="row">
-              <div class="card">
+              <div class="card contenuCard">
                 <div class="col-sm-12">
                   <div class="card-body-note">
+                    <div class="card-header center">
+                    Admin {{ person.id }}</div>
                     <div class="card-text">
-                      <p>Admin Id : {{ person.id }}</p>
+                      
                       <p>Login : {{ person.user.login }}</p>
                       <p>Mail : {{ person.user.mail }}</p>
                       <p>Numéro : {{ person.user.tel }}</p>
@@ -107,7 +104,7 @@
                     <div>
                       <div class="dropdown">
                         <button
-                          class="btn btn-secondary dropdown-toggle"
+                          class="btn w-100  btnColor btn-secondary dropdown-toggle"
                           type="button"
                           id="dropdownMenuButton"
                           data-toggle="dropdown"
@@ -117,7 +114,7 @@
                           Actions
                         </button>
                         <div
-                          class="dropdown-menu"
+                          class="dropdown-menu btnColor1 "
                           aria-labelledby="dropdownMenuButton"
                         >
                           <a
@@ -126,11 +123,13 @@
                             >Modifier</a
                           >
                           <a (click)="bloquer(person)" class="dropdown-item"
-                            >Bloquer </a
-                          >
-                          <a (click)="effacer(person.user)" class="dropdown-item"
-                            >Effacer </a
-                          >
+                            >Bloquer
+                          </a>
+                          <a
+                            (click)="effacer(person.user)"
+                            class="dropdown-item"
+                            >Effacer
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -143,21 +142,21 @@
             </div>
           </div>
           <!-- Card Pas de Résultat -->
-          <div *ngIf="fenetreSansResultat" class=" w-100">
+          <div *ngIf="fenetreSansResultat" class=" col-sm-12 w-100 h-100">
             <div class="row">
               <div class="card">
-                <div class="col-sm-12">
+                <div class="col-lg-12">
                   <div class="card-body-note">
-                    <div class="card-text">
-                      <p>Pas de résultats</p>
-                      <p><br /></p>
-                      <p><br /></p>
-                      <p><br /></p>
-                      <p><br /></p>
+                    <div class="card-text resultat w-100" style="text-align: center;">
+                      
+                        <br>
+                        <p>Pas de résultats</p>
+  
+                      
                     </div>
                   </div>
                 </div>
-                <br />
+                
               </div>
             </div>
           </div>
@@ -167,10 +166,10 @@
           <div class="card inscription">
             <div *ngIf="fenetreInscription" class="contenuCard">
               <form #f="ngForm" (ngSubmit)="inscription(f.value)">
-                <div class="form-group">
-                  <label style="align-content: center" for="">
-                    Créer un Admin
-                  </label>
+                <div class="form-group center">
+                  <label > Créer un Admin </label>
+                  
+          
                   <input
                     type="text"
                     placeholder="Login"
@@ -178,7 +177,7 @@
                     id="login"
                     class="form-control"
                     required
-                    ngModel = ' (getElementById(loginZone)) '
+                    ngModel
                   />
 
                   <input
@@ -206,19 +205,25 @@
                     ngModel
                   />
                 </div>
-
-                <button
-                  type="submit"
-                  [disabled]="f.invalid"
-                  class="btn button-primary btn-sm-block"
-                >
-                  Valider
-                </button>
+               
+                  <div class="divValider col-sm-12">
+                    <button
+                      type="submit"
+                      [disabled]="f.invalid"
+                      class="btn w-100 btnColor button-primary btn-sm-block"
+                    >
+                      Valider
+                    </button>
+                    
+                  
+                </div>
               </form>
             </div>
           </div>
 
           <!-- Card modification -->
+
+
 
           <div class="card modification">
             <div *ngIf="fenetreModification" class="contenuCard">
@@ -229,10 +234,8 @@
                     console('value submit' + user.value)
                 "
               >
-
-
-                <div class="form-group">
-                  <label style="align-content: center" for="">
+                <div class="form-group  center">
+                  <label >
                     Modification
                   </label>
 
@@ -277,28 +280,23 @@
                     name="mail"
                     ngModel="{{ person.user.mail }}"
                   />
-
                 </div>
 
-                  <button
-                    [disabled]="user.invalid"
-                    
-                    type="submit"
-                    class="btn btn-sm button-primary btn-block"
-                  >
-                    Valider
-                  </button>
-                  <button
-                    (click)="fenetreActivation(0)"
-                    type="submit"
-                    class="btn btn-sm button-primary btn-block"
-                  >
-                    Annuler
-                  </button>
-                
-
+                <button
+                  [disabled]="user.invalid"
+                  type="submit"
+                  class="btn btnColor btn-sm button-primary btn-block"
+                >
+                  Valider
+                </button>
+                <button
+                  (click)="fenetreActivation(0)"
+                  type="submit"
+                  class="btn btnColor btn-sm button-primary btn-block"
+                >
+                  Annuler
+                </button>
               </form>
-
             </div>
           </div>
         </form>
@@ -309,4 +307,5 @@
 
 <div>
   <br />
+</div>
 </div>

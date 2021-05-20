@@ -15,7 +15,8 @@ export class TacheAdminComponent implements OnInit {
   adminsExist;
 
   // creation fenetre
-
+  userConnected = false;
+  userId =  localStorage.getItem('id')
   fenetreResultat;
   fenetreSansResultat;
   fenetreModification;
@@ -26,6 +27,15 @@ export class TacheAdminComponent implements OnInit {
   ngOnInit(): void {
     this.getAllAdmin();
     this.fenetreActivation(1)
+  }
+
+  connected(){
+    if (this.userId != null){
+      return this.userConnected = true;
+    } else{
+      return this.userConnected = false;
+    }
+
   }
 
   recherchePerson(recherche): any {
@@ -132,6 +142,7 @@ export class TacheAdminComponent implements OnInit {
   inscription(person): any {
     // le formulaire s'appelle user, mais creation de vendeur
     // ATTENTION A L'URL
+    console.log(person);
     this.http
       .post('http://localhost:8086/admin/save', person)
       .subscribe({

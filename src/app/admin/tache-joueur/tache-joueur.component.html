@@ -1,6 +1,6 @@
 
   
-  
+  <div *ngIf="userConnected" >
   
 <!-- Recherche table de tous les users -->
 <div class="container">
@@ -10,9 +10,9 @@
       (ngSubmit)="recherchePerson(recherche.value)"
       class="container border trombinoscope col-sm-9"
     >
-      Liste des Joueurs:
-      <br />
+    <br />
       <div class="row">
+        <div class="btnColor1 center w-100">Liste des joueurs: </div>
         <div class="col-sm-12">
           <table class="table table-hover">
             <thead>
@@ -22,6 +22,7 @@
                 <th scope="col">password</th>
                 <th scope="col">mail</th>
                 <th scope="col">tel</th>
+                <th scope="col">Cotisation</th>
                 <th scope="col">Etat</th>
               </tr>
             </thead>
@@ -42,10 +43,9 @@
         <div class="form-head col-sm-2">
           <button
             type="button"
-            (click)="fenetreActivation(1)"
-            class="btn btn-sm button-primary btn-block"
+            class="btn  btn-sm button-primary btn-block"
           >
-            Créer :
+            Recherche :
           </button>
         </div>
         <div class="col-sm-8">
@@ -63,10 +63,17 @@
           <button
             (click)="fenetreActivation(2)"
             type="submit"
-            class="btn btn-sm button-primary btn-block"
+            class="btn btnColor btnColor btn-sm button-primary btn-block"
           >
             Rechercher
           </button>
+          <button
+          type="button"
+          (click)="fenetreActivation(1)"
+          class="btn btnColor btnColor btn-sm button-primary btn-block"
+        >
+          Créer :
+        </button>
         </div>
       </div>
     </form>
@@ -82,8 +89,10 @@
               <div class="card">
                 <div class="col-sm-12">
                   <div class="card-body-note">
+                    <div class="card-header center ">
+                    Joueur {{ person.id }}</div>
                     <div class="card-text">
-                      <p>Id : {{ person.id }}</p>
+                      
                       <p>Login : {{ person.user.login }}</p>
                       <p>Mail : {{ person.user.mail }}</p>
                       <p>Numéro : {{ person.user.tel }}</p>
@@ -98,7 +107,7 @@
                     <div>
                       <div class="dropdown">
                         <button
-                          class="btn btn-secondary dropdown-toggle"
+                          class="btn w-100 btnColor btn-secondary dropdown-toggle"
                           type="button"
                           id="dropdownMenuButton"
                           data-toggle="dropdown"
@@ -108,7 +117,7 @@
                           Actions
                         </button>
                         <div
-                          class="dropdown-menu"
+                          class="dropdown-menu btnColor1"
                           aria-labelledby="dropdownMenuButton"
                         >
                           <a
@@ -148,10 +157,7 @@
                   <div class="card-body-note">
                     <div class="card-text">
                       <p>Pas de résultats</p>
-                      <p><br /></p>
-                      <p><br /></p>
-                      <p><br /></p>
-                      <p><br /></p>
+
                     </div>
                   </div>
                 </div>
@@ -165,8 +171,9 @@
           <div class="card inscription">
             <div *ngIf="fenetreInscription" class="contenuCard">
               <form #f="ngForm" (ngSubmit)="inscription(f.value)">
-                <div class="form-group">
-                  <label style="align-content: center" for="">
+                <div class="form-group  center">
+                  
+                  <label >
                     Créer un Joueur
                   </label>
                   <input
@@ -176,7 +183,7 @@
                     id="login"
                     class="form-control"
                     required
-                    ngModel = ' (getElementById(loginZone)) '
+                    ngModel
                   />
 
                   <input
@@ -208,7 +215,7 @@
                 <button
                   type="submit"
                   [disabled]="f.invalid"
-                  class="btn button-primary btn-sm-block"
+                  class="btn btnColor w-100 button-primary btn-sm-block"
                 >
                   Valider
                 </button>
@@ -229,8 +236,8 @@
               >
 
 
-                <div class="form-group">
-                  <label style="align-content: center" for="">
+                <div class="form-group  center">
+                  <label>
                     Modification
                   </label>
 
@@ -282,14 +289,14 @@
                     [disabled]="user.invalid"
                     
                     type="submit"
-                    class="btn btn-sm button-primary btn-block"
+                    class="btn btnColor btn-sm button-primary btn-block"
                   >
                     Valider
                   </button>
                   <button
                     (click)="fenetreActivation(0)"
                     type="submit"
-                    class="btn btn-sm button-primary btn-block"
+                    class="btn btnColor btn-sm button-primary btn-block"
                   >
                     Annuler
                   </button>
@@ -307,4 +314,5 @@
 
 <div>
   <br />
+</div>
 </div>
