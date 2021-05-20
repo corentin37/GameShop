@@ -1,5 +1,5 @@
 <!-- Navbar d'admin-->
-<app-admin></app-admin>
+
 
 <!-- Recherche table de tous les users -->
 <div class="container">
@@ -40,10 +40,10 @@
         <div class="form-head col-sm-2">
           <button
             type="button"
-            (click)="fenetreActivation(1)"
+            
             class="btn btn-sm button-primary btn-block"
           >
-            Créer :
+            Recherche :
           </button>
         </div>
         <div class="col-sm-8">
@@ -65,7 +65,19 @@
           >
             Rechercher
           </button>
+          
         </div>
+        <div class="form-head col-sm-10"></div>
+        <div class="form-head col-sm-2">
+        <button
+            type="button" 
+            (click)="fenetreActivation(1)"
+            class="btn btn-sm button-primary btn-block"
+          >
+            Créer Admin
+          </button>
+        </div>
+
       </div>
     </form>
     <!-- Recherche card -->
@@ -131,7 +143,7 @@
             </div>
           </div>
           <!-- Card Pas de Résultat -->
-          <div *ngIf="fenetreSansResultat" class="col-sm">
+          <div *ngIf="fenetreSansResultat" class=" w-100">
             <div class="row">
               <div class="card">
                 <div class="col-sm-12">

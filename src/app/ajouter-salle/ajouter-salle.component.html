@@ -1,37 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Vendeur</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Salles
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink='/ajouterSalle'>Ajouter une salle</a>
-            <a class="dropdown-item" routerLink='/historiqueSalle'>Valider location de salles</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Joueurs
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink='/modifierCotisation'>Modifier cotisation</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <div class="center mt-15">
-    <br>
-    <h2>Ajouter une salle</h2>
-    <br>
-</div>
+<div class="center mt-15">
+  <br>
+  <h2>Ajouter une salle</h2>
+  <br>
+  </div>
+    
 <form #salle = "ngForm" (ngSubmit) = "ajouterSalle(salle.value)">
 <div class="row">
     <div class="col-sm-3">

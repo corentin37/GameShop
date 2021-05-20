@@ -1,67 +1,115 @@
 <div class="fondSite">
-<div class="container">
-  <div class="row">
-    <div class="col-sm-1 mt-2">
-      <img src="assets/img/logo.png" alt="" width="160%" class="img">
-    </div>
-    <div class="col-sm-2 capitalize center">
-      <div style="color: steelblue">
-        <br><br>
-        <h6><strong></strong></h6>
-        
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-1 mt-2">
+        <img src="assets/img/logo.png" alt="" width="160%" class="img" />
       </div>
-      
+      <div class="col-sm-2 capitalize center">
+        <div style="color: steelblue">
+          <br /><br />
+          <h6><strong></strong></h6>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <form>
+          <div class="form-group">
+            <div class="input-group rounded">
+              <input
+                class="form-control rounded"
+                placeholder="Trouver votre bonheur ici"
+                aria-label="Search"
+                class="form-control"
+                aria-describedby="search-addon"
+              />
+              <span class="input-group-text border-0" id="search-addon">
+                <button type="submit" class="btn btn-secondary btn-block">
+                  <i class="fas fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-sm-3 dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false hover"
+        >
+          <a class="nav-item nav-link" routerLink="connexion"
+            ><i style="color: steelblue" class="fa fa-user fa-2x"></i>&nbsp;{{
+              cacherLogin(true)
+            }}</a
+          >
+        </button>
+
+        <div
+          class="col-sm-12 dropdown-menu"
+          aria-labelledby="dropdownMenuButton"
+        >
+          <a class="nav-item nav-link" routerLink="messagerie"
+            ><i style="color: steelblue" class="fa fa-envelope fa-2x"> </i
+            >&nbsp; Ma messagerie
+          </a>
+          <a class="nav-item nav-link" routerLink="panier"
+            ><i style="color: steelblue" class="fa fa-shopping-cart fa-2x"></i
+            >&nbsp;Mon panier</a
+          >
+          <a class="nav-item nav-link" routerLink="deconnexion"
+            ><i style="color: steelblue" class="fa fa-power-off fa-2x"></i
+            >&nbsp;Déconnexion</a
+          >
+        </div>
+      </div>
     </div>
-    <div class="col-sm-6">
-      <form>
-        <div class="form-group">
-        <div class="input-group rounded">
-          <input  class="form-control rounded" placeholder="Trouver votre bonheur ici" aria-label="Search" class="form-control"
-            aria-describedby="search-addon" />
-          <span class="input-group-text border-0" id="search-addon">
-            <button type="submit" class="btn btn-secondary btn-block"><i class="fas fa-search"></i></button> 
-          </span>
+
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">GameShop</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav nav-fill w-100">
+            <a
+              class="nav-item nav-link"
+              routerLink="catalogue"
+              routerLinkActive="active"
+              >Nos jeux</a
+            >
+            <a
+              class="nav-item nav-link"
+              routerLink="salle"
+              routerLinkActive="active"
+              >Louez une salle</a
+            >
+            <a
+              class="nav-item nav-link"
+              routerLink="forum"
+              routerLinkActive="active"
+              >FAQ</a
+            >
           </div>
         </div>
-    </form>
+      </nav>
     </div>
-   
-    <div class=" col-sm-3 dropdown">
-      <button
-        class="btn btn-secondary  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false hover" >
-        <a class="nav-item nav-link" routerLink='connexion'><i style = "color: steelblue" class="fa fa-user fa-2x"></i>&nbsp;{{cacherLogin(true)}}</a>
-      </button>
 
-      <div class=" col-sm-12 dropdown-menu" aria-labelledby="dropdownMenuButton" >
-          <a class="nav-item nav-link" routerLink='messagerie'><i style = "color: steelblue" class="fa fa-envelope  fa-2x"> </i>&nbsp; Ma messagerie  </a>
-          <a class="nav-item nav-link" routerLink='panier'><i style = "color: steelblue" class="fa fa-shopping-cart fa-2x"></i>&nbsp;Mon panier</a>
-          <a class="nav-item nav-link" routerLink='deconnexion'><i style = "color: steelblue" class="fa fa-power-off fa-2x"></i>&nbsp;Déconnexion</a>
-      </div>
-    </div>
-     
+    <br /><br />
 
-    
-    
+    <router-outlet></router-outlet>
   </div>
-  
-  
-  <div>
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand">GameShop</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav nav-fill w-100">
-                  <a class="nav-item nav-link" routerLink='catalogue'routerLinkActive='active'>Nos jeux</a>
-                  <a class="nav-item nav-link" routerLink='salle'routerLinkActive='active'>Louez une salle</a>
-                  <a class="nav-item nav-link" routerLink='forum'routerLinkActive='active'>FAQ</a>
-                  
-                  
-              </div>
-              </div>
-            </nav>
-   </div>
-         <br><br>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>
