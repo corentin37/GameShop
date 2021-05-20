@@ -145,17 +145,25 @@
 </div>
 
 <div id="Panier Historique" class="tabcontent">
-  <h1>Mon panier de réservation de salles</h1>
+  <h1>Mon historique</h1>
   <div class="row">
     <div class="col-sm-9 ">
-      <div class="row">
-
+        <div *ngFor="let hj of historiquejeu">
+          <div class="card card-shadow">
+            <div class="p-3" class="card-body border border-secondary">
+              <div class="row">
+                <div class="col-sm-12" *ngIf="hj.jeuAchat!=null"><b>Achat&nbsp;&nbsp;</b><i class="text-secondary">{{hj.dateCreation|date : 'd/M/y h:mm'}}</i><span>&nbsp; Quantite : {{hj.quantite}}&nbsp;&nbsp; <b>Jeu : {{hj.jeuAchat.lejeu.nom}}</b></span></div>
+                <div class="col-sm-12" *ngIf="hj.jeuLocation!=null"><b>Location&nbsp;&nbsp;</b><i class="text-secondary">{{hj.dateCreation|date : 'd/M/y h:mm'}}</i><span>&nbsp; Quantite : {{hj.quantite}}&nbsp;&nbsp;<b>Jeu : {{hj.jeuLocation.lejeu.nom}}</b></span></div>  
+              </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-sm-3">
-      <a class="btn btn-primary" routerLink="connexion" role="button">Achats</a>
-      <a class="btn btn-primary" routerLink="connexion" role="button">Locations</a>
-      <a class="btn btn-primary" routerLink="connexion" role="button">Tout afficher</a>
+      <a class="btn btn-primary" (click)="histoAchats()" type="button">Achats</a><br>
+      <a class="btn btn-primary" (click)="histoLocations()" type="button">Locations</a><br>
+      <a class="btn btn-primary" (click)="histoAll()" type="button">Tout afficher</a>
     </div>
+    
   </div>
 </div>
