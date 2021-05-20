@@ -25,6 +25,12 @@ export class ConnexionComponent implements OnInit {
 /*import*/
   ngOnInit(): void {
     
+
+
+  if (localStorage.getItem( "id") != null) {
+    this.route.navigateByUrl('profil');
+  }
+    
     this.userConnected();
 /*import*/
     this.registerForm = this.formBuilder.group({
