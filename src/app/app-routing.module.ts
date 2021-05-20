@@ -22,6 +22,7 @@ import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
 import { ProfilJoueurComponent } from './profil-joueur/profil-joueur.component';
 import { ModifierCotisationComponent } from './modifier-cotisation/modifier-cotisation.component';
+import { SupprimerSalleComponent } from './supprimer-salle/supprimer-salle.component';
 
 
 
@@ -44,6 +45,7 @@ const routes: Routes = [
   {component: HistoriqueSalleComponent, path: 'historiqueSalle'},
   {component: AjouterSalleComponent, path:'ajouterSalle'},
   {component: ModifierCotisationComponent, path:'modifierCotisation'},
+  {component: SupprimerSalleComponent, path: 'supprimerSalle'},
   {component: TrierparPlateauComponent, path: 'trierParPlateau'},
   {component: PanierComponent, path: 'panier'},
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}, // quand il ya pas de chemin ça redirige directement vers le catalogue
