@@ -6,19 +6,25 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="ajouterSalle">Ajouter une salle <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="historiqueSalle">Valider les locations de salle</a>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Salles
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink='/ajouterSalle'>Ajouter une salle</a>
+            <a class="dropdown-item" routerLink='/historiqueSalle'>Valider location de salles</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
+            Joueur
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" routerLink='/ajouterSalle'>Ajouter une salle</a>
+            <a class="dropdown-item" routerLink='/historiqueSalle'>Valider location de salles</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
@@ -61,3 +67,18 @@
     </div>
 </div>
 </form>
+
+<div class=" col-sm-3 dropdown">
+  <button
+    class="btn btn-secondary  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false hover" >
+    <a class="nav-item nav-link" routerLink='connexion'><i style = "color: steelblue" class="fa fa-user fa-2x"></i>&nbsp;Mon compte</a>
+  </button>
+
+  <div
+    class=" col-sm-3 dropdown-menu" aria-labelledby="dropdownMenuButton" >
+    
+      <a class="nav-item nav-link" routerLink='panier'><i style = "color: steelblue" class="fa fa-shopping-cart fa-2x"></i>&nbsp;Mon panier</a>
+      <a class="nav-item nav-link" routerLink='deconnexion'><i style = "color: steelblue" class="fa fa-power-off fa-2x"></i>&nbsp;Déconnexion</a>
+  </div>
+</div>
+ 
