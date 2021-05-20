@@ -1,14 +1,22 @@
-<div class="container">
-    <form #msg="ngForm"(ngSubmit)="newMessage(msg.value)"><!--note aura tous le contenu du formulaire, info du formulaire contenu dans note.value--->
-        <div class="form-group">
-            <label class="text-secondary" for="">Posez votre question ici</label><!--label évite d'utiliser le placeholder-->
-            <input type="text" name="contenu" class="form-control" ngModel=""><!--contenue est le nom utilisé dans le format json donc la bd-->
-        </div>
-        <button type="submit" class="btn btn-raised btn-block">valider</button><!--, rajouter form module x2 dans modulestype submit pour envoyer les données-->
-        <button (click)="goToForum()" type="submit" class="btn btn-primary btn-block">retour</button>
-    </form>
-</div>
+
 <div class="container"> 
+    <div class="row">
+
+    <div class="col-sm-12">
+        <form #msg="ngForm"(ngSubmit)="newMessage(msg.value)"><!--note aura tous le contenu du formulaire, info du formulaire contenu dans note.value--->
+            <div class="form-group">
+                <label class="text-secondary" for="">Posez votre question ici</label><!--label évite d'utiliser le placeholder-->
+                <input type="text" name="contenu" class="form-control" ngModel=""><!--contenue est le nom utilisé dans le format json donc la bd-->
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary btn-block">valider</button><!--, rajouter form module x2 dans modulestype submit pour envoyer les données-->
+                <button (click)="goToForum()" type="submit" class="btn btn-secondary btn-block">retour</button>
+            </div>
+               
+        </form>
+    </div>
+    <div class="col-sm-2"></div>
+    </div>
     <div class="row">
         <div *ngFor="let m of info" class="col-sm-12">
             <div class="card card-shadow">
