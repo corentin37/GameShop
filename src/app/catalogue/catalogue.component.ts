@@ -50,7 +50,7 @@ export class CatalogueComponent implements OnInit {
     })
   }
   getMarque(): any{
-    this.http.get ('http://localhost:8086/marques').subscribe({
+    this.http.get ('http://localhost:8086/marquesOrdered').subscribe({
       next: (data)=> {this.marque = data; },
       error: (err)=> {console.log(err);}
     }) 
@@ -97,19 +97,36 @@ export class CatalogueComponent implements OnInit {
 
   //------------------------------------------------
   //actions
-user;
-bodySave;
+
 addToPanier(game){
+  var user,bodySave,AlreadyPresent;
   console.log("begin adding game to basket ...");
-  if(localStorage.getItem("id")!=null){
+  if(localStorage.getItem("id")!=null){ // on vérifie que l'utilisateur est connecté, sinon on le renvoie vers la page de connexion
     console.log("user detected : "+localStorage.getItem("id")+"\n Connecting ...");
-    this.http.get("http://localhost:8086/user/id/"+localStorage.getItem("id")).subscribe({
-      next: (data)=>{this.user=data;
-            this.bodySave={"user":this.user,"jeuAchat":game,"quantite" : 1,"achat":true};
-            console.log("bodysave : "+this.bodySave);console.log("user : "+this.user.id);console.log("jeuAchat : "+game.id);
-            this.http.post('http://localhost:8086/panier',this.bodySave).subscribe({
-              error: (err) => {console.log(err);}
-            });
+
+    this.http.get("http://localhost:8086/user/id/"+localStorage.getItem("id")).subscribe({ // on récupère le user
+      next: (data)=>{user=data;
+            bodySave={"user":user,"jeuAchat":game,"quantite" : 1,"achat":true}; // construction du body pour la requête d'ajout d'un jeu dans le panier
+            console.log("bodysave : "+bodySave);console.log("user : "+user.id);console.log("jeuAchat : "+game.id);
+
+           
+            this.http.get('http://localhost:8086/panier/userAndGame/'+user.id+"/"+game.id).subscribe({ // vérification de la non-présence du jeu dans le panier de l'utilisateur
+              next: (data)=> {AlreadyPresent=data;
+                if(AlreadyPresent!=null){
+                  alert(game.lejeu.nom + " est déjà dans le panier !");
+                }
+                else{
+                  this.http.post('http://localhost:8086/panier',bodySave).subscribe({  //ajout dans le panier
+                    next: (data)=>{alert(game.lejeu.nom + " ajouté dans le panier !");},
+                    error: (err) => {console.log(err);}
+                  });
+                }
+              },
+              error: (err)=> {console.log(err);}
+              });
+
+
+            
       },
       error: (err) => {console.log(err);}
     });
