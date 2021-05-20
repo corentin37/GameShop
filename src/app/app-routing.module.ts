@@ -21,6 +21,7 @@ import { AllQuestionsLivraisonComponent } from './all-questions-livraison/all-qu
 import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
 import { ProfilJoueurComponent } from './profil-joueur/profil-joueur.component';
+import { MaMessagerieComponent } from './ma-messagerie/ma-messagerie.component';
 
 
 
@@ -29,14 +30,7 @@ const routes: Routes = [
   {component: ConnexionComponent, path: 'connexion'},
   {component: DeconnexionComponent, path: 'deconnexion'},
   {component: CreerJoueurComponent, path: 'creerJoueur'},
-  {component: AdminComponent, path: 'admin', children: [
-    
-    {component: TacheVendeurComponent, path: 'tacheVendeur' },
-    {component: TacheAdminComponent, path: 'tacheAdmin'},
-    {component: TacheSalleComponent, path: 'tacheSalle'},
-    {component: TacheJoueurComponent, path: 'tacheJoueur' },
-    {component: TacheUserComponent, path: 'tacheUser'},
-]    },
+  {component: AdminComponent, path: 'admin'},
   {component: CatalogueComponent, path: 'catalogue'},
   {component: GestionSallesComponent, path: 'salle'},
   {component: ReserverSalleComponent, path: 'reserverSalle'},
@@ -44,6 +38,7 @@ const routes: Routes = [
   {component: AjouterSalleComponent, path:'ajouterSalle'},
   {component: TrierparPlateauComponent, path: 'trierParPlateau'},
   {component: PanierComponent, path: 'panier'},
+  {component: MaMessagerieComponent, path: 'messagerie'},
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}, // quand il ya pas de chemin ça redirige directement vers le catalogue
   {component: TacheAdminComponent, path: 'admin-tacheAdmin'},
   {component: TacheVendeurComponent, path: 'admin-tacheVendeur' },
@@ -53,8 +48,17 @@ const routes: Routes = [
   {component: ForumComponent, path: 'forum'},
   {component: AllQuestionsLivraisonComponent, path: 'questionLivraison'},
   {component: ProfilJoueurComponent, path:'profil'},
+/*
+  {component: AdminComponent, path: 'admin', children: [
+    
+    {component: TacheVendeurComponent, path: 'tacheVendeur' },
+    {component: TacheAdminComponent, path: 'tacheAdmin'},
+    {component: TacheSalleComponent, path: 'tacheSalle'},
+    {component: TacheJoueurComponent, path: 'tacheJoueur' },
+    {component: TacheUserComponent, path: 'tacheUser'},
+]    },
 
-
+*/
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}// quand il ya pas de chemin ça redirige directement vers le catalogue
 ];
 

@@ -26,6 +26,7 @@ import { AllQuestionsLivraisonComponent } from './all-questions-livraison/all-qu
 import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
 import { ProfilJoueurComponent } from './profil-joueur/profil-joueur.component';
+import { MaMessagerieComponent } from './ma-messagerie/ma-messagerie.component';
 
 
 
@@ -51,7 +52,8 @@ import { ProfilJoueurComponent } from './profil-joueur/profil-joueur.component';
     AjouterSalleComponent,
     ForumComponent,
     AllQuestionsLivraisonComponent,
-    ProfilJoueurComponent
+    ProfilJoueurComponent,
+    MaMessagerieComponent
 
   ],
   imports: [
