@@ -26,7 +26,7 @@ export class ConnexionComponent implements OnInit {
   ngOnInit(): void {
     
 
-
+// si un utilisateur est co, le bouton "Mon compte renvoie à son profil"
   if (localStorage.getItem( "id") != null) {
     this.route.navigateByUrl('profil');
   }
@@ -70,7 +70,8 @@ export class ConnexionComponent implements OnInit {
           console.log('name:' + this.login);
           console.log('enregistrement réussi');
           this.userConnected();
-
+          //permet d'aller sur le catalogue quand la co est réussie
+          this.route.navigateByUrl('catalogue');
           
         } else {
           this.connectMessage = 'Identifiant ou mot de passe incorrect.';

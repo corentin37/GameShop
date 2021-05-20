@@ -1,4 +1,4 @@
-<  <div ng-app="validationApp" ng-controller="mainController">
+ <div ng-app="validationApp" ng-controller="mainController">
     <div class="container">
     <div class="row">  
        
@@ -8,6 +8,10 @@
         <div *ngIf="activity"  >
             <h6>Joueur adhérent</h6>
         </div>
+        <div *ngIf="!activity"  >
+            <h6>Joueur non adhérent</h6>
+        </div>
+
       <br><br>
 
 <!-- FORM avec informations déjà pré-remplies  -->
@@ -35,7 +39,7 @@
                 <p ng-show="user.tel.$invalid && !user.tel.$pristine" class="help-block"> </p>
             </div>
             
-            <button type="submit" class="btn btn-primary" ng-disabled="user.$invalid">Submit</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="user.$invalid">Modifier mes informations</button>
             
         </form>
       </div>
