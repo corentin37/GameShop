@@ -208,7 +208,7 @@
             <div class="p-3" class="card-body border border-secondary">
               <div class="row">
                 <div class="col-sm-12" *ngIf="hj.jeuAchat!=null"><b>Achat&nbsp;&nbsp;</b><i class="text-secondary">{{hj.dateCreation|date : 'd/M/y h:mm'}}</i><span>&nbsp; Quantite : {{hj.quantite}}&nbsp;&nbsp; <b>Jeu : {{hj.jeuAchat.lejeu.nom}}</b></span></div>
-                <div class="col-sm-12" *ngIf="hj.jeuLocation!=null"><b>Location&nbsp;&nbsp;</b><i class="text-secondary">{{hj.dateCreation|date : 'd/M/y h:mm'}}</i><span>&nbsp; Quantite : {{hj.quantite}}&nbsp;&nbsp;<b>Jeu : {{hj.jeuLocation.lejeu.nom}}</b></span></div>  
+                <div class="col-sm-12" *ngIf="hj.jeuLocation!=null"><b>Location&nbsp;&nbsp;</b><i class="text-secondary">{{hj.dateCreation|date : 'd/M/y h:mm'}}</i><span>&nbsp; Quantite : {{hj.quantite}}&nbsp;&nbsp;<b>Jeu : {{hj.jeuLocation.lejeu.nom}}</b>&nbsp;&nbsp;&nbsp;&nbsp;Début : {{hj.dateDebut|date : 'd/M/y h:mm'}}&nbsp;&nbsp;&nbsp;Début : {{hj.dateFin|date : 'd/M/y h:mm'}}</span></div>  
               </div>
           </div>
         </div>
