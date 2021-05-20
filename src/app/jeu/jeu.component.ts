@@ -19,7 +19,6 @@ export class JeuComponent implements OnInit {
   login;
   // valeur = ;
   avis;
-  avisnew;
   jeuId = this.jeuService.game.lejeu.id;
 
 
