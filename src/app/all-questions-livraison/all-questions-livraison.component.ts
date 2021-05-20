@@ -60,7 +60,7 @@ forum;
   newReponse(msg): any {
     console.log("Réponse postée! Rafraîchir la page");
     //const user ={id :localStorage.getItem("id")};
-    const expediteur = {id: 1};
+    const expediteur = {id: 5};
    // msg.user=user;
     msg.expediteur=expediteur;
     //msg.forum=this.forum.sujet;
