@@ -18,12 +18,15 @@ export class CatalogueComponent implements OnInit {
   constructor(private http: HttpClient, private route : Router, private jeuService : JeuService, private catalogueService : CatalogueService) { }
   jeu;
   jeuAffiche;
+  jeuAfficheTemp;
   categorie;
   marque;
   jeuAchat;
   id = 19;
   filterProperties;
   niveauxDifficulte=["Facile","Moyen","Difficile"];
+
+
   ngOnInit(): void {
     this.getCatalogue();
     this.getCategorie();
@@ -35,7 +38,7 @@ export class CatalogueComponent implements OnInit {
   //gets initialisation
   getCatalogue() : any{
     this.http.get('http://localhost:8086/jeu/listJeuAchat').subscribe({
-      next: (data)=> {this.jeu = data; this.jeuAffiche=this.jeu },
+      next: (data)=> {this.jeu = data; this.jeuAffiche=this.jeu;this.initVariables(); },
       error: (err)=> {console.log(err);}
       });
     }
@@ -54,6 +57,26 @@ export class CatalogueComponent implements OnInit {
 
   getProperties(){
     this.filterProperties=this.catalogueService;
+  }
+
+  initVariables(){
+    this.ageMin=this.jeu[0].lejeu.ageMin;
+    this.prixMin=this.jeu[0].prixAchat;
+    this.prixMax=this.jeu[0].prixAchat;
+    this.prixLocationMin=this.jeu[0].lejeu.prixLocation;
+    this.prixLocationMax=this.jeu[0].lejeu.prixLocation;
+    this.tempsJeuMin=this.jeu[0].lejeu.tempsDeJeu;
+    this.tempsJeuMax=this.jeu[0].lejeu.tempsDeJeu;
+    this.nombreJoueurs=1;
+    for(let j of this.jeu){
+      this.ageMin=Math.min(j.lejeu.ageMin,this.ageMin);
+      this.prixMin=Math.min(j.prixAchat,this.prixMin);
+      this.prixMax=Math.max(j.prixAchat,this.prixMax);
+      this.prixLocationMin=Math.min(j.lejeu.prixLocation,this.prixLocationMin);
+      this.prixLocationMax=Math.max(j.lejeu.prixLocation,this.prixLocationMax);
+      this.tempsJeuMin=Math.min(j.lejeu.tempsDeJeu,this.tempsJeuMin);
+      this.tempsJeuMax=Math.max(j.lejeu.tempsDeJeu,this.tempsJeuMax);
+    }
   }
   
   console(entreeConsole): any {
@@ -120,6 +143,31 @@ prixMaxPlus(){
   this.prixMax+=1.00;
 }
 
+prixLocationMin=0;
+prixLocationMinMoins(){
+  this.prixLocationMin-=1.00;
+  if(this.prixLocationMin<0){
+    this.prixLocationMin=0;
+  }
+}
+prixLocationMinPlus(){
+  this.prixLocationMin+=1.00;
+  if(this.prixLocationMin>this.prixLocationMax){
+    this.prixLocationMin=this.prixLocationMax;
+  }
+}
+
+prixLocationMax=0;
+prixLocationMaxMoins(){
+  this.prixLocationMax-=1.00;
+  if (this.prixLocationMax<this.prixLocationMin){
+    this.prixLocationMax=this.prixLocationMin;
+  }
+}
+prixLocationMaxPlus(){
+  this.prixLocationMax+=1.00;
+}
+
 ageMin=0;
 ageMinMoins(){
   this.ageMin-=1;
@@ -131,40 +179,26 @@ ageMinPlus(){
   this.ageMin+=1;
 }
 
-nombreJoueursMin=0;
-nombreJoueursMinMoins(){
-  this.nombreJoueursMin-=1.00;
-  if(this.nombreJoueursMin<0){
-    this.nombreJoueursMin=0;
+nombreJoueurs=0;
+nombreJoueursMoins(){
+  this.nombreJoueurs-=1;
+  if(this.nombreJoueurs<0){
+    this.nombreJoueurs=0;
   }
 }
-nombreJoueursMinPlus(){
-  this.nombreJoueursMin+=1.00;
-  if(this.nombreJoueursMin>this.nombreJoueursMax){
-    this.nombreJoueursMin=this.nombreJoueursMax;
-  }
-}
-
-nombreJoueursMax=0;
-nombreJoueursMaxMoins(){
-  this.nombreJoueursMax-=1.00;
-  if (this.nombreJoueursMax<this.nombreJoueursMin){
-    this.nombreJoueursMax=this.nombreJoueursMin;
-  }
-}
-nombreJoueursMaxPlus(){
-  this.nombreJoueursMax+=1.00;
+nombreJoueursPlus(){
+  this.nombreJoueurs+=1.00;
 }
 
 tempsJeuMin=0;
 tempsJeuMinMoins(){
-  this.tempsJeuMin-=1.00;
+  this.tempsJeuMin-=15.00;
   if(this.tempsJeuMin<0){
     this.tempsJeuMin=0;
   }
 }
 tempsJeuMinPlus(){
-  this.tempsJeuMin+=1.00;
+  this.tempsJeuMin+=15.00;
   if(this.tempsJeuMin>this.tempsJeuMax){
     this.tempsJeuMin=this.tempsJeuMax;
   }
@@ -172,17 +206,118 @@ tempsJeuMinPlus(){
 
 tempsJeuMax=0;
 tempsJeuMaxMoins(){
-  this.tempsJeuMax-=1.00;
+  this.tempsJeuMax-=15.00;
   if (this.tempsJeuMax<this.tempsJeuMin){
     this.tempsJeuMax=this.tempsJeuMin;
   }
 }
 tempsJeuMaxPlus(){
-  this.tempsJeuMax+=1.00;
+  this.tempsJeuMax+=15.00;
 }
+
+myFunction() {
+  console.log("ça passe par le focusout");
+  console.log(document.getElementById("ageMin").nodeValue);
+}
+
 
 //-------------------------------------------------------
 //filtrages
+
+refreshFilters(){
+  this.jeuAffiche=this.jeu;
+  // tri par catégorie
+  if(this.catalogueService.categorie!=null){
+    this.jeuAfficheTemp=[];
+    for(let j of this.jeuAffiche){
+      if(j.lejeu.categorieDuJeu.libelle==this.catalogueService.categorie.libelle){
+        this.jeuAfficheTemp.push(j);
+      }
+    }
+    this.jeuAffiche=this.jeuAfficheTemp;
+  }
+
+  // tri par marque
+  if(this.catalogueService.marque!=null){
+    this.jeuAfficheTemp=[];
+    for(let j of this.jeuAffiche){
+      if(j.lejeu.marqueDuJeu.libelle==this.catalogueService.marque.libelle){
+        this.jeuAfficheTemp.push(j);
+      }
+    }
+    this.jeuAffiche=this.jeuAfficheTemp;
+  }
+
+  // tri par ageMin
+  if(this.catalogueService.ageMin!=null){
+    this.jeuAfficheTemp=[];
+    for(let j of this.jeuAffiche){
+      if(j.lejeu.ageMin>=this.catalogueService.ageMin){
+        this.jeuAfficheTemp.push(j);
+      }
+    }
+    this.jeuAffiche=this.jeuAfficheTemp;
+  }
+
+  // tri par prix d'achat
+  if(this.catalogueService.prixMin!=null){
+    this.jeuAfficheTemp=[];
+    for(let j of this.jeuAffiche){
+      if((j.prixAchat>=this.catalogueService.prixMin) && (j.prixAchat<=this.catalogueService.prixMax)){
+        this.jeuAfficheTemp.push(j);
+      }
+    }
+    this.jeuAffiche=this.jeuAfficheTemp;
+  }
+
+  // tri par prix de location
+   if(this.catalogueService.prixLocationMin!=null){
+    this.jeuAfficheTemp=[];
+    for(let j of this.jeuAffiche){
+      if((j.lejeu.prixLocation>=this.catalogueService.prixLocationMin) && (j.lejeu.prixLocation<=this.catalogueService.prixLocationMax)){
+        this.jeuAfficheTemp.push(j);
+      }
+    }
+    this.jeuAffiche=this.jeuAfficheTemp;
+  }
+
+  //tri par nombre de joueurs
+  if(this.catalogueService.nombreJoueurs!=null){
+    this.jeuAfficheTemp=[];
+    for(let j of this.jeuAffiche){
+      if((j.lejeu.nombreJoueursMin<=this.catalogueService.nombreJoueurs) && (j.lejeu.nombreJoueursMax>=this.catalogueService.nombreJoueurs)){
+        this.jeuAfficheTemp.push(j);
+      }
+    }
+    this.jeuAffiche=this.jeuAfficheTemp;
+  }
+
+  // tri par temps de jeu
+  if(this.catalogueService.tempsJeuMin!=null){
+    this.jeuAfficheTemp=[];
+    for(let j of this.jeuAffiche){
+      if((j.lejeu.tempsDeJeu>=this.catalogueService.tempsJeuMin) && (j.lejeu.tempsDeJeu<=this.catalogueService.tempsJeuMax)){
+        this.jeuAfficheTemp.push(j);
+      }
+    }
+    this.jeuAffiche=this.jeuAfficheTemp;
+  }
+
+  // tri par niveau de difficulté
+  if(this.catalogueService.niveauDifficulte!=null){
+    this.jeuAfficheTemp=[];
+    for(let j of this.jeuAffiche){
+      if((j.lejeu.niveauDifficulte>=this.catalogueService.niveauDifficulte) && (j.lejeu.niveauDifficulte<=this.catalogueService.niveauDifficulte)){
+        this.jeuAfficheTemp.push(j);
+      }
+    }
+    this.jeuAffiche=this.jeuAfficheTemp;
+}
+
+
+}
+
+
 
 filterByCategorie(c){
   console.log(c.libelle);
@@ -192,6 +327,7 @@ filterByCategorie(c){
   else{
     this.catalogueService.categorie=null;
   }
+  this.refreshFilters();
 }
 
 filterByMarque(m){
@@ -202,35 +338,51 @@ filterByMarque(m){
   else{
     this.catalogueService.marque=null;
   }
-  
+  this.refreshFilters();
 }
 
 filterByAge(){
   console.log(this.ageMin);
   this.catalogueService.ageMin=this.ageMin;
+  this.refreshFilters();
 }
     
 filterByPrix(){
   console.log(this.prixMin,this.prixMax);
   this.catalogueService.prixMin=this.prixMin;
   this.catalogueService.prixMax=this.prixMax;
+  this.refreshFilters();
+}
+
+filterByPrixLocation(){
+  console.log(this.prixLocationMin,this.prixLocationMax);
+  this.catalogueService.prixLocationMin=this.prixLocationMin;
+  this.catalogueService.prixLocationMax=this.prixLocationMax;
+  this.refreshFilters();
 }
 
 filterByNombreJoueurs(){
-  console.log(this.nombreJoueursMin,this.nombreJoueursMax);
-  this.catalogueService.nombreJoueursMin=this.nombreJoueursMin;
-  this.catalogueService.nombreJoueursMax=this.nombreJoueursMax;
+  console.log(this.nombreJoueurs);
+  this.catalogueService.nombreJoueurs=this.nombreJoueurs;
+  this.refreshFilters();
 }
 
 filterByTempsJeu(){
   console.log(this.tempsJeuMin,this.tempsJeuMax);
   this.catalogueService.tempsJeuMin=this.tempsJeuMin;
   this.catalogueService.tempsJeuMax=this.tempsJeuMax;
+  this.refreshFilters();
 }
 
 filterByNiveauDifficulte(niveauDifficulte){
   console.log(niveauDifficulte);
-  this.catalogueService.niveauDifficulte=niveauDifficulte;
+  if(this.catalogueService.niveauDifficulte!=niveauDifficulte){
+    this.catalogueService.niveauDifficulte=niveauDifficulte;
+  }
+  else{
+    this.catalogueService.niveauDifficulte=null;
+  }
+  this.refreshFilters();
 }
 
   //---------------------------------

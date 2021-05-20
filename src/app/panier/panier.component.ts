@@ -124,6 +124,20 @@ export class PanierComponent implements OnInit {
     });
   }
 
+  changeAchatLocation(j){
+    j.achat= !j.achat;
+    this.http.put('http://localhost:8086/panier',j).subscribe({
+      next: (data) => {console.log(data);
+        this.panierAchat=[];
+        this.panierLocation=[];
+        this.getOnePanierByUser(this.iduser);
+      },
+      error: (err) => {console.log(err);}
+    });
+
+  }
+
+
   openPanier(PanierName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
