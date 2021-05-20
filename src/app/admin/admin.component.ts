@@ -18,6 +18,8 @@ export class AdminComponent implements OnInit {
   recherche;
   entreeConsole;
   vendeurExist;
+  userConnected = false;
+  userId =  localStorage.getItem('id')
   constructor(private http: HttpClient, private route: Router) {}
 
   ngOnInit(): void {
@@ -30,20 +32,7 @@ export class AdminComponent implements OnInit {
     */
   }
 
-  inscriptionVendeur(personCreated): any {
-    // le formulaire s'appelle user, mais creation de vendeur
-    // ATTENTION A L'URL
-    this.http
-      .post('http://localhost:8086/vendeur/save', personCreated)
-      .subscribe({
-        next: (data) => {
-          alert('Création du compte vendeur ');
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
-  }
+  
 
   getAllUser(): any {
     this.http.get('http://localhost:8086/user').subscribe({
@@ -56,38 +45,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  getAllJoueur(): any {
-    this.http.get('http://localhost:8086/joueur/lis').subscribe({
-      next: (data) => {
-        this.joueurs = data;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-
-  getAllVendeur(): any {
-    this.http.get('http://localhost:8086/vendeur/list').subscribe({
-      next: (data) => {
-        this.vendeurs = data;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-
-  getAllAdmin(): any {
-    this.http.get('http://localhost:8086/admin/list').subscribe({
-      next: (data) => {
-        this.admins = data;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
+  
 
 
 
@@ -130,5 +88,13 @@ export class AdminComponent implements OnInit {
     console.log(entreeConsole);
   }
 
+  connected(){
+    if (this.userId != null){
+      return this.userConnected = true;
+    } else{
+      return this.userConnected = false;
+    }
+
+  }
   
 }
