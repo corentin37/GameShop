@@ -46,3 +46,17 @@ body {font-family: "Lato", sans-serif;}
 .card:hover{
   transform: scale(1.05);
 }
+
+.h{
+  height: 93%;
+
+}
+
+
+.colorMain{
+  background-color: #eef5ff !important;
+}
+
+.colorPolice{
+ color:#24292e  !important ;
+}
