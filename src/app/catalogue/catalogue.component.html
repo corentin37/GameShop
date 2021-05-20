@@ -39,7 +39,7 @@
       </div>
       <div class="row">
         <div class="tab">
-          <button class="tablinks" (click)="openCloseTab( 'Prix')">Prix</button><div id="Prix" class="tabcontent">
+          <button class="tablinks" (click)="openCloseTab( 'Prix')">Prix d'achat</button><div id="Prix" class="tabcontent">
             <div class="row">
               <div class="col-sm-12">Prix Minimum :</div>
             </div>
@@ -60,6 +60,34 @@
               <div class="col-sm-1"></div>
               <div class="col-sm-1">
                 <a class="btn btn-outline-success btn-sm" type="button" (click)="filterByPrix()">Valider</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Prix Location')">Prix location</button><div id="Prix Location" class="tabcontent">
+            <div class="row">
+              <div class="col-sm-12">Prix Minimum :</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="prixLocationMinMoins()">-</a></div>
+              <div class="col-sm-4"><span>{{prixLocationMin}}€</span></div>
+              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="prixLocationMinPlus()">+</a></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">Prix Maximum :</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="prixLocationMaxMoins()">-</a></div>
+              <div class="col-sm-4"><span>{{prixLocationMax}}€</span></div>
+              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="prixLocationMaxPlus()">+</a></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-1">
+                <a class="btn btn-outline-success btn-sm" type="button" (click)="filterByPrixLocation()">Valider</a>
               </div>
             </div>
           </div>
@@ -101,7 +129,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="tempsJeuMinMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{tempsJeuMin}} min</span></div>
+              <div class="col-sm-6"><span>{{tempsJeuMin}} min</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="tempsJeuMinPlus()">+</a></div>
             </div>
             <div class="row">
@@ -109,7 +137,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="tempsJeuMaxMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{tempsJeuMax}} min</span></div>
+              <div class="col-sm-6"><span>{{tempsJeuMax}} min</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="tempsJeuMaxPlus()">+</a></div>
             </div>
             <div class="row">
@@ -138,7 +166,7 @@
     <div class="col-sm-9 ">
       <div class="row">
           <br>
-          <div *ngFor="let j of jeu" class="col-sm-4 ">
+          <div *ngFor="let j of jeuAffiche" class="col-sm-4 ">
             <br>
               <div class="card">
                 <img type="button" (click)="goToJeu(j)" src={{j.lejeu.urlImage}} class="img" alt="logo jeu"><br>

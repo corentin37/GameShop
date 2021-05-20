@@ -9,6 +9,8 @@ export class CatalogueService {
   ageMin;
   prixMin;
   prixMax;
+  prixLocationMin;
+  prixLocationMax;
   nombreJoueursMin;
   nombreJoueursMax;
   tempsJeuMin;
