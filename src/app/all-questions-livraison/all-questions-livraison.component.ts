@@ -68,9 +68,9 @@ forum;
     //  return confirm('Veuillez vous connecter');
     //}
     //else {
-      
-      this.http.put('http://localhost:8086/reponse/message/50', msg).subscribe({
-        next: (data) => {console.log(data); this.ngOnInit(); return confirm('Votre réponse a bien été prise en compte'); },
+      msg.forum=this.formService.subjectForum;
+      this.http.post('http://localhost:8086/message/reponse/54', msg).subscribe({
+        next: (data) => {console.log(data); this.ngOnInit(); return confirm('Votre réponse a bien été ajoutée'); },
         error: (err) => {console.log(err); }
       });
     }
