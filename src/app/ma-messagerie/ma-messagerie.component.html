@@ -5,7 +5,7 @@
   <div class="row">
     <form
       #recherche="ngForm"
-      (ngSubmit)="rechercheMesMessages(recherche.value)"
+      (ngSubmit)="afficherMesMessagesParExpediteur(recherche.login)"
       class="container border trombinoscope col-sm-9"
     >
       Liste des messages: <!--VERIFIER-->
@@ -20,18 +20,18 @@
                 <th scope="col">contenu</th>
                 <th scope="col">From</th>
                 <th scope="col">To</th>
-                <th scope="col">Etat</th>
+                
               </tr>
             </thead>
             <!--VERIFIER-->
             <tbody>
               <tr *ngFor="let a of messages" (click)="rechercheMesMessagesId(a.id)">
                 <th scope="row">{{ a.id }}</th>
-                
+                <td>{{ a.dateCreation }}</td>
+                <td>{{ a.contenu }}</td>
                 <td>{{ a.expediteur.login }}</td>
                 <td>{{ a.destinataire.login }}</td>
-                <td>{{ a.contenu }}</td>
-                <td>{{ a.dateCreation }}</td>
+                
               </tr>
             </tbody>
           </table>
@@ -58,7 +58,7 @@
         </div>
         <div class="form-head col-sm-2">
           <button
-            (click)="fenetreActivation(2)"
+            (click)="fenetreActivation(2);"
             type="submit"
             class="btn btn-sm button-primary btn-block"
           >
@@ -162,7 +162,7 @@
                     type="text"
                     placeholder="Destinataire"
                     name="expediteur"
-                    id="destinataire"
+                    id="expediteur"
                     class="form-control"
                     required [disabled]
                     ngModel = {{this.userId}} 
@@ -171,14 +171,14 @@
                   <input
                     type="text"
                     placeholder="Destinataire"
-                    name="login"
-                    id="destinataire"
+                    name="destinataire.id  "
+                    id="login"
                     class="form-control"
                     required
-                    ngModel = ' Desti '
+                    ngModel = ' 4 '
                   />
 
-                  
+                     
                   
                 </div>
 

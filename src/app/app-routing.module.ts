@@ -25,6 +25,7 @@ import { MaMessagerieComponent } from './ma-messagerie/ma-messagerie.component';
 import { ModifierCotisationComponent } from './modifier-cotisation/modifier-cotisation.component';
 import { SupprimerSalleComponent } from './supprimer-salle/supprimer-salle.component';
 import { VendeurComponent } from './vendeur/vendeur.component';
+import { GestionAdminComponent } from './gestion-admin/gestion-admin.component';
 
 
 
@@ -33,7 +34,13 @@ const routes: Routes = [
   {component: ConnexionComponent, path: 'connexion'},
   {component: DeconnexionComponent, path: 'deconnexion'},
   {component: CreerJoueurComponent, path: 'creerJoueur'},
-  {component: AdminComponent, path: 'admin'},
+  {component: AdminComponent, path: 'admin', children: [
+    {component: TacheAdminComponent, path: 'tache-admin'},
+    {component: TacheSalleComponent, path: 'tache-salle'},
+    {component: TacheJoueurComponent, path: 'tache-joueur' },
+    {component: TacheUserComponent, path: 'tache-user'},
+    {component: TacheVendeurComponent, path: 'tache-vendeur' },
+  ]},
   {component: CatalogueComponent, path: 'catalogue'},
   {component: GestionSallesComponent, path: 'salle'},
   {component: ReserverSalleComponent, path: 'reserverSalle'},
@@ -46,7 +53,7 @@ const routes: Routes = [
   {component: PanierComponent, path: 'panier'},
   {component: MaMessagerieComponent, path: 'messagerie'},
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}, // quand il ya pas de chemin ça redirige directement vers le catalogue
-  {component: TacheAdminComponent, path: 'admin-tacheAdmin'},
+  
   {component: TacheVendeurComponent, path: 'admin-tacheVendeur' },
   {component: TacheSalleComponent, path: 'admin-tacheSalle'},
   {component: TacheJoueurComponent, path: 'admin-tacheJoueur' },
@@ -57,7 +64,7 @@ const routes: Routes = [
 /*
   {component: AdminComponent, path: 'admin', children: [
     
-    {component: TacheVendeurComponent, path: 'tacheVendeur' },
+    
     {component: TacheAdminComponent, path: 'tacheAdmin'},
     {component: TacheSalleComponent, path: 'tacheSalle'},
     {component: TacheJoueurComponent, path: 'tacheJoueur' },

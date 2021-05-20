@@ -25,6 +25,7 @@ export class TacheAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllAdmin();
+    this.fenetreActivation(1)
   }
 
   recherchePerson(recherche): any {

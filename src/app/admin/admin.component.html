@@ -1,5 +1,5 @@
 <!-- Navbar d'admin-->
-<div>
+<div class="container">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand"> Admin</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,11 +8,12 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav nav-fill w-100">
         
-        <a class="nav-item nav-link" routerchild='./tacheAdmin' routerLinkActive='active'>Gérer Admin</a>
-        <a class="nav-item nav-link" routerLink='./tacheVendeur' routerLinkActive='active'>Gérer Vendeur</a>
-        <a class="nav-item nav-link" routerLink='./tacheJoueur' routerLinkActive='active'>Gérer Joueur</a>
-        <a class="nav-item nav-link" routerLink='./tacheUser' routerLinkActive='active'>Gérer User</a>
-        <a class="nav-item nav-link" routerLink='./tacheSalles' routerLinkActive='active'>Gérer Salles</a>
+        <a class="nav-item nav-link" routerLink='tache-admin' routerLinkActive='active'>Gérer Admin</a>
+        
+        <a class="nav-item nav-link" routerLink='tache-vendeur' routerLinkActive='active'>Gérer Vendeur</a>
+        <a class="nav-item nav-link" routerLink='tache-joueur' routerLinkActive='active'>Gérer Joueur</a>
+        <a class="nav-item nav-link" routerLink='tache-user' routerLinkActive='active'>Gérer User</a>
+        <a class="nav-item nav-link" routerLink='tache-salles' routerLinkActive='active'>Gérer Salles</a>
 
       </div>
     </div>
@@ -28,3 +29,4 @@
 </body>
 
 
+<router-outlet></router-outlet>

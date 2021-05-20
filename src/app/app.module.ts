@@ -30,6 +30,7 @@ import { ModifierCotisationComponent } from './modifier-cotisation/modifier-coti
 import { SupprimerSalleComponent } from './supprimer-salle/supprimer-salle.component';
 import { MaMessagerieComponent } from './ma-messagerie/ma-messagerie.component';
 import { VendeurComponent } from './vendeur/vendeur.component';
+import { GestionAdminComponent } from './gestion-admin/gestion-admin.component';
 
 
 
@@ -58,7 +59,8 @@ import { VendeurComponent } from './vendeur/vendeur.component';
     ProfilJoueurComponent,
     MaMessagerieComponent,
     ModifierCotisationComponent,
-    VendeurComponent
+    VendeurComponent,
+    GestionAdminComponent,
 
   ],
   imports: [
