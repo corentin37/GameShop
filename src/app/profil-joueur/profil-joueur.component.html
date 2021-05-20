@@ -1,10 +1,10 @@
- <div ng-app="validationApp" ng-controller="mainController">
-    <div class="container">
-    <div class="row">  
-       
-    <div class="col-sm-6">
-        
 
+
+
+<div ng-app="validationApp" ng-controller="mainController">
+    <div class="container">
+  
+       
         <div *ngIf="activity"  >
             <h6>Joueur adhérent</h6>
         </div>
@@ -13,9 +13,10 @@
         </div>
 
       <br><br>
+    <div class="col-sm-5"></div>
 
-<!-- FORM avec informations déjà pré-remplies  -->
-        <form #user='ngForm' (ngSubmit)="submitInfo(user.value)" >
+            <!-- FORM avec informations déjà pré-remplies  -->
+        <form #user='ngForm' (ngSubmit)="submitInfo(user.value) " >
     
             <!-- NAME -->
             <div class="form-group" ng-class="{ 'has-error' : user.login.$invalid && !user.login.$pristine }">
@@ -42,7 +43,36 @@
             <button type="submit" class="btn btn-primary" ng-disabled="user.$invalid">Modifier mes informations</button>
             
         </form>
-      </div>
+    </div>
+  <br> 
+
+  <h5>Avis postés :</h5>
+<br>
+<div class="row">
+    <div *ngFor="let a of avis" class="col-sm-6 ">
+        <div class="card">
+            
+            <div class="card-body">
+               <div style="text-align: right;"><button type="button" (click)="deleteAvis(a)" class="btn btn-secondary "> <i style="color: steelblue;"  class="fas fa-times"></i>   </button></div> 
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h6 > {{a.jeu.nom}}  </h6>
+                    </div>
+                    <div class="col-sm-3">
+                        <h6>{{a.note}} / 10 </h6>
+                    </div>
+                </div>
+           <br>
+            <p class="card-text">{{a.commentaire}} </p>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+
+    
+        
+   
 
 </div>
 
