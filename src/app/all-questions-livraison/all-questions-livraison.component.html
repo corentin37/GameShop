@@ -23,13 +23,13 @@
               <div class="card card-shadow">
                 <div class="p-3" class="card-body border border-secondary">
                     
-                        <p><b>{{m.expediteur.login}}</b>&nbsp;&nbsp;<i class="text-secondary">{{m.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
+                        <p><b><i class="fas fa-user" style="color: steelblue;"></i>&nbsp;{{m.expediteur.login}}</b>&nbsp;&nbsp;<i class="text-secondary">{{m.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
                         <p>{{ m.contenu }}</p>
                     </div>
                     <div *ngFor="let r of info">
                         <div *ngIf="r.message!=null">
                             <div *ngIf="r.message.id==m.id">
-                                <p class="para-perso"><b>{{r.expediteur.login}}</b>&nbsp;&nbsp;<i class="text-secondary">{{r.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
+                                <p><b><i class="fas fa-user" style="color: steelblue;"></i>&nbsp;{{r.expediteur.login}}</b>&nbsp;&nbsp;<i class="text-secondary">{{r.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
                                 <p>{{r.contenu}}</p>
                             </div>
                         </div>
