@@ -29,13 +29,13 @@ export class AppComponent {
   cacherLogin(b): any{
     if(b===true){
       if(this.login!=null){
-        this.helloMessage="bonjour "+this.login;
+        this.helloMessage="Bonjour "+this.login;
       }
       else{
-        this.helloMessage="";
+        this.helloMessage="Mon Compte";
       }
     }else{
-      this.helloMessage="";
+      this.helloMessage="Mon Compte";
     }
     return this.helloMessage;
     
