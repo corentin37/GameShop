@@ -54,7 +54,7 @@ export class ConnexionComponent implements OnInit {
         console.log('u: ' + this.utilisateur);
         if (this.utilisateur != null) {
           this.connectMessage = 'Connecté';
-
+          localStorage.setItem("password", this.utilisateur.password);
           localStorage.setItem('id', this.utilisateur.id);
           localStorage.setItem('login', this.utilisateur.login);
           localStorage.setItem('mail', this.utilisateur.mail);

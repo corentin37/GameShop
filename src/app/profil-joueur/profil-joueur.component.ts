@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil-joueur',
@@ -7,18 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilJoueurComponent implements OnInit {
 
-  constructor() { }
-id;
-login;
-mail;
-tel;
-activity
-  ngOnInit(): void {
-    this.id = localStorage.getItem("id")
-    this.login = localStorage.getItem("login")
-    this.mail = localStorage.getItem("mail")
-    this.tel = localStorage.getItem("tel")
-    this.activity = localStorage.getItem("activity")
-  }
+  constructor(private http:HttpClient, private route: Router ) { }
 
-}
+  user; 
+  id;
+  login;
+  mail;
+  tel;
+  activity;
+  password
+  
+    ngOnInit(): void {
+      this.id = localStorage.getItem("id")
+      this.login = localStorage.getItem("login")
+      this.mail = localStorage.getItem("mail")
+      this.tel = localStorage.getItem("tel")
+      this.activity = localStorage.getItem("activity")
+      this.password = localStorage.getItem("password")
+    }
+  
+  
+    submitInfo(user){
+      this.http.put('http://localhost:8086/user/modif/'+this.id, user, user.password=this.password).subscribe({
+        next: (data)=> {localStorage.setItem("login", user.login);localStorage.setItem("activity", this.activity); localStorage.setItem("mail", user.mail); localStorage.setItem("tel", user.tel);this.ngOnInit(); return confirm('Informations du profil modifiées !'); 
+            },
+        error: (err) => {console.log(err);}
+      });
+  
+    }
+
+  }
