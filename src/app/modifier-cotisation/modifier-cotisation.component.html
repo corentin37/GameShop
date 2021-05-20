@@ -18,7 +18,7 @@
                 <tr>
                   <th scope="col">id</th>
                   <th scope="col">login</th>
-                  <th scope="col">password</th>
+                  
                   <th scope="col">mail</th>
                   <th scope="col">tel</th>
                   <th scope="col">Etat</th>
@@ -29,10 +29,9 @@
                 <tr *ngFor="let a of joueurs" (click)="recherchePerson(a.user)">
                   <th scope="row">{{ a.id }}</th>
                   <td>{{ a.user.login }}</td>
-                  <td>{{ a.user.password }}</td>
                   <td>{{ a.user.mail }}</td>
                   <td>{{ a.user.tel }}</td>
-                  <td> {{ cotisationBoolToStr(a.cotisation) }}</td>
+                  <td class="grey"> {{ cotisationBoolToStr(a.cotisation) }}</td>
                   <td>{{ actvitityBoolToStr(a.user.activity) }}</td>
                 </tr>
               </tbody>
