@@ -181,6 +181,12 @@ tempsJeuMaxPlus(){
   this.tempsJeuMax+=1.00;
 }
 
+myFunction() {
+  console.log("ça passe par le focusout");
+  console.log(document.getElementById("ageMin").nodeValue);
+}
+
+
 //-------------------------------------------------------
 //filtrages
 

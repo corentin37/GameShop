@@ -25,7 +25,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="ageMinMoins()">-</a></div>
-              <div class="col-sm-6"><span>{{ageMin}} ans</span></div>
+              <div class="col-sm-7"><input type="text" id="ageMin" name="ageMin" size=1 value="{{ageMin}}" (onfocusout)="myFunction()"><span>&nbsp;ans</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="ageMinPlus()">+</a></div>
             </div>
             <div class="row">
@@ -73,7 +73,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="nombreJoueursMinMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{nombreJoueursMin}}€</span></div>
+              <div class="col-sm-4"><span>{{nombreJoueursMin}}</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="nombreJoueursMinPlus()">+</a></div>
             </div>
             <div class="row">
@@ -81,7 +81,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="nombreJoueursMaxMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{nombreJoueursMax}}€</span></div>
+              <div class="col-sm-4"><span>{{nombreJoueursMax}}</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="nombreJoueursMaxPlus()">+</a></div>
             </div>
             <div class="row">
@@ -101,7 +101,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="tempsJeuMinMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{tempsJeuMin}}€</span></div>
+              <div class="col-sm-4"><span>{{tempsJeuMin}} min</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="tempsJeuMinPlus()">+</a></div>
             </div>
             <div class="row">
@@ -109,7 +109,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="tempsJeuMaxMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{tempsJeuMax}}€</span></div>
+              <div class="col-sm-4"><span>{{tempsJeuMax}} min</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="tempsJeuMaxPlus()">+</a></div>
             </div>
             <div class="row">
