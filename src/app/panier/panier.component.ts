@@ -149,7 +149,7 @@ export class PanierComponent implements OnInit {
       tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
     document.getElementById(PanierName).style.display = "block";
-    
+    document.getElementById("tablink"+PanierName).className+=" active";
   }
 
 }

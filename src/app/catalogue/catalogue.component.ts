@@ -234,7 +234,7 @@ tempsJeuMaxPlus(){
   this.tempsJeuMax+=15.00;
 }
 
-myFunction() {
+myFunction(){
   console.log("ça passe par le focusout");
   console.log(document.getElementById("ageMin").nodeValue);
 }
@@ -454,8 +454,11 @@ openPanier(PanierName) {
     for (i = 0; i < tablinks.length; i++) {
       tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
+    document.getElementById("tablink"+TabName).className+=" active";
+    
     if(memo == "block"){
       document.getElementById(TabName).style.display = "none";
+      document.getElementById("tablink"+TabName).className.replace(" active", "");
     }
     else{
       document.getElementById(TabName).style.display = "block";

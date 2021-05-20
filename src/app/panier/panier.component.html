@@ -1,6 +1,6 @@
 <div class="tab">
-  <button class="tablinks" (click)="openPanier( 'Panier Achat')">Panier Achat</button>
-  <button class="tablinks" (click)="openPanier( 'Panier Location')">Panier Location</button>
+  <button id ="tablinkPanier Achat" class="tablinks" (click)="openPanier( 'Panier Achat')">Panier Achat</button>
+  <button id ="tablinkPanier Location" class="tablinks" (click)="openPanier( 'Panier Location')">Panier Location</button>
 </div>
 
 <div id="Panier Achat" class="tabcontent">
@@ -47,7 +47,7 @@
 
   <div class="col-sm-3">
       <p style="font-size: larger;">Prix Total Achat : {{prixTotalAchat}} €<br></p>
-      <p style="font-size: larger;">Prix Total Location : {{prixTotalLocation}} €<br><br><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Confirmer l'achat et la location</a></p>
+      <p style="font-size: larger;">Prix Total Location : {{prixTotalLocation}} €<br><br><a class="btn btn-outline-warning btn-sm" routerLink="connexion" role="button">Confirmer l'achat et la location</a></p>
   </div>
   </div>
 </div>
