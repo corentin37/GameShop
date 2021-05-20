@@ -9,8 +9,8 @@
                 <input type="text" name="contenu" class="form-control" ngModel=""><!--contenue est le nom utilisé dans le format json donc la bd-->
             </div>
             <div class="col-sm-3">
-                <button type="submit" class="btn btn-primary btn-block">valider</button><!--, rajouter form module x2 dans modulestype submit pour envoyer les données-->
-                <button (click)="goToForum()" type="submit" class="btn btn-secondary btn-block">retour</button>
+                <button type="submit" class="btn btn-raised btn-sized">valider</button><!--, rajouter form module x2 dans modulestype submit pour envoyer les données-->
+                &nbsp; &nbsp;<button (click)="goToForum()" type="submit" class="btn btn-raised btn-sized">retour</button>
             </div>
                
         </form>
@@ -21,7 +21,7 @@
         <div *ngFor="let m of info" class="col-sm-12">
             <div class="card card-shadow">
                 <div class="p-3" class="card-body">     
-                <p>{{m.expediteur.login}}&nbsp;&nbsp;<i class="text-secondary">{{m.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
+                <p><b>{{m.expediteur.login}}</b>&nbsp;&nbsp;<i class="text-secondary">{{m.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
                 <p>{{ m.contenu }}</p>
              
             </div>
