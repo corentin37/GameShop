@@ -20,15 +20,32 @@ export class GestionSallesComponent implements OnInit {
   salle;
   place;
   rep;
+  reservation;
+
   reserver(s){
-    this.placeReservee(s);
+    this.reservation=true;
     this.salleComplete(s);
+    this.sallePrivee(s);
+    console.log(this.reservation);
+    if(this.reservation===true){
+      this.placeReservee(s);
+    }
+    else{
+      this.salleService.room=s;
+    }
   }
 
+  //enlève 1 aux nbr de places dispo
+  //enregistre la salle modifiée dans room(service)
   placeReservee(salleModifiee){
+    salleModifiee.nombreDePlaces-=1;
+    console.log("La salle a maintenant : ");
+    console.log(salleModifiee.nombreDePlaces);
+    console.log(" places.");
+    
+    
     this.http.put('http://localhost:8086/salle', salleModifiee).subscribe({
       next: (data) => {console.log(data); 
-        this.route.navigateByUrl('reserverSalle');
         this.salleService.room=salleModifiee;
       },
       error: (err) => {console.log(err); }
@@ -42,15 +59,25 @@ export class GestionSallesComponent implements OnInit {
     });
   }
 
-  salleComplete(s){
-    if(s.nombreDePlace==0){
-      s.publique=false; //la salle devient privée quand elle est complète
-      this.http.put('http://localhost:8086/salle', s).subscribe({
-        next: (data) => {console.log(data); },
-        error: (err) => {console.log(err); }
-      });
+//vérifie si la salle est privée ou non
+  sallePrivee(s): any{
+    if(s.publique===false){
+      alert("Vous ne pouvez pas réserver cette salle car elle est privée.");
+      this.reservation=false;
+      this.route.navigateByUrl('/salle');
+    }   
+    else{
+      this.route.navigateByUrl('reserverSalle');
     }
   }
+
+  //vérifie que la salle n'est pas complète
+ salleComplete(s){
+   if(s.nombreDePlaces===0){
+     this.reservation=false;
+     alert("Salle complète. Réservation impossible.");
+   }
+ }
 
   convertBoolean(b){
     if(b==true){
