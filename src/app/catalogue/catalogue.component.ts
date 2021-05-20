@@ -429,6 +429,50 @@ filterByNiveauDifficulte(niveauDifficulte){
   this.refreshFilters();
 }
 
+//delete property
+deleteCategorie(){
+  this.catalogueService.categorie=null;
+  this.refreshFilters();
+}
+
+deleteMarque(){
+  this.catalogueService.marque=null;
+  this.refreshFilters();
+}
+
+deleteAgeMin(){
+  this.catalogueService.ageMin=null;
+  this.refreshFilters();
+}
+
+deletePrixAchat(){
+  this.catalogueService.prixMin=null;
+  this.catalogueService.prixMax=null;
+  this.refreshFilters();
+}
+
+deletePrixLocation(){
+  this.catalogueService.prixLocationMin=null;
+  this.catalogueService.prixLocationMax=null;
+  this.refreshFilters();
+}
+
+deleteNombreJoueurs(){
+  this.catalogueService.nombreJoueurs=null;
+  this.refreshFilters();
+}
+
+deleteTempsJeu(){
+  this.catalogueService.tempsJeuMin=null;
+  this.catalogueService.tempsJeuMax=null;
+  this.refreshFilters();
+}
+
+deleteNiveauDifficulte(){
+  this.catalogueService.niveauDifficulte=null;
+  this.refreshFilters();
+}
+
   //---------------------------------
   //Aucune idée  
   
@@ -466,7 +510,7 @@ openPanier(PanierName) {
       tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
     document.getElementById("tablink"+TabName).className+=" active";
-    
+
     if(memo == "block"){
       document.getElementById(TabName).style.display = "none";
       document.getElementById("tablink"+TabName).className.replace(" active", "");
