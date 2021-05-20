@@ -20,7 +20,7 @@
     <div class="row">
         <div *ngFor="let m of info" class="col-sm-12">
             <div class="card card-shadow">
-                <div class="p-3" class="card-body">     
+                <div class="p-3" class="card-body border border-secondary">     
                 <p><b>{{m.expediteur.login}}</b>&nbsp;&nbsp;<i class="text-secondary">{{m.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
                 <p>{{ m.contenu }}</p>
              
