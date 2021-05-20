@@ -42,11 +42,11 @@
     </div>
     <div class="col-sm-6">
         <p>Nom de la salle</p>
-        <input type="text" class="form-control" name="nomSalle" ngModel>
+        <input type="text" class="form-control" name="nom" ngModel>
         <p>Prix</p>
-        <input type="text" class="form-control" name="prixSalle" ngModel>
+        <input type="text" class="form-control" name="prix" ngModel>
         <p>Nombre de places</p>
-        <input type="text" class="form-control" name="nombreDePlace" ngModel>
+        <input type="text" class="form-control" name="nombreDePlaces" ngModel>
         <p>Publique (true/false)</p>
         <input type="text" class="form-control" name="publique" ngModel>
         <p>URL de l'image</p>
@@ -54,6 +54,7 @@
         <br><br>
         <div class="center">
             <button type="submit" class="btn">Valider</button>
+            <p>{{messageAjout()}}</p>
         </div>
     </div>
     <div class="col-sm-3">
