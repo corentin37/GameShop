@@ -11,8 +11,7 @@ export class CatalogueService {
   prixMax;
   prixLocationMin;
   prixLocationMax;
-  nombreJoueursMin;
-  nombreJoueursMax;
+  nombreJoueurs;
   tempsJeuMin;
   tempsJeuMax;
   niveauDifficulte;

@@ -97,20 +97,12 @@
         <div class="tab">
           <button class="tablinks" (click)="openCloseTab( 'Nombre de joueurs')">Nombre de joueurs</button><div id="Nombre de joueurs" class="tabcontent">
             <div class="row">
-              <div class="col-sm-12">Nombre de joueurs Minimum :</div>
+              <div class="col-sm-12">Nombre de joueurs</div>
             </div>
             <div class="row">
-              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="nombreJoueursMinMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{nombreJoueursMin}}</span></div>
-              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="nombreJoueursMinPlus()">+</a></div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">Nombre de joueurs Maximum :</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="nombreJoueursMaxMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{nombreJoueursMax}}</span></div>
-              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="nombreJoueursMaxPlus()">+</a></div>
+              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="nombreJoueursMoins()">-</a></div>
+              <div class="col-sm-4"><span>{{nombreJoueurs}}</span></div>
+              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="nombreJoueursPlus()">+</a></div>
             </div>
             <div class="row">
               <div class="col-sm-1"></div>

@@ -67,6 +67,7 @@ export class CatalogueComponent implements OnInit {
     this.prixLocationMax=this.jeu[0].lejeu.prixLocation;
     this.tempsJeuMin=this.jeu[0].lejeu.tempsDeJeu;
     this.tempsJeuMax=this.jeu[0].lejeu.tempsDeJeu;
+    this.nombreJoueurs=1;
     for(let j of this.jeu){
       this.ageMin=Math.min(j.lejeu.ageMin,this.ageMin);
       this.prixMin=Math.min(j.prixAchat,this.prixMin);
@@ -178,29 +179,15 @@ ageMinPlus(){
   this.ageMin+=1;
 }
 
-nombreJoueursMin=0;
-nombreJoueursMinMoins(){
-  this.nombreJoueursMin-=1.00;
-  if(this.nombreJoueursMin<0){
-    this.nombreJoueursMin=0;
+nombreJoueurs=0;
+nombreJoueursMoins(){
+  this.nombreJoueurs-=1;
+  if(this.nombreJoueurs<0){
+    this.nombreJoueurs=0;
   }
 }
-nombreJoueursMinPlus(){
-  this.nombreJoueursMin+=1.00;
-  if(this.nombreJoueursMin>this.nombreJoueursMax){
-    this.nombreJoueursMin=this.nombreJoueursMax;
-  }
-}
-
-nombreJoueursMax=0;
-nombreJoueursMaxMoins(){
-  this.nombreJoueursMax-=1.00;
-  if (this.nombreJoueursMax<this.nombreJoueursMin){
-    this.nombreJoueursMax=this.nombreJoueursMin;
-  }
-}
-nombreJoueursMaxPlus(){
-  this.nombreJoueursMax+=1.00;
+nombreJoueursPlus(){
+  this.nombreJoueurs+=1.00;
 }
 
 tempsJeuMin=0;
@@ -294,7 +281,16 @@ refreshFilters(){
     this.jeuAffiche=this.jeuAfficheTemp;
   }
 
-  //TODO tri par nombre de joueurs !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //tri par nombre de joueurs
+  if(this.catalogueService.nombreJoueurs!=null){
+    this.jeuAfficheTemp=[];
+    for(let j of this.jeuAffiche){
+      if((j.lejeu.nombreJoueursMin<=this.catalogueService.nombreJoueurs) && (j.lejeu.nombreJoueursMax>=this.catalogueService.nombreJoueurs)){
+        this.jeuAfficheTemp.push(j);
+      }
+    }
+    this.jeuAffiche=this.jeuAfficheTemp;
+  }
 
   // tri par temps de jeu
   if(this.catalogueService.tempsJeuMin!=null){
@@ -366,9 +362,8 @@ filterByPrixLocation(){
 }
 
 filterByNombreJoueurs(){
-  console.log(this.nombreJoueursMin,this.nombreJoueursMax);
-  this.catalogueService.nombreJoueursMin=this.nombreJoueursMin;
-  this.catalogueService.nombreJoueursMax=this.nombreJoueursMax;
+  console.log(this.nombreJoueurs);
+  this.catalogueService.nombreJoueurs=this.nombreJoueurs;
   this.refreshFilters();
 }
 
