@@ -8,13 +8,13 @@
         <br>
         <div *ngFor="let s of salle" class="col-sm-3">
             <div class="ml-2 mt-5">
-                <div class="card" style="width: 14rem;">
+                <div class="card" id="card{{s.id}}" style="width: 14rem; background-color: #ffffff;">
                     <img class="card-img-top" src={{s.urlImage}} alt="Ville" height="135px" width="216px">
                 
                     <div class="card-body">
                         <h5 class="card-title"><strong>{{s.nom}}</strong></h5>
                         <p class="card-text">Nombre de places disponibles : {{s.nombreDePlaces}}</p>
-                        <p class="card-text">Accès public : {{convertBoolean(s.publique)}}</p>
+                        <p class="card-text">Accès : {{convertBoolean(s.publique)}}</p>
                         <p class="card-text">Prix : {{s.prix}} €</p>
                        
                         <a type="button" (click)="reserver(s)" class="btn btn-primary">Demander une place</a> 
