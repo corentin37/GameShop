@@ -25,11 +25,9 @@
                         </div>
                         <div class="row">
                           <div class="col-sm-4">{{ j.jeuAchat.lejeu.marqueDuJeu.libelle}}</div>
-                          <div class="col-sm-4"></div>
+                          <div class="col-sm-4"><a id="btnAcheterJeu{{j.id}}" class="btn btn-outline-primary btn-sm" type="button" (click)="changeAchatLocation(j)">Louer</a></div>
                           <div classe="col-sm-4"><a class="btn btn-outline-danger btn-sm" type="button" (click)="supprimerJeu(j)">Supprimer</a></div>
-                        </div>
-                        
-                        
+                        </div>                        
                     </div> 
                 </div>
                 
@@ -75,7 +73,7 @@
                           </div>
                           <div class="row">
                             <div class="col-sm-4">{{ j.jeuAchat.lejeu.marqueDuJeu.libelle}}</div>
-                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4"><a id="btnAcheterJeu{{j.id}}" class="btn btn-outline-primary btn-sm" type="button" (click)="changeAchatLocation(j)">Acheter</a></div>
                             <div classe="col-sm-4"><a id="btnSupprJeu{{j.id}}" class="btn btn-outline-danger btn-sm" type="button" (click)="supprimerJeu(j)">Supprimer</a></div>
                           </div>
                           

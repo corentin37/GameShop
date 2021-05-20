@@ -25,7 +25,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="ageMinMoins()">-</a></div>
-              <div class="col-sm-6"><span>{{ageMin}} ans</span></div>
+              <div class="col-sm-7"><input type="text" id="ageMin" name="ageMin" size=1 value="{{ageMin}}" (onfocusout)="myFunction()"><span>&nbsp;ans</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="ageMinPlus()">+</a></div>
             </div>
             <div class="row">
@@ -39,7 +39,7 @@
       </div>
       <div class="row">
         <div class="tab">
-          <button class="tablinks" (click)="openCloseTab( 'Prix')">Prix</button><div id="Prix" class="tabcontent">
+          <button class="tablinks" (click)="openCloseTab( 'Prix')">Prix d'achat</button><div id="Prix" class="tabcontent">
             <div class="row">
               <div class="col-sm-12">Prix Minimum :</div>
             </div>
@@ -67,22 +67,42 @@
       </div>
       <div class="row">
         <div class="tab">
+          <button class="tablinks" (click)="openCloseTab( 'Prix Location')">Prix location</button><div id="Prix Location" class="tabcontent">
+            <div class="row">
+              <div class="col-sm-12">Prix Minimum :</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="prixLocationMinMoins()">-</a></div>
+              <div class="col-sm-4"><span>{{prixLocationMin}}€</span></div>
+              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="prixLocationMinPlus()">+</a></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">Prix Maximum :</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="prixLocationMaxMoins()">-</a></div>
+              <div class="col-sm-4"><span>{{prixLocationMax}}€</span></div>
+              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="prixLocationMaxPlus()">+</a></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-1">
+                <a class="btn btn-outline-success btn-sm" type="button" (click)="filterByPrixLocation()">Valider</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="tab">
           <button class="tablinks" (click)="openCloseTab( 'Nombre de joueurs')">Nombre de joueurs</button><div id="Nombre de joueurs" class="tabcontent">
             <div class="row">
-              <div class="col-sm-12">Nombre de joueurs Minimum :</div>
+              <div class="col-sm-12">Nombre de joueurs</div>
             </div>
             <div class="row">
-              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="nombreJoueursMinMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{nombreJoueursMin}}€</span></div>
-              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="nombreJoueursMinPlus()">+</a></div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">Nombre de joueurs Maximum :</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="nombreJoueursMaxMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{nombreJoueursMax}}€</span></div>
-              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="nombreJoueursMaxPlus()">+</a></div>
+              <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="nombreJoueursMoins()">-</a></div>
+              <div class="col-sm-4"><span>{{nombreJoueurs}}</span></div>
+              <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="nombreJoueursPlus()">+</a></div>
             </div>
             <div class="row">
               <div class="col-sm-1"></div>
@@ -101,7 +121,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="tempsJeuMinMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{tempsJeuMin}}€</span></div>
+              <div class="col-sm-6"><span>{{tempsJeuMin}} min</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="tempsJeuMinPlus()">+</a></div>
             </div>
             <div class="row">
@@ -109,7 +129,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="tempsJeuMaxMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{tempsJeuMax}}€</span></div>
+              <div class="col-sm-6"><span>{{tempsJeuMax}} min</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="tempsJeuMaxPlus()">+</a></div>
             </div>
             <div class="row">
@@ -129,24 +149,35 @@
         </div>
       </div>
       <br>
-      <div class="row">
-        <p>Filtres actuels :</p>
-        <div class="row" *ngFor="let property of filterProperties">test</div>
+      <a class="btn btn-outline-danger" type="button" (click)="reinitialisationFiltrage()">Réinitialiser les filtres</a>
+      <br>
+      <div class="row">Filtres actuels :</div>
+      <div *ngIf="filterProperties!=null">
+        <div class="row" *ngIf="filterProperties.categorie!=null">Catégorie : {{filterProperties.categorie.libelle}}</div>
+        <div class="row" *ngIf="filterProperties.marque!=null">Marque : {{filterProperties.marque.libelle}}</div>
+        <div class="row" *ngIf="filterProperties.ageMin!=null">Age minimum : {{filterProperties.ageMin}}</div>
+        <div class="row" *ngIf="filterProperties.prixMin!=null">Prix d'achat : {{filterProperties.prixMin}} - {{filterProperties.prixMax}} €</div>
+        <div class="row" *ngIf="filterProperties.prixLocationMin!=null">Prix de location : {{filterProperties.prixLocationMin}} - {{filterProperties.prixLocationMax}} €</div>
+        <div class="row" *ngIf="filterProperties.nombreJoueurs!=null">Nombre de joueurs : {{filterProperties.nombreJoueurs}}</div>
+        <div class="row" *ngIf="filterProperties.tempsJeuMin!=null">Temps de jeu : {{filterProperties.tempsJeuMin}} - {{filterProperties.tempsJeuMax}} min</div>
+        <div class="row" *ngIf="filterProperties.niveauDifficulte!=null">Difficulte : {{filterProperties.niveauDifficulte}}</div>
       </div>
+      
+      
     </div>
 
     <div class="col-sm-9 ">
       <div class="row">
           <br>
-          <div *ngFor="let j of jeu" class="col-sm-4 ">
+          <div *ngFor="let j of jeuAffiche" class="col-sm-3 ">
             <br>
               <div class="card">
-                <img type="button" (click)="goToJeu(j)" src={{j.lejeu.urlImage}} class="img" alt="logo jeu"><br>
+                <img type="button" (click)="goToJeu(j)" src={{j.lejeu.urlImage}} class="img" alt="logo jeu" width=175px height=175px><br>
                 <div type="button" (click)="goToJeu(j)" class="card-body ml-2">
                   <p class="card-text">{{ j.lejeu.note }}/5</p>
+                  <p class="card-text"><strong>{{ j.lejeu.nom}}</strong></p>
                   <p class="card-text">{{ j.lejeu.marqueDuJeu.libelle}}</p>
-                  <p class="card-text">{{ j.lejeu.nom}}</p>
-                  <p class="card-text">Achat : {{j.prixAchat}} € | Location : {{j.lejeu.prixLocation}} €</p>
+                  <p class="card-text">Achat : {{j.prixAchat}} € Location : {{j.lejeu.prixLocation}} €</p>
                 </div>
                 <button (click)="addToPanier(j)" class="btn btn-secondary btn-center">AJOUTER AU PANIER</button>
               </div>

@@ -22,6 +22,7 @@ import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
 import { ProfilJoueurComponent } from './profil-joueur/profil-joueur.component';
 import { MaMessagerieComponent } from './ma-messagerie/ma-messagerie.component';
+import { ModifierCotisationComponent } from './modifier-cotisation/modifier-cotisation.component';
 
 
 
@@ -36,6 +37,7 @@ const routes: Routes = [
   {component: ReserverSalleComponent, path: 'reserverSalle'},
   {component: HistoriqueSalleComponent, path: 'historiqueSalle'},
   {component: AjouterSalleComponent, path:'ajouterSalle'},
+  {component: ModifierCotisationComponent, path:'modifierCotisation'},
   {component: TrierparPlateauComponent, path: 'trierParPlateau'},
   {component: PanierComponent, path: 'panier'},
   {component: MaMessagerieComponent, path: 'messagerie'},
