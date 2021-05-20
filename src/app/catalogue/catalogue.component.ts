@@ -25,13 +25,14 @@ export class CatalogueComponent implements OnInit {
   id = 19;
   filterProperties;
   niveauxDifficulte=["Facile","Moyen","Difficile"];
-
+moyenne;
 
   ngOnInit(): void {
     this.getCatalogue();
     this.getCategorie();
     this.getMarque();
     this.closeAllTabs();
+    this.moyenne=localStorage.getItem("moyenne");
   }
 
   //------------------------------------------------------------------
@@ -76,9 +77,19 @@ export class CatalogueComponent implements OnInit {
       this.prixLocationMax=Math.max(j.lejeu.prixLocation,this.prixLocationMax);
       this.tempsJeuMin=Math.min(j.lejeu.tempsDeJeu,this.tempsJeuMin);
       this.tempsJeuMax=Math.max(j.lejeu.tempsDeJeu,this.tempsJeuMax);
+      this.moyenne=this.getMoyenne(j);
     }
   }
   
+  getMoyenne(j){
+    
+    this.http.get('http://localhost:8086/avis/moyenne/' + j.id ).subscribe({
+      next: (data) => {console.log(data); this.moyenne = data; },
+      error: (err) => { console.log(err); }
+    });
+  }
+
+
   console(entreeConsole): any {
     console.log(entreeConsole);
   }

@@ -51,6 +51,7 @@
         <div class="form-group">
             <label class = "text-secondary" for="">Donner votre avis : </label>
             <input type="text" name="commentaire" id="commentaire" placeholder="" class="form-control" ngModel=''>
+            <br>
             <label class = "text-secondary" for="note">Attribuer une note : </label>
             <input type="text" name="note" id="note" placeholder="" class="form-control" ngModel='' required />
         </div>
@@ -60,25 +61,25 @@
     </form>
 </div>
 
-<br><br>
+<br><br><br>
 
     
     <div *ngFor="let a of avis">
         <div *ngIf="a.commentaire">
         <div class="row" >
-            <div class="col-sm-3" style="text-align: center;">
+            <div class="col-sm-2" style="text-align: center;">
                 
-                    <img src="/assets/img/astrocat.jpg" alt="Avatar"  >
+                   <!-- <img src="/assets/img/astrocat.jpg" alt="Avatar"  >-->
                     <div class="container">
-                    <h6><b>{{a.user.login}}</b></h6>
+                    <h6><b><i class="fas fa-user" style="color: steelblue;"></i> {{a.user.login}}</b></h6>
                     </div>
             </div>
             <span class="vertical-line"></span>
             <div class="col-sm-2" style="text-align: center;">
                 <h6> Note : </h6>
                 <br>
-                <h4> {{a.note}} </h4> <br>
-                <h5> / 10</h5>
+                <h5> {{a.note}} </h5> <br>
+                <h6> / 10</h6>
                 
             </div>
             <div class="col-sm-6">
