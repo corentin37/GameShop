@@ -151,10 +151,19 @@
       <br>
       <a class="btn btn-outline-danger" type="button" (click)="reinitialisationFiltrage()">Réinitialiser les filtres</a>
       <br>
-      <div class="row">
-        <p>Filtres actuels :</p>
-        <div class="row" *ngFor="let property of filterProperties">test</div>
+      <div class="row">Filtres actuels :</div>
+      <div *ngIf="filterProperties!=null">
+        <div class="row" *ngIf="filterProperties.categorie!=null">Catégorie : {{filterProperties.categorie.libelle}}</div>
+        <div class="row" *ngIf="filterProperties.marque!=null">Marque : {{filterProperties.marque.libelle}}</div>
+        <div class="row" *ngIf="filterProperties.ageMin!=null">Age minimum : {{filterProperties.ageMin}}</div>
+        <div class="row" *ngIf="filterProperties.prixMin!=null">Prix d'achat : {{filterProperties.prixMin}} - {{filterProperties.prixMax}} €</div>
+        <div class="row" *ngIf="filterProperties.prixLocationMin!=null">Prix de location : {{filterProperties.prixLocationMin}} - {{filterProperties.prixLocationMax}} €</div>
+        <div class="row" *ngIf="filterProperties.nombreJoueurs!=null">Nombre de joueurs : {{filterProperties.nombreJoueurs}}</div>
+        <div class="row" *ngIf="filterProperties.tempsJeuMin!=null">Temps de jeu : {{filterProperties.tempsJeuMin}} - {{filterProperties.tempsJeuMax}} min</div>
+        <div class="row" *ngIf="filterProperties.niveauDifficulte!=null">Difficulte : {{filterProperties.niveauDifficulte}}</div>
       </div>
+      
+      
     </div>
 
     <div class="col-sm-9 ">

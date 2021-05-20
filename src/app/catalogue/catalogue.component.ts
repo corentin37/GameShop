@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { TransformVisitor } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { CatalogueService } from '../Services/catalogue.service';
 import { JeuService } from '../Services/jeu.service';
 
@@ -57,6 +58,7 @@ export class CatalogueComponent implements OnInit {
 
   getProperties(){
     this.filterProperties=this.catalogueService;
+    console.log(this.filterProperties);
   }
 
   initVariables(){
@@ -225,6 +227,7 @@ myFunction() {
 //filtrages
 
 refreshFilters(){
+  this.getProperties();
   this.jeuAffiche=this.jeu;
   // tri par catégorie
   if(this.catalogueService.categorie!=null){
@@ -450,10 +453,6 @@ openPanier(PanierName) {
       tabcontent[i].style.display = "none";
     }
   }
-
-
-
-
 }
   
 
