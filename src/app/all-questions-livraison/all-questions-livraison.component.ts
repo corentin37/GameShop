@@ -57,7 +57,23 @@ forum;
     }
   //}
 
-  
+  newReponse(msg): any {
+    console.log("Réponse postée! Rafraîchir la page");
+    //const user ={id :localStorage.getItem("id")};
+    const expediteur = {id: 1};
+   // msg.user=user;
+    msg.expediteur=expediteur;
+    //msg.forum=this.forum.sujet;
+    //if(!this.login){
+    //  return confirm('Veuillez vous connecter');
+    //}
+    //else {
+      
+      this.http.put('http://localhost:8086/reponse/message/50', msg).subscribe({
+        next: (data) => {console.log(data); this.ngOnInit(); return confirm('Votre réponse a bien été prise en compte'); },
+        error: (err) => {console.log(err); }
+      });
+    }
 
 
 
