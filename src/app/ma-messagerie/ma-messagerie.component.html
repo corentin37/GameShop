@@ -285,3 +285,37 @@
 <div>
   <br />
 </div>
+
+Petit test à mettre en forme : la liste des destinataires avec lesquels des messages ont déjà été envoyés ou reçus s'affiche ici. <br>
+Si tu cliques sur le nom du destinataire, l'historique des messages s'affiche <br>
+(j'ai mis un affichage très simple qui commence par "Envoi" ou "Réception") <br>
+A toi de le mettre en forme et de faire l'envoi de nouveaux messages ! <br>
+(Tu peux récupérer le destinataire dans la variable destinataireSet) <br><br>
+
+<div class="container border">
+  <div *ngIf="destinataireSet==null">
+    <div class="col-sm-12" *ngFor="let d of destinataires">
+      <a (click)="setDestinataire(d)" type="button">{{d.login}}</a>
+    </div>
+  </div>
+  <div *ngIf="destinataireSet!=null">
+    <a (click)="setDestinataire(null)" type="button">Retour</a>
+    <div class="col-sm-12" *ngFor="let m of messagesAff">
+      <span *ngIf="m.destinataire==destinataireSet">Envoi
+        <p>Message Id : {{ m.id }}</p>
+        <p>Date : {{ m.dateCreation }}</p>
+        <p>From : {{ m.expediteur.mail }}</p>
+        <p>From : {{ m.destinataire.mail }}</p>
+        <p>contenu : {{ m.contenu }}</p>
+      </span>
+      <span *ngIf="m.expediteur==destinataireSet">Reception
+        <p>Message Id : {{ m.id }}</p>
+        <p>Date : {{ m.dateCreation }}</p>
+        <p>From : {{ m.expediteur.mail }}</p>
+        <p>From : {{ m.destinataire.mail }}</p>
+        <p>contenu : {{ m.contenu }}</p>
+      </span>
+    </div>
+  </div>
+</div>
+
