@@ -33,7 +33,7 @@
                 </div>
                 
                     <form>
-                    <span><a class="btn btn-outline-warning btn-sm" href="panier" role="button">Acheter</a> : {{jeu.prixAchat}} € | <a class="btn btn-outline-warning btn-sm" href="panier" role="button">Louer</a> : {{jeu.lejeu.prixLocation}} € </span>
+                    <span><a class="btn btn-outline-warning btn-sm" (click)="addToPanier(true)" role="button">Acheter</a> : {{jeu.prixAchat}} € | <a class="btn btn-outline-warning btn-sm" (click)="addToPanier(false)" role="button">Louer</a> : {{jeu.lejeu.prixLocation}} € </span>
                    
                 </form>
                    
