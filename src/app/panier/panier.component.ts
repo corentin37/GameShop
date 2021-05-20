@@ -3,6 +3,7 @@ import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { timeStamp } from 'console';
+import { HistoriqueSalleService } from '../Services/historique-salle.service';
 import { JeuService } from '../Services/jeu.service';
 
 @Component({
@@ -27,13 +28,14 @@ export class PanierComponent implements OnInit {
   iduser=localStorage.getItem("id");
   count;
   idCard;
-
-  constructor(private http: HttpClient,private route: Router, private jeuService : JeuService) { }
+  historique;
+  
+  constructor(private http: HttpClient,private route: Router, private jeuService : JeuService, private historiqueService : HistoriqueSalleService) { }
 
   ngOnInit(): void {
     this.getOnePanierByUser(this.iduser);
     this.openPanier("Panier Achat");
-    //this.getPrixTotaux();
+    this.getHistoriqueUser();
   }
   
   getOnePanierByUser(iduser){
@@ -84,7 +86,21 @@ export class PanierComponent implements OnInit {
 
   }  
 
-
+  getHistoriqueUser(){
+    this.http.get('http://localhost:8086/salle/historiqueUser/'+localStorage.getItem("id")).subscribe({
+      next: (data) => {console.log(data); 
+      this.historique=data; },
+      error: (err) => {console.log(err); }
+    });
+  }
+  convertBoolean(b){
+    if(b==true){
+      return "Oui";
+    }
+    else{
+      return "En attente ...";
+    }
+  }
   quantiteMoins(jeu){
     if(jeu.quantite>0){
       jeu.quantite-=1;
