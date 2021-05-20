@@ -24,7 +24,9 @@ import { ProfilJoueurComponent } from './profil-joueur/profil-joueur.component';
 import { MaMessagerieComponent } from './ma-messagerie/ma-messagerie.component';
 import { ModifierCotisationComponent } from './modifier-cotisation/modifier-cotisation.component';
 import { SupprimerSalleComponent } from './supprimer-salle/supprimer-salle.component';
+import { VendeurComponent } from './vendeur/vendeur.component';
 import { GestionAdminComponent } from './gestion-admin/gestion-admin.component';
+import { AjouterJeuComponent } from './ajouter-jeu/ajouter-jeu.component';
 
 
 
@@ -47,6 +49,8 @@ const routes: Routes = [
   {component: AjouterSalleComponent, path:'ajouterSalle'},
   {component: ModifierCotisationComponent, path:'modifierCotisation'},
   {component: SupprimerSalleComponent, path: 'supprimerSalle'},
+  {component: VendeurComponent, path: 'vendeur'},
+  {component: AjouterJeuComponent, path: 'ajouterJeu'},
   {component: TrierparPlateauComponent, path: 'trierParPlateau'},
   {component: PanierComponent, path: 'panier'},
   {component: MaMessagerieComponent, path: 'messagerie'},
