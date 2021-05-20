@@ -19,7 +19,6 @@ export class JeuComponent implements OnInit {
   login;
   // valeur = ;
   avis;
-  avisnew;
   jeuId = this.jeuService.game.lejeu.id;
 
 
@@ -83,5 +82,43 @@ getMoyenne(){
     });
   }
 
+  addToPanier(isAchat){
+    var user,bodySave,AlreadyPresent;
+    console.log("begin adding game to basket ...");
+    if(localStorage.getItem("id")!=null){ // on vérifie que l'utilisateur est connecté, sinon on le renvoie vers la page de connexion
+      console.log("user detected : "+localStorage.getItem("id")+"\n Connecting ...");
+  
+      this.http.get("http://localhost:8086/user/id/"+localStorage.getItem("id")).subscribe({ // on récupère le user
+        next: (data)=>{user=data;
+              bodySave={"user":user,"jeuAchat":this.jeu,"quantite" : 1,"achat":isAchat}; // construction du body pour la requête d'ajout d'un jeu dans le panier
+              console.log("bodysave : "+bodySave);console.log("user : "+user.id);console.log("jeuAchat : "+this.jeu.id);
+  
+             
+              this.http.get('http://localhost:8086/panier/userAndGame/'+user.id+"/"+this.jeu.id).subscribe({ // vérification de la non-présence du jeu dans le panier de l'utilisateur
+                next: (data)=> {AlreadyPresent=data;
+                  if(AlreadyPresent!=null){
+                    alert(this.jeu.lejeu.nom + " est déjà dans le panier !");
+                  }
+                  else{
+                    this.http.post('http://localhost:8086/panier',bodySave).subscribe({  //ajout dans le panier
+                      next: (data)=>{alert(this.jeu.lejeu.nom + " ajouté dans le panier !");},
+                      error: (err) => {console.log(err);}
+                    });
+                  }
+                },
+                error: (err)=> {console.log(err);}
+                });
+  
+  
+              
+        },
+        error: (err) => {console.log(err);}
+      });
+      
+    }
+    else{
+      this.route.navigateByUrl('connexion');
+    }
+  }
 
 }

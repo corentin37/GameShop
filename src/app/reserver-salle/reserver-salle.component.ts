@@ -14,6 +14,8 @@ export class ReserverSalleComponent implements OnInit {
 
   ngOnInit(): void {
     this.salle=this.salleService.room;
+    console.log(this.salle);
+    
   }
 
   //creer la session avant de pouvoir récupérer le joueur qui réserve

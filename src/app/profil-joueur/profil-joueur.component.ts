@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JeuService } from '../Services/jeu.service';
 
 @Component({
   selector: 'app-profil-joueur',
@@ -17,7 +18,10 @@ export class ProfilJoueurComponent implements OnInit {
   mail;
   tel;
   activity;
-  password
+  password;
+  avis;
+
+ 
   
     ngOnInit(): void {
       this.id = localStorage.getItem("id")
@@ -26,6 +30,7 @@ export class ProfilJoueurComponent implements OnInit {
       this.tel = localStorage.getItem("tel")
       this.activity = localStorage.getItem("activity")
       this.password = localStorage.getItem("password")
+      this.getAllAvis();
     }
   
   
@@ -37,5 +42,26 @@ export class ProfilJoueurComponent implements OnInit {
       });
   
     }
+
+
+    getAllAvis() {
+      console.log('En cours de suppression'),
+      this.http.get('http://localhost:8086/avis/user/' + this.id).subscribe({
+        next: (data) => { this.avis = data; },
+        error: (err) => { console.log(err); }
+      });
+    }
+
+
+    deleteAvis(avis){
+      console.log(avis.id),
+        this.http.delete('http://localhost:8086/avis/delete/'+ avis.id, avis).subscribe({
+          next: (data) => {this.ngOnInit(); return confirm('Avis effacé');},
+          error: (err) => {
+            console.log(err);
+          },
+        });
+      }
+    
 
   }

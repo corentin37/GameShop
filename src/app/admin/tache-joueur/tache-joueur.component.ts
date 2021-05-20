@@ -40,9 +40,9 @@ export class TacheJoueurComponent implements OnInit {
 
   cotisationBoolToStr(bool): string {
     if (bool === false) {
-      return 'Adhérant';
+      return 'Adhérent';
     } else {
-      return 'Non adhérant';
+      return 'Non adhérent';
     }
   }
 

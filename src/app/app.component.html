@@ -1,4 +1,4 @@
-<div class="fondSite" >
+<div class="fondSite">
   <div class="container">
     <div class="row">
       <div class="col-sm-1 mt-2">
@@ -91,22 +91,25 @@
             >
             <a
               class="nav-item nav-link"
-              routerLink="forum"
-              routerLinkActive="active"
-              >Forum</a
-            >
-            <a
-              class="nav-item nav-link"
               routerLink="salle"
               routerLinkActive="active"
               >Louez une salle</a
+            >
+            <a
+              class="nav-item nav-link"
+              routerLink="forum"
+              routerLinkActive="active"
+              >FAQ</a
             >
           </div>
         </div>
       </nav>
     </div>
+
     <br /><br />
 
     <router-outlet></router-outlet>
   </div>
+
+  <router-outlet></router-outlet>
 </div>

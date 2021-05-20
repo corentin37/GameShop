@@ -1,6 +1,7 @@
 <div class="tab">
-  <button class="tablinks" (click)="openPanier( 'Panier Achat')">Panier Achat</button>
-  <button class="tablinks" (click)="openPanier( 'Panier Location')">Panier Location</button>
+  <button id ="tablinkPanier Achat" class="tablinks" (click)="openPanier( 'Panier Achat')">Panier Achat</button>
+  <button id ="tablinkPanier Location" class="tablinks" (click)="openPanier( 'Panier Location')">Panier Location</button>
+  <button id ="tablinkPanier Salles" class="tablinks" (click)="openPanier( 'Panier Salles')">Réservation de salles</button>
 </div>
 
 <div id="Panier Achat" class="tabcontent">
@@ -8,15 +9,21 @@
   <div class="row">
   <div class="col-sm-9 ">
       <div class="row"> 
-      <div *ngFor="let j of panierAchat" class="col-sm-4 ">
+      <div *ngFor="let j of panierAchat" class="col-sm-5 ">
                 <br>
                   <div class="card">
-                    <img type="button" (click)="goToJeu(j.jeuAchat)" src={{j.jeuAchat.lejeu.urlImage}} width="200px"><br>
+                    <div class="row">
+                      <div class="col-sm-2"></div>
+                      <div class="col-sm-2">
+                        <img type="button" (click)="goToJeu(j.jeuAchat)" src={{j.jeuAchat.lejeu.urlImage}} width="200px"><br>
+                      </div>
+                    </div>
+                   
+                    
                     <div class="ml-2">
                         <div class="row">
-                          <div class="col-sm-4">{{j.note}}/5</div>
-                          <div class="col-sm-4"></div>
-                          <div class="col-sm-4">Quantite : {{j.quantite}}<br></div>
+                          <div class="col-sm-7"></div>
+                          <div class="col-sm-4 right">Quantite : {{j.quantite}}<br></div>
                         </div>
                         <div class="row">
                           <div class="col-sm-8" style="font-size: large !important;" type="button" (click)="goToJeu(j.jeuAchat)" >{{ j.jeuAchat.lejeu.nom}}<br></div>
@@ -47,7 +54,7 @@
 
   <div class="col-sm-3">
       <p style="font-size: larger;">Prix Total Achat : {{prixTotalAchat}} €<br></p>
-      <p style="font-size: larger;">Prix Total Location : {{prixTotalLocation}} €<br><br><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Confirmer l'achat et la location</a></p>
+      <p style="font-size: larger;">Prix Total Location : {{prixTotalLocation}} €<br><br><a class="btn btn-outline-warning btn-sm" routerLink="connexion" role="button">Confirmer l'achat et la location</a></p>
   </div>
   </div>
 </div>
@@ -56,14 +63,19 @@
     <div class="row">
     <div class="col-sm-9 ">
         <div class="row"> 
-        <div *ngFor="let j of panierLocation" class="col-sm-4 ">
+        <div *ngFor="let j of panierLocation" class="col-sm-5 ">
                   <br>
                     <div class="card" id="cardJeu{{j.id}}" >
-                      <img type="button" (click)="goToJeu(j.jeuAchat)" src={{j.jeuAchat.lejeu.urlImage}} width="200px"><br>
+                      <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-2">
+                          <img type="button" (click)="goToJeu(j.jeuAchat)" src={{j.jeuAchat.lejeu.urlImage}} width="200px"><br>
+                        </div>
+                      </div>
+                      
                       <div class="ml-2">
                           <div class="row">
-                            <div class="col-sm-4">{{j.note}}/5</div>
-                            <div class="col-sm-4"></div>
+                            <div class="col-sm-7"></div>
                             <div class="col-sm-4">Quantite : {{j.quantite}}<br></div>
                           </div>
                           <div class="row">
@@ -101,4 +113,32 @@
             <p style="font-size: larger;">Prix Total Location : {{prixTotalLocation}} €<br><br><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Confirmer l'achat et la location</a></p>
         </div> 
     </div>
+</div>
+
+<div id="Panier Salles" class="tabcontent">
+  <h1>Mon panier de réservation de salles</h1>
+  <div class="row">
+    <div class="col-sm-9 ">
+      <div class="row">
+        <div *ngFor="let h of historique" class="col-sm-3">
+          <div class="card" style="width: 14rem;">
+              <img class="card-img-top" src={{h.salle.urlImage}} alt="Ville" width="100px">
+              <div class="card-body">
+                  <h5 class="card-title">{{h.salle.nom}}</h5>
+                  <p class="card-text">Nombre places disponibles : {{h.salle.nombreDePlaces}}</p>
+                  <p class="card-text">Accès public :  {{convertBoolean(h.salle.publique)}}</p>
+                  <p class="card-text">Prix : {{h.salle.prix}} €</p>
+                  <p class="card-text"><strong>Joueur : {{h.joueur.user.login}}</strong></p>
+                  <p class="card-text"><strong>Validation : {{convertBoolean(h.locationValidee)}}</strong></p>                  
+              </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="col-sm-3">
+      <p style="font-size: larger;">Prix Total Achat : {{prixTotalAchat}} €<br></p>
+      <p style="font-size: larger;">Prix Total Location : {{prixTotalLocation}} €<br><br><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Confirmer l'achat et la location</a></p>
+    </div>
+  </div>
 </div>

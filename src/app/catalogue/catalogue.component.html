@@ -5,21 +5,21 @@
     <div class="col-sm-3 ">
       <div class="row">
         <div class="tab">
-          <button class="tablinks" (click)="openCloseTab( 'Categorie')">Categorie</button><div id="Categorie" class="tabcontent">
+          <button id="tablinkCategorie" class="tablinks" (click)="openCloseTab( 'Categorie')">Categorie</button><div id="Categorie" class="tabcontent">
             <a (click)="filterByCategorie(c)" *ngFor="let c of categorie"  class="dropdown-item"> {{c.libelle}} </a>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="tab">
-          <button class="tablinks" (click)="openCloseTab( 'Marque')">Marque</button><div id="Marque" class="tabcontent">
+          <button id="tablinkMarque" class="tablinks" (click)="openCloseTab( 'Marque')">Marque</button><div id="Marque" class="tabcontent">
             <a (click)="filterByMarque(m)" *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="tab">
-          <button class="tablinks" (click)="openCloseTab( 'Age')">Age</button><div id="Age" class="tabcontent">
+          <button id="tablinkAge" class="tablinks" (click)="openCloseTab( 'Age')">Age</button><div id="Age" class="tabcontent">
             <div class="row">
               <div class="col-sm-12">Age Minimum :</div>
             </div>
@@ -39,7 +39,7 @@
       </div>
       <div class="row">
         <div class="tab">
-          <button class="tablinks" (click)="openCloseTab( 'Prix')">Prix d'achat</button><div id="Prix" class="tabcontent">
+          <button id="tablinkPrix" class="tablinks" (click)="openCloseTab( 'Prix')">Prix d'achat</button><div id="Prix" class="tabcontent">
             <div class="row">
               <div class="col-sm-12">Prix Minimum :</div>
             </div>
@@ -67,7 +67,7 @@
       </div>
       <div class="row">
         <div class="tab">
-          <button class="tablinks" (click)="openCloseTab( 'Prix Location')">Prix location</button><div id="Prix Location" class="tabcontent">
+          <button id="tablinkPrix Location" class="tablinks" (click)="openCloseTab( 'Prix Location')">Prix location</button><div id="Prix Location" class="tabcontent">
             <div class="row">
               <div class="col-sm-12">Prix Minimum :</div>
             </div>
@@ -95,7 +95,7 @@
       </div>
       <div class="row">
         <div class="tab">
-          <button class="tablinks" (click)="openCloseTab( 'Nombre de joueurs')">Nombre de joueurs</button><div id="Nombre de joueurs" class="tabcontent">
+          <button id="tablinkNombre de joueurs" class="tablinks" (click)="openCloseTab( 'Nombre de joueurs')">Nombre de joueurs</button><div id="Nombre de joueurs" class="tabcontent">
             <div class="row">
               <div class="col-sm-12">Nombre de joueurs</div>
             </div>
@@ -115,7 +115,7 @@
       </div>
       <div class="row">
         <div class="tab">
-          <button class="tablinks" (click)="openCloseTab( 'Temps de jeu')">Temps de jeu</button><div id="Temps de jeu" class="tabcontent">
+          <button id="tablinkTemps de jeu" class="tablinks" (click)="openCloseTab( 'Temps de jeu')">Temps de jeu</button><div id="Temps de jeu" class="tabcontent">
             <div class="row">
               <div class="col-sm-12">Temps de jeu Minimum :</div>
             </div>
@@ -143,7 +143,7 @@
       </div>
       <div class="row">
         <div class="tab">
-          <button class="tablinks" (click)="openCloseTab( 'Niveau de difficulte')">Niveau de difficulte</button><div id="Niveau de difficulte" class="tabcontent">
+          <button id="tablinkNiveau de difficulte" class="tablinks" (click)="openCloseTab( 'Niveau de difficulte')">Niveau de difficulte</button><div id="Niveau de difficulte" class="tabcontent">
             <a (click)="filterByNiveauDifficulte(nd)" *ngFor="let nd of niveauxDifficulte" class="dropdown-item">{{nd}}</a>
           </div>
         </div>
@@ -153,14 +153,14 @@
       <br>
       <div class="row">Filtres actuels :</div>
       <div *ngIf="filterProperties!=null">
-        <div class="row" *ngIf="filterProperties.categorie!=null">Catégorie : {{filterProperties.categorie.libelle}}</div>
-        <div class="row" *ngIf="filterProperties.marque!=null">Marque : {{filterProperties.marque.libelle}}</div>
-        <div class="row" *ngIf="filterProperties.ageMin!=null">Age minimum : {{filterProperties.ageMin}}</div>
-        <div class="row" *ngIf="filterProperties.prixMin!=null">Prix d'achat : {{filterProperties.prixMin}} - {{filterProperties.prixMax}} €</div>
-        <div class="row" *ngIf="filterProperties.prixLocationMin!=null">Prix de location : {{filterProperties.prixLocationMin}} - {{filterProperties.prixLocationMax}} €</div>
-        <div class="row" *ngIf="filterProperties.nombreJoueurs!=null">Nombre de joueurs : {{filterProperties.nombreJoueurs}}</div>
-        <div class="row" *ngIf="filterProperties.tempsJeuMin!=null">Temps de jeu : {{filterProperties.tempsJeuMin}} - {{filterProperties.tempsJeuMax}} min</div>
-        <div class="row" *ngIf="filterProperties.niveauDifficulte!=null">Difficulte : {{filterProperties.niveauDifficulte}}</div>
+        <div class="row" *ngIf="filterProperties.categorie!=null"> Catégorie : {{filterProperties.categorie.libelle}}&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deleteCategorie()">x</a></div>
+        <div class="row" *ngIf="filterProperties.marque!=null">Marque : {{filterProperties.marque.libelle}}&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deleteMarque()">x</a></div>
+        <div class="row" *ngIf="filterProperties.ageMin!=null">Age minimum : {{filterProperties.ageMin}}&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deleteAgeMin()">x</a></div>
+        <div class="row" *ngIf="filterProperties.prixMin!=null">Prix d'achat : {{filterProperties.prixMin}} - {{filterProperties.prixMax}} €&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deletePrixAchat()">x</a></div>
+        <div class="row" *ngIf="filterProperties.prixLocationMin!=null">Prix de location : {{filterProperties.prixLocationMin}} - {{filterProperties.prixLocationMax}} €&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deletePrixLocation()">x</a></div>
+        <div class="row" *ngIf="filterProperties.nombreJoueurs!=null">Nombre de joueurs : {{filterProperties.nombreJoueurs}}&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deleteNombreJoueurs()">x</a></div>
+        <div class="row" *ngIf="filterProperties.tempsJeuMin!=null">Temps de jeu : {{filterProperties.tempsJeuMin}} - {{filterProperties.tempsJeuMax}} min&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deleteTempsJeu()">x</a></div>
+        <div class="row" *ngIf="filterProperties.niveauDifficulte!=null">Difficulte : {{filterProperties.niveauDifficulte}}&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deleteNiveauDifficulte()">x</a></div>
       </div>
       
       
@@ -171,13 +171,12 @@
           <br>
           <div *ngFor="let j of jeuAffiche" class="col-sm-3 ">
             <br>
-              <div class="card">
+              <div class="card ">
                 <img type="button" (click)="goToJeu(j)" src={{j.lejeu.urlImage}} class="img" alt="logo jeu" width=175px height=175px><br>
                 <div type="button" (click)="goToJeu(j)" class="card-body ml-2">
-                  <p class="card-text">/10</p>
-                  <p class="card-text"><strong>{{ j.lejeu.nom}}</strong></p>
-                  <p class="card-text">{{ j.lejeu.marqueDuJeu.libelle}}</p>
-                  <p class="card-text">Achat : {{j.prixAchat}} € Location : {{j.lejeu.prixLocation}} €</p>
+                  <p class="card-text" style="font-size: 14px;"><strong>{{ j.lejeu.nom}}</strong></p>
+                  <p class="card-text" style="font-size: 13px;">{{ j.lejeu.marqueDuJeu.libelle}}</p>
+                  <p class="card-text">Achat : {{j.prixAchat}} €&nbsp; Location : {{j.lejeu.prixLocation}} €</p>
                 </div>
                 <button (click)="addToPanier(j)" class="btn btn-secondary btn-center">AJOUTER AU PANIER</button>
               </div>
