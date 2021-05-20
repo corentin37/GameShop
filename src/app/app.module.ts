@@ -27,6 +27,7 @@ import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 import { AjouterSalleComponent } from './ajouter-salle/ajouter-salle.component';
 import { ProfilJoueurComponent } from './profil-joueur/profil-joueur.component';
 import { ModifierCotisationComponent } from './modifier-cotisation/modifier-cotisation.component';
+import { SupprimerSalleComponent } from './supprimer-salle/supprimer-salle.component';
 import { MaMessagerieComponent } from './ma-messagerie/ma-messagerie.component';
 
 
