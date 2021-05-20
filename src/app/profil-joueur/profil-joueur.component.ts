@@ -55,8 +55,8 @@ export class ProfilJoueurComponent implements OnInit {
 
     deleteAvis(avis){
       console.log(avis.id),
-        this.http.delete('http://localhost::8086/avis/delete/'+avis.id, avis.id).subscribe({
-          next: (data) => { return confirm('Avis effacé');},
+        this.http.delete('http://localhost:8086/avis/delete/'+ avis.id, avis).subscribe({
+          next: (data) => {this.ngOnInit(); return confirm('Avis effacé');},
           error: (err) => {
             console.log(err);
           },

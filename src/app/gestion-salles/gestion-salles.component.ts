@@ -21,14 +21,15 @@ export class GestionSallesComponent implements OnInit {
   place;
   rep;
   reservation;
+  color;
 
   reserver(s){
     this.reservation=true;
     this.salleComplete(s);
     this.sallePrivee(s);
-    console.log(this.reservation);
     if(this.reservation===true){
       this.placeReservee(s);
+      
     }
     else{
       this.salleService.room=s;
@@ -39,14 +40,10 @@ export class GestionSallesComponent implements OnInit {
   //enregistre la salle modifiée dans room(service)
   placeReservee(salleModifiee){
     salleModifiee.nombreDePlaces-=1;
-    console.log("La salle a maintenant : ");
-    console.log(salleModifiee.nombreDePlaces);
-    console.log(" places.");
-    
-    
     this.http.put('http://localhost:8086/salle', salleModifiee).subscribe({
       next: (data) => {console.log(data); 
         this.salleService.room=salleModifiee;
+        this.route.navigateByUrl('reserverSalle');
       },
       error: (err) => {console.log(err); }
     });
@@ -54,7 +51,7 @@ export class GestionSallesComponent implements OnInit {
 
   getAllSalles(){
     this.http.get('http://localhost:8086/salle/list').subscribe({
-      next: (data) => {console.log(data); this.salle = data;},
+      next: (data) => {console.log(data); this.salle = data; this.changeBackgroundColor()},
       error: (err) => {console.log(err); }
     });
   }
@@ -66,9 +63,6 @@ export class GestionSallesComponent implements OnInit {
       this.reservation=false;
       this.route.navigateByUrl('/salle');
     }   
-    else{
-      this.route.navigateByUrl('reserverSalle');
-    }
   }
 
   //vérifie que la salle n'est pas complète
@@ -81,25 +75,23 @@ export class GestionSallesComponent implements OnInit {
 
   convertBoolean(b){
     if(b==true){
-      return "Oui";
+      return "public";
     }
     else{
-      return "Non";
+      return "privé";
     }
   }
   
-  //test : aide pour Corentin
-  takeElementOfList(liste): any{
-    liste.forEach(element => {
-      console.log(element);
-      
-    });
-  }
 
-  getMessageByIdForum(idforum): any{
-    this.http.get('http://localhost:8086/forum/messages', idforum).subscribe({
-      next: (data) => {console.log(data); },
-      error: (err) => {console.log(err); }
-    });
+changeBackgroundColor(){
+  for(let s of this.salle){
+    console.log(s.publique);
+    
+    if(s.publique==false){
+      document.getElementById("card"+s.id).style.backgroundColor.replace("#ffffff", "#e6e6e6");
+    }
   }
+  
+}
+
 }
