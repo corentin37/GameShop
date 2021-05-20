@@ -98,7 +98,7 @@ export class PanierComponent implements OnInit {
       return "Oui";
     }
     else{
-      return "En attente ...";
+      return "En attente";
     }
   }
   quantiteMoins(jeu){
