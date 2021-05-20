@@ -1,10 +1,44 @@
-<p>profil-joueur works!</p>
+<  <div ng-app="validationApp" ng-controller="mainController">
+    <div class="container">
+    <div class="row">  
+       
+    <div class="col-sm-6">
+        
 
+        <div *ngIf="activity"  >
+            <h6>Joueur adhérent</h6>
+        </div>
+      <br><br>
 
+<!-- FORM avec informations déjà pré-remplies  -->
+        <form #user='ngForm' (ngSubmit)="submitInfo(user.value)" >
+    
+            <!-- NAME -->
+            <div class="form-group" ng-class="{ 'has-error' : user.login.$invalid && !user.login.$pristine }">
+                <label>Nom d'utilisateur :</label>
+                <input type="text" name="login" class="form-control" ngModel='{{login}}' required>
+                <p ng-show="user.login.$invalid && !user.login.$pristine" class="help-block"> </p>
+            </div>
+           
+            
+            <!-- EMAIL -->
+            <div class="form-group" ng-class="{ 'has-error' : user.mail.$invalid && !user.mail.$pristine }">
+                <label>Email</label>
+                <input type="email" name="mail" class="form-control" ngModel='{{mail}}'>
+                <p ng-show="user.mail.$invalid && !user.mail.$pristine" class="help-block"> </p>
+            </div>
 
-{{id}}
-{{login}}
-{{mail}}
-{{tel}}
-{{activity}}
+            <!-- TELEPHONE -->
+            <div class="form-group" ng-class="{ 'has-error' : user.tel.$invalid && !user.tel.$pristine }">
+                <label>Téléphone</label>
+                <input type="text" name="tel" class="form-control" ngModel='{{tel}}'>
+                <p ng-show="user.tel.$invalid && !user.tel.$pristine" class="help-block"> </p>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" ng-disabled="user.$invalid">Submit</button>
+            
+        </form>
+      </div>
+
+</div>
 
