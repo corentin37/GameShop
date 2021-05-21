@@ -112,7 +112,7 @@ nomDeJeu;
   // Redirection
   goToJeu(game): any{
     this.jeuService.game=game;
-    console.log('jeu dans le service', this.jeuService.game);
+    console.log('jeu dans le service', window.scrollTo(0, 0),this.jeuService.game);
     this.route.navigateByUrl('jeu');
 
   }  
