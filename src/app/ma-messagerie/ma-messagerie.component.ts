@@ -259,32 +259,63 @@ userLogin =  localStorage.getItem('login')
   destinataireSet;
 
   getDestinataires(){
+    
     this.destinataires=[];
     var destexists;
     for(let z of this.messages){
       console.log(z.contenu);
       destexists=false;
-      for(let y of this.destinataires){
-        if(z.expediteur==y){
-          destexists=true;
+      if(z.expediteur.id!=this.userId){
+        for(let y of this.destinataires){
+          if(z.expediteur==y || z.destinataire==y){
+            destexists=true;
+          }
         }
-      }
-      if(!destexists){
-        this.destinataires.push(z.expediteur);
+        if(!destexists){
+          this.destinataires.push(z.expediteur);
+        }
+        if(z.destinataire.id!=this.userId){
+          destexists=false;
+          for(let y of this.destinataires){
+            if(z.destinataire==y){
+              destexists=true;
+            }
+          }
+          if(!destexists ){
+            this.destinataires.push(z.destinataire);
+          }
+        }
+        
       }
     }
+    this.setDestinataire(this.destinataireSet);
   }
   
   messagesAff;
   setDestinataire(destinataire){
     this.destinataireSet=destinataire;
-    if(destinataire!=null){
+    if(this.destinataireSet!=null){
       this.messagesAff=[];
       for(let m of this.messages){
-        if (m.expediteur==destinataire || m.destinataire==destinataire){
+        
+        if (m.expediteur==this.destinataireSet){
           this.messagesAff.push(m);
+        }
+        else if(m.destinataire.id==this.destinataireSet.id){
+          console.log(m);
+          this.messagesAff.push(m);
+          console.log(this.messagesAff);
         }
       }
     }
+  }
+
+  newReponse(contenu){
+    var newMessage={"contenu": contenu.contenu,"expediteur":{"id":this.userId},"destinataire":{"id":parseInt(this.destinataireSet.id)}};
+      this.http.post('http://localhost:8086/message', newMessage).subscribe({
+        next: (data) => { console.log(data);this.getAllMesMessages();},
+        error: (err) => { console.log(err); }
+      });
+
   }
 }
