@@ -42,7 +42,7 @@ userLogin =  localStorage.getItem('login')
   getAllMesMessages(): any {
     this.http.get('http://localhost:8086/messagerie/' + this.userId).subscribe({
       next: (data) => {
-        this.messages = data;
+        this.messages = data;this.getDestinataires();
         
       },
       error: (err) => {
@@ -249,4 +249,42 @@ userLogin =  localStorage.getItem('login')
     }
   }
 
+
+
+
+
+
+  //Adrien tente des trucs
+  destinataires=[];
+  destinataireSet;
+
+  getDestinataires(){
+    this.destinataires=[];
+    var destexists;
+    for(let z of this.messages){
+      console.log(z.contenu);
+      destexists=false;
+      for(let y of this.destinataires){
+        if(z.expediteur==y){
+          destexists=true;
+        }
+      }
+      if(!destexists){
+        this.destinataires.push(z.expediteur);
+      }
+    }
+  }
+  
+  messagesAff;
+  setDestinataire(destinataire){
+    this.destinataireSet=destinataire;
+    if(destinataire!=null){
+      this.messagesAff=[];
+      for(let m of this.messages){
+        if (m.expediteur==destinataire || m.destinataire==destinataire){
+          this.messagesAff.push(m);
+        }
+      }
+    }
+  }
 }

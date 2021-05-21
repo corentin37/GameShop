@@ -6,7 +6,7 @@
             <div class="col-sm-4">
                 
                 <img src="{{jeu.lejeu.urlImage}}" alt="Image Jeu" class="img">
-                <br><br>
+                <br><br><br>
                 <h6>Moyenne : {{moyenne}} / 10 </h6>
             </div>
             <div class="col-sm-1"></div>
@@ -15,8 +15,8 @@
                 <header class="w3-container w3-blue">
                     <h6 style="text-align: right;"> {{jeu.lejeu.marqueDuJeu.libelle}} </h6>
                     <br>
-                <span><i class="fa fa-users" style="color: teal; text-align: justify;"></i>  Nombre de joueurs : {{jeu.lejeu.nombreJoueursMin}} à {{jeu.lejeu.ageMin}} <i class="fas fa-birthday-cake" style="color: teal;"></i>  Age: à partir de {{jeu.lejeu.ageMin}} ans   
-                    <i class="fas fa-star" style="color: teal;"></i>  Difficulté: {{jeu.lejeu.niveauDifficulte}}    </span>
+                <span><i class="fa fa-users" style="color: steelblue; text-align: justify;"></i>  Nombre de joueurs : {{jeu.lejeu.nombreJoueursMin}} à {{jeu.lejeu.ageMin}} &nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-birthday-cake" style="color: steelblue;"></i>   A partir de {{jeu.lejeu.ageMin}} ans   
+                    &nbsp;&nbsp; &nbsp;&nbsp; <i class="fas fa-star" style="color: steelblue;"></i>  Difficulté: {{jeu.lejeu.niveauDifficulte}}    </span>
                 </header>
                 <br>
                 <h6>Description : </h6>
@@ -31,45 +31,47 @@
                 <div id="demo" class="collapse">
                 {{jeu.lejeu.regleDuJeu}}
                 </div>
-                
+                <br><br>
                     <form>
-                    <span><a class="btn btn-outline-warning btn-sm" (click)="addToPanier(true)" role="button">Acheter</a> : {{jeu.prixAchat}} € | <a class="btn btn-secondary border btn-sm" (click)="addToPanier(false)" role="button">Louer</a> : {{jeu.lejeu.prixLocation}} € </span>
+                    <span><a class="btn btn-outline-warning btn-sm" (click)="addToPanier(true)" role="button">Acheter</a> : {{jeu.prixAchat}} € &nbsp;&nbsp;&nbsp; <a class="btn btn-outline-warning btn-sm" (click)="addToPanier(false)" role="button">Louer</a> : {{jeu.lejeu.prixLocation}} € </span>
                    
                 </form>
                    
                 
             </div>
         </div>
-        <br><br>
+   
         
     </div>
-<br><br><br>
+    <br><br><br>
 
-<div class="container">
-    <h5>Poster un avis</h5>
-    <form #newavis='ngForm' (ngSubmit)='newAvis(newavis.value)'>
-        <div class="form-group">
-            <label class = "text-secondary" for="">Donner votre avis : </label>
-            <input type="text" name="commentaire" id="commentaire" placeholder="" class="form-control" ngModel=''>
-            <br>
-            <label class = "text-secondary" for="note">Attribuer une note : </label>
-            <input type="text" name="note" id="note" placeholder="" class="form-control" ngModel='' required />
-        </div>
-        <button type="submit"  class="btn btn-primary ">Valider</button>
+    <div class="container">
+        <h5>Poster un avis</h5>
+        <form #newavis='ngForm' (ngSubmit)='newAvis(newavis.value)'>
+            <div class="form-group">
+                <label class = "text-secondary" for="">Donner votre avis : </label>
+                <input type="text" name="commentaire" id="commentaire" placeholder="" class="form-control" ngModel=''>
+                <br>
+                <label class = "text-secondary" for="note">Attribuer une note : </label>
+                <input type="text" name="note" id="note" placeholder="" class="form-control" ngModel='' required />
+            </div>
+            <button type="submit"  class="btn btn-primary ">Valider</button>
 
-        
-    </form>
-</div>
+            
+        </form>
+    </div>
 
-<br><br><br>
+    <br><br><br>
+
+
 
     
     <div *ngFor="let a of avis">
-        <div *ngIf="a.commentaire">
+        
         <div class="row" >
-            <div class="col-sm-2" style="text-align: center;">
-                
-                   <!-- <img src="/assets/img/astrocat.jpg" alt="Avatar"  >-->
+            <div class="col-sm-2" style="text-align: center; ">
+                <br><br>
+                <!-- <img src="/assets/img/astrocat.jpg" alt="Avatar"  >-->
                     <div class="container">
                     <h6><b><i class="fas fa-user" style="color: steelblue;"></i> {{a.user.login}}</b></h6>
                     </div>
@@ -82,16 +84,17 @@
                 <h6> / 10</h6>
                 
             </div>
+        
             <div class="col-sm-6">
                 <h6>Avis sur le jeu : </h6>
                 <br>
                 <p> {{a.commentaire}} </p>
+                
             </div>
-           
-        </div>
+        </div>  
         <br> <br>
     </div>
-    </div>
+    
 
 
 

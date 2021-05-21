@@ -1,19 +1,21 @@
 <div class="fondSite">
   <div class="container">
-    <div class="row">
-      <div class="col-sm-1 mt-2">
+    <div class="row ">
+      <div class="col-sm-1 mt-2  ">
+        <a class="" routerLink="catalogue">
         <img src="assets/img/logo.png" alt="" width="160%" class="img" />
+      </a>
       </div>
-      <div class="col-sm-2 capitalize center">
+      <div class="col-sm-2   capitalize center">
         <div style="color: steelblue">
           <br /><br />
           <h6><strong></strong></h6>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-5 " >
         <form>
-          <div class="form-group">
-            <div class="input-group rounded">
+          <div class="form-group" >
+            <div class="input-group rounded mt5 " >
               <input
                 class="form-control rounded"
                 placeholder="Trouver votre bonheur ici"
@@ -30,8 +32,9 @@
           </div>
         </form>
       </div>
+      <div class="col-sm-1 " ></div>
 
-      <div class="col-sm-3 dropdown">
+      <div *ngIf= "!userConnected" class="col-sm-2 mt dropdown"> <!-- navbar-->
         <button
           class="btn btn-secondary dropdown-toggle"
           type="button"
@@ -65,11 +68,30 @@
           >
         </div>
       </div>
+      
+      <div *ngIf= "userConnected" class="col-sm-2 mt dropdown"> <!-- navbar-->
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false hover"
+        >
+          <a class="nav-item nav-link" routerLink="connexion"
+            ><i style="color: steelblue" class="fa fa-user fa-2x"></i>&nbsp;{{
+              Mon Compte</a
+          >
+        </button>
+
+       
+      </div>
+
     </div>
 
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand">GameShop</a>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light colorMain">
+        <a class="navbar-brand catalogue">GameShop</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -82,27 +104,27 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav nav-fill w-100">
+          <div class="navbar-nav  nav-fill w-100">
             <a
-              class="nav-item nav-link"
+              class="nav-item catalogue nav-link"
               routerLink="catalogue"
               routerLinkActive="active"
               >Nos jeux</a
             >
             <a
-              class="nav-item nav-link"
+              class="nav-item catalogue nav-link"
               routerLink="salle"
               routerLinkActive="active"
               >Louez une salle</a
             >
             <a
-              class="nav-item nav-link"
+              class="nav-item catalogue nav-link"
               routerLink="forum"
               routerLinkActive="active"
               >FAQ</a
             >
             <a
-              class="nav-item nav-link"
+              class="nav-item catalogue nav-link"
               routerLink="vendeur"
               routerLinkActive="active"
               >Vendeur</a
@@ -118,4 +140,14 @@
   </div>
 
   <router-outlet></router-outlet>
+<div class="fondSite container">
+  <footer>
+    <br><br>
+    <div class=" container text-secondary center small">
+      <p>Site créé par C. Brochon, A. Cadoux, D. Lahaussois, F. Richard et A. Savary, en mai 2021.</p>
+    </div>
+    
+  </footer>
+
 </div>
+

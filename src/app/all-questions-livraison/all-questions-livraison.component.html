@@ -23,20 +23,20 @@
               <div class="card card-shadow">
                 <div class="p-3" class="card-body border border-secondary">
                     
-                        <p><b>{{m.expediteur.login}}</b>&nbsp;&nbsp;<i class="text-secondary">{{m.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
+                        <p><b><i class="fas fa-user" style="color: steelblue;"></i>&nbsp;{{m.expediteur.login}}</b>&nbsp;&nbsp;<i class="text-secondary">{{m.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
                         <p>{{ m.contenu }}</p>
                     </div>
                     <div *ngFor="let r of info">
                         <div *ngIf="r.message!=null">
                             <div *ngIf="r.message.id==m.id">
-                                <p class="para-perso"><b>{{r.expediteur.login}}</b>&nbsp;&nbsp;<i class="text-secondary">{{r.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
+                                <p><b><i class="fas fa-user" style="color: steelblue;"></i>&nbsp;{{r.expediteur.login}}</b>&nbsp;&nbsp;<i class="text-secondary">{{r.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
                                 <p>{{r.contenu}}</p>
                             </div>
                         </div>
                     </div>
               </div>
               <br><br>
-              <form #msg="ngForm"(ngSubmit)="newReponse(msg.value)"><!--note aura tous le contenu du formulaire, info du formulaire contenu dans note.value--->
+              <form #msg="ngForm"(ngSubmit)="newReponse(m.id, msg.value)"><!--note aura tous le contenu du formulaire, info du formulaire contenu dans note.value--->
                 <div class="form-group">
                     <label class="text-secondary" for="">Répondez ici</label><!--label évite d'utiliser le placeholder-->
                     <input type="text" name="contenu" class="form-control" ngModel=""><!--contenue est le nom utilisé dans le format json donc la bd-->
