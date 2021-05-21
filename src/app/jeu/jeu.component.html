@@ -29,15 +29,16 @@
                 <h6>Description : </h6>
                 <div id="test" class="overflow-auto">  {{jeu.lejeu.description}}   </div>     
 
-                <footer class="w3-container w3-blue">
-                    <br>
-                    <p><i>Temps de Jeu : {{jeu.lejeu.tempsDeJeu}} min</i> </p> 
-                </footer> 
-
+                
+                <br>
                 <button data-toggle="collapse" data-target="#demo" class="btn btn-raised btn-sized ">Règles</button>
                 <div id="demo" class="collapse">
                 {{jeu.lejeu.regleDuJeu}}
                 </div>
+                <footer class="w3-container w3-blue">
+                    <br>
+                    <p><i>Temps de Jeu : {{jeu.lejeu.tempsDeJeu}} min</i> </p> 
+                </footer> 
                 <br><br>
                     <form>
                     <span><a class="btn btn-outline-secondary b-size" (click)="addToPanier(true)" role="button">Acheter</a> : {{jeu.prixAchat}} € &nbsp;&nbsp;&nbsp;

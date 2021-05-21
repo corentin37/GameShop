@@ -33,17 +33,18 @@
                         <p>{{ m.contenu }}</p>
                         
                     </div>
-                    
+            
                     <div *ngFor="let r of info">
                     
                         <div *ngIf="r.message!=null">
                             
                             <div *ngIf="r.message.id==m.id">
-                                
+                             
                                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><i class="fas fa-user"
                                             style="color: steelblue;"></i>&nbsp;{{r.expediteur.login}}</b>&nbsp;&nbsp;a répondu le<i
                                         class="text-secondary">&nbsp;&nbsp;{{r.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
                                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{r.contenu}}</p>
+                        
                             </div>
                         </div>
                     </div>
