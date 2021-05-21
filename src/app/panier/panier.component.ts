@@ -29,6 +29,8 @@ export class PanierComponent implements OnInit {
   count;
   idCard;
   historique;
+  prixTotalLocationSalle;
+  panierLocationSalle;
   historiqueAchat;
   historiqueLocation;
   historiquejeu;
@@ -39,6 +41,7 @@ export class PanierComponent implements OnInit {
     this.getOnePanierByUser(this.iduser);
     this.openPanier("Panier Achat");
     this.getHistoriqueUser();
+    this.getPrixPanierLocationSalle();
   }
   
   getOnePanierByUser(iduser){
@@ -110,6 +113,7 @@ export class PanierComponent implements OnInit {
       return "En attente";
     }
   }
+
   quantiteMoins(jeu){
     if(jeu.quantite>0){
       jeu.quantite-=1;
@@ -184,6 +188,14 @@ export class PanierComponent implements OnInit {
     }
     document.getElementById(PanierName).style.display = "block";
     document.getElementById("tablink"+PanierName).className+=" active";
+  }
+
+  getPrixPanierLocationSalle(): any{
+    this.panierLocationSalle=this.getHistoriqueUser();
+    for(let p of this.panierLocationSalle){
+      this.prixTotalLocationSalle=p.salle.prix;
+    }
+    return this.prixTotalLocationSalle;
   }
 
 }

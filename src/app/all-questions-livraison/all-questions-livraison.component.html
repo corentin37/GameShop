@@ -36,7 +36,7 @@
                     </div>
               </div>
               <br><br>
-              <form #msg="ngForm"(ngSubmit)="newReponse(msg.value)"><!--note aura tous le contenu du formulaire, info du formulaire contenu dans note.value--->
+              <form #msg="ngForm"(ngSubmit)="newReponse(m.id, msg.value)"><!--note aura tous le contenu du formulaire, info du formulaire contenu dans note.value--->
                 <div class="form-group">
                     <label class="text-secondary" for="">Répondez ici</label><!--label évite d'utiliser le placeholder-->
                     <input type="text" name="contenu" class="form-control" ngModel=""><!--contenue est le nom utilisé dans le format json donc la bd-->

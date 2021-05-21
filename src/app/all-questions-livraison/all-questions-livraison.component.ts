@@ -51,7 +51,7 @@ export class AllQuestionsLivraisonComponent implements OnInit {
     }
   }
 
-  newReponse(msg): any {
+  newReponse(idMessage,msg): any {
     console.log("Réponse postée! Rafraîchir la page");
     const expediteur = { id: localStorage.getItem("id") };
     //const expediteur = { id: 5 };
@@ -61,7 +61,7 @@ export class AllQuestionsLivraisonComponent implements OnInit {
     }
     else {
       msg.forum = this.formService.subjectForum;
-      this.http.post('http://localhost:8086/message/reponse/55', msg).subscribe({
+      this.http.post('http://localhost:8086/message/reponse/'+ idMessage, msg).subscribe({
         next: (data) => { console.log(data); this.ngOnInit(); return confirm('Votre réponse a bien été ajoutée'); },
         error: (err) => { console.log(err); }
       });
