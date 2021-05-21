@@ -24,8 +24,8 @@ messagesExist;
 destinataire;
 destinataireExist;
 
-userId =  localStorage.getItem('id')
-userLogin =  localStorage.getItem('login')
+userId =  localStorage.getItem('id');
+userLogin =  localStorage.getItem('login');
 
 
 
@@ -40,6 +40,7 @@ userLogin =  localStorage.getItem('login')
   }
 
   getAllMesMessages(): any {
+    this.userId =  localStorage.getItem('id');
     this.http.get('http://localhost:8086/messagerie/' + this.userId).subscribe({
       next: (data) => {
         this.messages = data;this.getDestinataires();
