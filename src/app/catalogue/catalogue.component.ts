@@ -27,6 +27,7 @@ export class CatalogueComponent implements OnInit {
   filterProperties;
   niveauxDifficulte=["Facile","Moyen","Difficile"];
 moyenne;
+nomDeJeu;
 
   ngOnInit(): void {
     this.getCatalogue();
@@ -39,10 +40,20 @@ moyenne;
   //------------------------------------------------------------------
   //gets initialisation
   getCatalogue() : any{
-    this.http.get('http://localhost:8086/jeu/listJeuAchat').subscribe({
+    if(this.catalogueService.nomDeJeu==null){
+      this.http.get('http://localhost:8086/jeu/listJeuAchat').subscribe({
       next: (data)=> {this.jeu = data; this.jeuAffiche=this.jeu;this.initVariables(); },
       error: (err)=> {console.log(err);}
       });
+    }
+    else{
+      this.nomDeJeu=this.catalogueService.nomDeJeu;
+      this.http.get('http://localhost:8086/jeu/findByNomLike/'+this.nomDeJeu).subscribe({
+      next: (data)=> {this.jeu = data; this.jeuAffiche=this.jeu;this.initVariables(); },
+      error: (err)=> {console.log(err);}
+      });
+    }
+    
     }
   getCategorie(): any{
     this.http.get ('http://localhost:8086/categories').subscribe({
@@ -255,6 +266,9 @@ myFunction(){
 //filtrages
 
 refreshFilters(){
+  if(this.nomDeJeu!=this.catalogueService.nomDeJeu){
+    this.getCatalogue();
+  }
   this.getProperties();
   this.jeuAffiche=this.jeu;
   // tri par catégorie
@@ -358,6 +372,7 @@ reinitialisationFiltrage(){
   this.catalogueService.tempsJeuMin=null;
   this.catalogueService.tempsJeuMax=null;
   this.catalogueService.niveauDifficulte=null;
+  this.catalogueService.nomDeJeu=null;
   this.refreshFilters();
 }
 
@@ -470,6 +485,11 @@ deleteTempsJeu(){
 
 deleteNiveauDifficulte(){
   this.catalogueService.niveauDifficulte=null;
+  this.refreshFilters();
+}
+
+deleteNomDuJeu(){
+  this.catalogueService.nomDeJeu=null;
   this.refreshFilters();
 }
 
