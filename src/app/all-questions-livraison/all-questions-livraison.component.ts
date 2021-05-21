@@ -17,11 +17,13 @@ export class AllQuestionsLivraisonComponent implements OnInit {
   msg;
   forum;
 
+
   ngOnInit(): void {
     this.getAllMessage();
     this.getElementBySubject();
     this.login = localStorage.getItem("id");
-  
+
+
   }
 
   getElementBySubject(): any {
@@ -36,6 +38,7 @@ export class AllQuestionsLivraisonComponent implements OnInit {
   newMessage(msg): any {
     console.log("Message posté! Rafraîchir la page");
     const expediteur = { id: localStorage.getItem("id") };
+    const forum = { id: localStorage.getItem("id") };
     //const expediteur = { id: 1 };
     msg.expediteur = expediteur;
     //msg.forum=this.forum.sujet;
@@ -51,7 +54,7 @@ export class AllQuestionsLivraisonComponent implements OnInit {
     }
   }
 
-  newReponse(idMessage,msg): any {
+  newReponse(idMessage, msg): any {
     console.log("Réponse postée! Rafraîchir la page");
     const expediteur = { id: localStorage.getItem("id") };
     //const expediteur = { id: 5 };
@@ -61,7 +64,7 @@ export class AllQuestionsLivraisonComponent implements OnInit {
     }
     else {
       msg.forum = this.formService.subjectForum;
-      this.http.post('http://localhost:8086/message/reponse/'+ idMessage, msg).subscribe({
+      this.http.post('http://localhost:8086/message/reponse/' + idMessage, msg).subscribe({
         next: (data) => { console.log(data); this.ngOnInit(); return confirm('Votre réponse a bien été ajoutée'); },
         error: (err) => { console.log(err); }
       });
