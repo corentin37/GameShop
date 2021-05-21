@@ -9,7 +9,10 @@
     border: 1px solid #ccc;
     background-color: #f1f1f1;
   }
-  
+  .b-size {
+    height: 50 px;
+    width : 100px;
+  }
   /* Style the buttons that are used to open the tab content */
   .tab button {
     background-color: inherit;
