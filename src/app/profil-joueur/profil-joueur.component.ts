@@ -21,6 +21,11 @@ export class ProfilJoueurComponent implements OnInit {
   password;
   avis;
 
+  fenetreInfo= false;
+      
+  fenetreModification = false;
+  fenetreAvis = false;
+
  
   
     ngOnInit(): void {
@@ -31,12 +36,57 @@ export class ProfilJoueurComponent implements OnInit {
       this.activity = localStorage.getItem("activity")
       this.password = localStorage.getItem("password")
       this.getAllAvis();
+      this.fenetreActivation(1);
+  
+  
+    
     }
+
+    fenetreActivation(chiffre): any {
+      this.fenetreInfo= false;
+      
+      this.fenetreModification = false;
+      this.fenetreAvis = false;
   
+      switch (chiffre) {
+        case 0: {
+          // rien
+          break;
+        }
   
+        case 1: {
+          // creation info
+          this.fenetreInfo = true;
+          this.fenetreAvis = false;
+          this.fenetreModification = false;
+  
+          break;
+        }
+        case 2: {
+          //modification du profil
+          this.fenetreInfo = false;
+          this.fenetreModification = true;
+          this.fenetreAvis = false;
+          break;
+        }
+        case 3: {
+          // Card avis
+          this.fenetreInfo = false;
+          this.fenetreModification = false;
+          this.fenetreAvis = true;
+          break;
+        }
+        default: {
+          break;
+        }
+      }}
+
+
     submitInfo(user){
-      this.http.put('http://localhost:8086/user/modif/'+this.id, user, user.password=this.password).subscribe({
-        next: (data)=> {localStorage.setItem("login", user.login);localStorage.setItem("activity", this.activity); localStorage.setItem("mail", user.mail); localStorage.setItem("tel", user.tel);this.ngOnInit(); return confirm('Informations du profil modifiées !'); 
+      
+      console.log("submit");
+      this.http.put('http://localhost:8086/user/modifier', user).subscribe({
+        next: (data)=> {localStorage.setItem("login", user.login);localStorage.setItem("activity", this.activity); localStorage.setItem("mail", user.mail); localStorage.setItem("password", user.password); localStorage.setItem("tel", user.tel);this.ngOnInit();  
             },
         error: (err) => {console.log(err);}
       });
