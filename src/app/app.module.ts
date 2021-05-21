@@ -32,6 +32,7 @@ import { MaMessagerieComponent } from './ma-messagerie/ma-messagerie.component';
 import { VendeurComponent } from './vendeur/vendeur.component';
 import { GestionAdminComponent } from './gestion-admin/gestion-admin.component';
 import { AjouterJeuComponent } from './ajouter-jeu/ajouter-jeu.component';
+import { ConfirmationAchatComponent } from './confirmation-achat/confirmation-achat.component';
 
 
 
@@ -63,6 +64,7 @@ import { AjouterJeuComponent } from './ajouter-jeu/ajouter-jeu.component';
     VendeurComponent,
     GestionAdminComponent,
     AjouterJeuComponent,
+    ConfirmationAchatComponent,
 
   ],
   imports: [
