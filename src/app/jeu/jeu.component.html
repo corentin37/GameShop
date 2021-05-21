@@ -7,7 +7,14 @@
                 
                 <img src="{{jeu.lejeu.urlImage}}" alt="Image Jeu" class="img">
                 <br><br><br>
-                <h6>Moyenne : {{moyenne}} / 10 </h6>
+                <div *ngIf='moyenne!=0' >
+                    <h6>Moyenne : {{moyenne}} / 10 </h6>
+                </div>
+                <div *ngIf='moyenne==0' >
+                    Aucun joueur n'a attribué de note à ce jeu.
+                </div>
+                
+                
             </div>
             <div class="col-sm-1"></div>
 
@@ -67,32 +74,40 @@
 
     
     <div *ngFor="let a of avis">
+        <div *ngIf='a.commentaire' >
+            <div class="card">
+                <br>
+                <div class="row" >
+                    
         
-        <div class="row" >
-            <div class="col-sm-2" style="text-align: center; ">
-                <br><br>
-                <!-- <img src="/assets/img/astrocat.jpg" alt="Avatar"  >-->
-                    <div class="container">
-                    <h6><b><i class="fas fa-user" style="color: steelblue;"></i> {{a.user.login}}</b></h6>
+                    <div class="col-sm-2" style="text-align: center; ">
+                        <br><br>
+                        <!-- <img src="/assets/img/astrocat.jpg" alt="Avatar"  >-->
+                            <div class="container">
+                            <h6><b><i class="fas fa-user" style="color: steelblue;"></i> {{a.user.login}}</b></h6>
+                            </div>
                     </div>
-            </div>
-            <span class="vertical-line"></span>
-            <div class="col-sm-2" style="text-align: center;">
-                <h6> Note : </h6>
+                    <span class="vertical-line"></span>
+                    <div class="col-sm-2" style="text-align: center;">
+                        <h6> Note : </h6>
+                        <br>
+                        <h5> {{a.note}} / 10 </h5> <br>  
+                    </div>
+                    <span class="vertical-line"></span>
+                    <div class="col-sm-6">
+                        <h6>Avis sur le jeu : </h6>
+                        <br>
+                        <p> {{a.commentaire}} </p>
+                        
+                    </div>
+
+                </div>
                 <br>
-                <h5> {{a.note}} </h5> <br>
-                <h6> / 10</h6>
-                
             </div>
-        
-            <div class="col-sm-6">
-                <h6>Avis sur le jeu : </h6>
-                <br>
-                <p> {{a.commentaire}} </p>
-                
-            </div>
-        </div>  
-        <br> <br>
+            
+        </div>
+     
+             <br> <br>
     </div>
     
 
