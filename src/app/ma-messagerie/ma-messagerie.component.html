@@ -1,6 +1,6 @@
 
 
-<!-- Recherche table messages recu -->
+<!--
 <div class="container">
   <div class="row">
     <form
@@ -8,7 +8,7 @@
       (ngSubmit)="afficherMesMessagesParExpediteur(recherche.login)"
       class="container border trombinoscope col-sm-9"
     >
-      Liste des messages: <!--VERIFIER-->
+      Liste des messages: 
       <br />
       <div class="row">
         <div class="col-sm-12">
@@ -23,7 +23,7 @@
                 
               </tr>
             </thead>
-            <!--VERIFIER-->
+            
             <tbody>
               <tr *ngFor="let a of messages" (click)="rechercheMesMessagesId(a.id)">
                 <th scope="row">{{ a.id }}</th>
@@ -42,7 +42,7 @@
             (click)="fenetreActivation(1)"
             class="btn btn-sm button-primary btn-block"
           >
-            Ecrire : <!--VERIFIER-->
+            Ecrire : 
           </button>
         </div>
         <div class="col-sm-8">
@@ -62,12 +62,12 @@
             type="submit"
             class="btn btn-sm button-primary btn-block"
           >
-            Rechercher <!--VERIFIER-->
+            Rechercher 
           </button>
         </div>
       </div>
     </form>
-    <!-- Recherche card -->
+    
     <div class="container border col-sm-3">
       <div class="container">
         <br />
@@ -108,7 +108,7 @@
                           <a
                             (click)="fenetreActivation(3)" 
                             class="dropdown-item"
-                            >Modifier <!--VERIFIER--> </a
+                            >Modifier  </a
                           >
                           <a (click)="bloquer(person)" class="dropdown-item"
                             >Bloquer </a
@@ -127,7 +127,7 @@
               </div>
             </div>
           </div>
-          <!-- Card Pas de Résultat --> <!--VERIFIER-->
+           
           <div *ngIf="fenetreSansResultat" class="col-sm">
             <div class="row">
               <div class="card">
@@ -147,11 +147,11 @@
             </div>
           </div>
 
-          <!-- Card Ecrire --> <!--VERIFIER-->
+         
 
           <div class="card ecrire">
             <div *ngIf="fenetreEcrire" class="contenuCard">
-              <!--VERIFIER-->
+              
                 <form #f="ngForm" (ngSubmit)="ecrire(f.value)">
                 <div class="form-group">
                   <label style="align-content: center" for="">
@@ -193,8 +193,8 @@
             </div>
           </div>
 
-          <!-- Card modification -->
-          <!--VERIFIER-->
+          
+        
           <div class="card modification">
             <div *ngIf="fenetreModification" class="contenuCard">
               <form
@@ -203,7 +203,7 @@
                   modification(user.value) +
                     console('value submit' + user.value)
                 "
-              ><!--VERIFIER-->
+              >
 
 
                 <div class="form-group">
@@ -285,13 +285,7 @@
 <div>
   <br />
 </div>
-
-Petit test à mettre en forme : la liste des destinataires avec lesquels des messages ont déjà été envoyés ou reçus s'affiche ici. <br>
-Si tu cliques sur le nom du destinataire, l'historique des messages s'affiche <br>
-(j'ai mis un affichage très simple qui commence par "Envoi" ou "Réception") <br>
-A toi de le mettre en forme et de faire l'envoi de nouveaux messages ! <br>
-(Tu peux récupérer le destinataire dans la variable destinataireSet) <br><br>
-
+--->
 <div class="container border">
   <div *ngIf="destinataireSet==null">
     <div class="col-sm-12" *ngFor="let d of destinataires">
@@ -300,22 +294,20 @@ A toi de le mettre en forme et de faire l'envoi de nouveaux messages ! <br>
   </div>
   <div *ngIf="destinataireSet!=null">
     <a (click)="setDestinataire(null)" type="button">Retour</a>
-    <div class="col-sm-12" *ngFor="let m of messagesAff">
-      <span *ngIf="m.destinataire==destinataireSet">Envoi
-        <p>Message Id : {{ m.id }}</p>
-        <p>Date : {{ m.dateCreation }}</p>
-        <p>From : {{ m.expediteur.mail }}</p>
-        <p>From : {{ m.destinataire.mail }}</p>
-        <p>contenu : {{ m.contenu }}</p>
-      </span>
-      <span *ngIf="m.expediteur==destinataireSet">Reception
-        <p>Message Id : {{ m.id }}</p>
-        <p>Date : {{ m.dateCreation }}</p>
-        <p>From : {{ m.expediteur.mail }}</p>
-        <p>From : {{ m.destinataire.mail }}</p>
-        <p>contenu : {{ m.contenu }}</p>
-      </span>
+    <div class="col-sm-12" *ngFor="let m of messagesAff" class="text">
+      <p *ngIf="m.destinataire.id==destinataireSet.id" class="text" style="text-align: right !important;">Envoi  Date : {{ m.dateCreation }} <br> Message : {{ m.contenu }}</p>
+      <span *ngIf="m.expediteur==destinataireSet" class="text" style="text-align: left !important;">Reception  Date : {{ m.dateCreation }} <br> Message : {{ m.contenu }}</span>
     </div>
+    <form #msg="ngForm"(ngSubmit)="newReponse(msg.value)"><!--note aura tous le contenu du formulaire, info du formulaire contenu dans note.value--->
+      <div class="form-group">
+          <label class="text-secondary" for="">Répondez ici</label><!--label évite d'utiliser le placeholder-->
+          <input type="text" name="contenu" class="form-control" ngModel=""><!--contenue est le nom utilisé dans le format json donc la bd-->
+      </div>
+      <div class="col-sm-3">
+          <button type="submit" class="btn btn-raised btn-sized">Répondre</button><!--, rajouter form module x2 dans modulestype submit pour envoyer les données-->
+      </div>
+         
+  </form>
   </div>
 </div>
 
