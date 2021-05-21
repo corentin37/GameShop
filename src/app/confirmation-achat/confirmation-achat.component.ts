@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PanierService } from '../Services/panier.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { PanierService } from '../Services/panier.service';
 })
 export class ConfirmationAchatComponent implements OnInit {
 
-  constructor(private http: HttpClient, private panierService : PanierService) { }
+  constructor(private http: HttpClient,private route: Router, private panierService : PanierService) { }
 
   panierAchat;
   panierLocation;
@@ -24,5 +25,16 @@ export class ConfirmationAchatComponent implements OnInit {
     this.prixTotalAchat=this.panierService.prixTotalAchat;
     this.prixTotalLocation=this.panierService.prixTotalLocation;
   }
+  convertBoolean(b){
+    if(b==true){
+      return "Oui";
+    }
+    else{
+      return "En attente";
+    }
+  }
 
+  goToCatalogue(){
+    this.route.navigateByUrl("/catalogue")
+  }
 }
