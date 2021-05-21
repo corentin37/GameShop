@@ -114,31 +114,27 @@
 </div>
 
 <div id="Panier Salles" class="tabcontent">
-  <h1>Mon panier de réservation de salles</h1>
+  <h1>Mon historique</h1>
   <div class="row">
     <div class="col-sm-9 ">
-      <div class="row">
-        <div *ngFor="let h of historique" class="col-sm-3">
-          <div class="card" style="width: 12rem;">
-              <img class="card-img-top" src={{h.salle.urlImage}} alt="Ville" width="100px">
-              <div class="card-body">
-                  <h5 class="card-title"><strong>{{h.salle.nom}}</strong></h5>
-                  <p class="card-text">Nombre places disponibles : {{h.salle.nombreDePlaces}}</p>
-                  <p class="card-text">Accès public :  {{convertBoolean(h.salle.publique)}}</p>
-                  <p class="card-text">Prix : {{h.salle.prix}} €</p>
-                  <p class="card-text capitalize"><strong>Joueur : {{h.joueur.user.login}}</strong></p>
-                  <p class="card-text"><strong>Validation : {{convertBoolean(h.locationValidee)}}</strong></p>                  
-              </div>
-          </div>
+      <div *ngFor="let hj of historiquejeu">
+        <div class="card card-shadow">
+          <div class="p-3" class="card-body border border-secondary">
+            <div class="row">
+              <div class="col-sm-12" *ngIf="hj.jeuAchat!=null"><b>Achat&nbsp;&nbsp;</b><i class="text-secondary">{{hj.dateCreation|date : 'd/M/y h:mm'}}</i><span>&nbsp; Quantite : {{hj.quantite}}&nbsp;&nbsp; <b>Jeu : {{hj.jeuAchat.lejeu.nom}}</b></span></div>
+              <div class="col-sm-12" *ngIf="hj.jeuLocation!=null"><b>Location&nbsp;&nbsp;</b><i class="text-secondary">{{hj.dateCreation|date : 'd/M/y h:mm'}}</i><span>&nbsp; Quantite : {{hj.quantite}}&nbsp;&nbsp;<b>Jeu : {{hj.jeuLocation.lejeu.nom}}</b></span></div>  
+            </div>
         </div>
       </div>
-
     </div>
-    <div class="col-sm-3">
-      <p style="font-size: larger;">Prix Total Achat : {{prixTotalAchat}} €<br></p>
-      <p style="font-size: larger;">Prix Total Location : {{prixTotalLocation}} €<br><br><a class="btn btn-outline-warning btn-sm" href="connexion" role="button">Confirmer l'achat et la location</a></p>
-    </div>
-    
   </div>
+  <div class="col-sm-3">
+    <a class="btn btn-primary" (click)="histoAchats()" type="button">Achats</a><br>
+    <a class="btn btn-primary" (click)="histoLocations()" type="button">Locations</a><br>
+    <a class="btn btn-primary" (click)="histoAll()" type="button">Tout afficher</a>
+  </div>
+
 </div>
+</div>
+
 </div>
