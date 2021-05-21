@@ -30,6 +30,7 @@ export class GestionSallesComponent implements OnInit {
     if(this.reservation===true){
       this.placeReservee(s);
       
+      
     }
     else{
       this.salleService.room=s;
@@ -48,6 +49,8 @@ export class GestionSallesComponent implements OnInit {
       error: (err) => {console.log(err); }
     });
   }
+
+  
 
   getAllSalles(){
     this.http.get('http://localhost:8086/salle/list').subscribe({
