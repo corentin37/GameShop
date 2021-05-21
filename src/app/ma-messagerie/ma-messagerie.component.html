@@ -1,6 +1,6 @@
 
-
 <!--
+
 <div class="container">
   <div class="row">
     <form
@@ -285,7 +285,7 @@
 <div>
   <br />
 </div>
---->
+-->
 <div class="container border">
   <div *ngIf="destinataireSet==null">
     <div class="col-sm-12" *ngFor="let d of destinataires">
@@ -294,9 +294,9 @@
   </div>
   <div *ngIf="destinataireSet!=null">
     <a (click)="setDestinataire(null)" type="button">Retour</a>
-    <div class="col-sm-12" *ngFor="let m of messagesAff" class="text">
-      <p *ngIf="m.destinataire.id==destinataireSet.id" class="text" style="text-align: right !important;">Envoi  Date : {{ m.dateCreation }} <br> Message : {{ m.contenu }}</p>
-      <span *ngIf="m.expediteur==destinataireSet" class="text" style="text-align: left !important;">Reception  Date : {{ m.dateCreation }} <br> Message : {{ m.contenu }}</span>
+    <div class="col-sm-12" *ngFor="let m of messagesAff" class="text container">
+      <p *ngIf="userId!=m.destinataire.id" class="text" style="text-align: right !important;">Envoi  Date : {{ m.dateCreation }} <br> Message : {{ m.contenu }}</p>
+      <span *ngIf="userId==m.destinataire.id" class="text" style="text-align: left !important;">Reception  Date : {{ m.dateCreation }} <br> Message : {{ m.contenu }}</span>
     </div>
     <form #msg="ngForm"(ngSubmit)="newReponse(msg.value)"><!--note aura tous le contenu du formulaire, info du formulaire contenu dans note.value--->
       <div class="form-group">
