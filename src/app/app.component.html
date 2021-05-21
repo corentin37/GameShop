@@ -1,12 +1,12 @@
 <div class="fondSite">
   <div class="container">
-    <div class="row ">
-      <div class="col-sm-1 mt-2  ">
+    <div class="row">
+      <div class="col-sm-1 mt-2">
         <a class="" routerLink="catalogue">
-        <img src="assets/img/logo.png" alt="" width="160%" class="img" />
-      </a>
+          <img src="assets/img/logo.png" alt="" width="160%" class="img" />
+        </a>
       </div>
-      <div class="col-sm-2   capitalize center">
+      <div class="col-sm-2 capitalize center">
         <div style="color: steelblue">
           <br /><br />
           <h6><strong></strong></h6>
@@ -26,9 +26,10 @@
           </div>
         </form>
       </div>
-      <div class="col-sm-1 " ></div>
+      <div class="col-sm-1"></div>
 
-      <div *ngIf= "!userConnected" class="col-sm-2 mt dropdown"> <!-- navbar-->
+      <div *ngIf="authService.userIsConnected()" class="col-sm-2 mt dropdown">
+        <!-- navbar-->
         <button
           class="btn btn-secondary dropdown-toggle"
           type="button"
@@ -38,9 +39,8 @@
           aria-expanded="false hover"
         >
           <a class="nav-item nav-link" routerLink="connexion"
-            ><i style="color: steelblue" class="fa fa-user fa-2x"></i>&nbsp;{{
-              cacherLogin(true)
-            }}</a
+            ><i style="color: steelblue" class="fa fa-user fa-2x"></i>&nbsp;
+            {{ authService.getUserConnect().login }}</a
           >
         </button>
 
@@ -62,25 +62,21 @@
           >
         </div>
       </div>
-      
-      <div *ngIf= "userConnected" class="col-sm-2 mt dropdown"> <!-- navbar-->
+
+      <div *ngIf="!authService.userIsConnected()" class="col-sm-2 mt dropdown">
+        <!-- navbar-->
         <button
-          class="btn btn-secondary dropdown-toggle"
+          class="btn btn-secondary "
           type="button"
           id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false hover"
+          
         >
           <a class="nav-item nav-link" routerLink="connexion"
-            ><i style="color: steelblue" class="fa fa-user fa-2x"></i>&nbsp;{{
-              Mon Compte</a
+            ><i style="color: steelblue" class="fa fa-user fa-2x"></i>&nbsp;
+            Mon Compte</a
           >
         </button>
-
-       
       </div>
-
     </div>
 
     <div>
@@ -98,7 +94,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav  nav-fill w-100">
+          <div class="navbar-nav nav-fill w-100">
             <a
               class="nav-item catalogue nav-link"
               routerLink="catalogue"
@@ -129,14 +125,15 @@
   </div>
 
   <router-outlet></router-outlet>
-<div class="fondSite container">
-  <footer>
-    <br><br>
-    <div class=" container text-secondary center small">
-      <p>Site créé par C. Brochon, A. Cadoux, D. Lahaussois, F. Richard et A. Savary, en mai 2021.</p>
-    </div>
-    
-  </footer>
-
+  <div class="fondSite container">
+    <footer>
+      <br /><br />
+      <div class="container text-secondary center small">
+        <p>
+          Site créé par C. Brochon, A. Cadoux, D. Lahaussois, F. Richard et A.
+          Savary, en mai 2021.
+        </p>
+      </div>
+    </footer>
+  </div>
 </div>
-
