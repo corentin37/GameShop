@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CatalogueService } from '../Services/catalogue.service';
 import { JeuService } from '../Services/jeu.service';
+import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-catalogue',
@@ -16,7 +17,7 @@ export class CatalogueComponent implements OnInit {
 
 
 
-  constructor(private http: HttpClient, private route : Router, private jeuService : JeuService, private catalogueService : CatalogueService) { }
+  constructor(private http: HttpClient, private deployService: DepService, private route : Router, private jeuService : JeuService, private catalogueService : CatalogueService) { }
   jeu;
   jeuAffiche;
   jeuAfficheTemp;
@@ -41,7 +42,7 @@ nomDeJeu;
   //gets initialisation
   getCatalogue() : any{
     if(this.catalogueService.nomDeJeu==null){
-      this.http.get('http://localhost:8086/jeu/listJeuAchat').subscribe({
+      this.http.get(this.deployService.lienHttp + 'jeu/listJeuAchat').subscribe({
       next: (data)=> {this.jeu = data; this.jeuAffiche=this.jeu;this.initVariables(); },
       error: (err)=> {console.log(err);}
       });
@@ -49,7 +50,7 @@ nomDeJeu;
     else{
       this.nomDeJeu=this.catalogueService.nomDeJeu;
       console.log( "nom du jeu : "+this.catalogueService.nomDeJeu);
-      this.http.get('http://localhost:8086/jeu/findByNomLike/'+this.catalogueService.nomDeJeu).subscribe({
+      this.http.get(this.deployService.lienHttp + 'jeu/findByNomLike/'+this.catalogueService.nomDeJeu).subscribe({
       next: (data)=> {this.jeu = data; this.jeuAffiche=this.jeu;this.initVariables(); },
       error: (err)=> {console.log(err);}
       });
@@ -57,13 +58,13 @@ nomDeJeu;
     
     }
   getCategorie(): any{
-    this.http.get ('http://localhost:8086/categories').subscribe({
+    this.http.get (this.deployService.lienHttp + 'categories').subscribe({
       next: (data)=> {this.categorie = data;console.log(data) },
       error: (err)=> {console.log(err);}
     })
   }
   getMarque(): any{
-    this.http.get ('http://localhost:8086/marquesOrdered').subscribe({
+    this.http.get (this.deployService.lienHttp + 'marquesOrdered').subscribe({
       next: (data)=> {this.marque = data; },
       error: (err)=> {console.log(err);}
     }) 
@@ -97,7 +98,7 @@ nomDeJeu;
   
   getMoyenne(j){
     
-    this.http.get('http://localhost:8086/avis/moyenne/' + j.id ).subscribe({
+    this.http.get(this.deployService.lienHttp + 'avis/moyenne/' + j.id ).subscribe({
       next: (data) => {console.log(data); this.moyenne = data; },
       error: (err) => { console.log(err); }
     });
@@ -133,13 +134,13 @@ addToPanier(game){
             console.log("bodysave : "+bodySave);console.log("user : "+user.id);console.log("jeuAchat : "+game.id);
 
            
-            this.http.get('http://localhost:8086/panier/userAndGame/'+user.id+"/"+game.id).subscribe({ // vérification de la non-présence du jeu dans le panier de l'utilisateur
+            this.http.get(this.deployService.lienHttp + 'panier/userAndGame/'+user.id+"/"+game.id).subscribe({ // vérification de la non-présence du jeu dans le panier de l'utilisateur
               next: (data)=> {AlreadyPresent=data;
                 if(AlreadyPresent!=null){
                   alert(game.lejeu.nom + " est déjà dans le panier !");
                 }
                 else{
-                  this.http.post('http://localhost:8086/panier',bodySave).subscribe({  //ajout dans le panier
+                  this.http.post(this.deployService.lienHttp + 'panier',bodySave).subscribe({  //ajout dans le panier
                     next: (data)=>{alert(game.lejeu.nom + " ajouté dans le panier !");},
                     error: (err) => {console.log(err);}
                   });

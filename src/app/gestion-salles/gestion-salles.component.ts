@@ -3,6 +3,7 @@ import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SalleService } from '../Services/salle.service';
+import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-gestion-salles',
@@ -11,7 +12,7 @@ import { SalleService } from '../Services/salle.service';
 })
 export class GestionSallesComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route: Router, private salleService: SalleService) { }
+  constructor(private http: HttpClient, private route: Router, private salleService: SalleService, private deployService: DepService) { }
 
   ngOnInit(): void {
     this.getAllSalles();
@@ -41,7 +42,7 @@ export class GestionSallesComponent implements OnInit {
   //enregistre la salle modifiée dans room(service)
   placeReservee(salleModifiee){
     salleModifiee.nombreDePlaces-=1;
-    this.http.put('http://localhost:8086/salle', salleModifiee).subscribe({
+    this.http.put(this.deployService.lienHttp + 'salle', salleModifiee).subscribe({
       next: (data) => {console.log(data); 
         this.salleService.room=salleModifiee;
         this.route.navigateByUrl('reserverSalle');
@@ -53,7 +54,7 @@ export class GestionSallesComponent implements OnInit {
   
 
   getAllSalles(){
-    this.http.get('http://localhost:8086/salle/list').subscribe({
+    this.http.get(this.deployService.lienHttp + 'salle/list').subscribe({
       next: (data) => {console.log(data); this.salle = data; 
         //this.changeBackgroundColor()
       },

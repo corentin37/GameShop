@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { logging } from 'protractor';
+import { DepService } from '../../Services/dep.service';
 
 @Component({
   selector: 'app-tache-admin',
@@ -22,7 +23,7 @@ export class TacheAdminComponent implements OnInit {
   fenetreModification;
   fenetreInscription;
 
-  constructor(private http: HttpClient, private route: Router) {}
+  constructor(private http: HttpClient, private route: Router, private deployService: DepService) {}
 
   ngOnInit(): void {
     this.getAllAdmin();
@@ -42,7 +43,7 @@ export class TacheAdminComponent implements OnInit {
     this.getAllAdmin()
     this.fenetreInscription = false;
     this.http
-      .post('http://localhost:8086/admin/recherche', recherche)
+      .post(this.deployService.lienHttp + 'admin/recherche', recherche)
       .subscribe({
         next: (data) => {
           this.person = data;
@@ -63,7 +64,7 @@ export class TacheAdminComponent implements OnInit {
 
   supprimer(person): any {
     this.http
-      .delete('http://localhost:8086/admin/supprimer', person)
+      .delete(this.deployService.lienHttp + 'admin/supprimer', person)
       .subscribe({
         next: (data) => {
 
@@ -127,7 +128,7 @@ export class TacheAdminComponent implements OnInit {
   bloquer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
 
-    this.http.put('http://localhost:8086/admin/bloquer', person).subscribe({
+    this.http.put(this.deployService.lienHttp + 'admin/bloquer', person).subscribe({
       next: (data) => {
         this.person = data;
         //this.getAllAdmin();
@@ -144,7 +145,7 @@ export class TacheAdminComponent implements OnInit {
     // ATTENTION A L'URL
     console.log(person);
     this.http
-      .post('http://localhost:8086/admin/save', person)
+      .post(this.deployService.lienHttp + 'admin/save', person)
       .subscribe({
         next: (data) => {
           alert('Création du compte admin');
@@ -170,7 +171,7 @@ export class TacheAdminComponent implements OnInit {
     
 
     this.http
-      .put('http://localhost:8086/admin/modifier', person)
+      .put(this.deployService.lienHttp + 'admin/modifier', person)
       .subscribe({
         next: (data) => {
           this.fenetreModification = false;
@@ -191,7 +192,7 @@ export class TacheAdminComponent implements OnInit {
 
     console.log("console modif")
     this.http
-      .put('http://localhost:8086/admin/modifier', personCreated)
+      .put(this.deployService.lienHttp + 'admin/modifier', personCreated)
       .subscribe({
         next: (data) => {
           this.getAllAdmin();
@@ -211,7 +212,7 @@ export class TacheAdminComponent implements OnInit {
   }
 
   getAllAdmin(): any {
-    this.http.get('http://localhost:8086/admin/list').subscribe({
+    this.http.get(this.deployService.lienHttp + 'admin/list').subscribe({
       next: (data) => {
         this.admins = data;
       },

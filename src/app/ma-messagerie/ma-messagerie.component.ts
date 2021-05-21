@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-ma-messagerie',
@@ -29,7 +30,7 @@ userLogin =  localStorage.getItem('login');
 
 
 
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private deployService: DepService) { }
 
   ngOnInit(): void {
     
@@ -41,7 +42,7 @@ userLogin =  localStorage.getItem('login');
 
   getAllMesMessages(): any {
     this.userId =  localStorage.getItem('id');
-    this.http.get('http://localhost:8086/messagerie/' + this.userId).subscribe({
+    this.http.get(this.deployService.lienHttp + 'messagerie/' + this.userId).subscribe({
       next: (data) => {
         this.messages = data;this.getDestinataires();
         
@@ -61,9 +62,9 @@ userLogin =  localStorage.getItem('login');
     
     var id2 = 4;
     console.log("recher par 14");
-    console.log('http://localhost:8086/messages/recherche/'+ this.userId + '/' + id2)
+    console.log(this.deployService.lienHttp + 'messages/recherche/'+ this.userId + '/' + id2)
     this.http
-      .get('http://localhost:8086/messages/recherche/'+ this.userId + '/' + id2)
+      .get(this.deployService.lienHttp + 'messages/recherche/'+ this.userId + '/' + id2)
       .subscribe({
         next: (data) => {
           console.log(data);
@@ -81,7 +82,7 @@ userLogin =  localStorage.getItem('login');
     this.fenetreEcrire = false;
     console.log(recherche);
     this.http
-      .get('http://localhost:8086/messages/recherche/' + recherche)
+      .get(this.deployService.lienHttp + 'messages/recherche/' + recherche)
       .subscribe({
         next: (data) => {
           this.message = data;
@@ -102,7 +103,7 @@ userLogin =  localStorage.getItem('login');
 
   supprimer(message): any {
     this.http
-      .delete('http://localhost:8086/admin/supprimer', message)
+      .delete(this.deployService.lienHttp + 'admin/supprimer', message)
       .subscribe({
         next: (data) => {
 
@@ -125,7 +126,7 @@ userLogin =  localStorage.getItem('login');
   /*
   conversionLoginId(login):any {
     this.http
-    .get('http://localhost:8086/user/login/' + login).subscribe({
+    .get(this.deployService.lienHttp + 'user/login/' + login).subscribe({
     next: (data) => { return data.id ; console.log("trouver" + data)
     },
     error: (err) => {
@@ -140,7 +141,7 @@ userLogin =  localStorage.getItem('login');
   trouverDestinataire(login): any {
 
     this.http
-    .get('http://localhost:8086/user/login/' + login).subscribe({
+    .get(this.deployService.lienHttp + 'user/login/' + login).subscribe({
     next: (data) => { this.destinataire = data; this.destinataireExist = data; console.log("trouver l138" + data)
     },
     error: (err) => {
@@ -176,10 +177,10 @@ userLogin =  localStorage.getItem('login');
     console.log("ecrire msg :" + message.login);
     console.log("ecrire msg" + this.userId);
     message.expediteur = this.userId;
-    console.log('http://localhost:8086/message', message);
+    console.log(this.deployService.lienHttp + 'message', message);
 
     this.http
-      .post('http://localhost:8086/message', message)
+      .post(this.deployService.lienHttp + 'message', message)
       .subscribe({
         next: (data) => {
           alert('Message envoyé');
@@ -330,7 +331,7 @@ userLogin =  localStorage.getItem('login');
 
   newReponse(contenu){
     var newMessage={"contenu": contenu.contenu,"expediteur":{"id":this.userId},"destinataire":{"id":parseInt(this.destinataireSet.id)}};
-      this.http.post('http://localhost:8086/message', newMessage).subscribe({
+      this.http.post(this.deployService.lienHttp + 'message', newMessage).subscribe({
         next: (data) => { console.log(data);this.getAllMesMessages();},
         error: (err) => { console.log(err); }
       });

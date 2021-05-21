@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-gestion-admin',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GestionAdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private deployService: DepService) { }
 
   ngOnInit(): void {
   }

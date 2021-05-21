@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { DepService } from '../../Services/dep.service';
 
 @Component({
   selector: 'app-tache-joueur',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./tache-joueur.component.css']
 })
 export class TacheJoueurComponent implements OnInit {
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private deployService: DepService) { }
   rechercheJ;
   joueurs;
   personExist;
@@ -36,7 +37,7 @@ export class TacheJoueurComponent implements OnInit {
 
 
   getAllJoueur(): any {
-    this.http.get('http://localhost:8086/joueur/list').subscribe({
+    this.http.get(this.deployService.lienHttp + 'joueur/list').subscribe({
       next: (data) => {
         this.joueurs = data;
       },
@@ -61,7 +62,7 @@ export class TacheJoueurComponent implements OnInit {
   adherer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
     console.log('bloqué');
-    this.http.put('http://localhost:8086/joueur/adherer', person).subscribe({
+    this.http.put(this.deployService.lienHttp + 'joueur/adherer', person).subscribe({
       next: (data) => {
         this.person = data;
         this.getAllJoueur();
@@ -78,7 +79,7 @@ export class TacheJoueurComponent implements OnInit {
     this.getAllJoueur();
     this.fenetreInscription = false;
     this.http
-      .post('http://localhost:8086/joueur/recherche', recherche)
+      .post(this.deployService.lienHttp + 'joueur/recherche', recherche)
       .subscribe({
         next: (data) => {
           this.person = data;
@@ -99,7 +100,7 @@ export class TacheJoueurComponent implements OnInit {
 
   supprimer(person): any {
     this.http
-      .delete('http://localhost:8086/joueur/supprimer', person)
+      .delete(this.deployService.lienHttp + 'joueur/supprimer', person)
       .subscribe({
         next: (data) => {
 
@@ -155,7 +156,7 @@ export class TacheJoueurComponent implements OnInit {
   bloquer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
 
-    this.http.put('http://localhost:8086/joueur/bloquer', person).subscribe({
+    this.http.put(this.deployService.lienHttp + 'joueur/bloquer', person).subscribe({
       next: (data) => {
         this.person = data;
         this.getAllJoueur();
@@ -171,7 +172,7 @@ export class TacheJoueurComponent implements OnInit {
     // le formulaire s'appelle user, mais creation de vendeur
     // ATTENTION A L'URL
     this.http
-      .post('http://localhost:8086/joueur/save', person)
+      .post(this.deployService.lienHttp + 'joueur/save', person)
       .subscribe({
         next: (data) => {
           alert('Création du compte joueur');
@@ -196,7 +197,7 @@ export class TacheJoueurComponent implements OnInit {
 
 
     this.http
-      .put('http://localhost:8086/admin/modifier', person)
+      .put(this.deployService.lienHttp + 'admin/modifier', person)
       .subscribe({
         next: (data) => {
           this.fenetreModification = false;
@@ -216,7 +217,7 @@ export class TacheJoueurComponent implements OnInit {
 
 
     this.http
-      .put('http://localhost:8086/admin/modifier', personCreated)
+      .put(this.deployService.lienHttp + 'admin/modifier', personCreated)
       .subscribe({
         next: (data) => {
           this.getAllJoueur();

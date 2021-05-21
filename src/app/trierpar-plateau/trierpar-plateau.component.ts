@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JeuService } from '../Services/jeu.service';
+import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-trierpar-plateau',
@@ -10,7 +11,7 @@ import { JeuService } from '../Services/jeu.service';
 })
 export class TrierparPlateauComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route : Router, private jeuService : JeuService) { }
+  constructor(private http: HttpClient, private route : Router, private jeuService : JeuService, private deployService: DepService) { }
   jeu;
   categorie;
   marque;
@@ -20,19 +21,19 @@ export class TrierparPlateauComponent implements OnInit {
     this.getMarque();
   }
   getCatalogue() : any{
-    this.http.get('http://localhost:8086/jeu/listJeuAchat').subscribe({
+    this.http.get(this.deployService.lienHttp + 'jeu/listJeuAchat').subscribe({
       next: (data)=> {this.jeu = data; },
       error: (err)=> {console.log(err);}
       });
     }
   getCategorie(): any{
-    this.http.get ('http://localhost:8086/categories').subscribe({
+    this.http.get (this.deployService.lienHttp + 'categories').subscribe({
       next: (data)=> {this.categorie = data;console.log(data) },
       error: (err)=> {console.log(err);}
     })
   }
   getMarque(): any{
-    this.http.get ('http://localhost:8086/marques').subscribe({
+    this.http.get (this.deployService.lienHttp + 'marques').subscribe({
       next: (data)=> {this.marque = data; },
       error: (err)=> {console.log(err);}
     })

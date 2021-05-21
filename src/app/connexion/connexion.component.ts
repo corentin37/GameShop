@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../Services/auth.service';
+import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-connexion',
@@ -14,7 +15,8 @@ export class ConnexionComponent implements OnInit {
     private http: HttpClient,
     private route: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private deployService: DepService
   ) {}
   utilisateur;
   connectMessage;
@@ -58,7 +60,7 @@ export class ConnexionComponent implements OnInit {
   }
 
   connexion(user): any {
-    this.http.post('http://localhost:8086/connect', user).subscribe({
+    this.http.post(this.deployService.lienHttp + 'connect', user).subscribe({
       next: (data) => {
         console.log(data);
         this.utilisateur = data;
@@ -136,7 +138,7 @@ export class ConnexionComponent implements OnInit {
     // le formulaire s'appelle user, mais creation de joueur
     // ATTENTION A L'URL
     console.log(user);
-    this.http.post('http://localhost:8086/joueur/save', user).subscribe({
+    this.http.post(this.deployService.lienHttp + 'joueur/save', user).subscribe({
       next: (data) => {
         this.fenetreActivation(0);
         alert("L'équipe Gameshop vous remercie de votre confiance");
