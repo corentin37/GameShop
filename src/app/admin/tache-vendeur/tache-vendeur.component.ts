@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { DepService } from '../../Services/dep.service';
 
 @Component({
   selector: 'app-tache-vendeur',
@@ -21,7 +22,7 @@ export class TacheVendeurComponent implements OnInit {
   userConnected = false;
   userId =  localStorage.getItem('id')
   person;
-  constructor(private http: HttpClient, private route: Router) {}
+  constructor(private http: HttpClient, private route: Router, private deployService: DepService) {}
 
   ngOnInit(): void {
     this.getAllVendeur();
