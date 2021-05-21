@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CatalogueService } from './Services/catalogue.service';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private catalogueService : CatalogueService, private route : Router){}
   title = 'projet';
   login = localStorage.getItem("login");
   helloMessage;
@@ -51,5 +54,10 @@ export class AppComponent {
 
   }
 
+  toCatalogue(search){
+    console.log(search);
+    this.catalogueService.nomDeJeu=search;
+    this.route.navigateByUrl('/catalogue');
+  }
 
 }
