@@ -11,6 +11,7 @@
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
+    border-radius: 5px;
   }
   
   /* Style the buttons inside the tab */
@@ -45,8 +46,14 @@
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+    border-radius: 5px;
   }
 
   .h{
     height: 85%;
   }
+
+  .card{
+    border-radius: 5px;
+  }
+
