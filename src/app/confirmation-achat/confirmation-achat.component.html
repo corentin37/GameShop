@@ -30,8 +30,6 @@
                       </div>
                       <div class="row">
                         <div class="col-sm-4">{{ j.jeuAchat.lejeu.marqueDuJeu.libelle}}</div>
-                        <div class="col-sm-4"><a id="btnAcheterJeu{{j.id}}" class="btn btn-outline-primary btn-sm">Louer</a></div>
-                        <div classe="col-sm-4"><a class="btn btn-outline-danger btn-sm">Supprimer</a></div>
                       </div>                        
                   </div> 
               </div>
@@ -105,7 +103,11 @@
             </div>
           </div>
     </div>
-    
+    <div class="col-sm-3">
+        <p style="font-size: larger;">Prix Total Achat : {{prixTotalAchat}} €<br></p>
+        <p style="font-size: larger;">Prix Total Location : {{prixTotalLocation}} €</p>
+        <a class="btn btn-outline-danger btn-sm" (click)="goToCatalogue()" >Retour au catalogue</a>
+      </div>
 </div>
 
 </div>
