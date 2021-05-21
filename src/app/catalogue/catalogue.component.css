@@ -64,6 +64,17 @@ body {font-family: "Lato", sans-serif;}
   height: 30px;
 }
 
+.bouger{
+margin-left: -6% ! important;
+
+
+}
+
+.bouger2{
+  margin-left: 6% ! important;
+  
+  
+  }
 .card{
   border-radius: 5px;
 }

@@ -263,30 +263,48 @@ userLogin =  localStorage.getItem('login')
     this.destinataires=[];
     var destexists;
     for(let z of this.messages){
+      destexists=false;
+      for (let y of this.destinataires){
+        if(z.expediteur.id==this.userId || z.expediteur.id==y.id){
+          destexists=true
+        }
+      }
+      if(!destexists){
+        this.destinataires.push(z.expediteur);
+      }
+      destexists=false;
+      for (let y of this.destinataires){
+        if(z.destinataire.id==this.userId || z.destinataire.id==y.id){
+          destexists=true
+        }
+      }
+      if(!destexists){
+        this.destinataires.push(z.destinataire);
+      }
+      /*
       console.log(z.contenu);
       destexists=false;
       if(z.expediteur.id!=this.userId){
         for(let y of this.destinataires){
-          if(z.expediteur==y || z.destinataire==y){
+          if(z.expediteur==y){
             destexists=true;
           }
         }
         if(!destexists){
           this.destinataires.push(z.expediteur);
         }
-        if(z.destinataire.id!=this.userId){
-          destexists=false;
-          for(let y of this.destinataires){
-            if(z.destinataire==y){
-              destexists=true;
-            }
-          }
-          if(!destexists ){
-            this.destinataires.push(z.destinataire);
+      }
+      if(z.destinataire.id!=this.userId){
+        destexists=false;
+        for(let y of this.destinataires){
+          if(z.destinataire==y){
+            destexists=true;
           }
         }
-        
-      }
+        if(!destexists ){
+          this.destinataires.push(z.destinataire);
+        }
+      }*/
     }
     this.setDestinataire(this.destinataireSet);
   }
@@ -297,11 +315,10 @@ userLogin =  localStorage.getItem('login')
     if(this.destinataireSet!=null){
       this.messagesAff=[];
       for(let m of this.messages){
-        
-        if (m.expediteur==this.destinataireSet){
+        if (m.expediteur.id==this.destinataireSet.id && m.destinataire.id==this.userId){
           this.messagesAff.push(m);
         }
-        else if(m.destinataire.id==this.destinataireSet.id){
+        if(m.expediteur.id==this.userId && m.destinataire.id==this.destinataireSet.id){
           console.log(m);
           this.messagesAff.push(m);
           console.log(this.messagesAff);

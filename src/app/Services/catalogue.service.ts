@@ -15,5 +15,6 @@ export class CatalogueService {
   tempsJeuMin;
   tempsJeuMax;
   niveauDifficulte;
+  nomDeJeu;
   constructor() { }
 }
