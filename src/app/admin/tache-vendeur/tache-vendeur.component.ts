@@ -18,12 +18,23 @@ export class TacheVendeurComponent implements OnInit {
   fenetreResultat;
   fenetreModification;
   fenetreSansResultat;
-
+  userConnected = false;
+  userId =  localStorage.getItem('id')
   person;
   constructor(private http: HttpClient, private route: Router) {}
 
   ngOnInit(): void {
     this.getAllVendeur();
+    this.fenetreActivation(1);
+  }
+
+  connected(){
+    if (this.userId != null){
+      return this.userConnected = true;
+    } else{
+      return this.userConnected = false;
+    }
+
   }
 
   addVendeur(vendeur): any {
@@ -116,7 +127,7 @@ export class TacheVendeurComponent implements OnInit {
     this.http.put('http://localhost:8086/vendeur/bloquer', person).subscribe({
       next: (data) => {
         this.person = data;
-        // this.getAllAdmin();
+        this.getAllVendeur();
         // this.ngOnInit();
       },
       error: (err) => {

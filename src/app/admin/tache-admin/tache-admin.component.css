@@ -2,3 +2,23 @@
 .btnColor{
 background-color: rgb(184, 216, 243);
 }
+
+
+.btnColor1{
+    background-color: rgb(224, 237, 248);
+    
+    }
+.contenuCard {
+
+    padding: 7%;
+}
+
+
+.resultat {
+    
+    text-align: center;
+    vertical-align: 100%;
+    padding: 7%;
+    
+}
+

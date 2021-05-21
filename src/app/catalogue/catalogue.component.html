@@ -2,24 +2,26 @@
 
 <div class="container ">
   <div class="row">
-    <div class="col-sm-3 ">
-      <div class="row">
+    <div class="col-sm-3  ">
+      <div class="row ">
         <div class="tab">
-          <button id="tablinkCategorie" class="tablinks" (click)="openCloseTab( 'Categorie')">Categorie</button><div id="Categorie" class="tabcontent">
-            <a (click)="filterByCategorie(c)" *ngFor="let c of categorie"  class="dropdown-item"> {{c.libelle}} </a>
+          <button id="tablinkCategorie" class="tablinks colorMain" (click)="openCloseTab( 'Categorie')">Categorie</button><div id="Categorie" class="tabcontent">
+            <a (click)="filterByCategorie(c)" *ngFor="let c of categorie"  class="dropdown-item colorMainSub"> {{c.libelle}} </a>
           </div>
         </div>
       </div>
+      <br>
       <div class="row">
         <div class="tab">
-          <button id="tablinkMarque" class="tablinks" (click)="openCloseTab( 'Marque')">Marque</button><div id="Marque" class="tabcontent">
-            <a (click)="filterByMarque(m)" *ngFor="let m of marque" class="dropdown-item">{{m.libelle}}</a>
+          <button id="tablinkMarque" class="tablinks colorMain" (click)="openCloseTab( 'Marque')">Marque</button><div id="Marque" class="tabcontent">
+            <a (click)="filterByMarque(m)" *ngFor="let m of marque" class="dropdown-item colorMainSub">{{m.libelle}}</a>
           </div>
         </div>
       </div>
+      <br>
       <div class="row">
         <div class="tab">
-          <button id="tablinkAge" class="tablinks" (click)="openCloseTab( 'Age')">Age</button><div id="Age" class="tabcontent">
+          <button id="tablinkAge" class="tablinks colorMain" (click)="openCloseTab( 'Age')">Age</button><div id="Age" class="tabcontent">
             <div class="row">
               <div class="col-sm-12">Age Minimum :</div>
             </div>
@@ -37,9 +39,10 @@
           </div>
         </div>
       </div>
+      <br>
       <div class="row">
         <div class="tab">
-          <button id="tablinkPrix" class="tablinks" (click)="openCloseTab( 'Prix')">Prix d'achat</button><div id="Prix" class="tabcontent">
+          <button id="tablinkPrix" class="tablinks colorMain" (click)="openCloseTab( 'Prix')">Prix d'achat</button><div id="Prix" class="tabcontent">
             <div class="row">
               <div class="col-sm-12">Prix Minimum :</div>
             </div>
@@ -65,9 +68,10 @@
           </div>
         </div>
       </div>
+      <br>
       <div class="row">
         <div class="tab">
-          <button id="tablinkPrix Location" class="tablinks" (click)="openCloseTab( 'Prix Location')">Prix location</button><div id="Prix Location" class="tabcontent">
+          <button id="tablinkPrix Location" class="tablinks colorMain" (click)="openCloseTab( 'Prix Location')">Prix location</button><div id="Prix Location" class="tabcontent">
             <div class="row">
               <div class="col-sm-12">Prix Minimum :</div>
             </div>
@@ -93,9 +97,10 @@
           </div>
         </div>
       </div>
+      <br>
       <div class="row">
         <div class="tab">
-          <button id="tablinkNombre de joueurs" class="tablinks" (click)="openCloseTab( 'Nombre de joueurs')">Nombre de joueurs</button><div id="Nombre de joueurs" class="tabcontent">
+          <button id="tablinkNombre de joueurs" class="tablinks colorMain" (click)="openCloseTab( 'Nombre de joueurs')">Nombre de joueurs</button><div id="Nombre de joueurs" class="tabcontent">
             <div class="row">
               <div class="col-sm-12">Nombre de joueurs</div>
             </div>
@@ -113,9 +118,10 @@
           </div>
         </div>
       </div>
+      <br>
       <div class="row">
         <div class="tab">
-          <button id="tablinkTemps de jeu" class="tablinks" (click)="openCloseTab( 'Temps de jeu')">Temps de jeu</button><div id="Temps de jeu" class="tabcontent">
+          <button id="tablinkTemps de jeu" class="tablinks colorMain" (click)="openCloseTab( 'Temps de jeu')">Temps de jeu</button><div id="Temps de jeu" class="tabcontent">
             <div class="row">
               <div class="col-sm-12">Temps de jeu Minimum :</div>
             </div>
@@ -141,9 +147,10 @@
           </div>
         </div>
       </div>
+      <br>
       <div class="row">
-        <div class="tab">
-          <button id="tablinkNiveau de difficulte" class="tablinks" (click)="openCloseTab( 'Niveau de difficulte')">Niveau de difficulte</button><div id="Niveau de difficulte" class="tabcontent">
+        <div class="tab ">
+          <button id="tablinkNiveau de difficulte" class="tablinks colorMain" (click)="openCloseTab( 'Niveau de difficulte')">Niveau de difficulte</button><div id="Niveau de difficulte" class="tabcontent">
             <a (click)="filterByNiveauDifficulte(nd)" *ngFor="let nd of niveauxDifficulte" class="dropdown-item">{{nd}}</a>
           </div>
         </div>
@@ -165,13 +172,13 @@
       
       
     </div>
-<!--Catalogue-->
+<!--Card-->
     <div class="col-sm-9 ">
       <div class="row">
           <br>
           <div *ngFor="let j of jeuAffiche" class="col-sm-3 ">
             <br>
-              <div class="card ">
+              <div class="card h ">
                 <img type="button" (click)="goToJeu(j)" src={{j.lejeu.urlImage}} class="img" alt="logo jeu" width=175px height=175px><br>
                 <div type="button" (click)="goToJeu(j)" class="card-body ml-2">
                   <p class="card-text" style="font-size: 14px;"><strong>{{ j.lejeu.nom}}</strong></p>

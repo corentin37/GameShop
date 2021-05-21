@@ -1,3 +1,4 @@
+<div class="container">
 <div class="tab">
   <button id ="tablinkPanier Achat" class="tablinks tableft" (click)="openPanier( 'Panier Achat')">Panier Achat</button>
   <button id ="tablinkPanier Location" class="tablinks tableft" (click)="openPanier( 'Panier Location')">Panier Location</button>
@@ -54,9 +55,11 @@
         </div>
 
   <div class="col-sm-3">
+    <div class="card" style="padding: 5%;">
       <p style="font-size: larger;">Prix Total Achat : {{prixTotalAchat}} €<br></p>
-      <p style="font-size: larger;">Prix Total Location : {{prixTotalLocation}} €<br><br><a class="btn btn-outline-warning btn-sm" routerLink="connexion" role="button">Confirmer l'achat et la location</a></p>
-  </div>
+      <p style="font-size: larger;">Prix Total Location : {{prixTotalLocation}} €<br><br><a class="btn btn-outline-warning btn-sm w-100" routerLink="connexion" role="button">Confirmer achat et la location</a></p>
+    </div>
+    </div>
   </div>
   
   <div id="Panier Achat" class="tabcontent">
@@ -108,9 +111,12 @@
           </div>
   
     <div class="col-sm-3">
+
+      <div class ="card border">
         <p style="font-size: larger;">Prix Total Achat : {{prixTotalAchat}} €<br></p>
         <p style="font-size: larger;">Prix Total Location : {{prixTotalLocation}} €<br><br><a class="btn btn-outline-warning btn-sm" routerLink="connexion" role="button">Confirmer l'achat et la location</a></p>
-    </div>
+      </div>
+      </div>
     </div>
   </div>
   <div id="Panier Location" class="tabcontent">
@@ -208,7 +214,7 @@
             <div class="p-3" class="card-body border border-secondary">
               <div class="row">
                 <div class="col-sm-12" *ngIf="hj.jeuAchat!=null"><b>Achat&nbsp;&nbsp;</b><i class="text-secondary">{{hj.dateCreation|date : 'd/M/y h:mm'}}</i><span>&nbsp; Quantite : {{hj.quantite}}&nbsp;&nbsp; <b>Jeu : {{hj.jeuAchat.lejeu.nom}}</b></span></div>
-                <div class="col-sm-12" *ngIf="hj.jeuLocation!=null"><b>Location&nbsp;&nbsp;</b><i class="text-secondary">{{hj.dateCreation|date : 'd/M/y h:mm'}}</i><span>&nbsp; Quantite : {{hj.quantite}}&nbsp;&nbsp;<b>Jeu : {{hj.jeuLocation.lejeu.nom}}</b></span></div>  
+                <div class="col-sm-12" *ngIf="hj.jeuLocation!=null"><b>Location&nbsp;&nbsp;</b><i class="text-secondary">{{hj.dateCreation|date : 'd/M/y h:mm'}}</i><span>&nbsp; Quantite : {{hj.quantite}}&nbsp;&nbsp;<b>Jeu : {{hj.jeuLocation.lejeu.nom}}</b>&nbsp;&nbsp;&nbsp;&nbsp;Début : {{hj.dateDebut|date : 'd/M/y h:mm'}}&nbsp;&nbsp;&nbsp;Début : {{hj.dateFin|date : 'd/M/y h:mm'}}</span></div>  
               </div>
           </div>
         </div>
@@ -221,4 +227,5 @@
     </div>
     
   </div>
+</div>
 </div>

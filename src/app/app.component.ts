@@ -9,7 +9,8 @@ export class AppComponent {
   title = 'projet';
   login = localStorage.getItem("login");
   helloMessage;
-
+  userId =  localStorage.getItem('id');
+  userConnected;
 
   ngOnInit(): void {
 
@@ -39,6 +40,15 @@ export class AppComponent {
     }
     return this.helloMessage;
     
+  }
+
+  connected(){
+    if (this.userId != null){
+      return this.userConnected = true;
+    } else{
+      return this.userConnected = false;
+    }
+
   }
 
   reset(){

@@ -16,14 +16,23 @@ export class TacheJoueurComponent implements OnInit {
   fenetreModification;
 
   fenetreInscription; fenetreResultat;  fenetreSansResultat; person; isPersonExist;
-
+  userConnected = false;
+  userId =  localStorage.getItem('id')
   entreeConsole;
 
   ngOnInit(): void {
     this.getAllJoueur ();
+    this.fenetreActivation(1);
   }
 
+  connected(){
+    if (this.userId != null){
+      return this.userConnected = true;
+    } else{
+      return this.userConnected = false;
+    }
 
+  }
 
 
   getAllJoueur(): any {
