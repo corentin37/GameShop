@@ -61,3 +61,15 @@ body {font-family: "Lato", sans-serif;}
 .petit{
   height: 30px;
 }
+
+.bouger{
+margin-left: -6% ! important;
+
+
+}
+
+.bouger2{
+  margin-left: 6% ! important;
+  
+  
+  }
