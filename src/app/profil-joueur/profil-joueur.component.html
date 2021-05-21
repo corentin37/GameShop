@@ -46,29 +46,31 @@
     </div>
   <br> 
 
-  <h5>Avis postés :</h5>
-<br>
-<div class="row">
-    <div *ngFor="let a of avis" class="col-sm-6 ">
-        <div class="card">
-            
-            <div class="card-body">
-               <div style="text-align: right;"><button type="button" (click)="deleteAvis(a)" class="btn btn-secondary "> <i style="color: steelblue;"  class="fas fa-times"></i>   </button></div> 
-                <div class="row">
-                    <div class="col-sm-9">
-                        <h6 > {{a.jeu.nom}}  </h6>
+ <div class="container">
+    <h5>Avis postés :</h5>
+    <br>
+    <div class="row">
+        <div *ngFor="let a of avis" class="col-sm-6 ">
+            <div class="card">
+                
+                <div class="card-body">
+                   <div style="text-align: right;"><button type="button" (click)="deleteAvis(a)" class="btn btn-secondary "> <i style="color: steelblue;"  class="fas fa-times"></i>   </button></div> 
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h6 > {{a.jeu.nom}}  </h6>
+                        </div>
+                        <div class="col-sm-3">
+                            <h6>{{a.note}} / 10 </h6>
+                        </div>
                     </div>
-                    <div class="col-sm-3">
-                        <h6>{{a.note}} / 10 </h6>
-                    </div>
+               <br>
+                <p class="card-text">{{a.commentaire}} </p>
                 </div>
-           <br>
-            <p class="card-text">{{a.commentaire}} </p>
             </div>
+            <br>
         </div>
-        <br>
     </div>
-</div>
+ </div>
 
     
         
