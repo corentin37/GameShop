@@ -2,7 +2,12 @@
 
 <div class="container ">
   
-  <div class="row">&nbsp; <h6>Filtres actuels :</h6> </div>
+  
+
+  <div class="row">
+    <div class="col-sm-3  ">
+
+      <div class="row">&nbsp; <h6>Filtres actuels :</h6> </div>
   <div *ngIf="filterProperties!=null">
     <div class="row" *ngIf="filterProperties.categorie!=null">&nbsp; Catégorie : {{filterProperties.categorie.libelle}}&nbsp;<a class="btn btn-sm petit" type="button" (click)="deleteCategorie()">x</a></div>
     <div class="row" *ngIf="filterProperties.marque!=null">&nbsp; Marque : {{filterProperties.marque.libelle}}&nbsp;<a class="btn btn-sm" type="button" (click)="deleteMarque()">x</a></div>
@@ -14,11 +19,8 @@
     <div class="row" *ngIf="filterProperties.niveauDifficulte!=null">&nbsp; Difficulte : {{filterProperties.niveauDifficulte}}&nbsp;<a class="btn btn-sm" type="button" (click)="deleteNiveauDifficulte()">x</a></div>
   </div>
   
-  <a class="btn btn-outline-warning" type="button" (click)="reinitialisationFiltrage()">Réinitialiser les filtres</a>
+  <a class="btn btn-outline-warning" type="button" (click)="reinitialisationFiltrage()">&nbsp; Réinitialiser &nbsp;</a>
   <br><br>
-
-  <div class="row">
-    <div class="col-sm-3  ">
       <div class="row ">
         <div class="tab">
           <button id="tablinkCategorie" class="tablinks colorMain" (click)="openCloseTab( 'Categorie')">Categorie</button><div id="Categorie" class="tabcontent">
