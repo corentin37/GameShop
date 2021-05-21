@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './Services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,9 @@ export class AppComponent {
   login = localStorage.getItem("login");
   helloMessage;
   userId =  localStorage.getItem('id');
-  userConnected;
+  userConnected = false;
+
+  constructor(public authService: AuthService) {}
 
   ngOnInit(): void {
 
