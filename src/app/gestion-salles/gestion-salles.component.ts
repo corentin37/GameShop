@@ -54,7 +54,9 @@ export class GestionSallesComponent implements OnInit {
 
   getAllSalles(){
     this.http.get('http://localhost:8086/salle/list').subscribe({
-      next: (data) => {console.log(data); this.salle = data; this.changeBackgroundColor()},
+      next: (data) => {console.log(data); this.salle = data; 
+        //this.changeBackgroundColor()
+      },
       error: (err) => {console.log(err); }
     });
   }
@@ -85,13 +87,16 @@ export class GestionSallesComponent implements OnInit {
     }
   }
   
+/*
 
+*/
 changeBackgroundColor(){
   for(let s of this.salle){
     console.log(s.publique);
     
     if(s.publique==false){
-      document.getElementById("card"+s.id).style.backgroundColor.replace("#ffffff", "#e6e6e6");
+      document.getElementById(s.id).style.backgroundColor="#e6e6e6";
+      
     }
   }
   

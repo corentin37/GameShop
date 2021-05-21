@@ -12,17 +12,11 @@
           <h6><strong></strong></h6>
         </div>
       </div>
-      <div class="col-sm-5">
-        <form>
-          <div class="form-group">
-            <div class="input-group rounded mt5">
-              <input
-                class="form-control rounded mt5"
-                placeholder="Trouvez votre bonheur ici"
-                aria-label="Search"
-                class="form-control"
-                aria-describedby="search-addon"
-              />
+      <div class="col-sm-5 " >
+        <form #search="ngForm" (ngSubmit)="toCatalogue(search.contenu)">
+          <div class="form-group" >
+            <div class="input-group rounded mt5 " >
+              <input class="form-control rounded" placeholder="Trouver votre bonheur ici" aria-label="recherche" aria-describedby="search-addon" type="text" name="contenu"/>
               <span class="input-group-text border-0" id="search-addon">
                 <button type="submit" class="btn btn-secondary btn-block">
                   <i class="fas fa-search"></i>
@@ -119,12 +113,7 @@
               routerLinkActive="active"
               >FAQ</a
             >
-            <a
-              class="nav-item catalogue nav-link"
-              routerLink="vendeur"
-              routerLinkActive="active"
-              >Vendeur</a
-            >
+            
           </div>
         </div>
       </nav>

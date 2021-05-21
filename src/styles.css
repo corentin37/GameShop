@@ -22,6 +22,14 @@
     background-color: gainsboro;
 }
 
+.white{
+    background-color: white !important;
+}
+
+.red{
+    background-color: red !important;
+}
+
 .capitalize{
     text-transform: capitalize;
 }

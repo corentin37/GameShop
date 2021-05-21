@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Plugins } from 'protractor/built/plugins';
 
 @Component({
   selector: 'app-ajouter-jeu',
@@ -12,6 +13,7 @@ export class AjouterJeuComponent implements OnInit {
   constructor(private http: HttpClient, private route: Router) { }
   jeuAjoute;
   message;
+  jeuAchat;
   ngOnInit(): void {
   }
 
@@ -23,6 +25,11 @@ export class AjouterJeuComponent implements OnInit {
     }
     });
   }
+
+  /*ajouterJeuAchat(){
+    this.jeuAchat=this.jeuAjoute;
+    this.jeuAchat+=critere en plus;
+  }*/
 
   messageAjout(): any{
     if(this.jeuAjoute!=null){

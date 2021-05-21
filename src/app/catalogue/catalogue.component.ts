@@ -48,7 +48,8 @@ nomDeJeu;
     }
     else{
       this.nomDeJeu=this.catalogueService.nomDeJeu;
-      this.http.get('http://localhost:8086/jeu/findByNomLike/'+this.nomDeJeu).subscribe({
+      console.log( "nom du jeu : "+this.catalogueService.nomDeJeu);
+      this.http.get('http://localhost:8086/jeu/findByNomLike/'+this.catalogueService.nomDeJeu).subscribe({
       next: (data)=> {this.jeu = data; this.jeuAffiche=this.jeu;this.initVariables(); },
       error: (err)=> {console.log(err);}
       });
