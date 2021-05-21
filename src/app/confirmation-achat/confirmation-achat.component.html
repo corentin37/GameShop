@@ -1,0 +1,113 @@
+<div class="container">
+    <h1>Votre commande a bien été prise en compte</h1>
+
+
+
+<div class="row">
+    <div class="col-sm-9">
+        <h2>Achats</h2>
+        <div class="row">
+            <br>
+            
+            <div *ngFor="let j of panierAchat" class="col-sm-5 ">
+                <br>
+                <div class="card h">
+                  <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-2">
+                      <img src={{j.jeuAchat.lejeu.urlImage}} width="200px"><br>
+                    </div>
+                  </div>
+    
+    
+                  <div class="ml-2">
+                      <div class="row">
+                        <div class="col-sm-7"></div>
+                        <div class="col-sm-4 right">Quantite : {{j.quantite}}<br></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-8" style="font-size: large !important;" >{{ j.jeuAchat.lejeu.nom}}<br></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-4">{{ j.jeuAchat.lejeu.marqueDuJeu.libelle}}</div>
+                      </div>                        
+                  </div> 
+              </div>
+              <div class="card">
+                <div class="ml-2 mt-2">
+                    <div class="row">
+                        <div class="col-sm-6">Achat : {{j.jeuAchat.prixAchat}} €/unité</div>
+                        <div class="col-sm-6">Location : {{j.jeuAchat.lejeu.prixLocation}} €/unité<br></div>
+                    </div>
+                </div>
+            </div>
+            <br>
+          </div>
+        </div>
+        <br>
+        <h2>Location</h2>
+        <div class='row'>
+        
+        <div *ngFor="let j of panierLocation" class="col-sm-5 ">
+            <br>
+              <div class="card" id="cardJeu{{j.id}}" >
+                <div class="row">
+                  <div class="col-sm-2"></div>
+                  <div class="col-sm-2">
+                    <img src={{j.jeuAchat.lejeu.urlImage}} width="200px"><br>
+                  </div>
+                </div>
+        
+                <div class="ml-2">
+                    <div class="row">
+                      <div class="col-sm-7"></div>
+                      <div class="col-sm-4">Quantite : {{j.quantite}}<br></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-8"  style="font-size: large !important;">{{ j.jeuAchat.lejeu.nom}}<br></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-4">{{ j.jeuAchat.lejeu.marqueDuJeu.libelle}}</div>
+                    </div>
+        
+        
+                </div> 
+            </div>
+        
+            <div class="card">
+              <div class="ml-2 mt-2">
+                  <div class="row">
+                      <div class="col-sm-6">Achat : {{j.jeuAchat.prixAchat}} €/unité</div>
+                      <div class="col-sm-6">Location : {{j.jeuAchat.lejeu.prixLocation}} €/unité<br></div>
+                  </div>
+              </div>
+          </div>
+          <br>
+        </div>
+        </div>  
+        <br>
+        <h2>Réservations de salles</h2>
+        <div class="row">
+            <div *ngFor="let h of panierSalles" class="col-sm-3">
+              <div class="card" style="width: 12rem;">
+                  <img class="card-img-top" src={{h.salle.urlImage}} alt="Ville" width="100px">
+                  <div class="card-body">
+                      <h5 class="card-title"><strong>{{h.salle.nom}}</strong></h5>
+                      <p class="card-text">Nombre places disponibles : {{h.salle.nombreDePlaces}}</p>
+                      <p class="card-text">Accès public :  {{convertBoolean(h.salle.publique)}}</p>
+                      <p class="card-text">Prix : {{h.salle.prix}} €</p>
+                      <p class="card-text capitalize"><strong>Joueur : {{h.joueur.user.login}}</strong></p>
+                      <p class="card-text"><strong>Validation : {{convertBoolean(h.locationValidee)}}</strong></p>                  
+                  </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="col-sm-3">
+        <p style="font-size: larger;">Prix Total Achat : {{prixTotalAchat}} €<br></p>
+        <p style="font-size: larger;">Prix Total Location : {{prixTotalLocation}} €</p>
+        <a class="btn btn-outline-danger btn-sm" (click)="goToCatalogue()" >Retour au catalogue</a>
+      </div>
+</div>
+
+</div>

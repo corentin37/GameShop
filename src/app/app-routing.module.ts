@@ -27,6 +27,7 @@ import { SupprimerSalleComponent } from './supprimer-salle/supprimer-salle.compo
 import { VendeurComponent } from './vendeur/vendeur.component';
 import { GestionAdminComponent } from './gestion-admin/gestion-admin.component';
 import { AjouterJeuComponent } from './ajouter-jeu/ajouter-jeu.component';
+import { ConfirmationAchatComponent } from './confirmation-achat/confirmation-achat.component';
 
 
 
@@ -53,6 +54,7 @@ const routes: Routes = [
   {component: AjouterJeuComponent, path: 'ajouterJeu'},
   {component: TrierparPlateauComponent, path: 'trierParPlateau'},
   {component: PanierComponent, path: 'panier'},
+  {component: ConfirmationAchatComponent, path:'confirmationAchat'},
   {component: MaMessagerieComponent, path: 'messagerie'},
   {path: '', redirectTo: 'catalogue', pathMatch: 'full'}, // quand il ya pas de chemin ça redirige directement vers le catalogue
   
