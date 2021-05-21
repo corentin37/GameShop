@@ -11,18 +11,27 @@ export class ReserverSalleComponent implements OnInit {
 
   constructor(private http: HttpClient, private salleService: SalleService) { }
   salle;
+  joueurId;
+  historique;
+  joueur;
 
   ngOnInit(): void {
     this.salle=this.salleService.room;
-    console.log(this.salle);
+    this.joueurId=localStorage.getItem("id");
+    console.log("la salle:"+this.salle);    
+    console.log("l'id du joueur"+this.joueurId);
     
+        
   }
 
-  //creer la session avant de pouvoir récupérer le joueur qui réserve
-  addHistorique(h){
-    this.http.post('http://localhost:8086/salle/historique/id', h).subscribe({
-      next: (data) => {console.log(data); },
-      error: (err) => {console.log(err); }
-    });
-  }
+
+ajouterHistorique(salle){
+  this.http.post('http://localhost:8086/salle/historique', salle).subscribe({
+    next: (data) => {console.log(data);
+      alert("Place réservée");
+    },
+    error: (err) => {console.log(err);
+    }
+  });
+}
 }
