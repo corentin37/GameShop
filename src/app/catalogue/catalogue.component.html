@@ -1,6 +1,22 @@
 <!--Catalogue-->
 
 <div class="container ">
+  
+  <div class="row">&nbsp; <h6>Filtres actuels :</h6> </div>
+  <div *ngIf="filterProperties!=null">
+    <div class="row" *ngIf="filterProperties.categorie!=null">&nbsp; Catégorie : {{filterProperties.categorie.libelle}}&nbsp;<a class="btn btn-sm petit" type="button" (click)="deleteCategorie()">x</a></div>
+    <div class="row" *ngIf="filterProperties.marque!=null">&nbsp; Marque : {{filterProperties.marque.libelle}}&nbsp;<a class="btn btn-sm" type="button" (click)="deleteMarque()">x</a></div>
+    <div class="row" *ngIf="filterProperties.ageMin!=null">&nbsp; Age minimum : {{filterProperties.ageMin}}&nbsp;<a class="btn btn-sm" type="button" (click)="deleteAgeMin()">x</a></div>
+    <div class="row" *ngIf="filterProperties.prixMin!=null">&nbsp; Prix d'achat : {{filterProperties.prixMin}} - {{filterProperties.prixMax}} €&nbsp;<a class="btn btn-sm" type="button" (click)="deletePrixAchat()">x</a></div>
+    <div class="row" *ngIf="filterProperties.prixLocationMin!=null">&nbsp; Prix de location : {{filterProperties.prixLocationMin}} - {{filterProperties.prixLocationMax}} €&nbsp;<a class="btn btn-sm" type="button" (click)="deletePrixLocation()">x</a></div>
+    <div class="row" *ngIf="filterProperties.nombreJoueurs!=null">&nbsp; Nombre de joueurs : {{filterProperties.nombreJoueurs}}&nbsp;<a class="btn btn-sm" type="button" (click)="deleteNombreJoueurs()">x</a></div>
+    <div class="row" *ngIf="filterProperties.tempsJeuMin!=null">&nbsp; Temps de jeu : {{filterProperties.tempsJeuMin}} - {{filterProperties.tempsJeuMax}} min&nbsp;<a class="btn btn-sm" type="button" (click)="deleteTempsJeu()">x</a></div><br>
+    <div class="row" *ngIf="filterProperties.niveauDifficulte!=null">&nbsp; Difficulte : {{filterProperties.niveauDifficulte}}&nbsp;<a class="btn btn-sm" type="button" (click)="deleteNiveauDifficulte()">x</a></div>
+  </div>
+  
+  <a class="btn btn-outline-warning" type="button" (click)="reinitialisationFiltrage()">Réinitialiser les filtres</a>
+  <br><br>
+
   <div class="row">
     <div class="col-sm-3  ">
       <div class="row ">
@@ -155,20 +171,7 @@
           </div>
         </div>
       </div>
-      <br>
-      <a class="btn btn-outline-warning" type="button" (click)="reinitialisationFiltrage()">Réinitialiser les filtres</a>
-      <br>
-      <div class="row">Filtres actuels :</div>
-      <div *ngIf="filterProperties!=null">
-        <div class="row" *ngIf="filterProperties.categorie!=null"> Catégorie : {{filterProperties.categorie.libelle}}&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deleteCategorie()">x</a></div>
-        <div class="row" *ngIf="filterProperties.marque!=null">Marque : {{filterProperties.marque.libelle}}&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deleteMarque()">x</a></div>
-        <div class="row" *ngIf="filterProperties.ageMin!=null">Age minimum : {{filterProperties.ageMin}}&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deleteAgeMin()">x</a></div>
-        <div class="row" *ngIf="filterProperties.prixMin!=null">Prix d'achat : {{filterProperties.prixMin}} - {{filterProperties.prixMax}} €&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deletePrixAchat()">x</a></div>
-        <div class="row" *ngIf="filterProperties.prixLocationMin!=null">Prix de location : {{filterProperties.prixLocationMin}} - {{filterProperties.prixLocationMax}} €&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deletePrixLocation()">x</a></div>
-        <div class="row" *ngIf="filterProperties.nombreJoueurs!=null">Nombre de joueurs : {{filterProperties.nombreJoueurs}}&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deleteNombreJoueurs()">x</a></div>
-        <div class="row" *ngIf="filterProperties.tempsJeuMin!=null">Temps de jeu : {{filterProperties.tempsJeuMin}} - {{filterProperties.tempsJeuMax}} min&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deleteTempsJeu()">x</a></div>
-        <div class="row" *ngIf="filterProperties.niveauDifficulte!=null">Difficulte : {{filterProperties.niveauDifficulte}}&nbsp;<a class="btn btn-outline-danger btn-sm" type="button" (click)="deleteNiveauDifficulte()">x</a></div>
-      </div>
+     
       
       
     </div>
