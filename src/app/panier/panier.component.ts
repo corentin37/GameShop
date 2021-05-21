@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { timeStamp } from 'console';
 import { HistoriqueSalleService } from '../Services/historique-salle.service';
 import { JeuService } from '../Services/jeu.service';
+import { PanierService } from '../Services/panier.service';
 
 @Component({
   selector: 'app-panier',
@@ -35,7 +36,7 @@ export class PanierComponent implements OnInit {
   historiqueLocation;
   historiquejeu;
   
-  constructor(private http: HttpClient,private route: Router, private jeuService : JeuService, private historiqueService : HistoriqueSalleService) { }
+  constructor(private http: HttpClient,private route: Router, private jeuService : JeuService, private historiqueService : HistoriqueSalleService,private panierService : PanierService) { }
 
   ngOnInit(): void {
     this.getOnePanierByUser(this.iduser);
@@ -198,4 +199,13 @@ export class PanierComponent implements OnInit {
     return this.prixTotalLocationSalle;
   }
 
+
+  goToConfirmationAchat(){
+    this.panierService.panierAchat=this.panierAchat;
+    this.panierService.panierLocation=this.panierLocation;
+    this.panierService.panierSalles=this.historique;
+    this.panierService.prixTotalAchat=this.prixTotalAchat;
+    this.panierService.prixTotalLocation=this.prixTotalLocation;
+    this.route.navigateByUrl("/confirmationAchat");
+  }
 }
