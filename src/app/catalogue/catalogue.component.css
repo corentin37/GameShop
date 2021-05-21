@@ -41,7 +41,9 @@ body {font-family: "Lato", sans-serif;}
   border: 1px solid #ccc;
   width: 100%;
   border-left: none;
+
 }
+
 
 .card:hover{
   transform: scale(1.05);
@@ -53,9 +55,6 @@ body {font-family: "Lato", sans-serif;}
 }
 
 
-.colorMain{
-  background-color: #eef5ff !important;
-}
 
 .colorPolice{
  color:#24292e  !important ;
@@ -63,4 +62,19 @@ body {font-family: "Lato", sans-serif;}
 
 .petit{
   height: 30px;
+}
+
+.bouger{
+margin-left: -6% ! important;
+
+
+}
+
+.bouger2{
+  margin-left: 6% ! important;
+  
+  
+  }
+.card{
+  border-radius: 5px;
 }

@@ -34,13 +34,14 @@
                     <p><i>Temps de Jeu : {{jeu.lejeu.tempsDeJeu}} min</i> </p> 
                 </footer> 
 
-                <button data-toggle="collapse" data-target="#demo" class="btn btn-primary ">Règles</button>
+                <button data-toggle="collapse" data-target="#demo" class="btn btn-raised btn-sized ">Règles</button>
                 <div id="demo" class="collapse">
                 {{jeu.lejeu.regleDuJeu}}
                 </div>
                 <br><br>
                     <form>
-                    <span><a class="btn btn-outline-warning btn-sm" (click)="addToPanier(true)" role="button">Acheter</a> : {{jeu.prixAchat}} € &nbsp;&nbsp;&nbsp; <a class="btn btn-outline-warning btn-sm" (click)="addToPanier(false)" role="button">Louer</a> : {{jeu.lejeu.prixLocation}} € </span>
+                    <span><a class="btn btn-outline-secondary b-size" (click)="addToPanier(true)" role="button">Acheter</a> : {{jeu.prixAchat}} € &nbsp;&nbsp;&nbsp;
+                         <a class="btn btn-outline-secondary b-size" (click)="addToPanier(false)" role="button">Louer</a> : {{jeu.lejeu.prixLocation}} € </span>
                    
                 </form>
                    
@@ -62,7 +63,7 @@
                 <label class = "text-secondary" for="note">Attribuer une note : </label>
                 <input type="text" name="note" id="note" placeholder="" class="form-control" ngModel='' required />
             </div>
-            <button type="submit"  class="btn btn-primary ">Valider</button>
+            <button type="submit"  class="btn btn-raised btn-sized">Valider</button>
 
             
         </form>

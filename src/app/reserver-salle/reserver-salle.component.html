@@ -1,15 +1,34 @@
 <div class="container">
   <div class="card">
     <div class="card-header">
-     <h5>Demande de réservation de salle effectuée</h5> 
+     <h5>Demande de réservation</h5> 
     </div>
     <div class="card-body">
       <h5 class="card-title"><strong>{{salle.nom}}</strong></h5>
       <img src= {{salle.urlImage}} alt="Salle" height="135px" width="216px">
       <div class="mt-2">
-        <p class="card-text">Vous avez demandé la réservation d'une place dans la salle '{{salle.nom}}'.</p>
-        <p class="card-text">Une fois cette réservation validée par le responsable, vous recevrez un message de confirmation dans votre espace client.</p>
-        <p class="card-text">La place ({{salle.prix}} €) sera à payer à l'accueil du magasin, dès votre arrivée.</p>
+        <p class="card-text"><strong>Réservation d'une place dans la salle '{{salle.nom}}'. </strong><br>Prix: {{salle.prix}} €</p>
+        
+        <FORM NAME="form3">
+          <INPUT TYPE="radio" NAME="choix" VALUE="1">Aujourd'hui<BR>
+          <INPUT TYPE="radio" NAME="choix" VALUE="2">Demain<BR>
+          <INPUT TYPE="radio" NAME="choix" VALUE="3">Après-demain<BR> <br>
+          <INPUT TYPE="button" class="btn" NAME="but" VALUE="Valider" onClick="choixprop(form3)">
+          </FORM>
+
+          <!--
+        <form #historique = ngForm (ngSubmit) = 'ajouterHistorique(historique.value)'>
+
+          <p>Date de début</p>
+          <input type="text" class="form-control" name="dateDebut" ngModel>
+          <br>
+          <p>Date de fin</p>
+          <input type="text" class="form-control" name="dateFin" ngModel>
+          <button type="submit" class="btn">Valider</button>
+        </form>
+          -->
+        
+        
       </div>
  
     </div>
