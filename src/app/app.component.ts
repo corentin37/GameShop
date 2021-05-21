@@ -38,8 +38,8 @@ export class AppComponent {
     }else{
       this.helloMessage="Mon Compte";
     }
+    this.ngOnInit;
     return this.helloMessage;
-    
   }
 
   connected(){
@@ -51,7 +51,5 @@ export class AppComponent {
 
   }
 
-  reset(){
-    this.ngOnInit;
-  }
+
 }
