@@ -95,7 +95,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="prixLocationMinMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{prixLocationMin}}€</span></div>
+              <div class="col-sm-4"><input id="prixLocationMin" name="prixLocationMin" size=1 value="{{prixLocationMin}}" [(ngModel)]="prixLocationMin"><span>€</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="prixLocationMinPlus()">+</a></div>
             </div>
             <div class="row">
@@ -103,7 +103,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="prixLocationMaxMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{prixLocationMax}}€</span></div>
+              <div class="col-sm-4"><input id="prixLocationMax" name="prixLocationMax" size=1 value="{{prixLocationMax}}" [(ngModel)]="prixLocationMax"><span>€</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="prixLocationMaxPlus()">+</a></div>
             </div>
             <div class="row">
@@ -124,7 +124,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="nombreJoueursMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{nombreJoueurs}}</span></div>
+              <div class="col-sm-4"><input id="nombreJoueurs" name="nombreJoueurs" size=1 value="{{nombreJoueurs}}" [(ngModel)]="nombreJoueurs"></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="nombreJoueursPlus()">+</a></div>
             </div>
             <div class="row">
@@ -145,7 +145,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="tempsJeuMinMoins()">-</a></div>
-              <div class="col-sm-6"><span>{{tempsJeuMin}} min</span></div>
+              <div class="col-sm-6"><input id="tempsJeuMin" name="tempsJeuMin" size=1 value="{{tempsJeuMin}}" [(ngModel)]="tempsJeuMin"><span>min</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="tempsJeuMinPlus()">+</a></div>
             </div>
             <div class="row">
@@ -153,7 +153,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="tempsJeuMaxMoins()">-</a></div>
-              <div class="col-sm-6"><span>{{tempsJeuMax}} min</span></div>
+              <div class="col-sm-6"><input id="tempsJeuMax" name="tempsJeuMax" size=1 value="{{tempsJeuMax}}" [(ngModel)]="tempsJeuMax"><span>min</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="tempsJeuMaxPlus()">+</a></div>
             </div>
             <div class="row">
