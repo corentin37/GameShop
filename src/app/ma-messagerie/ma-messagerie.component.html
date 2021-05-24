@@ -288,30 +288,47 @@
 -->
 <div class="container border">
   <h2>Ma messagerie privée</h2><hr>
+
+  <div *ngIf="destinataireSet==null">
+    <label for="fname">Rechercher un utilisateur : &nbsp;</label>
+    <input type="text" id="fname" (keyup)="onKeyUpEvent($event)">
+    <div *ngIf="resultDestFind!=null">
+      <div *ngFor="let df of resultDestFind">
+        <div *ngIf="userId!=df.id" class="container border mt-2 ml-2 mb-2" (click)="setDestinataire(df)" type="button">
+          <div  style="font-size: larger;"><b> {{df.login}}</b></div>
+      </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+  
   <div *ngIf="destinataireSet==null">
     <div class="col-sm-12" *ngFor="let d of destinataires">
-      <div *ngIf="userId!=d.id" class="container border mt-2 ml-2 mb-2">
-          <a (click)="setDestinataire(d)" type="button" style="font-size: larger;"><b> {{d.login}}</b></a>
+      <div *ngIf="userId!=d.id" class="container border mt-2 ml-2 mb-2" (click)="setDestinataire(d)" type="button">
+          <div style="font-size: larger;"><b> {{d.login}}</b></div>
       </div>
     </div>
   </div>
   <div *ngIf="destinataireSet!=null">
-    <a (click)="setDestinataire(null)" type="button">Retour</a>
+    <a (click)="setDestinataire(null)" class="container border btn-outline-success" style="border-radius: 6px;"><= Retour</a>
+    <div class="center">
+      <b>{{destinataireSet.login}}</b>
+    </div><hr>
     <div class="col-sm-12" *ngFor="let m of messagesAff" class="container mt-2 ml-2 mb-2">
       <div class="row">
 
         <div class="col-sm-6" style="text-align: left !important;">
-          <span *ngIf="userId==m.destinataire.id" class="text container border mt-2 ml-2 mb-1" style="text-align: right !important;background-color: rgba(255, 212, 131, 0.568);">{{ m.contenu }}</span>
+          <span *ngIf="userId==m.destinataire.id" class="text container border mt-2 ml-2 mb-1" style="text-align: right !important;background-color: rgba(255, 212, 131, 0.568);border-radius: 10px;">{{ m.contenu }}</span>
         </div>
         <div class="col-sm-6" style="text-align: right !important;">
-          <span *ngIf="userId!=m.destinataire.id" class="text container border mt-2 ml-2 mb-2" style="text-align: left !important; background-color: rgba(133, 206, 235, 0.877);">{{ m.contenu }}</span>
+          <span *ngIf="userId!=m.destinataire.id" class="text container border mt-2 ml-2 mb-2" style="text-align: left !important; background-color: rgba(133, 206, 235, 0.877);border-radius: 10px;">{{ m.contenu }}</span>
         </div>
       </div>
     </div>
     <form #msg="ngForm" (ngSubmit)="newReponse(msg.value)"><!--note aura tous le contenu du formulaire, info du formulaire contenu dans note.value--->
       <div class="form-group">
           <label class="text-secondary" for="">Répondez ici</label><!--label évite d'utiliser le placeholder-->
-          <input type="text" name="contenu" class="form-control" ngModel=""><!--contenue est le nom utilisé dans le format json donc la bd-->
+          <input id="response" type="text" name="contenu" class="form-control" ngModel=""><!--contenue est le nom utilisé dans le format json donc la bd-->
       </div>
       <div class="col-sm-3">
           <button type="submit" class="btn btn-raised btn-sized">Répondre</button><!--, rajouter form module x2 dans modulestype submit pour envoyer les données-->
@@ -320,4 +337,3 @@
   </form>
   </div>
 </div>
-

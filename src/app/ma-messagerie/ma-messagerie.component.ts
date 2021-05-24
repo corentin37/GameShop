@@ -326,14 +326,39 @@ userLogin =  localStorage.getItem('login');
         }
       }
     }
+    this.destFind="";
+    this.resultDestFind=null;
   }
 
   newReponse(contenu){
     var newMessage={"contenu": contenu.contenu,"expediteur":{"id":this.userId},"destinataire":{"id":parseInt(this.destinataireSet.id)}};
       this.http.post('http://localhost:8086/message', newMessage).subscribe({
-        next: (data) => { console.log(data);this.getAllMesMessages();},
+        next: (data) => { console.log(data);document.getElementById("response").innerText=null;this.getAllMesMessages();
+        },
         error: (err) => { console.log(err); }
       });
-
   }
+
+  resultDestFind;
+  rechercheUser(){
+    if(this.destFind!=""){
+      this.http.get('http://localhost:8086/user/loginlike/'+this.destFind).subscribe({
+        next: (data) => { this.resultDestFind=data;console.log(data);},
+        error: (err) => { console.log(err); }
+      });
+    }
+    else{
+      this.resultDestFind=null;
+    }
+    
+  }
+
+  destFind="";
+  onKeyUpEvent(event: any){
+    this.destFind = event.target.value; this.rechercheUser();
+    console.log(event.target.value);
+ }
+
+
+
 }
