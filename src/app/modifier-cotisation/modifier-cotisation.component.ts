@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-modifier-cotisation',
@@ -10,7 +9,7 @@ import { DepService } from '../Services/dep.service';
 })
 export class ModifierCotisationComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route: Router, private deployService: DepService) { }
+  constructor(private http: HttpClient, private route: Router) { }
   rechercheJ;
   joueurs;
   personExist;
@@ -32,7 +31,7 @@ export class ModifierCotisationComponent implements OnInit {
 
 
   getAllJoueur(): any {
-    this.http.get(this.deployService.lienHttp + 'joueur/list').subscribe({
+    this.http.get('http://localhost:8086/joueur/list').subscribe({
       next: (data) => {
         this.joueurs = data;
       },
@@ -55,7 +54,7 @@ export class ModifierCotisationComponent implements OnInit {
   adherer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
     console.log('bloqué');
-    this.http.put(this.deployService.lienHttp + 'joueur/adherer', person).subscribe({
+    this.http.put('http://localhost:8086/joueur/adherer', person).subscribe({
       next: (data) => {
         this.person = data;
         this.getAllJoueur();
@@ -72,7 +71,7 @@ export class ModifierCotisationComponent implements OnInit {
     this.getAllJoueur();
     this.fenetreInscription = false;
     this.http
-      .post(this.deployService.lienHttp + 'joueur/recherche', recherche)
+      .post('http://localhost:8086/joueur/recherche', recherche)
       .subscribe({
         next: (data) => {
           this.person = data;
@@ -93,7 +92,7 @@ export class ModifierCotisationComponent implements OnInit {
 
   supprimer(person): any {
     this.http
-      .delete(this.deployService.lienHttp + 'joueur/supprimer', person)
+      .delete('http://localhost:8086/joueur/supprimer', person)
       .subscribe({
         next: (data) => {
 
@@ -149,7 +148,7 @@ export class ModifierCotisationComponent implements OnInit {
   bloquer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
 
-    this.http.put(this.deployService.lienHttp + 'joueur/bloquer', person).subscribe({
+    this.http.put('http://localhost:8086/joueur/bloquer', person).subscribe({
       next: (data) => {
         this.person = data;
         this.getAllJoueur();
@@ -165,7 +164,7 @@ export class ModifierCotisationComponent implements OnInit {
     // le formulaire s'appelle user, mais creation de vendeur
     // ATTENTION A L'URL
     this.http
-      .post(this.deployService.lienHttp + 'joueur/save', person)
+      .post('http://localhost:8086/joueur/save', person)
       .subscribe({
         next: (data) => {
           alert('Création du compte joueur');
@@ -190,7 +189,7 @@ export class ModifierCotisationComponent implements OnInit {
 
 
     this.http
-      .put(this.deployService.lienHttp + 'admin/modifier', person)
+      .put('http://localhost:8086/admin/modifier', person)
       .subscribe({
         next: (data) => {
           this.fenetreModification = false;
@@ -210,7 +209,7 @@ export class ModifierCotisationComponent implements OnInit {
 
 
     this.http
-      .put(this.deployService.lienHttp + 'admin/modifier', personCreated)
+      .put('http://localhost:8086/admin/modifier', personCreated)
       .subscribe({
         next: (data) => {
           this.getAllJoueur();

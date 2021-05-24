@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ForumService } from '../Services/forum.service';
-import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-all-questions-livraison',
@@ -11,7 +10,7 @@ import { DepService } from '../Services/dep.service';
 })
 export class AllQuestionsLivraisonComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route: Router, private formService: ForumService, private deployService: DepService) { }
+  constructor(private http: HttpClient, private route: Router, private formService: ForumService) { }
   message;
   login;
   info;
@@ -28,7 +27,7 @@ export class AllQuestionsLivraisonComponent implements OnInit {
   }
 
   getElementBySubject(): any {
-    this.http.get(this.deployService.lienHttp + 'messages/' + this.formService.subjectForum.sujet).subscribe({
+    this.http.get('http://localhost:8086/messages/' + this.formService.subjectForum.sujet).subscribe({
       next: (data) => { this.info = data; console.log(data); },
       error: (err) => { console.log(err); }
     });
@@ -48,7 +47,7 @@ export class AllQuestionsLivraisonComponent implements OnInit {
     }
     else {
 
-      this.http.post(this.deployService.lienHttp + 'message/' + this.formService.subjectForum.id, msg).subscribe({
+      this.http.post('http://localhost:8086/message/' + this.formService.subjectForum.id, msg).subscribe({
         next: (data) => { console.log(data); this.ngOnInit(); return confirm('Votre question a bien été prise en compte, un collaborateur y répondra très bientôt !'); },
         error: (err) => { console.log(err); }
       });
@@ -65,7 +64,7 @@ export class AllQuestionsLivraisonComponent implements OnInit {
     }
     else {
       msg.forum = this.formService.subjectForum;
-      this.http.post(this.deployService.lienHttp + 'message/reponse/' + idMessage, msg).subscribe({
+      this.http.post('http://localhost:8086/message/reponse/' + idMessage, msg).subscribe({
         next: (data) => { console.log(data); this.ngOnInit(); return confirm('Votre réponse a bien été ajoutée'); },
         error: (err) => { console.log(err); }
       });
@@ -78,7 +77,7 @@ export class AllQuestionsLivraisonComponent implements OnInit {
 
 
   getAllMessage(): any {
-    this.http.get(this.deployService.lienHttp + 'messages').subscribe({
+    this.http.get('http://localhost:8086/messages').subscribe({
       next: (data) => { this.message = data; },
       error: (err) => { console.log(err); }
 

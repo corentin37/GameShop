@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AuthService } from './Services/auth.service';
 import { Router } from '@angular/router';
 import { CatalogueService } from './Services/catalogue.service';
-import { DepService } from './Services/dep.service';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +12,7 @@ export class AppComponent {
   constructor(
     private catalogueService: CatalogueService,
     private route: Router,
-    public authService: AuthService,
-    private deployService: DepService
+    public authService: AuthService
   ) {}
   title = 'projet';
   login = localStorage.getItem('login');

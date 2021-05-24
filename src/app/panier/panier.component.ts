@@ -6,7 +6,6 @@ import { timeStamp } from 'console';
 import { HistoriqueSalleService } from '../Services/historique-salle.service';
 import { JeuService } from '../Services/jeu.service';
 import { PanierService } from '../Services/panier.service';
-import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-panier',
@@ -37,7 +36,7 @@ export class PanierComponent implements OnInit {
   historiqueLocation;
   historiquejeu;
   
-  constructor(private http: HttpClient,private route: Router, private deployService: DepService, private jeuService : JeuService, private historiqueService : HistoriqueSalleService,private panierService : PanierService) { }
+  constructor(private http: HttpClient,private route: Router, private jeuService : JeuService, private historiqueService : HistoriqueSalleService,private panierService : PanierService) { }
 
   ngOnInit(): void {
     this.getOnePanierByUser(this.iduser);
@@ -47,14 +46,14 @@ export class PanierComponent implements OnInit {
   }
   
   getOnePanierByUser(iduser){
-    this.http.get(this.deployService.lienHttp + 'panier/user/'+iduser).subscribe({
+    this.http.get('http://localhost:8086/panier/user/'+iduser).subscribe({
       next: (data) => {this.panier = data;console.log("panier : ",this.panier);this.getPrixTotaux(this.panier);this.definePanierAchatAndPanierLocation();},
       error: (err) => {console.log(err);}
     });
   }
 
   getAllPaniers() : any{
-    this.http.get(this.deployService.lienHttp + 'paniers').subscribe({
+    this.http.get('http://localhost:8086/paniers').subscribe({
       next: (data)=> {this.panier = data; },
       error: (err)=> {console.log(err);}
       });
@@ -95,10 +94,10 @@ export class PanierComponent implements OnInit {
   }  
 
   getHistoriqueUser(){
-    this.http.get(this.deployService.lienHttp + 'histoLoc/user/'+localStorage.getItem("id")).subscribe({
+    this.http.get('http://localhost:8086/histoLoc/user/'+localStorage.getItem("id")).subscribe({
       next: (data) => {console.log(data); 
       this.historiqueLocation=data; 
-      this.http.get(this.deployService.lienHttp + 'histoAchat/user/'+localStorage.getItem("id")).subscribe({
+      this.http.get('http://localhost:8086/histoAchat/user/'+localStorage.getItem("id")).subscribe({
         next: (data) => {console.log(data); 
         this.historiqueAchat=data; this.historiquejeu=this.historiqueAchat.concat(this.historiqueLocation) },
         error: (err) => {console.log(err); }
@@ -119,7 +118,7 @@ export class PanierComponent implements OnInit {
   quantiteMoins(jeu){
     if(jeu.quantite>0){
       jeu.quantite-=1;
-      this.http.put(this.deployService.lienHttp + 'panier', jeu).subscribe({
+      this.http.put('http://localhost:8086/panier', jeu).subscribe({
         next: (data) => {console.log(data); 
           
           this.getPrixTotaux(this.panier);
@@ -133,7 +132,7 @@ export class PanierComponent implements OnInit {
 
   quantitePlus(jeu){
     jeu.quantite+=1;
-    this.http.put(this.deployService.lienHttp + 'panier', jeu).subscribe({
+    this.http.put('http://localhost:8086/panier', jeu).subscribe({
       next: (data) => {console.log(data); 
         this.route.navigateByUrl('panier');
         this.getPrixTotaux(this.panier);
@@ -145,7 +144,7 @@ export class PanierComponent implements OnInit {
 
   supprimerJeu(jeu){
     console.log(jeu.id);
-    this.http.delete(this.deployService.lienHttp + 'panier/'+jeu.id).subscribe({
+    this.http.delete('http://localhost:8086/panier/'+jeu.id).subscribe({
       next: (data) => {console.log(data);
         this.panierAchat=[];
         this.panierLocation=[];
@@ -157,7 +156,7 @@ export class PanierComponent implements OnInit {
 
   changeAchatLocation(j){
     j.achat= !j.achat;
-    this.http.put(this.deployService.lienHttp + 'panier',j).subscribe({
+    this.http.put('http://localhost:8086/panier',j).subscribe({
       next: (data) => {console.log(data);
         this.panierAchat=[];
         this.panierLocation=[];

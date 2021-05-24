@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-vendeur',
@@ -8,11 +7,9 @@ import { DepService } from '../Services/dep.service';
 })
 export class VendeurComponent implements OnInit {
 
-  constructor(private deployService: DepService) { }
-  fenetreSalle;
+  constructor() { }
 
   ngOnInit(): void {
   }
-
 
 }

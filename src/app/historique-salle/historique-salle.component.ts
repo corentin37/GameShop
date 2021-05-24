@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { HistoriqueSalleService } from '../Services/historique-salle.service';
-import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-historique-salle',
@@ -11,7 +10,7 @@ import { DepService } from '../Services/dep.service';
 })
 export class HistoriqueSalleComponent implements OnInit {
 
-  constructor(private http: HttpClient, private historiqueService: HistoriqueSalleService, private deployService: DepService) { }
+  constructor(private http: HttpClient, private historiqueService: HistoriqueSalleService) { }
   historique;
 
   ngOnInit(): void {
@@ -20,7 +19,7 @@ export class HistoriqueSalleComponent implements OnInit {
   }
 
   getAllHistorique(){
-    this.http.get(this.deployService.lienHttp + 'salle/historique').subscribe({
+    this.http.get('http://localhost:8086/salle/historique').subscribe({
       next: (data) => {console.log(data); 
       this.historique=data; },
       error: (err) => {console.log(err); }
@@ -38,7 +37,7 @@ export class HistoriqueSalleComponent implements OnInit {
   }
 
   validerReservation(h){
-    this.http.put(this.deployService.lienHttp + 'salle/historique/id', h).subscribe({
+    this.http.put('http://localhost:8086/salle/historique/id', h).subscribe({
       next: (data) => {console.log(data);
         this.historique=h; },
       error: (err) => {console.log(err);  }
