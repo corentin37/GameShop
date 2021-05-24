@@ -20,7 +20,8 @@ export class AjouterSalleComponent implements OnInit {
   ajouterSalle(salle){
     this.http.post(this.deployService.lienHttp + 'salle/save', salle).subscribe({
     next: (data) => {console.log(data); 
-    this.salleAjoutee=data; },
+    this.salleAjoutee=data;
+    },
     error: (err) => {console.log(err);
     }
     });
