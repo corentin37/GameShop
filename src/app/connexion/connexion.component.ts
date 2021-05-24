@@ -15,7 +15,7 @@ export class ConnexionComponent implements OnInit {
     private route: Router,
     private formBuilder: FormBuilder,
     private authService: AuthService
-  ) {}
+  ) { }
   utilisateur;
   connectMessage;
   login;
