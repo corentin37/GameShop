@@ -7,261 +7,173 @@
       <div *ngIf="activity">
         <h6>Joueur adhérent</h6>
       </div>
-<!-- Fenetre Info  -->
+      <!-- Fenetre Info  -->
       <br /><br />
       <div *ngIf=fenetreInfo class="col-sm-5"></div>
 
       <!-- FORM avec informations déjà pré-remplies  -->
-      <form *ngIf=fenetreInfo #user="ngForm" >
+      <form *ngIf=fenetreInfo #user="ngForm">
         <!-- NAME -->
-        <div
-          class="form-group"
-          ng-class="{
+        <div class="form-group" ng-class="{
             'has-error': user.login.$invalid && !user.login.$pristine
-          }"
-        >
+          }">
           <label>Nom d'utilisateur :</label>
-          <input
-            disabled
-            type="text"
-            name="login"
-            class="form-control"
-            ngModel="{{ login }}"
-            required
-          />
-          <p
-            ng-show="user.login.$invalid && !user.login.$pristine"
-            class="help-block"
-          ></p>
+          <input disabled type="text" name="login" class="form-control" ngModel="{{ login }}" required />
+          <p ng-show="user.login.$invalid && !user.login.$pristine" class="help-block"></p>
         </div>
 
         <!-- PW-->
-        <div
-          class="form-group"
-          ng-class="{ 'has-error': user.mail.$invalid && !user.mail.$pristine }"
-        >
+        <div class="form-group" ng-class="{ 'has-error': user.mail.$invalid && !user.mail.$pristine }">
           <label>Password</label>
-          <input
-            disabled
-            type="password"
-            name="password"
-            class="form-control"
-            ngModel="{{ password }}"
-          />
-          <p
-            ng-show="user.mail.$invalid && !user.mail.$pristine"
-            class="help-block"
-          ></p>
+          <input disabled type="password" name="password" class="form-control" ngModel="{{ password }}" />
+          <p ng-show="user.mail.$invalid && !user.mail.$pristine" class="help-block"></p>
         </div>
 
         <!-- EMAIL -->
-        <div
-          class="form-group"
-          ng-class="{ 'has-error': user.mail.$invalid && !user.mail.$pristine }"
-        >
+        <div class="form-group" ng-class="{ 'has-error': user.mail.$invalid && !user.mail.$pristine }">
           <label>Email</label>
-          <input
-            disabled
-            type="email"
-            name="mail"
-            class="form-control"
-            ngModel="{{ mail }}"
-          />
-          <p
-            ng-show="user.mail.$invalid && !user.mail.$pristine"
-            class="help-block"
-          ></p>
+          <input disabled type="email" name="mail" class="form-control" ngModel="{{ mail }}" />
+          <p ng-show="user.mail.$invalid && !user.mail.$pristine" class="help-block"></p>
         </div>
 
         <!-- TELEPHONE -->
-        <div
-          class="form-group"
-          ng-class="{ 'has-error': user.tel.$invalid && !user.tel.$pristine }"
-        >
+        <div class="form-group" ng-class="{ 'has-error': user.tel.$invalid && !user.tel.$pristine }">
           <label>Téléphone</label>
-          <input
-            disabled
-            type="text"
-            name="tel"
-            class="form-control"
-            ngModel="{{ tel }}"
-          />
-          <p
-            ng-show="user.tel.$invalid && !user.tel.$pristine"
-            class="help-block"
-          ></p>
+          <input disabled type="text" name="tel" class="form-control" ngModel="{{ tel }}" />
+          <p ng-show="user.tel.$invalid && !user.tel.$pristine" class="help-block"></p>
         </div>
 
-        <button
-          
-          class="btn btn-primary"
-          ng-disabled="user.$invalid"
-          (click) = "fenetreActivation(2)"
-        >
+        <button class="btn btn-primary" ng-disabled="user.$invalid" (click)="fenetreActivation(2)">
           Modifier mes informations
         </button>
 
-        <button
-        
-        
-        class="btn btn-primary"
-        (click) = "fenetreActivation(3)"
-      >
-        Voir mes avis
-      </button>
+        <button class="btn btn-primary" (click)="fenetreActivation(3)">
+          Voir mes avis
+        </button>
+
+        <button class="btn btn-primary" (click)="fenetreActivation(4)">
+          Voir mes messages
+        </button>
+
 
       </form>
     </div>
-   
-<!-- Fenetre modification  -->
-    <div  *ngIf=fenetreModification class="container">
 
-            <div class="col-sm-5"></div>
+    <!-- Fenetre modification  -->
+    <div *ngIf=fenetreModification class="container">
 
-            <!-- FORM avec informations déjà pré-remplies  -->
-      <form  *ngIf=fenetreModification #user="ngForm" (ngSubmit)="submitInfo(user.value); fenetreActivation(1)">
+      <div class="col-sm-5"></div>
+
+      <!-- FORM avec informations déjà pré-remplies  -->
+      <form *ngIf=fenetreModification #user="ngForm" (ngSubmit)="submitInfo(user.value); fenetreActivation(1)">
         <!-- NAME -->
-        <div
-          class="form-group"
-          ng-class="{
+        <div class="form-group" ng-class="{
             'has-error': user.login.$invalid && !user.login.$pristine
-          }"
-        >
+          }">
           <label>Nom d'utilisateur :</label>
-          <input
-            type="text"
-            name="id"
-            class="form-control"
-            ngModel="{{ id }}"
-            required hidden
-          />
-          <input
-            type="text"
-            name="login"
-            class="form-control"
-            ngModel="{{ login }}"
-            required
-          />
-          <p
-            ng-show="user.login.$invalid && !user.login.$pristine"
-            class="help-block"
-          ></p>
+          <input type="text" name="id" class="form-control" ngModel="{{ id }}" required hidden />
+          <input type="text" name="login" class="form-control" ngModel="{{ login }}" required />
+          <p ng-show="user.login.$invalid && !user.login.$pristine" class="help-block"></p>
         </div>
 
         <!-- PW-->
-        <div
-          class="form-group"
-          ng-class="{ 'has-error': user.mail.$invalid && !user.mail.$pristine }"
-        >
+        <div class="form-group" ng-class="{ 'has-error': user.mail.$invalid && !user.mail.$pristine }">
           <label>Password</label>
-          <input
-            
-            type="password"
-            name="password"
-            class="form-control"
-            ngModel="{{ password }}"
-          />
-          <p
-            ng-show="user.mail.$invalid && !user.mail.$pristine"
-            class="help-block"
-          ></p>
+          <input type="password" name="password" class="form-control" ngModel="{{ password }}" />
+          <p ng-show="user.mail.$invalid && !user.mail.$pristine" class="help-block"></p>
         </div>
 
         <!-- EMAIL -->
-        <div
-          class="form-group"
-          ng-class="{ 'has-error': user.mail.$invalid && !user.mail.$pristine }"
-        >
+        <div class="form-group" ng-class="{ 'has-error': user.mail.$invalid && !user.mail.$pristine }">
           <label>Email</label>
-          <input
-            type="email"
-            name="mail"
-            class="form-control"
-            ngModel="{{ mail }}"
-          />
-          <p
-            ng-show="user.mail.$invalid && !user.mail.$pristine"
-            class="help-block"
-          ></p>
+          <input type="email" name="mail" class="form-control" ngModel="{{ mail }}" />
+          <p ng-show="user.mail.$invalid && !user.mail.$pristine" class="help-block"></p>
         </div>
 
         <!-- TELEPHONE -->
-        <div
-          class="form-group"
-          ng-class="{ 'has-error': user.tel.$invalid && !user.tel.$pristine }"
-        >
+        <div class="form-group" ng-class="{ 'has-error': user.tel.$invalid && !user.tel.$pristine }">
           <label>Téléphone</label>
-          <input
-            type="text"
-            name="tel"
-            class="form-control"
-            ngModel="{{ tel }}"
-          />
-          <p
-            ng-show="user.tel.$invalid && !user.tel.$pristine"
-            class="help-block"
-          ></p>
+          <input type="text" name="tel" class="form-control" ngModel="{{ tel }}" />
+          <p ng-show="user.tel.$invalid && !user.tel.$pristine" class="help-block"></p>
         </div>
 
-        <button
-          type="submit"
-          class="btn btn-primary"
-          ng-disabled="user.$invalid"
-          
-        >
+        <button type="submit" class="btn btn-primary" ng-disabled="user.$invalid">
           Valider
         </button>
 
-        <button
-        
-        class="btn btn-primary"
-        (click) = "fenetreActivation(1)"
-      >
-        Annuler
-      </button>
+        <button class="btn btn-primary" (click)="fenetreActivation(1)">
+          Annuler
+        </button>
       </form>
     </div>
 
-<!-- Fenetre avis -->
-    <div  *ngIf="fenetreAvis" >
-    <h5>Avis postés :</h5>
-    <br />
-    <div class="row">
-      <div *ngFor="let a of avis" class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <div style="text-align: right">
-              <button
-                type="button"
-                (click)="deleteAvis(a)"
-                class="btn btn-secondary"
-              >
-                <i style="color: steelblue" class="fas fa-times"></i>
-              </button>
-            </div>
-            <div class="row">
-              <div class="col-sm-9">
-                <h6>{{ a.jeu.nom }}</h6>
+    <!-- Fenetre avis -->
+    <div *ngIf="fenetreAvis">
+      <h5>Avis postés :</h5>
+      <br />
+      <div class="row">
+        <div *ngFor="let a of avis" class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <div style="text-align: right">
+                <button type="button" (click)="deleteAvis(a)" class="btn btn-secondary">
+                  <i style="color: steelblue" class="fas fa-times"></i>
+                </button>
               </div>
-              <div class="col-sm-3">
-                <h6>{{ a.note }} / 10</h6>
+              <div class="row">
+                <div class="col-sm-9">
+                  <h6>{{ a.jeu.nom }}</h6>
+                </div>
+                <div class="col-sm-3">
+                  <h6>{{ a.note }} / 10</h6>
+                </div>
               </div>
+              <br />
+              <p class="card-text">{{ a.commentaire }}</p>
             </div>
-            <br />
-            <p class="card-text">{{ a.commentaire }}</p>
+          </div>
+          <br />
+        </div>
+
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="fenetreActivation(1)">
+        Retour
+      </button>
+    </div>
+
+
+<!-- Fenetre message -->
+<div *ngIf="fenetreMessage">
+  <h5>Messages postés :</h5>
+  <br />
+  <div class="row">
+    <div *ngFor="let m of message" class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <div style="text-align: right">
+            <button type="button" (click)="deleteMessage(m)" class="btn btn-secondary">
+              <i style="color: steelblue" class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              message datant du{{m.dateCreation|date : 'd/M/y h:mm:SS'}} <br>
+              {{ m.contenu }} 
+            </div>
+            
           </div>
         </div>
-        <br />
       </div>
-
+      <br />
     </div>
-    <button
-    type="submit"
-    class="btn btn-primary"
-    (click) = "fenetreActivation(1)"
-  >
+
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="fenetreActivation(1)">
     Retour
   </button>
-  </div>
 </div>
+
+
+
+  </div>
 </div>
