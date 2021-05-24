@@ -44,7 +44,11 @@
                                             style="color: steelblue;"></i>&nbsp;{{r.expediteur.login}}</b>&nbsp;&nbsp;a répondu le<i
                                         class="text-secondary">&nbsp;&nbsp;{{r.dateCreation|date : 'd/M/y h:mm:SS'}}</i></p>
                                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{r.contenu}}</p>
-                        
+                                <div style="text-align: right">
+                                <button type="button" (click)="deleteMessage(r)" class="btn btn-secondary">
+                                    <i style="color: gray" class="fas fa-times"></i>
+                                  </button>
+                                </div>
                             </div>
                         </div>
                     </div>
