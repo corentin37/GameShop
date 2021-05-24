@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Plugins } from 'protractor/built/plugins';
-import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-ajouter-jeu',
@@ -11,7 +10,7 @@ import { DepService } from '../Services/dep.service';
 })
 export class AjouterJeuComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route: Router, private deployService: DepService) { }
+  constructor(private http: HttpClient, private route: Router) { }
   jeuAjoute;
   message;
   jeuAchat;
@@ -19,7 +18,7 @@ export class AjouterJeuComponent implements OnInit {
   }
 
   ajouterJeu(jeu){
-    this.http.post(this.deployService.lienHttp + 'jeu/save', jeu).subscribe({
+    this.http.post('http://localhost:8086/jeu/save', jeu).subscribe({
     next: (data) => {console.log(data); 
     this.jeuAjoute=data; },
     error: (err) => {console.log(err);

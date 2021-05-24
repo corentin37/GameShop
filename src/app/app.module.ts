@@ -33,8 +33,6 @@ import { VendeurComponent } from './vendeur/vendeur.component';
 import { GestionAdminComponent } from './gestion-admin/gestion-admin.component';
 import { AjouterJeuComponent } from './ajouter-jeu/ajouter-jeu.component';
 import { ConfirmationAchatComponent } from './confirmation-achat/confirmation-achat.component';
-import { PrivatiserSalleComponent } from './privatiser-salle/privatiser-salle.component';
-import { TestComponent } from './test/test.component';
 
 
 
@@ -67,8 +65,6 @@ import { TestComponent } from './test/test.component';
     GestionAdminComponent,
     AjouterJeuComponent,
     ConfirmationAchatComponent,
-    PrivatiserSalleComponent,
-    TestComponent,
 
   ],
   imports: [

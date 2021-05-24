@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../Services/auth.service';
-import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-deconnexion',
@@ -10,7 +9,7 @@ import { DepService } from '../Services/dep.service';
   styleUrls: ['./deconnexion.component.css'],
 })
 export class DeconnexionComponent implements OnInit {
-  constructor(private http: HttpClient, private route: Router, private authService: AuthService, private deployService: DepService) {}
+  constructor(private http: HttpClient, private route: Router, private authService: AuthService) {}
   message;
   ngOnInit(): void {}
 

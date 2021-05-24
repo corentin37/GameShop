@@ -45,7 +45,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="ageMinMoins()">-</a></div>
-              <div class="col-sm-7"><input id="ageMin" name="ageMin" size=1 value="{{ageMin}}" [(ngModel)]="ageMin"><span>&nbsp;ans</span></div>
+              <div class="col-sm-7"><input type="text" id="ageMin" name="ageMin" size=1 value="{{ageMin}}" (onfocusout)="myFunction()"><span>&nbsp;ans</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="ageMinPlus()">+</a></div>
             </div>
             <div class="row">
@@ -66,7 +66,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="prixMinMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{prixMin}}€</span></div>
+              <div class="col-sm-4"><input id="prixMin" name="prixMin" size=1 value="{{prixMin}}" [(ngModel)]="prixMin"><span>€</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="prixMinPlus()">+</a></div>
             </div>
             <div class="row">
@@ -74,7 +74,7 @@
             </div>
             <div class="row">
               <div class="col-sm-1"><a class="btn btn-success btn-outline-success btn-sm" type="button" (click)="prixMaxMoins()">-</a></div>
-              <div class="col-sm-4"><span>{{prixMax}}€</span></div>
+              <div class="col-sm-4"><input id="prixMax" name="prixMax" size=1 value="{{prixMax}}" [(ngModel)]="prixMax"><span>€</span></div>
               <div class="col-sm-1"><a class="btn btn-outline-success btn-sm" type="button" (click)="prixMaxPlus()">+</a></div>
             </div>
             <div class="row">

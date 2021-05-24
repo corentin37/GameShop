@@ -1,4 +1,3 @@
-import { DepService } from './dep.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,5 +5,5 @@ import { Injectable } from '@angular/core';
 })
 export class JeuService {
 game;
-  constructor(private deployService: DepService) { }
+  constructor() { }
 }

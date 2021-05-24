@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { element } from 'protractor';
-import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-admin',
@@ -21,7 +20,7 @@ export class AdminComponent implements OnInit {
   vendeurExist;
   userConnected = false;
   userId =  localStorage.getItem('id')
-  constructor(private http: HttpClient, private route: Router, private deployService: DepService) {}
+  constructor(private http: HttpClient, private route: Router) {}
 
   ngOnInit(): void {
 
@@ -36,7 +35,7 @@ export class AdminComponent implements OnInit {
   
 
   getAllUser(): any {
-    this.http.get(this.deployService.lienHttp + 'user').subscribe({
+    this.http.get('http://localhost:8086/user').subscribe({
       next: (data) => {
         this.users = data;
       },
@@ -71,7 +70,7 @@ export class AdminComponent implements OnInit {
 
   adherer(joueur): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
-    this.http.put(this.deployService.lienHttp + 'joueur/adherer', joueur).subscribe({
+    this.http.put('http://localhost:8086/joueur/adherer', joueur).subscribe({
       next: (data) => {
         console.log(data);
       },

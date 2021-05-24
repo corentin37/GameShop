@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JeuService } from '../Services/jeu.service';
-import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-profil-joueur',
@@ -11,7 +10,7 @@ import { DepService } from '../Services/dep.service';
 })
 export class ProfilJoueurComponent implements OnInit {
 
-  constructor(private http:HttpClient, private deployService: DepService, private route: Router ) { }
+  constructor(private http:HttpClient, private route: Router ) { }
 
   user; 
   id;
@@ -86,7 +85,7 @@ export class ProfilJoueurComponent implements OnInit {
     submitInfo(user){
       
       console.log("submit");
-      this.http.put(this.deployService.lienHttp + 'user/modifier', user).subscribe({
+      this.http.put('http://localhost:8086/user/modifier', user).subscribe({
         next: (data)=> {localStorage.setItem("login", user.login);localStorage.setItem("activity", this.activity); localStorage.setItem("mail", user.mail); localStorage.setItem("password", user.password); localStorage.setItem("tel", user.tel);this.ngOnInit();  
             },
         error: (err) => {console.log(err);}
@@ -97,7 +96,7 @@ export class ProfilJoueurComponent implements OnInit {
 
     getAllAvis() {
       console.log('En cours de suppression'),
-      this.http.get(this.deployService.lienHttp + 'avis/user/' + this.id).subscribe({
+      this.http.get('http://localhost:8086/avis/user/' + this.id).subscribe({
         next: (data) => { this.avis = data; },
         error: (err) => { console.log(err); }
       });
@@ -106,7 +105,7 @@ export class ProfilJoueurComponent implements OnInit {
 
     deleteAvis(avis){
       console.log(avis.id),
-        this.http.delete(this.deployService.lienHttp + 'avis/delete/'+ avis.id, avis).subscribe({
+        this.http.delete('http://localhost:8086/avis/delete/'+ avis.id, avis).subscribe({
           next: (data) => {this.ngOnInit(); return confirm('Avis effacé');},
           error: (err) => {
             console.log(err);

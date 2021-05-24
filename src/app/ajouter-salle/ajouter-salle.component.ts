@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { error } from 'selenium-webdriver';
-import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-ajouter-salle',
@@ -11,17 +10,16 @@ import { DepService } from '../Services/dep.service';
 })
 export class AjouterSalleComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route: Router, private deployService: DepService) { }
+  constructor(private http: HttpClient, private route: Router) { }
   salleAjoutee;
   message;
   ngOnInit(): void {
   }
 
   ajouterSalle(salle){
-    this.http.post(this.deployService.lienHttp + 'salle/save', salle).subscribe({
+    this.http.post('http://localhost:8086/salle/save', salle).subscribe({
     next: (data) => {console.log(data); 
-    this.salleAjoutee=data;
-    },
+    this.salleAjoutee=data; },
     error: (err) => {console.log(err);
     }
     });

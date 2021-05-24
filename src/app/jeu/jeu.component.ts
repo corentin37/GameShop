@@ -3,7 +3,6 @@ import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JeuService } from '../Services/jeu.service';
-import { DepService } from '../Services/dep.service';
 
 
 
@@ -23,7 +22,7 @@ export class JeuComponent implements OnInit {
   jeuId = this.jeuService.game.lejeu.id;
 
 
-  constructor(private http: HttpClient, private route: Router, private jeuService: JeuService, private deployService: DepService) { }
+  constructor(private http: HttpClient, private route: Router, private jeuService: JeuService) { }
 
   ngOnInit(): void {
     // this.getAllJeu();
@@ -36,7 +35,7 @@ export class JeuComponent implements OnInit {
   }
 
   getAllAvis() {
-    this.http.get(this.deployService.lienHttp + 'avis/jeu/' + this.jeuId).subscribe({
+    this.http.get('http://localhost:8086/avis/jeu/' + this.jeuId).subscribe({
       next: (data) => { this.avis = data; },
       error: (err) => { console.log(err); }
     });
@@ -44,7 +43,7 @@ export class JeuComponent implements OnInit {
 
 
 getMoyenne(){
-  this.http.get(this.deployService.lienHttp + 'avis/moyenne/' + this.jeuId).subscribe({
+  this.http.get('http://localhost:8086/avis/moyenne/' + this.jeuId).subscribe({
     next: (data) => {console.log(data); this.moyenne = data; },
     error: (err) => { console.log(err); }
   });
@@ -61,7 +60,7 @@ getMoyenne(){
     }
     if ((avis.note) && (this.login)) {
 
-      this.http.post(this.deployService.lienHttp + 'avis', avis).subscribe({
+      this.http.post('http://localhost:8086/avis', avis).subscribe({
         next: (data) => {console.log(data); window.scrollTo(0, 0); this.ngOnInit(); return confirm('Avis posté !'); },
         error: (err) => {console.log(err); }
       });
@@ -95,13 +94,13 @@ getMoyenne(){
               console.log("bodysave : "+bodySave);console.log("user : "+user.id);console.log("jeuAchat : "+this.jeu.id);
   
              
-              this.http.get(this.deployService.lienHttp + 'panier/userAndGame/'+user.id+"/"+this.jeu.id).subscribe({ // vérification de la non-présence du jeu dans le panier de l'utilisateur
+              this.http.get('http://localhost:8086/panier/userAndGame/'+user.id+"/"+this.jeu.id).subscribe({ // vérification de la non-présence du jeu dans le panier de l'utilisateur
                 next: (data)=> {AlreadyPresent=data;
                   if(AlreadyPresent!=null){
                     alert(this.jeu.lejeu.nom + " est déjà dans le panier !");
                   }
                   else{
-                    this.http.post(this.deployService.lienHttp + 'panier',bodySave).subscribe({  //ajout dans le panier
+                    this.http.post('http://localhost:8086/panier',bodySave).subscribe({  //ajout dans le panier
                       next: (data)=>{alert(this.jeu.lejeu.nom + " ajouté dans le panier !");},
                       error: (err) => {console.log(err);}
                     });
