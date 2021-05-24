@@ -169,12 +169,15 @@ export class CatalogueComponent implements OnInit {
       this.prixMin = 0;
     }
   }
-  prixMinPlus() {
-    this.prixMin += 1.00;
-    if (this.prixMin > this.prixMax) {
-      this.prixMin = this.prixMax;
-    }
+prixMinPlus(){
+  this.prixMin=parseFloat(""+this.prixMin)+1.00;
+  if(this.prixMin>this.prixMax){
+    this.prixMin=this.prixMax;
   }
+  if(this.prixMin<0){
+    this.prixMin=0;
+  }
+}
 
   prixMax = 0;
   prixMaxMoins() {
@@ -183,9 +186,13 @@ export class CatalogueComponent implements OnInit {
       this.prixMax = this.prixMin;
     }
   }
-  prixMaxPlus() {
-    this.prixMax += 1.00;
+
+prixMaxPlus(){
+  this.prixMax=parseFloat(""+this.prixMax)+1.00;
+  if (this.prixMax<this.prixMin){
+    this.prixMax=this.prixMin;
   }
+}
 
   prixLocationMin = 0;
   prixLocationMinMoins() {
@@ -199,6 +206,10 @@ export class CatalogueComponent implements OnInit {
     if (this.prixLocationMin > this.prixLocationMax) {
       this.prixLocationMin = this.prixLocationMax;
     }
+  
+  if(this.prixLocationMin<0){
+    this.prixLocationMin=0;
+  }
   }
 
   prixLocationMax = 0;
@@ -208,9 +219,12 @@ export class CatalogueComponent implements OnInit {
       this.prixLocationMax = this.prixLocationMin;
     }
   }
-  prixLocationMaxPlus() {
-    this.prixLocationMax += 1.00;
-  }
+ 
+
+prixLocationMaxPlus(){
+  this.prixLocationMax=parseInt(""+this.prixLocationMax)+1.00;
+  this.prixLocationMax=Math.max(0,this.prixLocationMax);
+}
 
   ageMin = 0;
   ageMinMoins() {
@@ -230,9 +244,14 @@ export class CatalogueComponent implements OnInit {
       this.nombreJoueurs = 0;
     }
   }
-  nombreJoueursPlus() {
-    this.nombreJoueurs += 1.00;
+ 
+
+nombreJoueursPlus(){
+  this.nombreJoueurs = parseInt(""+this.nombreJoueurs)+1;
+  if(this.nombreJoueurs<0){
+    this.nombreJoueurs=0;
   }
+}
 
   tempsJeuMin = 0;
   tempsJeuMinMoins() {
@@ -241,13 +260,13 @@ export class CatalogueComponent implements OnInit {
       this.tempsJeuMin = 0;
     }
   }
-  tempsJeuMinPlus() {
-    this.tempsJeuMin += 15.00;
-    if (this.tempsJeuMin > this.tempsJeuMax) {
-      this.tempsJeuMin = this.tempsJeuMax;
-    }
-  }
 
+tempsJeuMinPlus(){
+  this.tempsJeuMin=parseInt(""+this.tempsJeuMin)+15.00;
+  if(this.tempsJeuMin>this.tempsJeuMax){
+    this.tempsJeuMin=this.tempsJeuMax;
+  }
+}
   tempsJeuMax = 0;
   tempsJeuMaxMoins() {
     this.tempsJeuMax -= 15.00;
@@ -255,9 +274,14 @@ export class CatalogueComponent implements OnInit {
       this.tempsJeuMax = this.tempsJeuMin;
     }
   }
-  tempsJeuMaxPlus() {
-    this.tempsJeuMax += 15.00;
+
+
+tempsJeuMaxPlus(){
+  this.tempsJeuMax=parseInt(""+this.tempsJeuMax)+15.00;
+  if (this.tempsJeuMax<this.tempsJeuMin){
+    this.tempsJeuMax=this.tempsJeuMin;
   }
+}
 
   myFunction() {
     console.log("ça passe par le focusout");
