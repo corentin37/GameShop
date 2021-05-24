@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { DepService } from '../../Services/dep.service';
 
 @Component({
   selector: 'app-tache-user',
@@ -20,7 +21,7 @@ export class TacheUserComponent implements OnInit {
   usersExist;
   userConnected = false;
   userId =  localStorage.getItem('id')
-  constructor(private http: HttpClient, private route: Router) {}
+  constructor(private http: HttpClient, private route: Router, private deployService: DepService) {}
 
   ngOnInit(): void {
     this.getAllUser();
@@ -42,7 +43,7 @@ export class TacheUserComponent implements OnInit {
     console.log("32" + recherche);
     console.log(recherche.login);
     this.http
-      .get('http://localhost:8086/user/login/' + recherche.login)
+      .get(this.deployService.lienHttp + 'user/login/' + recherche.login)
       .subscribe({
         next: (data) => {
           this.person = data;
@@ -63,7 +64,7 @@ export class TacheUserComponent implements OnInit {
 
   supprimer(person): any {
     this.http
-      .delete('http://localhost:8086/user/supprimer', person)
+      .delete(this.deployService.lienHttp + 'user/supprimer', person)
       .subscribe({
         next: (data) => {
 
@@ -122,7 +123,7 @@ export class TacheUserComponent implements OnInit {
   bloquer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
 
-    this.http.put('http://localhost:8086/user/bloquer', person).subscribe({
+    this.http.put(this.deployService.lienHttp + 'user/bloquer', person).subscribe({
       next: (data) => {
         this.person = data;
         //this.getAllAdmin();
@@ -138,7 +139,7 @@ export class TacheUserComponent implements OnInit {
     // le formulaire s'appelle user, mais creation de vendeur
     // ATTENTION A L'URL
     this.http
-      .post('http://localhost:8086/user/save', person)
+      .post(this.deployService.lienHttp + 'user/save', person)
       .subscribe({
         next: (data) => {
           alert('Création du compte user');
@@ -164,7 +165,7 @@ export class TacheUserComponent implements OnInit {
     
 
     this.http
-      .put('http://localhost:8086/user/modifier', person)
+      .put(this.deployService.lienHttp + 'user/modifier', person)
       .subscribe({
         next: (data) => {
           this.fenetreModification = false;
@@ -185,7 +186,7 @@ export class TacheUserComponent implements OnInit {
 
     console.log("console modif")
     this.http
-      .put('http://localhost:8086/user/modifier', personCreated)
+      .put(this.deployService.lienHttp + 'user/modifier', personCreated)
       .subscribe({
         next: (data) => {
           this.getAllUser();
@@ -205,7 +206,7 @@ export class TacheUserComponent implements OnInit {
   }
 
   getAllUser(): any {
-    this.http.get('http://localhost:8086/user/').subscribe({
+    this.http.get(this.deployService.lienHttp + 'user/').subscribe({
       next: (data) => {
         this.users = data;
       },
@@ -237,7 +238,7 @@ export class TacheUserComponent implements OnInit {
 
 
   getAllUser(): any {
-    this.http.get('http://localhost:8086/user').subscribe({
+    this.http.get(this.deployService.lienHttp + 'user').subscribe({
       next: (data) => {
         this.users = data;
       },
@@ -250,7 +251,7 @@ export class TacheUserComponent implements OnInit {
   inscriptionUser(personCreated): any{
     // le formulaire s'appelle user, mais creation de vendeur
         // ATTENTION A L'URL
-    this.http.post('http://localhost:8086/user/save', personCreated).subscribe({
+    this.http.post(this.deployService.lienHttp + 'user/save', personCreated).subscribe({
       next: (data) => {alert('Création du compte admin' ); },
       error : (err) => { console.log(err); }
 
@@ -268,7 +269,7 @@ export class TacheUserComponent implements OnInit {
   rechercheUser(recherche): any {
 
     this.http
-      .post('http://localhost:8086/user/recherche', recherche)
+      .post(this.deployService.lienHttp + 'user/recherche', recherche)
       .subscribe({
         next: (data) => {
           this.rechercheU = data;
@@ -292,7 +293,7 @@ export class TacheUserComponent implements OnInit {
 
   bloquer(vendeur): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
-    this.http.put('http://localhost:8086/user/bloquer', vendeur).subscribe({
+    this.http.put(this.deployService.lienHttp + 'user/bloquer', vendeur).subscribe({
       next: (data) => {
 
         this.rechercheU = data;
@@ -310,7 +311,7 @@ export class TacheUserComponent implements OnInit {
   rechercheUser(recherche): any {
     console.log('je suis dans la recherche du vendeur');
     this.http
-      .post('http://localhost:8086/vendeur/recherche', recherche)
+      .post(this.deployService.lienHttp + 'vendeur/recherche', recherche)
       .subscribe({
         next: (data) => {
           console.log('le vendeur', data);

@@ -2,6 +2,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../Services/auth.service';
+import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-connexion',
@@ -9,58 +11,64 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./connexion.component.css'],
 })
 export class ConnexionComponent implements OnInit {
-  constructor(private http: HttpClient, private route: Router, private formBuilder: FormBuilder) {}
-  utilisateur ;
+  constructor(
+    private http: HttpClient,
+    private route: Router,
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private deployService: DepService
+  ) {}
+  utilisateur;
   connectMessage;
   login;
 
   urlCGV = 'https://www.solutec.fr/en/legal-information/';
-  
+
   fenetreInscription = false;
-  fenetreMonProfil= false;
+  fenetreMonProfil = false;
   fenetreConnexion = false;
-/*import*/
+  /*import*/
   registerForm: FormGroup;
   submitted = false;
-/*import*/
+  /*import*/
   ngOnInit(): void {
-    
+    // si un utilisateur est co, le bouton "Mon compte renvoie à son profil"
+    if (localStorage.getItem('id') != null) {
+      this.route.navigateByUrl('profil');
+    }
 
-// si un utilisateur est co, le bouton "Mon compte renvoie à son profil"
-  if (localStorage.getItem( "id") != null) {
-    this.route.navigateByUrl('profil');
-  }
-    
     this.userConnected();
-/*import*/
-    this.registerForm = this.formBuilder.group({
-      
-      login: ['', Validators.required],
-      tel: ['', Validators.required],
-      mail: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-      acceptTerms: [false, Validators.requiredTrue]
-  }, {
-      validator: this.MustMatch('password', 'confirmPassword')
-  });
-/*import*/
-
+    /*import*/
+    this.registerForm = this.formBuilder.group(
+      {
+        login: ['', Validators.required],
+        tel: ['', Validators.required],
+        mail: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required],
+        acceptTerms: [false, Validators.requiredTrue],
+      },
+      {
+        validator: this.MustMatch('password', 'confirmPassword'),
+      }
+    );
+    /*import*/
   }
 
-  goToLink(url: string){
-    window.open(url, "_blank");
-}
+  goToLink(url: string) {
+    window.open(url, '_blank');
+  }
 
   connexion(user): any {
-    this.http.post('http://localhost:8086/connect', user).subscribe({
+    this.http.post(this.deployService.lienHttp + 'connect', user).subscribe({
       next: (data) => {
         console.log(data);
         this.utilisateur = data;
         console.log('u: ' + this.utilisateur);
         if (this.utilisateur != null) {
+          this.authService.setUserSession(this.utilisateur);
           this.connectMessage = 'Connecté';
-          localStorage.setItem("password", this.utilisateur.password);
+          localStorage.setItem('password', this.utilisateur.password);
           localStorage.setItem('id', this.utilisateur.id);
           localStorage.setItem('login', this.utilisateur.login);
           localStorage.setItem('mail', this.utilisateur.mail);
@@ -70,9 +78,8 @@ export class ConnexionComponent implements OnInit {
           console.log('name:' + this.login);
           console.log('enregistrement réussi');
           this.userConnected();
-          //permet d'aller sur le catalogue quand la co est réussie
+          // permet d'aller sur le catalogue quand la co est réussie
           this.route.navigateByUrl('catalogue');
-          
         } else {
           this.connectMessage = 'Identifiant ou mot de passe incorrect.';
         }
@@ -83,21 +90,15 @@ export class ConnexionComponent implements OnInit {
     });
   }
 
-  userConnected(): any{
-    console.log("avant if")
-    if(localStorage.getItem( "id") != null )
-      {
-        this.fenetreActivation(2);
-        
-      } else {
-          this.fenetreActivation(0);
-          
-      }
-    
-    
-    
+  userConnected(): any {
+    console.log('avant if');
+    if (localStorage.getItem('id') != null) {
+      this.fenetreActivation(2);
+    } else {
+      this.fenetreActivation(0);
+    }
   }
-  //Cette fonction gere l'affichage des differentes div du html
+  // Cette fonction gere l'affichage des differentes div du html
   fenetreActivation(chiffre): any {
     this.fenetreInscription = false;
     this.fenetreConnexion = false;
@@ -126,7 +127,6 @@ export class ConnexionComponent implements OnInit {
         this.fenetreConnexion = false;
         break;
       }
-
     }
   }
 
@@ -134,57 +134,64 @@ export class ConnexionComponent implements OnInit {
     console.log('retour:' + entreeConsole);
   }
 
-  inscription(user): any{
+  inscription(user): any {
     // le formulaire s'appelle user, mais creation de joueur
     // ATTENTION A L'URL
-  console.log(user)
-  this.http.post('http://localhost:8086/joueur/save', user).subscribe({
-  next: (data) => {this.fenetreActivation(0); alert("L'équipe Gameshop vous remercie de votre confiance") },
-  error : (err) => { console.log(err); }
-
+    console.log(user);
+    this.http.post(this.deployService.lienHttp + 'joueur/save', user).subscribe({
+      next: (data) => {
+        this.fenetreActivation(0);
+        alert("L'équipe Gameshop vous remercie de votre confiance");
+      },
+      error: (err) => {
+        console.log(err);
+      },
     });
   }
 
   /*import*/
   // convenience getter for easy access to form fields
-  get f() { return this.registerForm.controls; }
+  get f() {
+    return this.registerForm.controls;
+  }
 
   onSubmit() {
-      this.submitted = true;
+    this.submitted = true;
 
-      // stop here if form is invalid
-      if (this.registerForm.invalid) {
-          return;
-      }
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+    }
 
-      // display form values on success
-      this.inscription(this.registerForm.value);
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+    // display form values on success
+    this.inscription(this.registerForm.value);
+    alert(
+      'SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4)
+    );
   }
 
   onReset() {
-      this.submitted = false;
-      this.registerForm.reset();
+    this.submitted = false;
+    this.registerForm.reset();
   }
   /*import*/
 
   MustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
-        const control = formGroup.controls[controlName];
-        const matchingControl = formGroup.controls[matchingControlName];
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
 
-        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-            // return if another validator has already found an error on the matchingControl
-            return;
-        }
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        // return if another validator has already found an error on the matchingControl
+        return;
+      }
 
-        // set error on matchingControl if validation fails
-        if (control.value !== matchingControl.value) {
-            matchingControl.setErrors({ mustMatch: true });
-        } else {
-            matchingControl.setErrors(null);
-        }
-    }
-
-
-}}
+      // set error on matchingControl if validation fails
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
+}

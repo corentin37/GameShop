@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DepService } from './dep.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,5 +7,5 @@ import { Injectable } from '@angular/core';
 export class ForumService {
   subjectForum;
 
-  constructor() { }
+  constructor(private deployService: DepService) { }
 }

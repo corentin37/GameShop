@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-supprimer-salle',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./supprimer-salle.component.css']
 })
 export class SupprimerSalleComponent implements OnInit {
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private deployService: DepService) { }
   rechercheJ;
   joueurs;
   personExist;
@@ -31,7 +32,7 @@ export class SupprimerSalleComponent implements OnInit {
 
 
   getAllSalle(): any{
-    this.http.get('http://localhost:8086/salle/list').subscribe({
+    this.http.get(this.deployService.lienHttp + 'salle/list').subscribe({
       next: (data) => {this.salle=data;},
       error: (err) => {console.log(err);}
     });
@@ -40,7 +41,7 @@ export class SupprimerSalleComponent implements OnInit {
 //code de admin
 
   getAllJoueur(): any {
-    this.http.get('http://localhost:8086/joueur/list').subscribe({
+    this.http.get(this.deployService.lienHttp + 'joueur/list').subscribe({
       next: (data) => {
         this.joueurs = data;
       },
@@ -63,7 +64,7 @@ export class SupprimerSalleComponent implements OnInit {
   adherer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
     console.log('bloqué');
-    this.http.put('http://localhost:8086/joueur/adherer', person).subscribe({
+    this.http.put(this.deployService.lienHttp + 'joueur/adherer', person).subscribe({
       next: (data) => {
         this.person = data;
         this.getAllJoueur();
@@ -80,7 +81,7 @@ export class SupprimerSalleComponent implements OnInit {
     this.getAllJoueur();
     this.fenetreInscription = false;
     this.http
-      .post('http://localhost:8086/joueur/recherche', recherche)
+      .post(this.deployService.lienHttp + 'joueur/recherche', recherche)
       .subscribe({
         next: (data) => {
           this.person = data;
@@ -101,7 +102,7 @@ export class SupprimerSalleComponent implements OnInit {
 
   supprimer(person): any {
     this.http
-      .delete('http://localhost:8086/joueur/supprimer', person)
+      .delete(this.deployService.lienHttp + 'joueur/supprimer', person)
       .subscribe({
         next: (data) => {
 
@@ -157,7 +158,7 @@ export class SupprimerSalleComponent implements OnInit {
   bloquer(person): any {
     // SAUVEGARDER LE USER SINON MODIF PAS PRISE EN COMPTE
 
-    this.http.put('http://localhost:8086/joueur/bloquer', person).subscribe({
+    this.http.put(this.deployService.lienHttp + 'joueur/bloquer', person).subscribe({
       next: (data) => {
         this.person = data;
         this.getAllJoueur();
@@ -173,7 +174,7 @@ export class SupprimerSalleComponent implements OnInit {
     // le formulaire s'appelle user, mais creation de vendeur
     // ATTENTION A L'URL
     this.http
-      .post('http://localhost:8086/joueur/save', person)
+      .post(this.deployService.lienHttp + 'joueur/save', person)
       .subscribe({
         next: (data) => {
           alert('Création du compte joueur');
@@ -198,7 +199,7 @@ export class SupprimerSalleComponent implements OnInit {
 
 
     this.http
-      .put('http://localhost:8086/admin/modifier', person)
+      .put(this.deployService.lienHttp + 'admin/modifier', person)
       .subscribe({
         next: (data) => {
           this.fenetreModification = false;
@@ -218,7 +219,7 @@ export class SupprimerSalleComponent implements OnInit {
 
 
     this.http
-      .put('http://localhost:8086/admin/modifier', personCreated)
+      .put(this.deployService.lienHttp + 'admin/modifier', personCreated)
       .subscribe({
         next: (data) => {
           this.getAllJoueur();

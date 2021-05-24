@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { SalleService } from '../Services/salle.service';
+import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-reserver-salle',
@@ -9,7 +10,7 @@ import { SalleService } from '../Services/salle.service';
 })
 export class ReserverSalleComponent implements OnInit {
 
-  constructor(private http: HttpClient, private salleService: SalleService) { }
+  constructor(private http: HttpClient,  private salleService: SalleService, private deployService: DepService) { }
   salle;
   joueurId;
   historique;
@@ -28,7 +29,7 @@ export class ReserverSalleComponent implements OnInit {
 
 
 ajouterHistorique(salle){
-  this.http.post('http://localhost:8086/salle/historique', salle).subscribe({
+  this.http.post(this.deployService.lienHttp + 'salle/historique', salle).subscribe({
     next: (data) => {console.log(data);
       alert("Place réservée");
     },

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PanierService } from '../Services/panier.service';
+import { DepService } from '../Services/dep.service';
 
 @Component({
   selector: 'app-confirmation-achat',
@@ -10,7 +11,7 @@ import { PanierService } from '../Services/panier.service';
 })
 export class ConfirmationAchatComponent implements OnInit {
 
-  constructor(private http: HttpClient,private route: Router, private panierService : PanierService) { }
+  constructor(private http: HttpClient,private route: Router, private panierService : PanierService, private deployService: DepService) { }
 
   panierAchat;
   panierLocation;
