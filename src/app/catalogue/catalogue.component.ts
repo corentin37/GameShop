@@ -169,9 +169,12 @@ prixMinMoins(){
   }
 }
 prixMinPlus(){
-  this.prixMin+=1.00;
+  this.prixMin=parseFloat(""+this.prixMin)+1.00;
   if(this.prixMin>this.prixMax){
     this.prixMin=this.prixMax;
+  }
+  if(this.prixMin<0){
+    this.prixMin=0;
   }
 }
 
@@ -183,7 +186,10 @@ prixMaxMoins(){
   }
 }
 prixMaxPlus(){
-  this.prixMax+=1.00;
+  this.prixMax=parseFloat(""+this.prixMax)+1.00;
+  if (this.prixMax<this.prixMin){
+    this.prixMax=this.prixMin;
+  }
 }
 
 prixLocationMin=0;
@@ -198,6 +204,9 @@ prixLocationMinPlus(){
   if(this.prixLocationMin>this.prixLocationMax){
     this.prixLocationMin=this.prixLocationMax;
   }
+  if(this.prixLocationMin<0){
+    this.prixLocationMin=0;
+  }
 }
 
 prixLocationMax=0;
@@ -208,7 +217,8 @@ prixLocationMaxMoins(){
   }
 }
 prixLocationMaxPlus(){
-  this.prixLocationMax+=1.00;
+  this.prixLocationMax=parseInt(""+this.prixLocationMax)+1.00;
+  this.prixLocationMax=Math.max(0,this.prixLocationMax);
 }
 
 ageMin=0;
@@ -233,7 +243,10 @@ nombreJoueursMoins(){
   }
 }
 nombreJoueursPlus(){
-  this.nombreJoueurs+=1.00;
+  this.nombreJoueurs = parseInt(""+this.nombreJoueurs)+1;
+  if(this.nombreJoueurs<0){
+    this.nombreJoueurs=0;
+  }
 }
 
 tempsJeuMin=0;
@@ -244,7 +257,7 @@ tempsJeuMinMoins(){
   }
 }
 tempsJeuMinPlus(){
-  this.tempsJeuMin+=15.00;
+  this.tempsJeuMin=parseInt(""+this.tempsJeuMin)+15.00;
   if(this.tempsJeuMin>this.tempsJeuMax){
     this.tempsJeuMin=this.tempsJeuMax;
   }
@@ -258,7 +271,10 @@ tempsJeuMaxMoins(){
   }
 }
 tempsJeuMaxPlus(){
-  this.tempsJeuMax+=15.00;
+  this.tempsJeuMax=parseInt(""+this.tempsJeuMax)+15.00;
+  if (this.tempsJeuMax<this.tempsJeuMin){
+    this.tempsJeuMax=this.tempsJeuMin;
+  }
 }
 
 myFunction(){
