@@ -69,6 +69,10 @@ export class AllQuestionsLivraisonComponent implements OnInit {
         error: (err) => { console.log(err); }
       });
     }
+
+
+
+    
   }
 
 

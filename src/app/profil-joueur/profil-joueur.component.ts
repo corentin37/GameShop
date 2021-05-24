@@ -20,11 +20,12 @@ export class ProfilJoueurComponent implements OnInit {
   activity;
   password;
   avis;
-
+  message;
   fenetreInfo= false;
       
   fenetreModification = false;
   fenetreAvis = false;
+  fenetreMessage = false;
 
  
   
@@ -37,6 +38,7 @@ export class ProfilJoueurComponent implements OnInit {
       this.password = localStorage.getItem("password")
       this.getAllAvis();
       this.fenetreActivation(1);
+      this.getAllMessage();
   
   
     
@@ -44,7 +46,7 @@ export class ProfilJoueurComponent implements OnInit {
 
     fenetreActivation(chiffre): any {
       this.fenetreInfo= false;
-      
+      this.fenetreMessage=false;
       this.fenetreModification = false;
       this.fenetreAvis = false;
   
@@ -59,6 +61,7 @@ export class ProfilJoueurComponent implements OnInit {
           this.fenetreInfo = true;
           this.fenetreAvis = false;
           this.fenetreModification = false;
+          this.fenetreMessage = false;
   
           break;
         }
@@ -67,6 +70,7 @@ export class ProfilJoueurComponent implements OnInit {
           this.fenetreInfo = false;
           this.fenetreModification = true;
           this.fenetreAvis = false;
+          this.fenetreMessage = false;
           break;
         }
         case 3: {
@@ -74,6 +78,15 @@ export class ProfilJoueurComponent implements OnInit {
           this.fenetreInfo = false;
           this.fenetreModification = false;
           this.fenetreAvis = true;
+          this.fenetreMessage = false;
+          break;
+        }
+        case 4: {
+          // Card messages
+          this.fenetreInfo = false;
+          this.fenetreModification = false;
+          this.fenetreAvis = false;
+          this.fenetreMessage = true;
           break;
         }
         default: {
@@ -112,6 +125,22 @@ export class ProfilJoueurComponent implements OnInit {
           },
         });
       }
-    
+      getAllMessage() {
+        console.log('En cours de suppression'),
+        this.http.get('http://localhost:8086/messages/expediteur/' + this.id).subscribe({
+          next: (data) => { this.message = data; },
+          error: (err) => { console.log(err); }
+        });
+      }
 
+
+      deleteMessage(message){
+        console.log(message.id),
+          this.http.delete('http://localhost:8086/message/'+ message.id, message).subscribe({
+            next: (data) => {this.ngOnInit(); return confirm('Message effacé');},
+            error: (err) => {
+              console.log(err);
+            },
+          });
+        }
   }
