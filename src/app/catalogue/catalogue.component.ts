@@ -27,8 +27,8 @@ export class CatalogueComponent implements OnInit {
   id = 19;
   filterProperties;
   niveauxDifficulte=["Facile","Moyen","Difficile"];
-moyenne;
-nomDeJeu;
+  moyenne;
+  nomDeJeu;
 
   ngOnInit(): void {
     this.getCatalogue();
@@ -219,7 +219,10 @@ ageMinMoins(){
   }
 }
 ageMinPlus(){
-  this.ageMin+=1;
+  this.ageMin= parseInt(""+this.ageMin)+1;
+  if(this.ageMin<0){
+    this.ageMin=0;
+  }
 }
 
 nombreJoueurs=0;
@@ -404,6 +407,7 @@ filterByMarque(m){
 
 filterByAge(){
   console.log(this.ageMin);
+  this.ageMin=Math.max(this.ageMin,0);
   this.catalogueService.ageMin=this.ageMin;
   this.refreshFilters();
 }
