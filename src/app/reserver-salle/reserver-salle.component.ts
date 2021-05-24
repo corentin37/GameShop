@@ -10,26 +10,26 @@ import { SalleService } from '../Services/salle.service';
 export class ReserverSalleComponent implements OnInit {
 
   constructor(private http: HttpClient, private salleService: SalleService) { }
+  historique;
   salle;
   joueurId;
-  historique;
   joueur;
-  
+  historiqueEnregistree;
 
   ngOnInit(): void {
     this.salle=this.salleService.room;
     this.joueurId=localStorage.getItem("id");
     console.log("la salle:"+this.salle);    
-    console.log("l'id du joueur"+this.joueurId);
-    this.date("Aujourd'hui");
-    
+    console.log("l'id du joueur"+this.joueurId);    
         
   }
 
 
-ajouterHistorique(salle){
-  this.http.post('http://localhost:8086/salle/historique', salle).subscribe({
+ajouterHistorique(historique){
+  this.http.post('http://localhost:8086/salle/historique', historique).subscribe({
     next: (data) => {console.log(data);
+      this.historiqueEnregistree=data;
+      this.ajouterSalleEtJoueurDansHistorique(this.historiqueEnregistree);
       alert("Place réservée");
     },
     error: (err) => {console.log(err);
@@ -37,10 +37,39 @@ ajouterHistorique(salle){
   });
 }
 
-date(text){
-  if(text==="Aujourd'hui"){
-    console.log(Date.now());
-  }
+ajouterSalleEtJoueurDansHistorique(historique){
+  var user, id, joueur;
+  historique.salle=this.salle;
+  id=localStorage.getItem('id');
+  if(id!=null){
+    //trouver user
+    this.http.get('http://localhost:8086/user/id/'+id).subscribe({
+      next: (data) => {console.log(data);
+        user=data;
+        //trouver joueur
+        this.http.post('http://localhost:8086/joueur/recherche', user).subscribe({
+          next: (data) => {console.log(data);
+            joueur=data;
+            //ajouter joueur à historique
+            historique.joueur=joueur;
+            //mettre à jour joueur et salle dans l'historique
+            this.http.put('http://localhost:8086/salle/historique/modifier/'+this.historiqueEnregistree.id, historique).subscribe({
+              next: (data) => {console.log(data);
+      },
+      error: (err) => {console.log(err);
+      }
+    });
+      },
+      error: (err) => {console.log(err);}
+    });
+      },
+      error: (err) => {console.log(err); }
+    });
+    
+    
+  };
+  
+  
 }
 
 
