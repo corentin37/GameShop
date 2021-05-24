@@ -8,30 +8,32 @@
       <img src= {{salle.urlImage}} alt="Salle" height="135px" width="216px">
       <div class="mt-2">
         <p class="card-text"><strong>Réservation d'une place dans la salle '{{salle.nom}}'. </strong><br>Prix: {{salle.prix}} €</p>
-        <!-- <FORM NAME="form3">
-          <INPUT TYPE="radio" NAME="choix" VALUE="1">&nbsp;Aujourd'hui<BR>
-          <INPUT TYPE="radio" NAME="choix" VALUE="2">&nbsp;Demain<BR>
-          <INPUT TYPE="radio" NAME="choix" VALUE="3">&nbsp;Après-demain<BR> <br>
-          <INPUT TYPE="button" class="btn" NAME="but" VALUE="Valider" onClick="choixprop(form3)">
-          </FORM>
-        -->
-        
-
         
         <form #historique = ngForm (ngSubmit) = 'ajouterHistorique(historique.value)'>
-
-          <p>Date de début (aujourd'hui: 0)</p>
-          <input type="text" class="form-control" name="dateDebut" ngModel>
+          <div class="row">
+            <div class="col-sm-3"> 
+              <div class="text-secondary">Horaire de début</div>
+              <input type="datetime-local" name="dateDebut" ngModel>
+            </div>
+            <div class="col-sm-3"> 
+              <div class="text-secondary">Horaire de fin</div>
+              <input type="datetime-local" name="dateFin" ngModel>
+            </div>
+          </div>
           <br>
-          <p>Date de fin</p>
-          <input type="text" class="form-control" name="dateFin" ngModel>
-          <button type="submit" class="btn">Valider</button>
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-1">
+                <div class="center">
+                  <button type="submit" class="btn">Valider</button>
+              </div> 
+            </div>
+          </div>
+         
+         
         </form>
-        
-        
-        
       </div>
- 
     </div>
   </div>
 </div>
+
