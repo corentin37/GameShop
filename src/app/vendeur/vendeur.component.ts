@@ -9,8 +9,10 @@ import { DepService } from '../Services/dep.service';
 export class VendeurComponent implements OnInit {
 
   constructor(private deployService: DepService) { }
+  fenetreSalle;
 
   ngOnInit(): void {
   }
+
 
 }

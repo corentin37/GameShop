@@ -11,7 +11,11 @@ export class PrivatiserSalleComponent implements OnInit {
 
   constructor(private http: HttpClient, private route: Router) { }
   listeNom;
+  fenetreSalle;
+  
+
   ngOnInit(): void {
+    
   }
 
   modifierSalle(salle){
@@ -23,12 +27,16 @@ export class PrivatiserSalleComponent implements OnInit {
     })
   }
 
-  getAllNomSalle(){
+  getAllSalle(){
     this.http.get('http://localhost:8086/salle/list').subscribe({
       next: (data) => {console.log(data);
       },
       error: (err) => {console.log(err);
       }
     })
+  }
+
+  fenetreActivation(): any {
+    this.fenetreSalle = true;
   }
 }
