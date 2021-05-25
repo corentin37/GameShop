@@ -318,10 +318,12 @@
       <div class="row">
 
         <div class="col-sm-6" style="text-align: left !important;">
-          <span *ngIf="userId==m.destinataire.id" class="text container border mt-2 ml-2 mb-1" style="text-align: right !important;background-color: rgba(255, 212, 131, 0.568);border-radius: 10px;">{{ m.contenu }}</span>
+          <span *ngIf="userId==m.destinataire.id" class="text container border mt-2 ml-2 mb-1" style="background-color: rgba(255, 212, 131, 0.568);border-radius: 8px;">{{ m.contenu }}</span>
         </div>
         <div class="col-sm-6" style="text-align: right !important;">
-          <span *ngIf="userId!=m.destinataire.id" class="text container border mt-2 ml-2 mb-2" style="text-align: left !important; background-color: rgba(133, 206, 235, 0.877);border-radius: 10px;">{{ m.contenu }}</span>
+          <div *ngIf="userId!=m.destinataire.id" class="text container mt-2 ml-2 mb-2" style="background-color: rgba(133, 206, 235, 0.877);border-radius: 8px;">
+            <span   >{{ m.contenu }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -333,7 +335,6 @@
       <div class="col-sm-3">
           <button type="submit" class="btn btn-raised btn-sized">Répondre</button><!--, rajouter form module x2 dans modulestype submit pour envoyer les données-->
       </div>
-         
   </form>
   </div>
 </div>
