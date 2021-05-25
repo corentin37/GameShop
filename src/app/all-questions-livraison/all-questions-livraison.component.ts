@@ -69,25 +69,34 @@ export class AllQuestionsLivraisonComponent implements OnInit {
         error: (err) => { console.log(err); }
       });
     }
+  }
 
-
+    getAllMessage(): any {
+      this.http.get('http://localhost:8086/messages').subscribe({
+        next: (data) => { this.message = data; },
+        error: (err) => { console.log(err); }
+  
+  
+      });
+    }
 
     
-  }
+      deleteMessage(message){
+        console.log(message.id),
+          this.http.delete('http://localhost:8086/message/'+ message.id, message).subscribe({
+            next: (data) => {this.ngOnInit(); return confirm('Réponse effacée');},
+            error: (err) => {
+              console.log(err);
+            },
+          });
+        }
 
 
 
 
 
 
-  getAllMessage(): any {
-    this.http.get('http://localhost:8086/messages').subscribe({
-      next: (data) => { this.message = data; },
-      error: (err) => { console.log(err); }
 
-
-    });
-  }
   goToForum(): any {
     this.route.navigateByUrl('forum');
   }
