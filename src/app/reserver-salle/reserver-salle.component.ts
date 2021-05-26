@@ -20,7 +20,7 @@ export class ReserverSalleComponent implements OnInit {
     this.salle=this.salleService.room;
     this.joueurId=localStorage.getItem("id");
     console.log("la salle:"+this.salle);    
-    console.log("l'id du joueur"+this.joueurId);    
+    console.log("l'id du joueur"+this.joueurId);   
         
   }
 
